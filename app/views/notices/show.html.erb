@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @notice.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @notice.content %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @notice.creator_id %>
+</p>
+
+<p>
+  <strong>Approval:</strong>
+  <%= @notice.approval_id %>
+</p>
+
+<p>
+  <strong>Release time:</strong>
+  <%= @notice.release_time %>
+</p>
+
+<p>
+  <strong>Expiration time:</strong>
+  <%= @notice.expiration_time %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @notice.status %>
+</p>
+
+<%= link_to 'Edit', edit_notice_path(@notice) %> |
+<%= link_to 'Back', notices_path %>

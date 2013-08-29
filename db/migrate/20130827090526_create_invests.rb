@@ -7,10 +7,12 @@ class CreateInvests < ActiveRecord::Migration
 			t.string :jkyt
 			t.string :jkyssm
 			t.string :xydj
-			t.string :nhll
-			t.string :jkje
-			t.string :hkqx
+			t.decimal :nhll
+			t.decimal :jkje
+			t.integer :hkqx
 			t.string :hkfs
+			t.decimal :mqhkje
+			t.decimal :ktje
 			t.datetime :jssj
 			t.string :bz
 

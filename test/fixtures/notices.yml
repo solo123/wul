@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  content: MyText
+  creator_id: 1
+  approval_id: 1
+  release_time: 2013-08-29 12:32:33
+  expiration_time: 2013-08-29 12:32:33
+  status: 1
+
+two:
+  title: MyString
+  content: MyText
+  creator_id: 1
+  approval_id: 1
+  release_time: 2013-08-29 12:32:33
+  expiration_time: 2013-08-29 12:32:33
+  status: 1
