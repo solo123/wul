@@ -2,13 +2,14 @@ Wooul::Application.routes.draw do
   
   ComfortableMexicanSofa::Routing.admin(:path => '/cms-admin')
   
-  # Make sure this routeset is defined last
-  ComfortableMexicanSofa::Routing.content(:path => '/', :sitemap => false)
   resources :notices
 
 	root 'home#index'
   resources :invests
 	resource :home
+
+  # Make sure this routeset is defined last
+  ComfortableMexicanSofa::Routing.content(:path => '/', :sitemap => false)
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
