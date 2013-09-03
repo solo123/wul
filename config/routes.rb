@@ -3,8 +3,6 @@ Wooul::Application.routes.draw do
   ComfortableMexicanSofa::Routing.admin(:path => '/cms-admin')
   
   resources :notices
-
-	root 'home#index'
   resources :invests
 	resource :home
 
