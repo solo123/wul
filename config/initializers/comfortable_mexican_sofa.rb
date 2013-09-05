@@ -27,7 +27,7 @@ ComfortableMexicanSofa.configure do |config|
   # Sofa allows you to setup entire site from files. Database is updated with each
   # request (if necessary). Please note that database entries are destroyed if there's
   # no corresponding file. Fixtures are disabled by default.
-  #   config.enable_fixtures = false
+  # config.enable_fixtures = false
   
   # Path where fixtures can be located.
   #   config.fixtures_path = File.expand_path('db/cms_fixtures', Rails.root)
@@ -60,7 +60,7 @@ ComfortableMexicanSofa.configure do |config|
   # If you want to keep your CMS tables in a location other than the default database
   # add a database_config. For example, setting it to 'cms' will look for a cms_#{Rails.env}
   # definition in your database.yml file
-  #   config.database_config = nil
+  #config.database_config = 'cms'
   
   # A class that is included as a sweeper to admin base controller if it's set
   #   config.admin_cache_sweeper = nil

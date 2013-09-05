@@ -1,7 +1,10 @@
 class CreateCms < ActiveRecord::Migration
-  
+    #ComfortableMexicanSofa.establish_connection(ActiveRecord::Base)
+
   def self.up
-    
+    #ComfortableMexicanSofa.establish_connection(ActiveRecord::Base)
+		#ActiveRecord::Base.establish_connection "cms_#{Rails.env}"
+
     text_limit = case ActiveRecord::Base.connection.adapter_name
       when 'PostgreSQL'
         { }
@@ -121,9 +124,12 @@ class CreateCms < ActiveRecord::Migration
     end
     add_index :cms_categorizations, [:category_id, :categorized_type, :categorized_id], :unique => true,
       :name => 'index_cms_categorizations_on_cat_id_and_catd_type_and_catd_id'
+
+		#ActiveRecord::Base.establish_connection("#{Rails.env}")
   end
   
   def self.down
+    #@connection = ComfortableMexicanSofa.establish_connection(ActiveRecord::Base).connection
     drop_table :cms_sites
     drop_table :cms_layouts
     drop_table :cms_pages
@@ -133,6 +139,7 @@ class CreateCms < ActiveRecord::Migration
     drop_table :cms_revisions
     drop_table :cms_categories
     drop_table :cms_categorizations
+    #@connection = ActiveRecord::Base.establish_connection("#{Rails.env}").connection
   end
 end
 
