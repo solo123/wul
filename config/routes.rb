@@ -1,4 +1,5 @@
 Wooul::Application.routes.draw do
+	#root :to => ''
   ComfortableMexicanSofa::Routing.admin(:path => '/cms-admin')
   
   resources :notices
