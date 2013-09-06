@@ -1,4 +1,5 @@
 Wooul::Application.routes.draw do
+  devise_for :users
 	#root :to => ''
   ComfortableMexicanSofa::Routing.admin(:path => '/cms-admin')
   

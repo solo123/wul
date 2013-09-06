@@ -17,3 +17,5 @@
 
 *.swp
 Gemfile*
+/config/database.yml
+*.orig
