@@ -42,12 +42,70 @@ body {
 }
 
 
+/* Error explanation styles
+-------------------------------------------------- */
+/* error info */
+
+#error_explanation{
+  color: #b94a48;
+}
+#error_explanation h2{
+  font-size: 14px;
+}
 
 
 
+/* User signin style
+-------------------------------------------------- */
+/* signin */
 
-
-
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading{
+  font-size: 24px;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin input[type="password"].password_confirmation {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="email"].singleipt {
+  margin-bottom: 10px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
 
 
 
@@ -73,6 +131,12 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+
+footer#footer{
+  margin-top: 30px;
+}
+
 
 
 /* CUSTOMIZE THE CAROUSEL
