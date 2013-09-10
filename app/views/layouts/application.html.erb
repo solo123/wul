@@ -7,8 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+<%= render 'shared/header'%>
+<div class="container">
+	<%= yield %>
+</div>
+<%= render 'shared/footer'%>
 
 </body>
 </html>

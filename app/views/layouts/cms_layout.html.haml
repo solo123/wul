@@ -6,6 +6,9 @@
     = csrf_meta_tags
   %body
 
-    .content
-      = bootstrap_flash
-      = yield
+    = render 'shared/header'
+    = bootstrap_flash
+
+    = yield
+
+    = render 'shared/footer'
