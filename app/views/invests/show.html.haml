@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Jkbh:
+  = @invest.jkbh
+%p
+  %strong Jybh:
+  = @invest.jybh
+= link_to 'Edit', edit_invest_path(@invest)
+|
+\#{link_to 'Back', invests_path}

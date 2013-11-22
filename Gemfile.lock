@@ -205,6 +205,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   comfortable_mexican_sofa
   devise
+  haml-rails
   jbuilder (~> 1.2)
   jquery-rails
   mysql2

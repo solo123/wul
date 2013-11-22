@@ -4,13 +4,15 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  adapter: mysql2
-  encoding: utf8
-  database: wooul
-  username: wooul
-  password: '123'
-  host: 127.0.0.1
-  port: 3306  
+  adapter: sqlite3
+  database: db/development.sqlite3
+#  adapter: mysql
+#  encoding: utf8
+#  database: wooul
+#  username: wooul
+#  password: '123'
+#  host: 127.0.0.1
+#  port: 3306  
 
 cms_development:
   adapter: sqlite3
