@@ -1,0 +1,3 @@
+class FixedDepositsController < ApplicationController
+end
+

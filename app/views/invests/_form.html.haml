@@ -1,0 +1,19 @@
+= form_for(@invest) do |f|
+  - if @invest.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@invest.errors.count, "error")
+        prohibited this invest from being saved:
+      %ul
+        - @invest.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :jkbh
+    %br
+      = f.text_field :jkbh
+  .field
+    = f.label :jybh
+    %br
+      = f.text_field :jybh
+  .actions
+    = f.submit

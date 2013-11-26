@@ -1,0 +1,25 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @notice.title
+%p
+  %strong Content:
+  = @notice.content
+%p
+  %strong Creator:
+  = @notice.creator_id
+%p
+  %strong Approval:
+  = @notice.approval_id
+%p
+  %strong Release time:
+  = @notice.release_time
+%p
+  %strong Expiration time:
+  = @notice.expiration_time
+%p
+  %strong Status:
+  = @notice.status
+= link_to 'Edit', edit_notice_path(@notice)
+|
+\#{link_to 'Back', notices_path}

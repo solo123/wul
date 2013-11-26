@@ -1,0 +1,14 @@
+.container
+  %h1 Listing invests
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Jkbh
+        %th Jybh
+        %th
+    %tbody
+      - @invests.each do |invest|
+        %tr
+          %td= invest.loan_number
+          %td= invest.transaction_number
+          %td= link_to 'Show', invest

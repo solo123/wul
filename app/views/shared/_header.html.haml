@@ -1,0 +1,43 @@
+/ Static navbar
+.navbar.navbar-default.navbar-static-top
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "/"}
+        %img{:alt => "沃银金融", :src => "/system/cms/files/files/000/000/006/original/Logo-wooul.com.png"}/
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav.header-main-nav
+        %li.active
+          %a{:href => "/"} 首页
+        %li
+          %a{:href => "/invests"} 我要投资
+        %li
+          %a{:href => "/account"} 我的帐户
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            关于
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "/about/company"} 沃银网介绍
+            %li
+              %a{:href => "/about/contact"} 联系我们
+            %li
+              %a{:href => "#"} Something else here
+            %li.divider
+            %li.dropdown-header Nav header
+            %li
+              %a{:href => "#"} Separated link
+            %li
+              %a{:href => "#"} One more separated link
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{:href => "/users/sign_in"} 登录
+        %li
+          %a{:href => "/users/sign_up"} 注册
+        %li
+          %a{:href => "#"} 帮助
+    / /.nav-collapse

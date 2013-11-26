@@ -1,0 +1,3 @@
+%ul
+  - Notice.limit(3).each do |n|
+    %li= link_to n.title, notice_path(n)
