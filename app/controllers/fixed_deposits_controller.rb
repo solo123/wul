@@ -1,3 +1,3 @@
-class FixedDepositsController < ApplicationController
+class FixedDepositsController < ResourcesController
 end
 
