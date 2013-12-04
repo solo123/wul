@@ -1,5 +1,5 @@
 / Static navbar
-.navbar.navbar-default.navbar-static-top
+%header.navbar.navbar-default.navbar-static-top.header-top
   .container
     .navbar-header
       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
@@ -7,8 +7,8 @@
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand{:href => "/"}
-        %img{:alt => "沃银金融", :src => "/system/cms/files/files/000/000/006/original/Logo-wooul.com.png"}/
-    .navbar-collapse.collapse
+        %img{:alt => "沃银金融", :src => "/system/cms/files/files/000/000/002/original/wooul-logo.png"}/
+    .navbar-collapse.collapse.navbar-right
       %ul.nav.navbar-nav.header-main-nav
         %li.active
           %a{:href => "/"} 首页
@@ -33,5 +33,19 @@
               %a{:href => "#"} Separated link
             %li
               %a{:href => "#"} One more separated link
-      = render 'shared/login_status'
-    / /.nav-collapse
+.header-tools
+  .container
+    .row
+      .col-md-6
+        .hotline 
+          %span.glyphicon.glyphicon-earphone
+          4001-033-755
+      .col-md-6
+        %ul.list-inline.signlink
+          %li
+            = link_to "新用户注册", new_user_registration_path
+          %li
+            = link_to "已有账户?", new_user_session_path
+          %li
+            %a{:href => "#"} 帮助
+/ /.nav-collapse

@@ -1,18 +1,23 @@
-%h2 最新公告
-= link_to '更多', notices_path
-= render 'notices/top3'
 
-%hr/
-.login-div
-  = link_to "新用户注册", new_user_registration_path
-  = link_to "已有账户?", new_user_session_path
+.row
+  .col-md-3
+    %h2 沃银网能做什么
+  .col-md-3
+    %h2 最安全的网上理财
+  .col-md-3
+    %h2 新手指南
+  .col-md-3
+    %h2 官方公告
+    = link_to '更多', notices_path
+    = render 'notices/top3'
 
-
-%hr/
-%h2 定存投资
-= link_to '更多', fixed_deposits_path
-= render 'fixed_deposits/top_list'
-
+.row
+  .col-md-8
+    %h2 定存投资
+    = link_to '更多', fixed_deposits_path
+    = render 'fixed_deposits/top_list'
+  .col-md-4
+    %h2 理财工具
 %hr/
 %h2 月息投资
 = link_to '查看更多', invests_path
