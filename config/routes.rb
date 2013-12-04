@@ -6,8 +6,11 @@ Wooul::Application.routes.draw do
   resources :notices
   resources :invests, :fixed_deposits
 	resource :home
+	resources :accounts do
+		get :secure
+	end
 
 
   # Make sure this routeset is defined last
-  ComfortableMexicanSofa::Routing.content(:path => '/', :sitemap => false)
+  #ComfortableMexicanSofa::Routing.content(:path => '/', :sitemap => false)
 end

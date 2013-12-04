@@ -1,0 +1,22 @@
+.sidebar
+  .sidebar-item
+    %h2 Hi, #{current_user.username}
+    %ul.icons-list
+      %li.icon.button-username 用户验证
+      %li.icon.button-tel 手机验证
+      %li.icon.button-password 密码验证
+    %p
+      安全等级 [中]
+      = link_to '[提升]', account_secure_path(current_user.id)
+
+  .sidebar-item
+    %h2 可用余额
+    %h3 Y#{0.00}元
+    = link_to '充值', ''
+
+.main
+  .title
+    %h2 账户总览
+
+  %ul.status-entries
+    %li

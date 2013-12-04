@@ -33,11 +33,5 @@
               %a{:href => "#"} Separated link
             %li
               %a{:href => "#"} One more separated link
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{:href => "/users/sign_in"} 登录
-        %li
-          %a{:href => "/users/sign_up"} 注册
-        %li
-          %a{:href => "#"} 帮助
+      = render 'shared/login_status'
     / /.nav-collapse

@@ -1,0 +1,11 @@
+%ul.nav.navbar-nav.navbar-right
+  - if current_user 
+    %li= link_to "欢迎 #{current_user.username}!", account_path(current_user.id)
+    %li= link_to '退出登录', destroy_user_session_path, method: :delete
+  - else
+    %li
+      %a{:href => "/users/sign_in"} 登录
+    %li
+      %a{:href => "/users/sign_up"} 注册
+  %li
+    %a{:href => "#"} 帮助

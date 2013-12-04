@@ -1,7 +1,6 @@
 = form_for(resource, :as => resource_name, html: {class: "form-signin"}, :url => session_path(resource_name)) do |f|
   %h2.form-signin-heading Please sign in
   = f.text_field :login, :autofocus => true, class: "form-control", placeholder: "Login"
-  = f.email_field :email, class: "form-control", placeholder: "Email address"
   = f.password_field :password, class: "form-control", placeholder: "Password"
   - if devise_mapping.rememberable?
     = f.check_box :remember_me
