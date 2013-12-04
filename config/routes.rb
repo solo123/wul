@@ -12,5 +12,5 @@ Wooul::Application.routes.draw do
 
 
   # Make sure this routeset is defined last
-  #ComfortableMexicanSofa::Routing.content(:path => '/', :sitemap => false)
+  ComfortableMexicanSofa::Routing.content(:path => '/', :sitemap => false)
 end
