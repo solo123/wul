@@ -24,9 +24,52 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-bottom: 40px;
   color: #5a5a5a;
 }
+
+
+
+
+
+
+/* Pooul themes Style ==================================================================== */
+
+@media (min-width: 1280px){
+  .primary-container {
+    -webkit-box-shadow: 0 -30px 30px -4px #999;
+    -moz-box-shadow: 0 -30px 30px -4px #999;
+    box-shadow: 0 -30px 30px -4px #999;
+    margin: 0 auto;
+    max-width: 978px;
+    max-width: 1280px;
+  }
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+
+
 
 
 
@@ -131,12 +174,6 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
-
-
-footer#footer{
-  margin-top: 30px;
-}
-
 
 
 /* CUSTOMIZE THE CAROUSEL
@@ -259,7 +296,7 @@ footer#footer{
 
 
 
-/* Featurettes
+/* Header Style
 ------------------------- */
 .header-top{
   background: #f1f1f1;
@@ -287,3 +324,29 @@ footer#footer{
 .header-tools .signlink li a{}
 .header-tools .signlink li a:link,.header-tools .signlink li a:visited{ color: #d7d7d7; }
 .header-tools .signlink li a:hover{ color: #fff; }
+
+
+
+footer#footer{
+
+}
+.auxiliary-information{
+  background-color: #f9f9f9;
+  border-top: 1px solid #f5f5f5;
+  min-height: 100px;
+}
+.auxiliary-information .foot-link{ margin: 12px 0;}
+.auxiliary-information .foot-link a:link,.auxiliary-information .foot-link a:visited{ color: #999; }
+.auxiliary-information .foot-link a:hover{ color: #666; }
+
+.footer-copyright{
+  min-height: 30px;
+  line-height: 30px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #eee;
+}
+
+
+
+
+
