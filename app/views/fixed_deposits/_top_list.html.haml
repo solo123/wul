@@ -1,5 +1,5 @@
 %div.page-items
-  %ul.fixed-deposits
-    - FixedDeposit.limit(5).each do |obj|
-      %li= render 'fixed_deposits/item', obj: obj
+  .fixed-deposits
+  - FixedDeposit.limit(5).each do |obj|
+    = render 'fixed_deposits/item', obj: obj
 

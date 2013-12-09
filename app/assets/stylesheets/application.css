@@ -28,10 +28,6 @@ body {
 }
 
 
-
-
-
-
 /* Pooul themes Style ==================================================================== */
 
 @media (min-width: 1280px){
@@ -42,6 +38,7 @@ body {
     margin: 0 auto;
     max-width: 978px;
     max-width: 1280px;
+    min-height: 500px;
   }
 }
 
@@ -181,7 +178,7 @@ body {
 
 /* Carousel base class */
 .carousel {
-  height: 500px;
+  height: 400px;
   margin-bottom: 0;
 }
 /* Since positioning the image, we need to help out the caption */
@@ -191,7 +188,7 @@ body {
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  height: 500px;
+  height: 400px;
   background-color: #777;
 }
 .carousel-inner > .item > img {
@@ -199,7 +196,9 @@ body {
   top: 0;
   left: 0;
   min-width: 100%;
-  height: 500px;
+}
+.carousel-caption{
+  text-align: left;
 }
 
 
@@ -228,7 +227,7 @@ body {
 
 
 /* Featurettes
-------------------------- */
+-------------------------------------------------- */
 
 .featurette-divider {
   margin: 80px 0; /* Space out the Bootstrap <hr> more */
@@ -297,7 +296,7 @@ body {
 
 
 /* Header Style
-------------------------- */
+-------------------------------------------------- */
 .header-top{
   background: #f1f1f1;
   margin-bottom: 0;
@@ -309,6 +308,7 @@ body {
   min-height: 40px;
   line-height: 40px;
   background: #393832;
+  position: relative;
 }
 .header-tools ul{
   margin-bottom: 0;
@@ -326,7 +326,8 @@ body {
 .header-tools .signlink li a:hover{ color: #fff; }
 
 
-
+/* Footer Style
+-------------------------------------------------- */
 footer#footer{
 
 }
@@ -347,6 +348,28 @@ footer#footer{
 }
 
 
+/* HOme Style
+-------------------------------------------------- */
+
+/* Home assist info */
+.homeassist{ margin-top: 22px; }
+.homeassist .glyphicon{ font-size: 128px; color: #a2a2a2; }
+.homeassist h2{ font-size: 18px; font-weight: normal;}
+.homeassist p{ color: #7d7c79; }
+
+
+.deposits-area{}
+.deposits-area header h2{ float: left; font-size: 18px; font-weight: normal; }
+.deposits-area header a{ float: right; }
+.deposits-area .page-items{ clear: both; }
 
 
 
+.financial-tools-area{}
+.financial-tools-area h2{ float: left; font-size: 18px; font-weight: normal; }
+
+
+.monthly-interest{}
+.monthly-interest header h2{ float: left; font-size: 18px; font-weight: normal; }
+.monthly-interest header a{ float: right; }
+.monthly-interest header .info{ clear: both;}
