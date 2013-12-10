@@ -7,7 +7,12 @@ Wooul::Application.routes.draw do
   resources :invests, :fixed_deposits
 	resource :home
 	resources :accounts do
-		get :secure
+	  collection do 	
+  		get :secure
+	  	get :password
+			get :my_account
+			put :password_update
+		end
 	end
 
 

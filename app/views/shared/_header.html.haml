@@ -41,11 +41,4 @@
           %span.glyphicon.glyphicon-earphone
           4001-033-755
       .col-md-6
-        %ul.list-inline.signlink
-          %li
-            = link_to "新用户注册", new_user_registration_path
-          %li
-            = link_to "已有账户?", new_user_session_path
-          %li
-            %a{:href => "#"} 帮助
-/ /.nav-collapse
+        = render 'shared/login_status'
