@@ -12,31 +12,31 @@
           %ul
             %li 登录密码
             %li 登录账户时需要输入密码
-            %li= link_to '修改', password_accounts_path
+            %li= link_to '修改', '/accounts/password'
         %li
           %ul
             %li 实名认证
             %li 充值前，必须完成实名认证
-            %li= link_to '启用', ''
+            %li= link_to '启用', '/accounts/realname'
         %li
           %ul
             %li 绑定手机
             %li 绑定手机号码，账户资金变动实时通知
-            %li= link_to '启用', ''
+            %li= link_to '启用', '/accounts/mobile'
         %li
           %ul
             %li 支付密码
             %li 资金账户变动和修改账户信息时，需要输入的密码
             %li
-              = link_to '修改', ''
+              = link_to '修改', '/accounts/email'
               |
-              = link_to '找回', ''
+              = link_to '找回', '/accounts/retrieve'
 
         %li
           %ul
             %li 密保问题
             %li 轻松找回登录密码
-            %li= link_to '修改', ''
+            %li= link_to '修改', '/accounts/secretquestions'
     %li 保护隐私安全
 
 

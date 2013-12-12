@@ -11,5 +11,6 @@ class AccountsController < ApplicationController
 		end
 		render text: 'Password updated!!'
 	end
+
 end
 

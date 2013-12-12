@@ -6,14 +6,17 @@ Wooul::Application.routes.draw do
   resources :notices
   resources :invests, :fixed_deposits
 	resource :home
-	resources :accounts do
-	  collection do 	
-  		get :secure
-	  	get :password
-			get :my_account
-			put :password_update
-		end
-	end
+	get 'accounts/:action', to: 'accounts'
+	put 'accounts/:action', to: 'accounts'
+	#resources :accounts do
+	#  collection do 	
+  #		get :secure
+	#  	get :password
+	#		get :my_account
+	#		put :password_update
+	#	  get 'sec/:action'
+	#	end
+	#end
 
 
   # Make sure this routeset is defined last
