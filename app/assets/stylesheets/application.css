@@ -201,7 +201,7 @@ body {
   text-align: left;
 }
 .carousel-control{
-  width: 5%;
+  width: 8%;
 }
 
 
@@ -355,11 +355,15 @@ footer#footer{
 -------------------------------------------------- */
 
 /* Home assist info */
-.homeassist{ margin-top: 22px; }
+.homeassist{ margin-top: 50px; margin-bottom: 30px; }
 .homeassist .glyphicon{ font-size: 128px; color: #a2a2a2; }
 .homeassist h2{ font-size: 18px; font-weight: normal;}
 .homeassist p{ color: #7d7c79; }
 
+.home-notify{}
+.home-notify header { min-height: 30px; line-height: 30px; }
+.home-notify header h2{ float: left; margin:0; padding-top: 5px; font-size: 18px; font-weight: normal; }
+.home-notify header a{ float: right; }
 
 .deposits-area{ background: #f1f1f1; border-radius: 6px 6px 0 0; padding: 0 18px 0 18px; }
 .deposits-area header { min-height: 50px; line-height: 50px; }
@@ -368,8 +372,6 @@ footer#footer{
 .deposits-area .auxiliary-info{ clear: both; margin-bottom: 12px; }
 .deposits-area .page-items{ clear: both; }
 .deposits-area .page-items .deposit_item{ margin-bottom: 0;}
-
-
 
 .monthly-interest{}
 .monthly-interest header { min-height: 50px; line-height: 50px; background: #f1f1f1;}
@@ -382,3 +384,10 @@ footer#footer{
 .financial-tools-area h2{ float: left; font-size: 18px; font-weight: normal; }
 .financial-tools-area .list-group .list-group-item .glyphicon{ float: left; margin-right: 12px; font-size: 38px; }
 .financial-tools-area .list-group .list-group-item h4{ margin-top: 3px; }
+
+
+
+.safety-tips{ margin: 50px auto; }
+.safety-tips ul li{ font-size: 18px; min-height: 60px; line-height: 60px; margin-right: 8px; }
+.safety-tips ul li .glyphicon{ margin-right: 8px; font-size: 36px; position: relative; top: 10px; }
+
