@@ -10,8 +10,10 @@
     %p.actions
       %div 当前进度：#{obj.free_invest_amount * 100 / obj.total_amount}%
       .progress
-        .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "10", :role => "progressbar", :style => "width: 10%;"}
+        .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "30", :role => "progressbar", :style => "width: 30%;"}
           %span.sr-only 60% Complete
+
+
       %div 剩余金额：#{obj.free_invest_amount}
       %div.action= link_to '已满', '#'
 
