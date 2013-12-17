@@ -12,5 +12,9 @@ class AccountsController < ApplicationController
 		render text: 'Password updated!!'
 	end
 
+	def realname
+		@user_info = current_user.user_info
+	end
+
 end
 
