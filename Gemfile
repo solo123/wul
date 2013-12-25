@@ -63,3 +63,4 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 gem 'comfortable_mexican_sofa'
 gem 'devise'
 gem "haml-rails"
+gem "html5_validators"
