@@ -1,0 +1,8 @@
+.title
+  %h2 实名认证
+
+= form_for( @user_info, url: '/accounts/update', method: :put, :html => {class: "form-signin" }) do |f|
+  = f.text_field :real_name
+  = f.text_field :id_card_number
+  = f.submit "认证"
+

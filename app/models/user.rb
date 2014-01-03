@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
       :case_sensitive => false
     }
   attr_accessor :login
+	has_one :user_info
 
 	def self.find_first_by_auth_conditions(warden_conditions)
 		conditions = warden_conditions.dup
