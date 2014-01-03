@@ -1,7 +1,7 @@
 = form_for(resource, :as => resource_name, html: {class: "form-signin"}, :url => registration_path(resource_name)) do |f|
-  %h2.form-signin-heading Please Sign up
+  %h2.form-signin-heading 请Please Sign up
   = devise_error_messages!
-  = f.text_field :login, class: "form-control", placeholder: "Login", :autofocus => true
+  = f.text_field :username, class: "form-control", placeholder: "Login", :autofocus => true
   = f.email_field :email, class: "form-control", placeholder: "Email address"
   = f.password_field :password, class: "form-control password_confirmation", placeholder: "Password"
   = f.password_field :password_confirmation, class: "form-control", placeholder: "Password confirmation"
