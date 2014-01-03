@@ -365,13 +365,16 @@ footer#footer{
 .home-notify header h2{ float: left; margin:0; padding-top: 5px; font-size: 18px; font-weight: normal; }
 .home-notify header a{ float: right; }
 
-.deposits-area{ background: #f1f1f1; border-radius: 6px 6px 0 0; padding: 0 18px 0 18px; }
-.deposits-area header { min-height: 50px; line-height: 50px; }
-.deposits-area header h2{ float: left; margin:0; padding-top: 14px; font-size: 24px; font-weight: normal; }
-.deposits-area header a{ float: right; }
-.deposits-area .auxiliary-info{ clear: both; margin-bottom: 12px; }
-.deposits-area .page-items{ clear: both; }
-.deposits-area .page-items .deposit_item{ margin-bottom: 0;}
+.fixed-deposits{ background: #f1f1f1; border-radius: 6px 6px 0 0; padding: 0 18px 0 18px; }
+.fixed-deposits header { min-height: 50px; line-height: 50px; }
+.fixed-deposits header h2{ float: left; margin:0; padding-top: 14px; font-size: 24px; font-weight: normal; }
+.fixed-deposits header a{ float: right; }
+.fixed-deposits .auxiliary-info{ clear: both; margin-bottom: 12px; }
+.fixed-deposits .deposit_item{ margin-bottom: 0;}
+.fixed-deposits .deposit_item h2{ font-size: 14px; margin: 0;}
+.fixed-deposits .deposit_item h2 a{ }
+.fixed-deposits .deposit_item h2 a:link,.fixed-deposits .deposit_item h2 a:visited{ color: #666; }
+
 
 .monthly-interest{}
 .monthly-interest header { min-height: 50px; line-height: 50px; background: #f1f1f1;}

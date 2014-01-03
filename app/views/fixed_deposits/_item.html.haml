@@ -1,19 +1,67 @@
-.deposit_item.list-group
-  .list-group-item
-    %h2= link_to "定存投资 #{obj.deposit_number}", fixed_deposit_path(obj)
-    %p.number-of-people 100人已经加入
-    %p.info
-      = obj.annual_rate
-      |
-      = obj.repayment_period
-      = obj.guarantee
-    %p.actions
-      %div 当前进度：#{obj.free_invest_amount * 100 / obj.total_amount}%
-      .progress
-        .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "30", :role => "progressbar", :style => "width: 30%;"}
-          %span.sr-only 60% Complete
+.deposit_item.row
+  .col-md-4
+    .panel.panel-warning
+      .panel-heading
+        %h2= link_to "定存投资 #{obj.deposit_number}", fixed_deposit_path(obj)
+      .panel-body
+        %p.number-of-people 100人已经加入
+        %p.info
+          = obj.annual_rate
+          |
+          = obj.repayment_period
+          = obj.guarantee
+      .panel-footer
+        %p.actions
+          当前进度：#{obj.free_invest_amount * 100 / obj.total_amount}%
+          .progress
+            .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "30", :role => "progressbar", :style => "width: 30%;"}
+              %span.sr-only 60% Complete
 
 
-      %div 剩余金额：#{obj.free_invest_amount}
-      %div.action= link_to '已满', '#'
+          %div 剩余金额：#{obj.free_invest_amount}
+          %div.action= link_to '已满', '#'
+
+  .col-md-4
+    .panel.panel-success
+      .panel-heading
+        %h2= link_to "定存投资 #{obj.deposit_number}", fixed_deposit_path(obj)
+      .panel-body
+        %p.number-of-people 100人已经加入
+        %p.info
+          = obj.annual_rate
+          |
+          = obj.repayment_period
+          = obj.guarantee
+      .panel-footer
+        %p.actions
+          当前进度：#{obj.free_invest_amount * 100 / obj.total_amount}%
+          .progress
+            .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "30", :role => "progressbar", :style => "width: 30%;"}
+              %span.sr-only 60% Complete
+
+
+          %div 剩余金额：#{obj.free_invest_amount}
+          %div.action= link_to '已满', '#'
+
+  .col-md-4
+    .panel.panel-info
+      .panel-heading
+        %h2= link_to "定存投资 #{obj.deposit_number}", fixed_deposit_path(obj)
+      .panel-body
+        %p.number-of-people 100人已经加入
+        %p.info
+          = obj.annual_rate
+          |
+          = obj.repayment_period
+          = obj.guarantee
+      .panel-footer
+        %p.actions
+          当前进度：#{obj.free_invest_amount * 100 / obj.total_amount}%
+          .progress
+            .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "30", :role => "progressbar", :style => "width: 30%;"}
+              %span.sr-only 60% Complete
+
+
+          %div 剩余金额：#{obj.free_invest_amount}
+          %div.action= link_to '已满', '#'
 
