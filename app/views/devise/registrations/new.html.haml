@@ -2,7 +2,6 @@
   %h2.form-signin-heading 请Please Sign up
   = devise_error_messages!
   = f.text_field :username, class: "form-control", placeholder: "Login", :autofocus => true
-  = f.email_field :email, class: "form-control", placeholder: "Email address"
   = f.password_field :password, class: "form-control password_confirmation", placeholder: "Password"
   = f.password_field :password_confirmation, class: "form-control", placeholder: "Password confirmation"
   = f.submit "Sign up", class: "btn btn-lg btn-primary btn-block"
