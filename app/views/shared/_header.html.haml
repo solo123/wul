@@ -1,3 +1,4 @@
+- menu_key = current_main_menu
 / Static navbar
 %header.navbar.navbar-default.navbar-static-top.header-top
   .container
@@ -10,13 +11,13 @@
         %img{:alt => "沃银金融", :src => "/system/cms/files/files/000/000/002/original/wooul-logo.png"}/
     .navbar-collapse.collapse.navbar-right
       %ul.nav.navbar-nav.header-main-nav
-        %li.active
+        %li{class: ('active' if menu_key == 'home' )}
           %a{:href => "/"} 首页
-        %li
+        %li{class: ('active' if menu_key == 'invest' )}
           %a{:href => "/invests"} 我要投资
-        %li
+        %li{class: ('active' if menu_key == 'account' )}
           %a{:href => "/account"} 我的帐户
-        %li.dropdown
+        %li.dropdown{class: ('active' if menu_key == 'about' )}
           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
             关于
             %b.caret

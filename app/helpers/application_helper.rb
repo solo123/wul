@@ -19,4 +19,16 @@ module ApplicationHelper
 		end
 		flash_messages.join("\n").html_safe
 	end
+
+	def current_main_menu
+	  menu_key = 'home'
+		if request.path.start_with?('/invests') 
+			menu_key = 'invest'
+		elsif request.path.start_with?('/account')
+			menu_key = 'account'
+		elsif request.path.start_with?('/about')
+			menu_key = 'about'
+		end
+		menu_key
+	end
 end
