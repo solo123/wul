@@ -11,7 +11,7 @@
   %tbody
     - Invest.limit(5).each do |invest|
       %tr
-        %td= invest.usage
+        %td= link_to invest.usage, invest
         %td= invest.credit_level
         %td= invest.annual_rate
         %td= invest.amount
