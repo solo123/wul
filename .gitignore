@@ -9,7 +9,5 @@
 /tmp
 
 *.swp
-Gemfile*
-/config/database.yml
 *.orig
 /public/assets
