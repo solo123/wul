@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  useable_balance: 9.99
+  balance: 9.99
+  frozen_balance: 9.99
+  total_estate: 9.99
+
+two:
+  useable_balance: 9.99
+  balance: 9.99
+  frozen_balance: 9.99
+  total_estate: 9.99
