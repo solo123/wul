@@ -1,0 +1,27 @@
+%h1 Listing accounts
+
+%table
+  %tr
+    %th User
+    %th Useable balance
+    %th Balance
+    %th Frozen balance
+    %th Total estate
+    %th
+    %th
+    %th
+
+  - @accounts.each do |account|
+    %tr
+      %td= account.user_id
+      %td= account.useable_balance
+      %td= account.balance
+      %td= account.frozen_balance
+      %td= account.total_estate
+      %td= link_to 'Show', account
+      %td= link_to 'Edit', edit_account_path(account)
+      %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Account', new_account_path

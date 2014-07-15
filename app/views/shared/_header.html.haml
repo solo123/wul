@@ -1,5 +1,15 @@
 - menu_key = current_main_menu
 / Static navbar
+.header-tools
+  .container
+    .row
+      .col-md-6
+        .hotline
+          %span.glyphicon.glyphicon-earphone
+          %span.hottitle 客服热线
+          %span.numbers 4001-033-755
+      .col-md-6
+        = render 'shared/login_status'
 %header.navbar.navbar-default.navbar-static-top.header-top
   .container
     .navbar-header
@@ -13,7 +23,7 @@
       %ul.nav.navbar-nav.header-main-nav
         %li{class: ('active' if menu_key == 'home' )}
           %a{:href => "/"} 首页
-        %li{class: ('active' if menu_key == 'invest' )}
+        %li{class: ('active' if menu_key == 'invest'  )}
           %a{:href => "/invests"} 我要投资
         %li{class: ('active' if menu_key == 'account' )}
           %a{:href => "/accounts/my_account"} 我的帐户
@@ -34,12 +44,4 @@
               %a{:href => "#"} Separated link
             %li
               %a{:href => "#"} One more separated link
-.header-tools
-  .container
-    .row
-      .col-md-6
-        .hotline 
-          %span.glyphicon.glyphicon-earphone
-          4001-033-755
-      .col-md-6
-        = render 'shared/login_status'
+

@@ -1,8 +1,16 @@
 Wooul::Application.routes.draw do
+
+
+  resources :coupons
+
+  resources :bankcards
+
+  resources :accounts
+
   devise_for :users
 	#root :to => ''
-	comfy_route :cms_admin, :path => '/cms-admin'
-  
+  comfy_route :cms_admin, :path => '/cms-admin'
+
   resources :notices
   resources :invests, :fixed_deposits
 	resource :home
@@ -18,7 +26,24 @@ Wooul::Application.routes.draw do
 	#	end
 	#end
 
+  namespace :usercenter do
+    get '/', to: 'console#index'
+    get '/console/overview'
+    get '/console/history'
+    get '/console/charge'
+    get '/console/bankcard'
+    get '/console/coupon'
+    get '/console/assets_analyzer'
+    get '/console/invest_history'
+    get '/console/redemption'
+    get '/console/agreements'
+    get '/console/autoinvest'
+    resources :bankcards
+    resources :accounts
+    resources :coupons
+  end
 
-  # Make sure this routeset is defined last
   comfy_route :cms, :path => '/', :sitemap => false
+
+
 end

@@ -11,10 +11,27 @@ class User < ActiveRecord::Base
     }
   attr_accessor :login
 	has_one :user_info
+  has_many :bankcards
+  has_many :coupons
+
+  has_one :account, :dependent=>:destroy, :autosave=>true
+  after_create :create_account, :create_userinfo
 
 	def email_required?
 		false
-	end
+  end
+
+  def create_account
+    account = Account.new
+    account.user_id = self.id
+    account.save!
+  end
+
+  def create_userinfo
+    uinfo = UserInfo.new
+    uinfo.user_id = self.id
+    uinfo.save!
+  end
 
 
 	def self.find_first_by_auth_conditions(warden_conditions)
