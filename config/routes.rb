@@ -1,8 +1,12 @@
 Wooul::Application.routes.draw do
+
+
+  resources :accounts
+
   devise_for :users
 	#root :to => ''
-	comfy_route :cms_admin, :path => '/cms-admin'
-  
+  comfy_route :cms_admin, :path => '/cms-admin'
+
   resources :notices
   resources :invests, :fixed_deposits
 	resource :home
@@ -19,6 +23,10 @@ Wooul::Application.routes.draw do
 	#end
 
 
+  #ComfortableMexicanSofa::Routing.admin(:path => '/cms-admin')
   # Make sure this routeset is defined last
+  #ComfortableMexicanSofa::Routing.content(:path => '/', :sitemap => false)
   comfy_route :cms, :path => '/', :sitemap => false
+
+
 end
