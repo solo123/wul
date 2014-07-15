@@ -1,0 +1,27 @@
+%h1 Listing usercenter_accounts
+
+%table
+  %tr
+    %th User
+    %th Useable balance
+    %th Balance
+    %th Frozen balance
+    %th Total estate
+    %th
+    %th
+    %th
+
+  - @usercenter_accounts.each do |usercenter_account|
+    %tr
+      %td= usercenter_account.user_id
+      %td= usercenter_account.useable_balance
+      %td= usercenter_account.balance
+      %td= usercenter_account.frozen_balance
+      %td= usercenter_account.total_estate
+      %td= link_to 'Show', usercenter_account
+      %td= link_to 'Edit', edit_usercenter_account_path(usercenter_account)
+      %td= link_to 'Destroy', usercenter_account, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Account', new_usercenter_account_path

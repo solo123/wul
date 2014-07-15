@@ -1,6 +1,10 @@
 Wooul::Application.routes.draw do
 
 
+  resources :coupons
+
+  resources :bankcards
+
   resources :accounts
 
   devise_for :users
@@ -22,10 +26,23 @@ Wooul::Application.routes.draw do
 	#	end
 	#end
 
+  namespace :usercenter do
+    get '/', to: 'console#index'
+    get '/console/overview'
+    get '/console/history'
+    get '/console/charge'
+    get '/console/bankcard'
+    get '/console/coupon'
+    get '/console/assets_analyzer'
+    get '/console/invest_history'
+    get '/console/redemption'
+    get '/console/agreements'
+    get '/console/autoinvest'
+    resources :bankcards
+    resources :accounts
+    resources :coupons
+  end
 
-  #ComfortableMexicanSofa::Routing.admin(:path => '/cms-admin')
-  # Make sure this routeset is defined last
-  #ComfortableMexicanSofa::Routing.content(:path => '/', :sitemap => false)
   comfy_route :cms, :path => '/', :sitemap => false
 
 

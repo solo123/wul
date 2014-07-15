@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131203024957) do
+ActiveRecord::Schema.define(version: 20140715093049) do
+
+  create_table "accounts", force: true do |t|
+    t.integer  "user_id"
+    t.decimal  "useable_balance", precision: 10, scale: 0, default: 0
+    t.decimal  "balance",         precision: 10, scale: 0, default: 0
+    t.decimal  "frozen_balance",  precision: 10, scale: 0, default: 0
+    t.decimal  "total_estate",    precision: 10, scale: 0, default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bankcards", force: true do |t|
+    t.integer  "user_id"
+    t.string   "bankname"
+    t.string   "cardid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cms_blocks", force: true do |t|
     t.integer  "page_id",                     null: false
@@ -130,6 +148,15 @@ ActiveRecord::Schema.define(version: 20131203024957) do
   add_index "cms_snippets", ["site_id", "identifier"], name: "index_cms_snippets_on_site_id_and_identifier", unique: true, using: :btree
   add_index "cms_snippets", ["site_id", "position"], name: "index_cms_snippets_on_site_id_and_position", using: :btree
 
+  create_table "coupons", force: true do |t|
+    t.integer  "user_id"
+    t.decimal  "amount",     precision: 10, scale: 0
+    t.string   "title"
+    t.string   "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "employees", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -177,6 +204,7 @@ ActiveRecord::Schema.define(version: 20131203024957) do
     t.string   "fee"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "owner_num",                                     default: 0
   end
 
   create_table "guarantee_companies", force: true do |t|

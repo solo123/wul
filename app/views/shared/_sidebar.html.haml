@@ -1,0 +1,38 @@
+.sidebar
+   %section.security
+      Hi, #{current_user.username}
+      %ul
+         %li.menuitem 用户验证
+         %li.menuitem 手机验证
+         %li.menuitem 密码验证
+   %section.balance
+      .balance_title 可用余额
+      .balance_amount
+      = render "shared/balance"
+      %button.btn-success 充值
+   %section.account
+      我的账户
+      %ul
+         %li.menuitem
+            = link_to '账户总览', usercenter_console_overview_path
+         %li.menuitem
+            = link_to '交易记录', usercenter_console_history_path
+         %li.menuitem
+            = link_to '充值提现', usercenter_console_charge_path
+         %li.menuitem
+            = link_to '银行卡', usercenter_console_bankcard_path
+         %li.menuitem
+            = link_to '我的红包', usercenter_console_coupon_path
+   %section.invest
+      我的投资
+      %ul
+         %li.menuitem
+            = link_to '资产统计', usercenter_console_assets_analyzer_path
+         %li.menuitem
+            = link_to '投资记录', usercenter_console_invest_history_path
+         %li.menuitem
+            = link_to '投资赎回', usercenter_console_redemption_path
+         %li.menuitem
+            = link_to '借款协议', usercenter_console_agreements_path
+         %li.menuitem
+            = link_to '自动投资', usercenter_console_autoinvest_path

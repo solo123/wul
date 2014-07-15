@@ -2,6 +2,7 @@
 
 %table
   %tr
+    %th User
     %th Useable balance
     %th Balance
     %th Frozen balance
@@ -12,6 +13,7 @@
 
   - @accounts.each do |account|
     %tr
+      %td= account.user_id
       %td= account.useable_balance
       %td= account.balance
       %td= account.frozen_balance
