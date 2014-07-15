@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @bankcard.user_id
+%p
+  %b Bankname:
+  = @bankcard.bankname
+%p
+  %b Cardid:
+  = @bankcard.cardid
+
+= link_to 'Edit', edit_bankcard_path(@bankcard)
+\|
+= link_to 'Back', bankcards_path

@@ -1,3 +1,4 @@
+/*= require_tree .*/
 @import "bootstrap";
 
 /*
@@ -11,8 +12,75 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  */
+
+$sidemenu_padding: 10px;
+
+.sidebar {
+  padding-left: 10px;
+  font-size: 14px;
+  width: 120px;
+  border-right: 1px solid;
+  padding-right: 5px;
+  float: left;
+  background: #ccc;
+
+}
+
+.header-tools .hotline {
+  color: darkorange;
+  font-size: 16px;
+}
+
+.balance .balance_title {
+
+}
+
+.balance .balance_amount {
+
+}
+
+.account {
+  padding-top: $sidemenu_padding;
+}
+
+.sidebar .menuitem {
+  margin: 0;
+  text-indent: 0;
+  list-style: none;
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
+
+.sidebar .invest{
+
+}
+
+.security {
+  padding-bottom: $sidemenu_padding;
+  padding-top: $sidemenu_padding;
+  border-bottom: 1px solid;
+}
+
+.balance {
+  padding-top: $sidemenu_padding;
+  padding-bottom: $sidemenu_padding;
+  border-bottom: 1px solid;
+  padding-left: 20px;
+}
+
+.security .greeting {
+  color: darkslategrey;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+.security .auth {
+  color: darkgreen;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
 .navbar-nav > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -27,10 +95,9 @@ body {
   color: #5a5a5a;
 }
 
-
 /* Pooul themes Style ==================================================================== */
 
-@media (min-width: 1280px){
+@media (min-width: 1280px) {
   .primary-container {
     -webkit-box-shadow: 0 -30px 30px -4px #999;
     -moz-box-shadow: 0 -30px 30px -4px #999;
@@ -54,22 +121,18 @@ body {
     width: 750px;
   }
 }
+
 @media (min-width: 992px) {
   .container {
     width: 970px;
   }
 }
+
 @media (min-width: 1200px) {
   .container {
     width: 970px;
   }
 }
-
-
-
-
-
-
 
 /* Header nav styles
 -------------------------------------------------- */
@@ -81,19 +144,17 @@ body {
   font-size: 18px;
 }
 
-
 /* Error explanation styles
 -------------------------------------------------- */
 /* error info */
 
-#error_explanation{
+#error_explanation {
   color: #b94a48;
 }
-#error_explanation h2{
+
+#error_explanation h2 {
   font-size: 14px;
 }
-
-
 
 /* User signin style
 -------------------------------------------------- */
@@ -104,51 +165,57 @@ body {
   padding: 15px;
   margin: 0 auto;
 }
-.form-signin .form-signin-heading{
+
+.form-signin .form-signin-heading {
   font-size: 24px;
 }
+
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;
 }
+
 .form-signin .checkbox {
   font-weight: normal;
 }
+
 .form-signin .form-control {
   position: relative;
   font-size: 16px;
   height: auto;
   padding: 10px;
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .form-signin .form-control:focus {
   z-index: 2;
 }
+
 .form-signin input[type="email"] {
   margin-bottom: -1px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
 .form-signin input[type="password"].password_confirmation {
   margin-bottom: -1px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
 .form-signin input[type="email"].singleipt {
   margin-bottom: 10px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-
-
-
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
@@ -167,11 +234,11 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
+
 .navbar-wrapper .navbar {
   padding-left: 15px;
   padding-right: 15px;
 }
-
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -181,6 +248,7 @@ body {
   height: 400px;
   margin-bottom: 0;
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
@@ -191,20 +259,21 @@ body {
   height: 400px;
   background-color: #777;
 }
+
 .carousel-inner > .item > img {
   position: absolute;
   top: 0;
   left: 0;
   min-width: 100%;
 }
-.carousel-caption{
+
+.carousel-caption {
   text-align: left;
 }
-.carousel-control{
+
+.carousel-control {
   width: 8%;
 }
-
-
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
@@ -220,14 +289,15 @@ body {
   text-align: center;
   margin-bottom: 20px;
 }
+
 .marketing h2 {
   font-weight: normal;
 }
+
 .marketing .col-lg-4 p {
   margin-left: 10px;
   margin-right: 10px;
 }
-
 
 /* Featurettes
 -------------------------------------------------- */
@@ -242,8 +312,6 @@ body {
   line-height: 1;
   letter-spacing: -1px;
 }
-
-
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
@@ -261,11 +329,11 @@ body {
     margin-top: 20px;
   }
   .navbar-wrapper .container {
-    padding-left:  15px;
+    padding-left: 15px;
     padding-right: 15px;
   }
   .navbar-wrapper .navbar {
-    padding-left:  0;
+    padding-left: 0;
     padding-right: 0;
   }
 
@@ -293,104 +361,239 @@ body {
   }
 }
 
-
-
-
-
-
 /* Header Style
 -------------------------------------------------- */
-.header-top{
+.header-top {
   background: #f1f1f1;
   margin-bottom: 0;
 }
 
-
-
-.header-tools{
+.header-tools {
   min-height: 40px;
   line-height: 40px;
-  background: #393832;
+  background: #475058;
   position: relative;
 }
-.header-tools ul{
+
+.header-tools ul {
   margin-bottom: 0;
 }
 
-.header-tools .hotline{
-  color: #d7d7d7;
-  font-size: 18px;
-}
-.header-tools .signlink{
-  text-align: right;
-}
-.header-tools .signlink li a{}
-.header-tools .signlink li a:link,.header-tools .signlink li a:visited{ color: #d7d7d7; }
-.header-tools .signlink li a:hover{ color: #fff; }
 
+
+.header-tools .hotline .hottitle {
+  padding-left: 0;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.header-tools .hotline .numbers {
+  color: white;
+  padding-left: 0;
+  margin-right: 10px;
+  font-size: 15px;
+}
+
+.header-tools .signlink {
+  text-align: right;
+  font-size:12px;
+  color:white;
+}
+
+.header-tools li a{
+  color:darkorange;
+}
+
+.header-tools .signlink li a:link, .header-tools .signlink li a:visited {
+  color: #d7d7d7;
+}
+
+.header-tools .signlink li a:hover {
+  color: #fff;
+}
+
+.username{
+  color: darkorange;
+}
 
 /* Footer Style
 -------------------------------------------------- */
-footer#footer{
+footer#footer {
 
 }
-.auxiliary-information{
+
+.auxiliary-information {
   background-color: #f9f9f9;
   border-top: 1px solid #f5f5f5;
   min-height: 100px;
 }
-.auxiliary-information .foot-link{ margin: 12px 0;}
-.auxiliary-information .foot-link a:link,.auxiliary-information .foot-link a:visited{ color: #999; }
-.auxiliary-information .foot-link a:hover{ color: #666; }
 
-.footer-copyright{
+.auxiliary-information .foot-link {
+  margin: 12px 0;
+}
+
+.auxiliary-information .foot-link a:link, .auxiliary-information .foot-link a:visited {
+  color: #999;
+}
+
+.auxiliary-information .foot-link a:hover {
+  color: #666;
+}
+
+.footer-copyright {
   min-height: 30px;
   line-height: 30px;
   background-color: #f5f5f5;
   border-top: 1px solid #eee;
 }
 
-
 /* HOme Style
 -------------------------------------------------- */
 
 /* Home assist info */
-.homeassist{ margin-top: 50px; margin-bottom: 30px; }
-.homeassist .glyphicon{ font-size: 128px; color: #a2a2a2; }
-.homeassist h2{ font-size: 18px; font-weight: normal;}
-.homeassist p{ color: #7d7c79; }
+.homeassist {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
 
-.home-notify{}
-.home-notify header { min-height: 30px; line-height: 30px; }
-.home-notify header h2{ float: left; margin:0; padding-top: 5px; font-size: 18px; font-weight: normal; }
-.home-notify header a{ float: right; }
+.homeassist .glyphicon {
+  font-size: 128px;
+  color: #a2a2a2;
+}
 
-.fixed-deposits{ background: #f1f1f1; border-radius: 6px 6px 0 0; padding: 0 18px 0 18px; }
-.fixed-deposits header { min-height: 50px; line-height: 50px; }
-.fixed-deposits header h2{ float: left; margin:0; padding-top: 14px; font-size: 24px; font-weight: normal; }
-.fixed-deposits header a{ float: right; }
-.fixed-deposits .auxiliary-info{ clear: both; margin-bottom: 12px; }
-.fixed-deposits .deposit_item{ margin-bottom: 0;}
-.fixed-deposits .deposit_item h2{ font-size: 14px; margin: 0;}
-.fixed-deposits .deposit_item h2 a{ }
-.fixed-deposits .deposit_item h2 a:link,.fixed-deposits .deposit_item h2 a:visited{ color: #666; }
+.homeassist h2 {
+  font-size: 18px;
+  font-weight: normal;
+}
 
+.homeassist p {
+  color: #7d7c79;
+}
 
-.monthly-interest{}
-.monthly-interest header { min-height: 50px; line-height: 50px; background: #f1f1f1;}
-.monthly-interest header h2{ float: left; margin:0; padding-top: 14px; font-size: 24px; font-weight: normal; }
-.monthly-interest header a{ float: right; }
-.monthly-interest .auxiliary-info{ clear: both; margin: 12px 0; }
+.home-notify {
+}
 
+.home-notify header {
+  min-height: 30px;
+  line-height: 30px;
+}
 
-.financial-tools-area{}
-.financial-tools-area h2{ float: left; font-size: 18px; font-weight: normal; }
-.financial-tools-area .list-group .list-group-item .glyphicon{ float: left; margin-right: 12px; font-size: 38px; }
-.financial-tools-area .list-group .list-group-item h4{ margin-top: 3px; }
+.home-notify header h2 {
+  float: left;
+  margin: 0;
+  padding-top: 5px;
+  font-size: 18px;
+  font-weight: normal;
+}
 
+.home-notify header a {
+  float: right;
+}
 
+.fixed-deposits {
+  background: #f1f1f1;
+  border-radius: 6px 6px 0 0;
+  padding: 0 18px 0 18px;
+}
 
-.safety-tips{ margin: 50px auto; }
-.safety-tips ul li{ font-size: 18px; min-height: 60px; line-height: 60px; margin-right: 8px; }
-.safety-tips ul li .glyphicon{ margin-right: 8px; font-size: 36px; position: relative; top: 10px; }
+.fixed-deposits header {
+  min-height: 50px;
+  line-height: 50px;
+}
+
+.fixed-deposits header h2 {
+  float: left;
+  margin: 0;
+  padding-top: 14px;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.fixed-deposits header a {
+  float: right;
+}
+
+.fixed-deposits .auxiliary-info {
+  clear: both;
+  margin-bottom: 12px;
+}
+
+.fixed-deposits .deposit_item {
+  margin-bottom: 0;
+}
+
+.fixed-deposits .deposit_item h2 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.fixed-deposits .deposit_item h2 a {
+}
+
+.fixed-deposits .deposit_item h2 a:link, .fixed-deposits .deposit_item h2 a:visited {
+  color: #666;
+}
+
+.monthly-interest {
+}
+
+.monthly-interest header {
+  min-height: 50px;
+  line-height: 50px;
+  background: #f1f1f1;
+}
+
+.monthly-interest header h2 {
+  float: left;
+  margin: 0;
+  padding-top: 14px;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.monthly-interest header a {
+  float: right;
+}
+
+.monthly-interest .auxiliary-info {
+  clear: both;
+  margin: 12px 0;
+}
+
+.financial-tools-area {
+}
+
+.financial-tools-area h2 {
+  float: left;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.financial-tools-area .list-group .list-group-item .glyphicon {
+  float: left;
+  margin-right: 12px;
+  font-size: 38px;
+}
+
+.financial-tools-area .list-group .list-group-item h4 {
+  margin-top: 3px;
+}
+
+.safety-tips {
+  margin: 50px auto;
+}
+
+.safety-tips ul li {
+  font-size: 18px;
+  min-height: 60px;
+  line-height: 60px;
+  margin-right: 8px;
+}
+
+.safety-tips ul li .glyphicon {
+  margin-right: 8px;
+  font-size: 36px;
+  position: relative;
+  top: 10px;
+}
 

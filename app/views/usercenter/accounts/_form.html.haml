@@ -1,0 +1,25 @@
+= form_for @usercenter_account do |f|
+  - if @usercenter_account.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@usercenter_account.errors.count, "error")} prohibited this usercenter_account from being saved:"
+      %ul
+        - @usercenter_account.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :user_id
+    = f.number_field :user_id
+  .field
+    = f.label :useable_balance
+    = f.text_field :useable_balance
+  .field
+    = f.label :balance
+    = f.text_field :balance
+  .field
+    = f.label :frozen_balance
+    = f.text_field :frozen_balance
+  .field
+    = f.label :total_estate
+    = f.text_field :total_estate
+  .actions
+    = f.submit 'Save'

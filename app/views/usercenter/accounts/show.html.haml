@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @usercenter_account.user_id
+%p
+  %b Useable balance:
+  = @usercenter_account.useable_balance
+%p
+  %b Balance:
+  = @usercenter_account.balance
+%p
+  %b Frozen balance:
+  = @usercenter_account.frozen_balance
+%p
+  %b Total estate:
+  = @usercenter_account.total_estate
+
+= link_to 'Edit', edit_usercenter_account_path(@usercenter_account)
+\|
+= link_to 'Back', usercenter_accounts_path

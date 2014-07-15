@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title Wooul
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    = render 'shared/header'
+    = bootstrap_flash
+
+    .primary-container
+
+      =render "shared/sidebar"
+      = yield
+    = render 'shared/footer'

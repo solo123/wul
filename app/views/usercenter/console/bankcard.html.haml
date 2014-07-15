@@ -1,0 +1,16 @@
+%h1 银行卡列表
+
+%table
+  %tr
+    %th 银行名称
+    %th 卡号
+    %th
+    %th
+    %th
+
+  - @bankcards.each do |bankcard|
+    %tr
+      %td= bankcard.bankname
+      %td= bankcard.cardid
+%br
+

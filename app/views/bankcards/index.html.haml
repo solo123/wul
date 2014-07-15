@@ -1,0 +1,23 @@
+%h1 Listing bankcards
+
+%table
+  %tr
+    %th User
+    %th Bankname
+    %th Cardid
+    %th
+    %th
+    %th
+
+  - @bankcards.each do |bankcard|
+    %tr
+      %td= bankcard.user_id
+      %td= bankcard.bankname
+      %td= bankcard.cardid
+      %td= link_to 'Show', bankcard
+      %td= link_to 'Edit', edit_bankcard_path(bankcard)
+      %td= link_to 'Destroy', bankcard, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Bankcard', new_bankcard_path
