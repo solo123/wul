@@ -1,6 +1,19 @@
-%div.page-items
-  %ul.fixed-deposits
-    - FixedDeposit.limit(5).each do |obj|
-      %li= render 'fixed_deposits/item', obj: obj
+.container
+  .invest_banner
+    .invest_title
+      %a.btn{:href=> "/invests"} 返回
+      定存宝
+      = render "shared/balance"
+  .fixeddep_table
+    %ul.table_head
+      %li.head_col.col1 名称
+      %li.head_col.col2 年化收益率
+      %li.head_col.col3 期限
+      %li.head_col.col4 进度
+      %li.head_col.col5 剩余金额
+      %li.head_col.col6 操作
+    .fixed-deposits
+      - @fixed_deposits.each do |obj|
+        = render 'fixed_deposits/list_col_browser', obj: obj
 
 

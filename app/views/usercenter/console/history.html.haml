@@ -1,14 +1,21 @@
-%h3
-   交易记录
-%section
-   交易时间
-   2014-07-07 12：34
-   %br
-   交易类型
-   储值
-   %br
-   交易金额
-   RMB 12000
-%section
-   交易状态
-   成功
+%h3 交易记录
+
+%table
+   %tr
+      %th 流水号
+      %th 操作类型
+      %th 操作金额
+      %th 操作前余额
+      %th 操作后余额
+      %th 操作前冻结金额
+      %th 操作后冻结金额
+
+   - @transactions.each do |trans|
+      %tr
+      %td= trans.id
+      %td= trans.trans_type
+      %td= trans.operation_amount
+      %td= trans.account_before
+      %td= trans.account_after
+      %td= trans.frozen_before
+      %td= trans.frozen_after

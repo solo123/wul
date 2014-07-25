@@ -8,8 +8,8 @@
    %section.balance
       .balance_title 可用余额
       .balance_amount
-      = render "shared/balance"
-      %button.btn-success 充值
+      = render "shared/usercenter_balance"
+      %a.btn.btn-success{:href => usercenter_console_charge_bank_path} 充值
    %section.account
       我的账户
       %ul

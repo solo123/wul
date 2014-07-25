@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: MyString
+  owner_num: 1
+  invest_num: 9.99
+
+two:
+  product: MyString
+  owner_num: 1
+  invest_num: 9.99

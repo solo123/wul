@@ -27,6 +27,144 @@ $sidemenu_padding: 10px;
 
 }
 
+
+
+.invest_title {
+  font-size: 14px;
+  color: #69737b;
+  display: block;
+  display: inline-block;
+}
+
+.invest_banner {
+  margin-top: 20px;
+  border-bottom: solid 1px;
+}
+
+.invest_balance {
+  left: 600px;
+  display: inline-block;
+  background: #e8ecef;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding-right: 3px;
+  position: relative;
+}
+
+.product {
+  border: solid 1px;
+  width: 440px;
+  height: 400px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.product .title {
+  padding-bottom: 30px;
+  padding-left: 20px;
+}
+
+.product .desc {
+  margin-bottom: 30px;
+}
+
+.product .desc .item {
+  padding-bottom: 5px;
+}
+
+.product .data {
+  background: #f0f5f7;
+  border-top: 1px solid #d3d8dc;
+  text-align: center;
+  height: 102px;
+}
+
+.product .more {
+  text-align: center;
+  padding-left: 70px;
+  margin-bottom: 50px;
+  width: 40%;
+}
+
+.line {
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+  float: left;
+  background: #e7ecee;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 35px;
+}
+
+.fixeddep_table {
+  border: solid 1px;
+  margin-top: 20px;
+}
+
+.table_head {
+  font-size: 13px;
+  background: #f0f5f7;
+  height: 50px;
+  color: #8a949c;
+  list-style: none;
+  padding-top:15px;
+}
+
+.charge_field{
+  margin-top:20px;
+  padding-left:30px;
+}
+
+.detail_container{
+  margin-top:20px;
+}
+
+.head_col{
+  display:inline-block;
+  margin-right:30px;
+}
+
+.list_item{
+  margin-top:10px;
+}
+
+.fixed-deposits{
+  padding-left:60px;
+}
+
+.table_cell{
+  display: inline-block;
+  margin-right:30px;
+  padding-left:20px;
+}
+
+.col1 {
+  width: 15%;
+}
+
+.col2 {
+  width: 15%
+}
+
+.col3 {
+  width: 15%;
+}
+
+.col4 {
+  width: 10%;
+}
+
+.col5 {
+  width: 10%;
+}
+
+.col6 {
+  width: 10%;
+}
+
 .header-tools .hotline {
   color: darkorange;
   font-size: 16px;
@@ -52,7 +190,7 @@ $sidemenu_padding: 10px;
   padding-top: 4px;
 }
 
-.sidebar .invest{
+.sidebar .invest {
 
 }
 
@@ -379,8 +517,6 @@ body {
   margin-bottom: 0;
 }
 
-
-
 .header-tools .hotline .hottitle {
   padding-left: 0;
   margin-right: 10px;
@@ -396,12 +532,12 @@ body {
 
 .header-tools .signlink {
   text-align: right;
-  font-size:12px;
-  color:white;
+  font-size: 12px;
+  color: white;
 }
 
-.header-tools li a{
-  color:darkorange;
+.header-tools li a {
+  color: darkorange;
 }
 
 .header-tools .signlink li a:link, .header-tools .signlink li a:visited {
@@ -412,7 +548,7 @@ body {
   color: #fff;
 }
 
-.username{
+.username {
   color: darkorange;
 }
 

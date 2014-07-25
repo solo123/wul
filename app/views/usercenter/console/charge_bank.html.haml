@@ -1,0 +1,13 @@
+.invest_banner
+  .invest_title
+    %a.btn{:href=> usercenter_console_overview_path} 返回
+    充值
+%p.charge_field
+  = form_tag usercenter_console_charge_mock_path do
+    = label :amount, '充值金额'
+    = text_field_tag :charge_value
+    %br
+    当前余额 #{current_user.user_info.account.balance}
+    当前可用余额 #{current_user.user_info.account.balance - current_user.user_info.account.frozen_balance}
+    %br
+    = submit_tag '充值', :class => "btn btn-success"

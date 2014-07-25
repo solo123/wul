@@ -1,0 +1,27 @@
+.col-md-4
+  .panel{class: "#{p_style}"}
+    .panel-heading
+      %h2= link_to "月月盈 #{obj.deposit_number}", month_deposit_path(obj)
+    .panel-body
+      %p.number-of-people
+        ="#{obj.owner_num}人已经加入"
+      %p.info
+        = obj.annual_rate
+        |
+        = obj.repayment_period
+        = obj.guarantee
+    .panel-footer
+      %p.actions
+        - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
+        当前进度：#{number_with_precision current_progress, precision: 2}%
+        .progress
+          .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}
+            %span.sr-only 60% Complete
+
+
+        %div 剩余金额：#{obj.free_invest_amount}
+        - if current_progress >= 100
+          %div.action= link_to '已满', '#'
+        - else
+          %div.action= link_to '开放中', '#'
+

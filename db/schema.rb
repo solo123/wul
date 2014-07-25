@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715093049) do
+ActiveRecord::Schema.define(version: 20140725074931) do
 
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20140715093049) do
     t.decimal  "balance",         precision: 10, scale: 0, default: 0
     t.decimal  "frozen_balance",  precision: 10, scale: 0, default: 0
     t.decimal  "total_estate",    precision: 10, scale: 0, default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_info_id"
+  end
+
+  create_table "analyzers", force: true do |t|
+    t.string   "product"
+    t.integer  "owner_num"
+    t.decimal  "invest_num", precision: 10, scale: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -205,6 +214,11 @@ ActiveRecord::Schema.define(version: 20140715093049) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_num",                                     default: 0
+    t.decimal  "order_amount",         precision: 10, scale: 0, default: 0
+    t.string   "product_type",                                  default: "fixed"
+    t.string   "stage",                                         default: "未发布"
+    t.integer  "status",                                        default: 0
+    t.string   "display",                                       default: "hide"
   end
 
   create_table "guarantee_companies", force: true do |t|
@@ -236,6 +250,33 @@ ActiveRecord::Schema.define(version: 20140715093049) do
     t.datetime "updated_at"
   end
 
+  create_table "month_deposits", force: true do |t|
+    t.string   "deposit_number"
+    t.string   "transaction_number"
+    t.string   "address"
+    t.string   "usage"
+    t.text     "usage_detail"
+    t.string   "credit_level"
+    t.decimal  "annual_rate",           precision: 5,  scale: 2
+    t.decimal  "amount",                precision: 12, scale: 2
+    t.integer  "repayment_period"
+    t.string   "repayment_method"
+    t.decimal  "each_repayment_amount", precision: 12, scale: 2
+    t.decimal  "free_invest_amount",    precision: 12, scale: 2
+    t.datetime "invest_end_date"
+    t.string   "remark"
+    t.integer  "status",                                         default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "owner_nume",                                     default: 0
+    t.integer  "owner_num",                                      default: 0
+    t.string   "guarantee"
+    t.decimal  "total_amount",          precision: 10, scale: 0, default: 0
+    t.datetime "join_date"
+    t.datetime "expiring_date"
+    t.string   "stage",                                          default: "未发布"
+  end
+
   create_table "notices", force: true do |t|
     t.string   "title"
     t.text     "content"
@@ -246,6 +287,16 @@ ActiveRecord::Schema.define(version: 20140715093049) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.string   "product_type"
+    t.string   "product_name"
+    t.decimal  "product_value", precision: 10, scale: 0
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "personal_assets", force: true do |t|
@@ -301,6 +352,17 @@ ActiveRecord::Schema.define(version: 20140715093049) do
 
   create_table "roles", force: true do |t|
     t.string   "role_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transactions", force: true do |t|
+    t.string   "trans_type"
+    t.decimal  "operation_amount", precision: 10, scale: 0
+    t.decimal  "account_before",   precision: 10, scale: 0
+    t.decimal  "account_after",    precision: 10, scale: 0
+    t.decimal  "frozen_before",    precision: 10, scale: 0
+    t.decimal  "frozen_after",     precision: 10, scale: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

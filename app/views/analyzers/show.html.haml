@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Product:
+  = @analyzer.product
+%p
+  %b Owner num:
+  = @analyzer.owner_num
+%p
+  %b Invest num:
+  = @analyzer.invest_num
+
+= link_to 'Edit', edit_analyzer_path(@analyzer)
+\|
+= link_to 'Back', analyzers_path
