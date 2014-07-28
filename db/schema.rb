@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725074931) do
+ActiveRecord::Schema.define(version: 20140728014225) do
 
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
@@ -275,6 +275,7 @@ ActiveRecord::Schema.define(version: 20140725074931) do
     t.datetime "join_date"
     t.datetime "expiring_date"
     t.string   "stage",                                          default: "未发布"
+    t.string   "display",                                        default: "hide"
   end
 
   create_table "notices", force: true do |t|

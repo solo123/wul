@@ -26,15 +26,15 @@ class MonthDeposit < ActiveRecord::Base
   def current_action
     case self.current_stage
       when "未发布"
-        "/fixed_deposits/publish.#{self.id}"
+        "/month_deposits/publish.#{self.id}"
       when "融资中"
-        "/fixed_deposits/#{self.id}"
+        "/month_deposits/#{self.id}"
       when "收益中"
         "#"
       when "已到期"
-        "/fixed_deposits/refund.#{self.id}"
+        "#"
       when "已结束"
-        "/fixed_deposits/refund.#{self.id}"
+        "/month_deposits/refund.#{self.id}"
     end
   end
 
