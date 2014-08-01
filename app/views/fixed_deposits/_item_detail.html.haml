@@ -38,9 +38,13 @@
   .col-md-12
     %ul.nav.nav-tabs{:role=>"tablist"}
       %li.active
-        %a{:href=>"#detail", :role=>"tab", 'data-toggle'=>"tab"}详细信息
+        %a{:href=>"#detail", :role=>"tab", 'data-toggle'=>"tab"}
+          详细信息
       %li
-        %a{:href=>"#ownerlist", :role=>"tab", 'data-toggle'=>"tab"}购买列表
+        %a{:href=>"#ownerlist", :role=>"tab", 'data-toggle'=>"tab"}
+          购买列表
+          %span.badge
+            = @invests.size
 
     %div.tab-content
       %div.tab-pane.active{:id=>"detail"}

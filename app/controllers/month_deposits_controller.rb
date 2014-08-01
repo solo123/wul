@@ -27,6 +27,7 @@ class MonthDepositsController < ResourcesController
       current_user.save!
       @product.save!
       invest.create_transaction(current_user.user_info.account)
+      invest.invest_type = "month"
       current_user.user_info.invests << invest
       invest.save!
     else
