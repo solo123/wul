@@ -1,0 +1,12 @@
+.panel{class: "panel-info"}
+   .panel-heading
+      %h4 投资金额 可投资#{obj.free_invest_amount}
+   .panel-body
+      %p.info
+         剩余可投资金额
+   .panel-footer
+      - if current_user
+         %a.btn.btn-warning{:href => usercenter_console_create_order_path(obj)} 预约
+      - else
+         %a.btn.btn-warning{:href => new_user_session_path} 预约
+

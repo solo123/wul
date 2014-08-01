@@ -1,0 +1,14 @@
+%div.list_item
+  .table_cell.col1
+    = link_to "#{obj.deposit_number}", month_deposit_path(obj)
+  .table_cell.col2
+    #{obj.annual_rate} %
+  .table_cell.col3
+    #{obj.repayment_period} 个月
+  .table_cell.col4
+    #{obj.repayment_period}
+  .table_cell.col5
+    - progess = (obj.total_amount - obj.free_invest_amount) *100 / obj.total_amount
+    #{number_with_precision progess, precision: 2}%
+  .table_cell.col6
+

@@ -1,1 +1,17 @@
 %h1 投资记录
+
+%table
+   %tr
+      %th 投资编号
+      %th 投资类型
+      %th 投资金额
+      %th 收益率
+      %th 目前状态
+
+   - @invests.each do |invest|
+      %tr
+      %td= invest.loan_number
+      %td= invest.remark
+      %td= invest.amount
+      %td= invest.annual_rate
+      %td  收益中

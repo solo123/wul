@@ -1,0 +1,8 @@
+.container
+  .invest_banner
+    .invest_title
+      %a.btn{:href=> month_deposits_path} 返回
+      月月盈详情
+      = render "shared/balance"
+  - @invests = @object.invests
+  = render 'month_deposits/item_detail', obj:@object, invests:@invests

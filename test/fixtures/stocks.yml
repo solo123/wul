@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deposit_number: MyString
+  invest_type: MyString
+  amount: 9.99
+  user_id: 1
+  rate: 9.99
+
+two:
+  deposit_number: MyString
+  invest_type: MyString
+  amount: 9.99
+  user_id: 1
+  rate: 9.99

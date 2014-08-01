@@ -1,6 +1,8 @@
-
-
-.invest-header
-  详情
-
-= render 'fixed_deposits/item', obj: @object, p_style: 'panel-info'
+.container
+  .invest_banner
+    .invest_title
+      %a.btn{:href=> fixed_deposits_path} 返回
+      定存宝详情
+      = render "shared/balance"
+  - @invests = @object.invests
+  = render 'fixed_deposits/item_detail', obj:@object, invests:@invests

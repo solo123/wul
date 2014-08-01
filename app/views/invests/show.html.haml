@@ -1,10 +1,7 @@
-%p#notice= notice
-%p
-  %strong transaction_number:
-  = @invest.transaction_number
-%p
-  %strong loan number:
-  = @invest.loan_number
-= link_to 'Edit', edit_invest_path(@invest)
-|
-\#{link_to 'Back', invests_path}
+.container
+  .invest_banner
+    .invest_title
+      %a.btn{:href=> onsale_invests_path} 返回
+      投资转让
+      = render "shared/balance"
+  = render 'invests/onsale_item_detail', obj:@invest

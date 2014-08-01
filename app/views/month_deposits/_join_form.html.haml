@@ -1,0 +1,30 @@
+= form_tag month_deposit_join_path(obj) do
+   .panel{class: "panel-info"}
+      .panel-heading
+         %h4
+         可投资上限:100000元
+      - if !current_user
+         = render "fixed_deposits/join_new"
+
+      - else
+         - invests = current_user.user_info.invests
+         .panel-body
+            - total_invest = 0
+            - invests.each{|inv| total_invest += inv.amount if inv.loan_number == obj.deposit_number }
+            %p.info
+               = label :amount, '投资金额'
+               = text_field_tag :product_value
+               = label :amount, '本产品累计投资金额'
+               = label :product_value, total_invest
+               - if flash[:notice]
+                  .alert{ :class => "alert-notice"}
+                     %button.close{ :data => { :dismiss => "alert" } }x
+                     %strong
+                     = flash[:notice]
+                     %br
+                     %br
+         .panel-footer
+            - if total_invest >= 100000
+               %a.btn.btn-primary 额度已满
+            - else
+               = submit_tag '加入', :class => "btn btn-primary"

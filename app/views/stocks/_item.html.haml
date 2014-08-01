@@ -1,0 +1,17 @@
+.col-md-4
+  .panel{class: "#{p_style}"}
+    .panel-heading
+      %h2= link_to "#{obj.invest_type} #{obj.deposit_number}", stock_path(obj)
+    .panel-body
+      %p.number-of-people
+        ="么么达"
+      %p.info
+        = "折扣率"
+        |
+        = "剩余期限"
+        = "07.30 10:23转让"
+        ="已转让"
+    .panel-footer
+
+
+

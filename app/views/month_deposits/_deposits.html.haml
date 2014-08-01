@@ -1,0 +1,15 @@
+.fixed-deposits
+  %header
+    %h2 
+      %span.glyphicon.glyphicon-calendar
+      月月盈
+    = link_to '更多', month_deposits_path
+  .auxiliary-info.text-muted
+    自主选择投资项目，每月获得等额本息回款； 500元 即可
+    %br/
+    获得理财乐趣，随时可赎回。
+    %br/
+    工作日
+    %span.text-danger 10:30、14:30、17:30、20:00
+    发布，周末随机。
+  = render 'month_deposits/top_list'

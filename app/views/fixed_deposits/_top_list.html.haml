@@ -1,5 +1,5 @@
 - panel_styles = %w"panel-warning panel-success panel-info"
 .deposit_item.row
-  - FixedDeposit.limit(3).each_with_index do |obj, idx|
+  - FixedDeposit.where(:display => "show").limit(3).each_with_index do |obj, idx|
     = render 'fixed_deposits/item', obj: obj, p_style: panel_styles[idx]
 

@@ -7,6 +7,27 @@ class InvestsController < ApplicationController
     @invests = Invest.all
   end
 
+  def buy
+    invest = Invest.find(params[:invest_id])
+    if invest.onsale
+      if current_user.user_info.account.balance >= invest.amount
+        current_user.user_info.account.balance -= invest.amount
+        current_user.save!
+        invest.create_transaction(current_user.user_info.account)
+        invest.onsale=false
+        current_user.user_info.invests << invest
+        invest.save!
+      else
+        flash[:notice] = "账户余额或产品可投资余额不足"
+      end
+      redirect_to invest_path(params[:invest_id]) and return
+    end
+  end
+
+  def onsale
+    @invests = Invest.where(:onsale => true)
+  end
+
   # GET /invests/1
   # GET /invests/1.json
   def show
@@ -62,13 +83,13 @@ class InvestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_invest
-      @invest = Invest.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_invest
+    @invest = Invest.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def invest_params
-      params.require(:invest).permit(:jkbh, :jybh)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def invest_params
+    params.require(:invest).permit(:jkbh, :jybh)
+  end
 end

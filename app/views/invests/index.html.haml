@@ -1,14 +1,32 @@
 .container
-  %h1 Listing invests
-  %table.table.table-hover
-    %thead
-      %tr
-        %th Jkbh
-        %th Jybh
-        %th
-    %tbody
-      - @invests.each do |invest|
-        %tr
-          %td= invest.loan_number
-          %td= invest.transaction_number
-          %td= link_to 'Show', invest
+  .invest_banner
+    .invest_title
+      我要投资
+      = render "shared/balance"
+  .desc
+    每天固定时间发布新项目，首次投资可前往“新手专区”投资新手专享项目，抢债权可前往
+    =link_to "转让区", onsale_invests_path
+  .product.fixed_dep
+    .title
+      %h2 定存宝
+    %ul.desc
+      %li.item 一次性加入，省去每天投资烦恼
+      %li.item 多种期限可选，满足不同流动性需求
+      %li.item 每月返还收益，到期返还本金
+      %li.item 1000元即可加入，期限内可随时赎回
+    .more
+      %a.btn.btn-success{:href => "/fixed_deposits"} 查看更多
+    .data
+      100人已经加入 完成1000000投资额.
+  .product.month_dep
+    .title
+      %h2 月月盈
+    %ul.desc
+      %li.item 享受每天自主投资乐趣
+      %li.item 年化收益率可达13.24%，是银行活期的 30 倍
+      %li.item 每月还本付息，月月都有现金流
+      %li.item 50元即可体验，期限内可随时赎回
+    .more
+      %a.btn.btn-success{:href => "/month_deposits"} 查看更多
+    .data
+      100人已经加入 完成1000000投资额.

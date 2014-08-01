@@ -1,0 +1,23 @@
+%h1 Listing analyzers
+
+%table
+  %tr
+    %th Product
+    %th Owner num
+    %th Invest num
+    %th
+    %th
+    %th
+
+  - @analyzers.each do |analyzer|
+    %tr
+      %td= analyzer.product
+      %td= analyzer.owner_num
+      %td= analyzer.invest_num
+      %td= link_to 'Show', analyzer
+      %td= link_to 'Edit', edit_analyzer_path(analyzer)
+      %td= link_to 'Destroy', analyzer, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Analyzer', new_analyzer_path

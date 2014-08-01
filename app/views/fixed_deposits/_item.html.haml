@@ -18,7 +18,7 @@
           .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}
             %span.sr-only 60% Complete
 
-
+        %div 融资金额：#{obj.total_amount}
         %div 剩余金额：#{obj.free_invest_amount}
         - if current_progress >= 100
           %div.action= link_to '已满', '#'

@@ -1,0 +1,14 @@
+%p
+  可预约额度 #{obj.order_amount}
+%p
+  = form_tag usercenter_console_save_order_path do
+    = label :amount, '预约金额'
+    = text_field_tag :product_value
+    = hidden_field_tag :product_type, @product.product_type
+    = hidden_field_tag :product_id, @product.id
+    当前可用余额 #{current_user.user_info.account.balance - current_user.user_info.account.frozen_balance}
+    %br
+    = submit_tag '新增预约', :class => "btn btn-primary"
+
+
+

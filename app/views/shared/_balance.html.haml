@@ -1,2 +1,6 @@
-%h1
-  =current_user.account.balance
+- if current_user
+     %div.invest_balance
+          账户余额:
+          =current_user.user_info.account.balance
+- else
+     %div.invest_balance 您尚未登录

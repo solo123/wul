@@ -10,26 +10,23 @@ class User < ActiveRecord::Base
       :case_sensitive => false
     }
   attr_accessor :login
-	has_one :user_info
+	has_one :user_info, :dependent=>:destroy, :autosave=>true
   has_many :bankcards
   has_many :coupons
-
-  has_one :account, :dependent=>:destroy, :autosave=>true
-  after_create :create_account, :create_userinfo
+  has_many :orders
+  after_create :create_userinfo
 
 	def email_required?
 		false
   end
 
-  def create_account
-    account = Account.new
-    account.user_id = self.id
-    account.save!
-  end
-
   def create_userinfo
     uinfo = UserInfo.new
-    uinfo.user_id = self.id
+    account = Account.new
+    uinfo.account = account
+    uinfo.show_id = self.username
+    self.user_info = uinfo
+    account.save!
     uinfo.save!
   end
 

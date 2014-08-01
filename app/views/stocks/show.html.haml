@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Deposit number:
+  = @stock.deposit_number
+%p
+  %b Invest type:
+  = @stock.invest_type
+%p
+  %b Amount:
+  = @stock.amount
+%p
+  %b User:
+  = @stock.user_id
+%p
+  %b Rate:
+  = @stock.rate
+
+= link_to 'Edit', edit_stock_path(@stock)
+\|
+= link_to 'Back', stocks_path

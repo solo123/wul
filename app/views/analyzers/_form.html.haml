@@ -1,0 +1,19 @@
+= form_for @analyzer do |f|
+  - if @analyzer.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@analyzer.errors.count, "error")} prohibited this analyzer from being saved:"
+      %ul
+        - @analyzer.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :product
+    = f.text_field :product
+  .field
+    = f.label :owner_num
+    = f.number_field :owner_num
+  .field
+    = f.label :invest_num
+    = f.text_field :invest_num
+  .actions
+    = f.submit 'Save'
