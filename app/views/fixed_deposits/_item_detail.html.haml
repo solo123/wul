@@ -37,15 +37,15 @@
 .detail_container
   .col-md-12
     %ul.nav.nav-tabs{:role=>"tablist"}
-      %li
-        %a{:href=>"detail", :role=>"tab", 'data-toggle'=>"tab"}详细信息
       %li.active
-        %a{:href=>"ownerlist", :role=>"tab", 'data-toggle'=>"tab"}购买列表
+        %a{:href=>"#detail", :role=>"tab", 'data-toggle'=>"tab"}详细信息
+      %li
+        %a{:href=>"#ownerlist", :role=>"tab", 'data-toggle'=>"tab"}购买列表
 
     %div.tab-content
-      %div.tab-pane{:id=>"detail"}
-        Helloworld
-      %div.tab-pane.active{:id=>"ownerlist"}
+      %div.tab-pane.active{:id=>"detail"}
+        = render "shared/product_detail", obj:obj
+      %div.tab-pane{:id=>"ownerlist"}
         %table.table
           %tr
             %th 投资人

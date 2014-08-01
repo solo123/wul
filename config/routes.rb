@@ -1,6 +1,8 @@
 Wooul::Application.routes.draw do
 
 
+  resources :stocks
+
   resources :analyzers
 
   resources :transactions
@@ -18,10 +20,21 @@ Wooul::Application.routes.draw do
   comfy_route :cms_admin, :path => '/cms-admin'
 
   resources :notices
-  resources :invests, :fixed_deposits, :month_deposits
   resources :fixed_deposits do
     post :join
   end
+
+  resources :month_deposits do
+    post :join
+  end
+
+  resources :invests do
+    post :buy
+    collection do
+      get :onsale
+    end
+  end
+
 	resource :home
 	get 'accounts/:action', to: 'accounts'
 	put 'accounts/:action', to: 'accounts'
@@ -48,6 +61,7 @@ Wooul::Application.routes.draw do
     get '/console/agreements'
     get '/console/autoinvest'
     get '/console/charge_bank'
+    post '/console/resell'
     get '/console/create_order'
     post '/console/save_order'
     post '/console/charge_mock'

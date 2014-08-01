@@ -1,0 +1,21 @@
+.col-md-4
+  .panel{class: "#{p_style}"}
+    .panel-heading
+      %h2= link_to "#{obj.product_name} #{obj.loan_number}", invest_path(obj)
+    .panel-body
+      %p
+        ="年化"
+        #{number_with_precision obj.product.annual_rate, precision: 2}%
+      %p
+        ="金额"
+        #{obj.amount}
+      %p
+        = "折扣率"
+        #{number_with_precision obj.discount_rate, precision: 2}%
+      %p
+        = "剩余期限"
+        = "3个月"
+    .panel-footer
+
+
+

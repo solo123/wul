@@ -25,6 +25,8 @@ module Usercenter
     end
 
     def redemption
+      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed',:onsale =>"false")
+      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month',:onsale =>"false")
 
     end
 
@@ -34,6 +36,16 @@ module Usercenter
 
     def autoinvest
 
+    end
+
+    def resell
+      invest = Invest.find(params[:format])
+      invest.onsale = true
+      rate = params[:discount_rate].to_f
+      invest.amount = invest.amount * (100 - rate) /100
+      invest.discount_rate = rate
+      invest.save!
+      redirect_to usercenter_console_redemption_path
     end
 
     def invest_history

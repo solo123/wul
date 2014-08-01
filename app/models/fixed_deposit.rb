@@ -7,6 +7,9 @@ class FixedDeposit < ActiveRecord::Base
   def current_stage
     if self.expiring_date < Time.now.yesterday && self.stage!="已结束"
       "已到期"
+    elsif self.stage == "已结束"
+      self.display = "hide"
+      self.save!
     else
       self.stage
     end

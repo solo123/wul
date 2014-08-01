@@ -1,0 +1,19 @@
+.container
+  .invest_banner
+    .invest_title
+      %a.btn{:href=> "/invests"} 返回
+      转让专区
+      = render "shared/balance"
+  .fixeddep_table
+    %ul.table_head
+      %li.head_col.col1 名称
+      %li.head_col.col2 实际收益率
+      %li.head_col.col3 剩余期限
+      %li.head_col.col4 转让价格
+      %li.head_col.col5 剩余金额
+      %li.head_col.col6 操作
+    .fixed-deposits
+      - @invests.each do |obj|
+        = render 'invests/list_col_onsale', obj: obj
+
+

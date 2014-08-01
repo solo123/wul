@@ -1,1 +1,66 @@
 %h1 投资赎回
+.detail_container
+  .col-md-12
+    %ul.nav.nav-tabs{:role=>"tablist"}
+      %li.active
+        %a{:href=>"#fixed", :role=>"tab", 'data-toggle'=>"tab"}
+          定存宝
+          %span.badge
+            = @fixed_deposits.size
+      %li
+        %a{:href=>"#month", :role=>"tab", 'data-toggle'=>"tab"}
+          月月盈
+          %span.badge
+            = @month_deposits.size
+
+    %div.tab-content
+      %div.tab-pane.active{:id=>"fixed"}
+        .panel
+          .panel-body
+            %table.table
+              %tr
+                %th 名称
+                %th 年化收益率
+                %th 已持有期数
+                %th 待收本金
+                %th 折让率
+                %th 赎回金额
+                %th 状态
+                %th 赎回
+              - @fixed_deposits.each do |f|
+                = form_tag usercenter_console_resell_path(f) do
+                  %tr
+                    %td= f.loan_number
+                    %td  #{number_with_precision f.product.annual_rate, precision: 2}%
+                    %td= "1"
+                    %td= f.amount
+                    %td= text_field_tag :discount_rate, nil, class: 'amount'
+                    %td= f.amount
+                    %td= "可赎回"
+                    %td
+                      %input.btn.btn-primary{:type => "submit",:value => "赎回"}
+      %div.tab-pane{:id=>"month"}
+        .panel
+          .panel-body
+            %table.table
+              %tr
+                %th 名称
+                %th 年化收益率
+                %th 已持有期数
+                %th 待收本金
+                %th 折让率
+                %th 赎回金额
+                %th 状态
+                %th 赎回
+                - @month_deposits.each do |f|
+                  %tr
+                    %td= f.deposit_number
+                    %td= "12%"
+                    %td= "1"
+                    %td= "1200"
+                    %td= "1.2%"
+                    %td= "1190"
+                    %td= ""
+                    %td= "赎回"
+          .panel-foot
+            .btn.pull-right.btn-primary 赎回
