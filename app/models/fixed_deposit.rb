@@ -35,7 +35,7 @@ class FixedDeposit < ActiveRecord::Base
       when "收益中"
         "#"
       when "已到期"
-        "/fixed_deposits/refund.#{self.id}"
+        "#"
       when "已结束"
         "/fixed_deposits/refund.#{self.id}"
     end
