@@ -104,7 +104,7 @@ module Usercenter
     end
 
     def save_order
-      if params[:product_value].to_i > (current_user.account.balance - current_user.account.frozen_balance)
+      if params[:product_value].to_i > (current_user.user_info.account.balance - current_user.user_info.account.frozen_balance)
           render "shared/balance_error" and return
       end
       order = Order.new
@@ -112,9 +112,9 @@ module Usercenter
       order.product_id = params[:product_id]
       order.product_value = params[:product_value].to_i
       current_user.orders << order
-      current_user.account.frozen_balance += order.product_value
+      current_user.user_info.account.frozen_balance += order.product_value
       current_user.save!
-      order.create_transaction(current_user.account)
+      order.create_transaction(current_user.user_info.account)
       order.save!
       redirect_to usercenter_console_history_path
     end
