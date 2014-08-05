@@ -1,38 +1,60 @@
-.sidebar
-   %section.security
-      Hi, #{current_user.username}
-      %ul
-         %li.menuitem 用户验证
-         %li.menuitem 手机验证
-         %li.menuitem 密码验证
-   %section.balance
-      .balance_title 可用余额
-      .balance_amount
+.bs-example
+  %img{:src => image_url("account1.jpg")}
+  .accout_yonghu
+    = current_user.username
+  .accout_progress
+    .progress
+      .progress-bar{:role => "progressbar", "aria-valuenow" => "60", "aria-valuemin" => "0", "aria-valuemax" => "100", :style => "width:0%" }
+        %span.sr-only
+          60% Complete
+  .accout_ts
+    安全等级：低[提升]
+    %div
+      .sjgm
+        .sjgm_sj
+          %a{:href=>"#"}
+            %img{:src => image_url("account2.jpg") }
+        .sjgm_sj
+          %a{:href=>"#"}
+            %img{:src => image_url("account3.jpg") }
+  %ul
+    %li.accout_ye
+      我的余额
+    .accout_ye1
+      ￥
       = render "shared/usercenter_balance"
-      %a.btn.btn-success{:href => usercenter_console_charge_bank_path} 充值
-   %section.account
+    %div
+      %a{:href =>usercenter_console_charge_bank_path}
+        %img{:src => image_url("account4.jpg")}
+    %li.accout_lbg
       我的账户
-      %ul
-         %li.menuitem
-            = link_to '账户总览', usercenter_console_overview_path
-         %li.menuitem
-            = link_to '交易记录', usercenter_console_history_path
-         %li.menuitem
-            = link_to '充值提现', usercenter_console_charge_path
-         %li.menuitem
-            = link_to '银行卡', usercenter_console_bankcard_path
-         %li.menuitem
-            = link_to '我的红包', usercenter_console_coupon_path
-   %section.invest
-      我的投资
-      %ul
-         %li.menuitem
-            = link_to '资产统计', usercenter_console_assets_analyzer_path
-         %li.menuitem
-            = link_to '投资记录', usercenter_console_invest_history_path
-         %li.menuitem
-            = link_to '投资赎回', usercenter_console_redemption_path
-         %li.menuitem
-            = link_to '借款协议', usercenter_console_agreements_path
-         %li.menuitem
-            = link_to '自动投资', usercenter_console_autoinvest_path
+    %li
+      %a{:href => usercenter_console_overview_path}
+        账户总览
+    %li
+      %a{:href => usercenter_console_history_path}
+        交易记录
+    %li
+      %a{:href => usercenter_console_charge_path}
+        充值提现
+    %li
+      %a{:href => usercenter_console_charge_path}
+        银行卡
+    %li
+      %a{:href => usercenter_console_coupon_path}
+        我的红包
+    %li
+      %a{:href => usercenter_console_assets_analyzer_path}
+        资产统计
+    %li
+      %a{:href => usercenter_console_invest_history_path}
+        投资记录
+    %li
+      %a{:href => usercenter_console_redemption_path}
+        投资赎回
+    %li
+      %a{:href => usercenter_console_agreements_path}
+        借款协议
+    %li
+      %a{:href => usercenter_console_autoinvest_path}
+        自动投资
