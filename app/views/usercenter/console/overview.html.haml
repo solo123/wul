@@ -1,18 +1,47 @@
-%h3
-   账户总览
-%section
-   账户余额
-   = @deposit.balance
-   %br
-   可用余额
-   = @deposit.balance - @deposit.frozen_balance
-   %br
-   账户总资产
-   = @deposit.total_estate
-%section
-   累计净收益
-   0.88
-%section
-   加权收益率 10%
+.acc1
+  我的账户
+.acc2
+  %a{:href => "#"}
+    %img{:src => image_url("account5.jpg")}
+.acc3
+  您还没有进入排行榜，请再接再厉
+.acc4
+  .acc4_1.size1of4
+    .acc4_1a
+      账户余额
+      %span.badge
+    .acc4_1b
+      = @deposit.balance
+    .acc4_1c
+      可用余额￥
+      = @deposit.balance - @deposit.frozen_balance
+      %span.badge
+  .acc4_2.size1of4
+    .acc4_1a
+      账户总资产
+      %span.badge
+        ?
+    .acc4_1b
+      ￥
+      = @deposit.total_estate
+  .acc4_1.size1of4
+    .acc4_1a
+      账户余额
+      %span.badge ?
+    .acc4_1b
+      ￥0.00
+    .acc4_12c
+      .acc4_12cc
+        可用余额￥12222.00
+        %span.badge ?
+  .acc4_3.size1of4
+    .acc4_1a
+      账户总资产
+      %span.badge ?
+    .acc4_1b
+      ￥22222.00
+.acc5
+  %dl 初来乍到，您还没有任何记录，快去完成新手任务，领取超多奖励!
+  %a{:href => "#"} 立即查看
 
 

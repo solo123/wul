@@ -10,8 +10,11 @@
     = bootstrap_flash
 
     .primary-container
-
-      =render "shared/sidebar"
-      .container
-        = yield
+      .container-fluid
+        .row
+          .col-md-2
+            =render "shared/sidebar"
+          .col-md-10
+            .container
+              = yield
     = render 'shared/footer'
