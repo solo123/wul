@@ -1,27 +1,41 @@
-.col-md-4
-  .panel{class: "#{p_style}"}
-    .panel-heading
-      %h2= link_to "定存投资 #{obj.deposit_number}", fixed_deposit_path(obj)
-    .panel-body
-      %p.number-of-people
-        ="#{obj.owner_num}人已经加入"
-      %p.info
-        = obj.annual_rate
-        |
-        = obj.repayment_period
-        = obj.guarantee
-    .panel-footer
-      %p.actions
-        - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
-        当前进度：#{number_with_precision current_progress, precision: 2}%
-        .progress
-          .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}
-            %span.sr-only 60% Complete
+.dcb-dt
+  %ul
+    %li.dcb-dt1
+      %img{:src =>"images/main/indexmain5.png"}
+        %p
+          定存宝
+          %span
+            = obj.deposit_number
+    %li.dcb-dt2
+      #{obj.owner_num}人次已经加入
+    %li.dcb-dt3
+      %p
+        %span
+          #{obj.annual_rate}
+          ="% / #{obj.repayment_period}个月"
+    %li.dcb-dt4
+      年化收益率&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期限
+    %li.dcb-dt5
+      %img{:src => "images/main/indexmain6.png"}
+      %p
+        100%本息保障
+    %li.dcb-dt6
+      - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
+      %p.dcb-dt6-1
+        当前进度
+      .progress.dcb-dt6-2
+        .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}
+          %span.sr-only
+            ="#{number_with_precision current_progress, precision: 2}% Complete"
+      .progress.dcb-dt6-3
+    %li.dcb-dt7
+      %p
+        剩余金额
+        %span
+          ="￥#{obj.free_invest_amount}"
+    %li.dcb-dt8
+      %button.btn.btn-default.dcb-dt8-b
+        敬请期待
 
-        %div 融资金额：#{obj.total_amount}
-        %div 剩余金额：#{obj.free_invest_amount}
-        - if current_progress >= 100
-          %div.action= link_to '已满', '#'
-        - else
-          %div.action= link_to '开放中', '#'
+
 

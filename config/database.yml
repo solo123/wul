@@ -14,25 +14,9 @@
 #  database: db/cms.sqlite3
 #  pool: 5
 #  timeout: 5000
-#development:
-#  adapter: mysql2
-#  database: wooul_dev
-#  host: localhost
-#  username: wooul
-#  password: 'wqxyy1985'
-#  encoding: 'utf8'
-#
-#cms_development:
-#  adapter: mysql2
-#  database: wooul_dev
-#  host: localhost
-#  username: wooul
-#  password: 'wqxyy1985'
-#  encoding: 'utf8'
-
 development:
   adapter: mysql2
-  database: wooul_prod
+  database: wooul_dev
   host: localhost
   username: wooul
   password: 'wqxyy1985'
@@ -40,11 +24,27 @@ development:
 
 cms_development:
   adapter: mysql2
-  database: wooul_prod
+  database: wooul_dev
   host: localhost
   username: wooul
   password: 'wqxyy1985'
   encoding: 'utf8'
+
+#development:
+#  adapter: mysql2
+#  database: wooul_prod
+#  host: localhost
+#  username: wooul
+#  password: 'wqxyy1985'
+#  encoding: 'utf8'
+#
+#cms_development:
+#  adapter: mysql2
+#  database: wooul_prod
+#  host: localhost
+#  username: wooul
+#  password: 'wqxyy1985'
+#  encoding: 'utf8'
 
 
 # Warning: The database defined as "test" will be erased and

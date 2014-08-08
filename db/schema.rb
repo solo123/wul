@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804081336) do
+ActiveRecord::Schema.define(version: 20140731072001) do
 
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
@@ -218,7 +218,6 @@ ActiveRecord::Schema.define(version: 20140804081336) do
     t.string   "product_type",                                  default: "fixed"
     t.string   "status",                                        default: "未发布"
     t.string   "display",                                       default: "hide"
-    t.string   "stage",                                         default: "未发布"
   end
 
   create_table "guarantee_companies", force: true do |t|
