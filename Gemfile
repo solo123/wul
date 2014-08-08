@@ -41,11 +41,11 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'jquery-validation-rails'
-gem 'comfortable_mexican_sofa', "~> 1.11.2"
+gem 'comfortable_mexican_sofa', "~> 1.12.0"
 gem 'devise'
 gem "haml-rails"
 gem "html5_validators"
-gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'bootstrap-sass', '~> 3.1.0'
 #gem 'capistrano', '~> 3.2.1'
 #group :development do
  # gem 'capistrano-unicorn', :require => false
