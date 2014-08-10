@@ -1,32 +1,129 @@
-.container
-  .invest_banner
-    .invest_title
-      我要投资
-      = render "shared/balance"
-  .desc
-    每天固定时间发布新项目，首次投资可前往“新手专区”投资新手专享项目，抢债权可前往
-    =link_to "转让区", onsale_invests_path
-  .product.fixed_dep
-    .title
-      %h2 定存宝
-    %ul.desc
-      %li.item 一次性加入，省去每天投资烦恼
-      %li.item 多种期限可选，满足不同流动性需求
-      %li.item 每月返还收益，到期返还本金
-      %li.item 1000元即可加入，期限内可随时赎回
-    .more
-      %a.btn.btn-success{:href => "/fixed_deposits"} 查看更多
-    .data
-      100人已经加入 完成1000000投资额.
-  .product.month_dep
-    .title
-      %h2 月月盈
-    %ul.desc
-      %li.item 享受每天自主投资乐趣
-      %li.item 年化收益率可达13.24%，是银行活期的 30 倍
-      %li.item 每月还本付息，月月都有现金流
-      %li.item 50元即可体验，期限内可随时赎回
-    .more
-      %a.btn.btn-success{:href => "/month_deposits"} 查看更多
-    .data
-      100人已经加入 完成1000000投资额.
+.header
+  .container
+    .row.wytz
+      .span9
+        %h1
+          我要投资
+        %p.leading.headerp
+          您随时可以赎回您的投资，查询或者购买赎回资产，请前往“转让专区”.
+          %a{:href => onsale_invests_path } 立刻前往>>
+      .span3
+        %a.btn.btn-default.pull-right{:href => "/signup/"}
+          您尚未登录
+#features
+  .container
+    .f-list.row
+      .f-item.col-xs-6.col-sm-6
+        .icn
+          %img{:src => "images/main/wytz1.png"}
+          %p 定期宝
+      .f-item.col-xs-6.com-sm-6
+        .icn
+          %img{:src => "images/main/wytz2.png"}
+          %p 月月盈
+    .f-list.row
+      .f-item.col-xs-6.col-sm-6
+        .icn1
+          %p
+            一次性加入，省去每天投资烦恼
+            %br
+            3、6、12个月，不同期限满足不同流动性需求每月返还收益，支持收益复投，到期返还本金1000元即可加入，期限内可随时赎回
+          %p
+            %a{:href => "/fixed_deposits"}
+              查看更多
+        .icn2
+          %p
+            %span
+              37547
+            人已经加入
+            完成
+            %span
+              1234567000
+            元投资额
+      .f-item.col-xs-6.col-sm-6
+        .icn1
+          %p
+            一次性加入，省去每天投资烦恼
+            %br
+            3、6、12个月，不同期限满足不同流动性需求每月返还收益，支持收益复投，到期返还本金1000元即可加入，期限内可随时赎回
+          %p
+            %a{:href => "/month_deposits"}
+              查看更多
+        .icn2
+          %p
+            %span
+              37547
+            人已经加入
+            完成
+            %span
+              1234567000
+            元投资额
+.wytz-zs
+  .container
+    .row.wytz-list
+      %ul
+        %li.wytz-list-l
+          低门槛
+        %li.wytz-list-l.wytz-list-l1
+          高收益100%
+        %li.wytz-list-l.wytz-list-l1
+          本息担保
+        %li.wytz-list-l.wytz-list-l1
+          随时赎回
+        %li.wytz-list-l1
+          服务完全免费
+
+.wytz-show
+  .container
+    %ul.nav.nav-tabs
+      %li.active
+        %a{:href => "#home","data-toggle" => "tab"}
+          我是沃银网
+      %li
+        %a{:href => "#profile","data-toggle" => "tab"}
+          常见问题
+    .tab-content.wytz-show1
+      .tab-pane.active#home
+        %ul.wytz-show2
+          %li
+            %img{:src => "images/main/wytz3.png"}
+          %li.wytz-show3
+            %p
+              叫我地主
+              %span
+                家庭主妇
+            %p
+              跟大家汇报一下，目前为止，我在沃银网共投资9笔，共17200元，投资了8个月，利息复投，共获利1300元，完爆上证指数啊，哇哈哈哈
+        %ul.wytz-show2
+          %li
+            %img{:src => "images/main/wytz3.png"}
+          %li.wytz-show3
+            %p
+              叫我地主
+              %span
+                家庭主妇
+            %p
+              跟大家汇报一下，目前为止，我在沃银网共投资9笔，共17200元，投资了8个月，利息复投，共获利1300元，完爆上证指数啊，哇哈哈哈
+
+        %ul.wytz-show2
+          %li
+            %img{:src => "images/main/wytz3.png"}
+          %li.wytz-show3
+            %p
+              叫我地主
+              %span
+                家庭主妇
+            %p
+              跟大家汇报一下，目前为止，我在沃银网共投资9笔，共17200元，投资了8个月，利息复投，共获利1300元，完爆上证指数啊，哇哈哈哈
+      .tab-pane.fade#profile
+        %img{:src=>"images/main/wolwy2.jpg"}
+
+
+
+
+
+
+
+
+
+
