@@ -1,3 +1,232 @@
 // Place all the styles related to the invests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/* CSS Document */
+ol, ul {
+  list-style: none;
+}
+@media screen and (min-width:1200px) {
+  .container {
+    max-width: 1000px
+  }
+}
+.size1of5 {
+  width: 20%;
+}
+.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
+  float: left
+}
+.span12 {
+  width: 100%
+}
+.span11 {
+  width: 91.66666666666666%
+}
+.span10 {
+  width: 83.33333333333334%
+}
+.span9 {
+  width: 75%
+}
+.span8 {
+  width: 66.66666666666666%
+}
+.span7 {
+  width: 58.333333333333336%
+}
+.span6 {
+  width: 50%
+}
+.span5 {
+  width: 41.66666666666667%
+}
+.span4 {
+  width: 33.33333333333333%
+}
+.span3 {
+  width: 25%
+}
+.span2 {
+  width: 16.666666666666664%
+}
+.span1 {
+  width: 8.333333333333332%
+}
+.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
+  padding-right: 15px;
+  padding-left: 15px
+}
+.wytz{
+  margin-top:20px;
+}
+.header{
+  background-color:#1fb4da;
+}
+.lead{
+  float:left;
+}
+.pull-right {
+  float: right;
+  margin-top:20px;
+}
+.headerp{
+  font-size:14px;
+  color:#fff;
+}
+.btn.btn-primary {
+  background: #fff;
+}
+.span9 h1{
+  color:#fff;
+font-size:30px;
+  margin-bottom:15px;
+}
+.btn-default {
+  color: #1bb3da;
+}
+#features {
+  padding: 0px 0 80px;
+  background: #fff  center top no-repeat;
+}
+#features .f-list .f-item {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}
+.icn {
+  margin-top:40px;
+}
+.icn img{
+  float:left;
+  margin-right:10%;
+  margin-left:5%;
+}
+.icn p{
+  margin-top:12%;
+  float:left;
+  color:#1fb4da;
+  font-size:45px;
+  font-weight: bold;
+  font-family: Microsoft YaHei;
+}
+.icn1{
+  width:80%;
+  margin-top:6%;
+  margin-left:5%;
+}
+.icn1 p{
+  font-size: 14px;
+  line-height:25px;
+  font-family: Microsoft YaHei;
+  font-weight: 300;
+  color: #666;
+  text-align:left;
+}
+.icn2{
+  width:77%;
+  margin-top:12%;
+  margin-left:5%;
+  padding:3% 0 3% 0;
+  background-color:#1fb4da;
+  border-radius: 4px;
+}
+.icn2 p{
+  color:#fff;
+  margin: 0 0 0;
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+}
+.wytz-zs{
+  background-color:#f1f1f1;
+}
+.wytz-list{
+  padding:4% 0 4% 0;
+
+}
+.wytz-list li{
+  float:left;
+  color:#1fb4da;
+  font-size: 24px;
+  font-family: Microsoft YaHei;
+  padding-right:4%;
+}
+.wytz-list-l{
+  border-right:1px solid #1fb4da;
+}
+.wytz-list-l1{
+  padding-left:4%;
+}
+.wytz-show{
+  margin-top:5%;
+  margin-left:4%;
+}
+.wytz-show1{
+  margin-top:5%;
+}
+.wytz-show2{
+  padding-left:0;
+}
+.wytz-show2 img{
+  float:left;
+  padding-left:2%;
+  margin-right:3%;
+}
+.wytz-show2 p{
+  margin: 0 0 5px;
+}
+.wytz-show3{
+  padding-bottom:2%;
+}
+.wytz-dqb{
+  margin-top:4%;
+  text-align:center;
+}
+.wytz-dqb th {
+  text-align: center;
+}
+.library-info {
+  font-size: 15px;
+  color: #000;
+  font-family: Microsoft YaHei;
+  padding-bottom:3%;
+  border-bottom:3px solid #ddd;
+}
+.library-info .library-info-name{
+  display: block;
+  float: left;
+  margin-left:12%;
+}
+.library-info .library-info-name1{
+  display: block;
+  float: left;
+}
+.table {
+  margin-bottom: 0px;
+}
+.pagination>li>a, .pagination>li>span {
+  border: 0px solid #ddd;
+  color: #666;
+}
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+  color: #666;
+  background-color: transparent;
+}
+.wytz-dqbzs {
+  margin-top: 0;
+}
+
+.cap img{
+  float:left;
+  margin-right:4%;
+}
+.cap p{
+  margin-bottom:5px;
+  color:#727272;
+  font-family: Microsoft YaHei;
+}
+.wytz-list-l>.cap span{
+  margin:20px 0 10px 0;
+  color:#727272;
+  font-size:24px;
+  font-family: Microsoft YaHei;
+}

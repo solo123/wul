@@ -1,19 +1,38 @@
-.container
-  .invest_banner
-    .invest_title
-      %a.btn{:href=> "/invests"} 返回
-      定存宝
-      = render "shared/balance"
-  .fixeddep_table
-    %ul.table_head
-      %li.head_col.col1 名称
-      %li.head_col.col2 年化收益率
-      %li.head_col.col3 期限
-      %li.head_col.col4 进度
-      %li.head_col.col5 剩余金额
-      %li.head_col.col6 操作
-    .fixed-deposits
-      - @fixed_deposits.each do |obj|
-        = render 'fixed_deposits/list_col_browser', obj: obj
+.header
+  .container
+    .row.wytz
+      .span9
+        %h1
+          我要投资&nbsp;/&nbsp;定期宝
+        %p.lead.headerp
+          距下一场新项目发布还有
+      .span3
+        %a.btn.btn-default.pull-right{:href => "/signup/" }
+          您尚未登录
+.wytz-dqb
+  .container
+    .bs-example
+      %table.table
+        %thead
+          %tr
+            %th
+              名称
+            %th
+              年化收益率
+            %th
+              期限
+            %th
+              进度
+            %th
+              金额
+            %th
+              操作
+        %tbody
+          - @fixed_deposits.each do |obj|
+            = render 'fixed_deposits/list_col_browser', obj: obj
+
+
+
+
 
 

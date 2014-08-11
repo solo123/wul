@@ -1,0 +1,287 @@
+/* CSS Document */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: tahoma, Arial, Microsoft YaHei, SimSun;
+	font-size: 12px;
+	line-height: 1.5em;
+    background-color: #f1f1f1;
+}
+ol, ul {
+	list-style: none;
+}
+img {
+	display: block;
+	border: 0;
+}
+a {
+	display: block;
+	text-decoration: none;
+}
+a:focus, a:hover {
+	text-decoration: none;
+	
+}
+.size1of3 {
+	width: 33.33333%;
+}
+.size1of4 {
+	width: 25%;
+}
+.size1of5 {
+	width: 20%;
+}
+.size1of6 {
+	width: 16.66666%;
+}
+body {
+	background-color: #f1f1f1;
+}
+.block1{
+	margin:10px 20% 0 20%;
+	}
+.wolwy {
+float: left;
+height: 35px;
+line-height: 35px;
+background-repeat: no-repeat;
+}
+.wolwy dl {
+float: left;
+height: 35px;
+font-family: "微软雅黑";
+font-size: 14px;
+color: #000;
+}
+.wolwy a {
+font-size: 14px;
+font-family: "微软雅黑";
+float: left;
+color: #1fb5da;
+padding-right: 10px;
+}
+.wolwy1 img{
+	float:left;
+	margin-right:4%;
+	}
+.wolwy1 p{
+	margin-bottom:5px;
+	color:#727272;
+	font-family: Microsoft YaHei;
+	}
+.wolwy1 span{
+	margin:20px 0 10px 0;
+	color:#727272;
+	font-size:24px;
+	font-family: Microsoft YaHei;
+	}
+	
+	
+.docs-section + .docs-section {
+padding-top: 40px;
+}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, .lead {
+font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+.row {
+margin-right: 0px;
+margin-left: 0px;
+}
+.leading {
+margin-bottom: 20px;
+font-size: 16px;
+font-weight: 200;
+line-height: 1.4;
+}
+.anq-licai{
+	margin-bottom:30px;
+	}
+.anq-licai img{
+	float:left;
+	margin-right:2%;
+	}
+.anq-p{
+	font-size:14px;
+	margin-bottom:5px;
+	color:#666;
+	font-family: Microsoft YaHei;
+	}
+.anq-span{
+	margin-bottom:15px;
+	color:#000;
+	font-size:20px;
+	font-family: Microsoft YaHei;
+	}
+.anq-licai1{
+	margin-bottom:30px;
+	} 
+.anq-licai1 img{
+	width:77px;
+	height:70px;
+	margin-top:5px;
+	float:left;
+	margin-right:2%;
+	}
+
+.wrap.credit-assign-wrap {
+background-color: #f3f3f3;
+}
+.wrap {
+width: 100%;
+background-color: #fff;
+}
+.page-header h1{
+	font-size:30px;
+	color:#000;
+	}
+.page-header p{
+	font-size:30px;
+	color:#000;
+	font-weight: bold;
+	}
+.page-header span{
+	font-size:30px;
+	font-weight: normal;
+	}
+.dqb-dcb{
+	 font-size:13px;
+	 line-height:30px;
+	}
+.dqb-dcb1{
+	text-align:right;
+	}
+.dqb-dcb2{
+	margin-left:7%;
+	}
+.dqb-dcb1 span{
+	line-height:35px;
+	height:40px;
+	font-size:24px;
+	color:#333;
+	}
+.dqb-dcb1 p{
+	font-size:14px;
+	padding-bottom:20px;
+	margin:0 auto;
+	}
+.dcb-dt-o{
+	text-align:center;
+	}
+.dcb-dt{
+	width:340px;
+	height:550px;
+	background-color:#1fb4da;
+	color:#fff;
+	margin-bottom:50px;
+	float:left;
+	margin-right:3%;
+	}
+.dcb-dt1{
+	margin-top:20px;
+	}
+.dcb-dt1 img{
+	float:left;
+	margin-right:20px;
+	}
+.dcb-dt1 p{
+	padding-top:25px;
+	padding-bottom:50px;
+	color:#fff;
+	font-size:24px;
+	font-family: Microsoft YaHei;
+	}
+.dcb-dt2{
+	margin-bottom:15px;
+	text-align:center;
+	color:#fff;
+	font-size:21px;
+	font-family: Microsoft YaHei;
+	}
+.dcb-dt3 p{
+	text-align:center;
+	padding-top:25px;
+	padding-bottom:50px;
+	color:#fff;
+	font-size:70px;
+	font-family:Arial;
+	font-weight: bold
+	}
+.dcb-dt3 span{
+	text-align:center;
+	padding-top:25px;
+	padding-bottom:50px;
+	color:#fff;
+	font-size:36px;
+	font-family: Microsoft YaHei;
+	}
+.dcb-dt4{
+	padding-left:20px;
+	font-size:21px;
+	font-family: Microsoft YaHei;
+	margin-bottom:25px;
+	}
+.dcb-dt5 img{
+	padding-left:20px;
+	float:left;
+	margin-right:40px;
+	}
+.dcb-dt5 p{
+	padding-top:5px;
+	font-size:21px;
+	font-family: Microsoft YaHei;
+	}
+.dcb-dt6{
+	width:290px;
+	float:left;
+	}
+.dcb-dt6-1{
+	margin:20px 0 0 0;
+	float:left;
+	font-size:20px;
+	font-family: Microsoft YaHei;
+	}
+.dcb-dt6-2{
+	width:125px;
+	margin:20px;
+	float:left;
+	}
+.dcb-dt6-3{
+	margin:20px 0 0 0;
+		float:left;
+	font-size:20px;
+	font-family: Microsoft YaHei;
+	}
+.dcb-dt7 p{
+	padding-top:30px;
+	padding-bottom:30px;
+	color:#fff;
+	font-size:21px;
+	font-family: Microsoft YaHei;
+	}
+.dcb-dt8{
+	text-align:center;
+	}
+.dcb-dt8-b {
+color: #1fb4da;
+font-size:18px;
+}
+.yyy{
+	font-size:13px;
+	line-height:25px;
+	}
+.wh{
+	padding-left:0px;
+	padding-right:0px;
+	}
+.wh1{
+	
+	}	
+.tthp{
+	width:100%;
+	background-color:#fff;
+	border: 1px solid #e7eaec;
+	padding-top:50px;
+	}

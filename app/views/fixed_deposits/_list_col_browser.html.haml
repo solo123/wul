@@ -1,15 +1,23 @@
-%div.list_item
-  .table_cell.col1
-    = link_to "#{obj.deposit_number}", fixed_deposit_path(obj)
-  .table_cell.col2
+%tr
+  %td
+    %p
+      定存宝
+      %span
+        = link_to "#{obj.deposit_number}", fixed_deposit_path(obj)
+  %td
     #{obj.annual_rate} %
-  .table_cell.col3
+  %td
     #{obj.repayment_period} 个月
-  .table_cell.col4
-    #{obj.repayment_period}
-  .table_cell.col5
+  %td
     - progess = (obj.total_amount - obj.free_invest_amount) *100 / obj.total_amount
     #{number_with_precision progess, precision: 2}%
-  .table_cell.col6
-    = link_to "#{obj.current_operation}", obj.current_action
+  %td
+    #{obj.total_amount}
+  %td
+    %a.btn.btn-info{:href => "#{obj.current_action}"}
+      #{obj.current_operation}
+
+
+
+
 
