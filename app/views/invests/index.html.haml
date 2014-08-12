@@ -8,8 +8,7 @@
           您随时可以赎回您的投资，查询或者购买赎回资产，请前往“转让专区”.
           %a{:href => onsale_invests_path } 立刻前往>>
       .span3
-        %a.btn.btn-default.pull-right{:href => "/signup/"}
-          您尚未登录
+        = render "shared/balance"
 #features
   .container
     .f-list.row
@@ -77,45 +76,10 @@
   .container
     %ul.nav.nav-tabs
       %li.active
-        %a{:href => "#home","data-toggle" => "tab"}
-          我是沃银网
-      %li
         %a{:href => "#profile","data-toggle" => "tab"}
           常见问题
     .tab-content.wytz-show1
-      .tab-pane.active#home
-        %ul.wytz-show2
-          %li
-            %img{:src => "images/main/wytz3.png"}
-          %li.wytz-show3
-            %p
-              叫我地主
-              %span
-                家庭主妇
-            %p
-              跟大家汇报一下，目前为止，我在沃银网共投资9笔，共17200元，投资了8个月，利息复投，共获利1300元，完爆上证指数啊，哇哈哈哈
-        %ul.wytz-show2
-          %li
-            %img{:src => "images/main/wytz3.png"}
-          %li.wytz-show3
-            %p
-              叫我地主
-              %span
-                家庭主妇
-            %p
-              跟大家汇报一下，目前为止，我在沃银网共投资9笔，共17200元，投资了8个月，利息复投，共获利1300元，完爆上证指数啊，哇哈哈哈
-
-        %ul.wytz-show2
-          %li
-            %img{:src => "images/main/wytz3.png"}
-          %li.wytz-show3
-            %p
-              叫我地主
-              %span
-                家庭主妇
-            %p
-              跟大家汇报一下，目前为止，我在沃银网共投资9笔，共17200元，投资了8个月，利息复投，共获利1300元，完爆上证指数啊，哇哈哈哈
-      .tab-pane.fade#profile
+      .tab-pane.active#profile
         %img{:src=>"images/main/wolwy2.jpg"}
 
 

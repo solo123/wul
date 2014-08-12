@@ -1,4 +1,4 @@
-.dcb-dt
+.dcb-dt.col-lg-4
   %ul
     %li.dcb-dt1
       %img{:src =>"images/main/indexmain5.png"}
@@ -26,8 +26,9 @@
       .progress.dcb-dt6-2
         .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}
           %span.sr-only
-            ="#{number_with_precision current_progress, precision: 2}% Complete"
-      .progress.dcb-dt6-3
+            23 Complete
+      %span.dcb-dt6-3
+        #{number_with_precision current_progress, precision: 0}%
     %li.dcb-dt7
       %p
         剩余金额

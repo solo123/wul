@@ -1,0 +1,43 @@
+.bs-example
+  %img{:src => image_url("account1.jpg")}
+  .accout_yonghu
+    = current_user.username
+  .accout_progress
+    .progress
+      .progress-bar{:role => "progressbar", "aria-valuenow" => "60", "aria-valuemin" => "0", "aria-valuemax" => "100", :style => "width:0%" }
+        %span.sr-only
+          60% Complete
+  .accout_ts
+    安全等级：低[提升]
+    %div
+      .sjgm
+        .sjgm_sj
+          %a{:href=>"#"}
+            %img{:src => image_url("account2.jpg") }
+        .sjgm_sj
+          %a{:href=>"#"}
+            %img{:src => image_url("account3.jpg") }
+  %ul
+    %li.accout_ye
+      我的余额
+    .accout_ye1
+      ￥
+      = render "shared/usercenter_balance"
+    %div
+      %a{:href =>usercenter_console_charge_bank_path}
+        %img{:src => image_url("account4.jpg")}
+    %li
+      %a{:href => usercenter_console_overview_path}
+        账户实名认证
+    %li
+      %a{:href => usercenter_console_history_path}
+        账户交易认证
+    %li
+      %a{:href => securecenter_secure_confirmphone_path}
+        绑定手机
+    %li
+      %a{:href => usercenter_console_charge_path}
+        更换注册邮箱
+    %li
+      %a{:href => usercenter_console_coupon_path}
+        启用密保问题

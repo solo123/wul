@@ -9,11 +9,12 @@
     = render 'shared/header'
     = bootstrap_flash
 
-    .container-fluid
-      .row
-        .col-md-2
-          =render "shared/sidebar"
-        .col-md-10
-          .container
-            = yield
+    .primary-container
+      .container-fluid
+        .row
+          .col-md-2
+            =render "shared/secure_sidebar"
+          .col-md-10
+            .container
+              = yield
     = render 'shared/footer'

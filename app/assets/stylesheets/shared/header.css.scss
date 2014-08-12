@@ -1,0 +1,63 @@
+/* Header Style
+-------------------------------------------------- */
+.header-top {
+  background: #f1f1f1;
+  margin-bottom: 0;
+}
+
+.header-tools {
+  min-height: 40px;
+  line-height: 40px;
+  background: #475058;
+  position: relative;
+}
+
+.header-tools ul {
+  margin-bottom: 0;
+}
+
+.header-tools .hotline .hottitle {
+  padding-left: 0;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.header-tools .hotline .numbers {
+  color: white;
+  padding-left: 0;
+  margin-right: 10px;
+  font-size: 15px;
+}
+
+.header-tools .signlink {
+  text-align: right;
+  font-size: 12px;
+  color: white;
+}
+
+.header-tools li a {
+  color: darkorange;
+}
+
+.header-tools .signlink li a:link, .header-tools .signlink li a:visited {
+  color: #d7d7d7;
+}
+
+.header-tools .signlink li a:hover {
+  color: #fff;
+}
+
+.username {
+  color: darkorange;
+}
+
+
+/* Header nav styles
+-------------------------------------------------- */
+/* main nav */
+
+.header-main-nav > li > a {
+  padding: 25px 25px;
+  line-height: 30px;
+  font-size: 18px;
+}
