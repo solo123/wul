@@ -1,0 +1,24 @@
+%h3
+  绑定手机
+  = form_tag securecenter_secure_checkphone_path do
+    .panel{class: "panel-info"}
+      .panel-heading
+        .panel-body
+          %p.info
+            = label :number, '手机号码'
+            = text_field_tag :phone_number
+            %br
+            = label :securenumber, '验证码'
+            = text_field_tag :secure_number
+            %br
+            = label :paypass, '支付密码'
+            = text_field_tag :pay_password
+            - if flash[:notice]
+              .alert{ :class => "alert-notice"}
+                %button.close{ :data => { :dismiss => "alert" } }x
+                %strong
+                = flash[:notice]
+                %br
+                %br
+        .panel-footer
+          = submit_tag '绑定', :class => "btn btn-primary"

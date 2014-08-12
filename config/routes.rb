@@ -70,6 +70,13 @@ Wooul::Application.routes.draw do
     resources :coupons
   end
 
+  namespace :securecenter do
+    get '/', to: 'secure#index'
+    get '/secure/confirmphone'
+    post '/secure/checkphone'
+  end
+
+
   comfy_route :cms, :path => '/', :sitemap => false
 
 
