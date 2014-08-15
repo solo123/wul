@@ -44,6 +44,7 @@ gem 'jquery-validation-rails'
 gem 'comfortable_mexican_sofa', "~> 1.11.2"
 gem 'devise'
 gem "haml-rails"
+gem 'will_paginate', '~> 3.0'
 gem "html5_validators"
 gem 'bootstrap-sass', '~> 3.0.3.0'
 #gem 'capistrano', '~> 3.2.1'

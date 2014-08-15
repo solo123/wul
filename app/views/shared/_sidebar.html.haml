@@ -26,35 +26,23 @@
     %div
       %a{:href =>usercenter_console_charge_bank_path}
         %img{:src => image_url("account4.jpg")}
-    %li.accout_lbg
-      我的账户
-    %li
-      %a{:href => usercenter_console_overview_path}
-        账户总览
-    %li
-      %a{:href => usercenter_console_history_path}
-        交易记录
-    %li
-      %a{:href => usercenter_console_charge_path}
-        充值提现
-    %li
-      %a{:href => usercenter_console_charge_path}
-        银行卡
-    %li
-      %a{:href => usercenter_console_coupon_path}
-        我的红包
-    %li
-      %a{:href => usercenter_console_assets_analyzer_path}
-        资产统计
-    %li
-      %a{:href => usercenter_console_invest_history_path}
-        投资记录
-    %li
-      %a{:href => usercenter_console_redemption_path}
-        投资赎回
-    %li
-      %a{:href => usercenter_console_agreements_path}
-        借款协议
-    %li
-      %a{:href => usercenter_console_autoinvest_path}
-        自动投资
+      - {'我的账户' => usercenter_console_overview_path,
+         '交易记录' => usercenter_console_history_path(:filter => "all", :date_range => "all"),
+         '充值提现' =>  usercenter_console_charge_path,
+         '银行卡' => usercenter_console_charge_path,
+         '我的红包' => usercenter_console_coupon_path,
+         '资产统计' => usercenter_console_assets_analyzer_path,
+         '投资记录' => usercenter_console_invest_history_path,
+         '投资赎回' => usercenter_console_redemption_path,
+         '借款协议' => usercenter_console_agreements_path,
+         '自动投资' => usercenter_console_autoinvest_path}.each do |k, v|
+        - if current_page?(v)
+          %li.accout_lbg
+            %a{:href => v}
+              = k
+        - else
+          %li
+            %a{:href => v}
+              = k
+
+

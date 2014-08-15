@@ -222,3 +222,87 @@ body {
   color: #1fb5da;
   padding-right: 10px;
 }
+
+.model-box {
+  border: 1px solid #D3D8DC;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  zoom: 1;
+}
+
+.trade-filter {
+  padding-bottom: 10px
+}
+
+.filter-items {
+  overflow: hidden;
+  zoom: 1;
+  padding-top: 10px;
+  margin: 0 40px;
+  line-height: 30px
+}
+
+.filter-items dt {
+  width: 65px;
+  float: left;
+  display: inline;
+  font-size: 14px;
+}
+.filter-items dd {
+  margin-left: 80px;
+  height: 30px
+}
+.filter-items dd a {
+  display: inline-block;
+  padding: 0 10px;
+  height: 24px;
+  line-height: 24px;
+  margin: 4px 10px 0 0;
+  float: left;
+  display: inline;
+  border-radius: 3px;
+  color: #475058;
+  font-size: 14px;
+}
+.filter-items dd a:visited {
+  color: #475058
+}
+.filter-items dd a:hover {
+  color: #fff;
+  background: #1fb5da;
+  text-decoration: none
+}
+.filter-items a.selected, .filter-items a.selected:visited {
+  color: #fff;
+  background: #1fb5da;
+  cursor: default
+}
+
+.query-input {
+  float: left;
+  display: inline;
+  padding-right: 20px;
+  height: 30px
+}
+.query-input label {
+  padding: 0 5px;
+  float: left;
+  display: inline
+}
+.query-input input {
+  height: 25px;
+  line-height: 25px;
+  width: 100px;
+  padding: 6px 0 5px 35px;
+  padding: 6px 0 5px 25px\9;
+  text-indent: 10px\9;
+  font-family: Tahoma;
+  border: 0;
+  background: #999 url(../../../local/img/common/ui-date.png) no-repeat 10px 9px;
+  border-radius: 3px;
+  float: left;
+  display: inline;
+  overflow: hidden;
+  cursor: default
+}
