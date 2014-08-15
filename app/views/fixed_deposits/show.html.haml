@@ -1,8 +1,9 @@
 .container
-  .invest_banner
+  .invest_banner.row
     .invest_title
       %a.btn{:href=> fixed_deposits_path} 返回
       定存宝详情
+    .invest_title.pull-right
       = render "shared/balance"
   - @invests = @object.invests
   = render 'fixed_deposits/item_detail', obj:@object, invests:@invests

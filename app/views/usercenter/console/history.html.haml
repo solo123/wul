@@ -1,21 +1,87 @@
-%h3 交易记录
+.col-md-10
+  .acc1
+    交易记录
+  .acc2
+    %a{:href => "#"}
+      %img{:src => image_url("account5.jpg")}
+  .acc3
+    您还没有进入排行榜，请再接再厉
+  .model-box.trade-filter
+    - queries = params.except(*request.path_parameters.keys)
+    - condi = {}
+    - conds = {}
+    %dl.filter-items
+      %dt
+        起止日期
+      %dd
+        - {'all' => '全部',
+           'week' => '最近7天',
+                   'month' => '1个月内',
+                   'month2' => '2个月内',
+                   'month3' => '3个月内' }.each do |k, v|
 
-%table
-   %tr
-      %th 流水号
-      %th 操作类型
-      %th 操作金额
-      %th 操作前余额
-      %th 操作后余额
-      %th 操作前冻结金额
-      %th 操作后冻结金额
+          - condi[:date_range] = k
+          - condi[:filter] =queries[:filter]
+          - if queries[:date_range] == k
+            %a.timeType.selected{:href => usercenter_console_history_path(condi)}
+              = v
+          - else
+            %a.tradeType{:href => usercenter_console_history_path(condi)}
+              =v
 
-   - @transactions.each do |trans|
-      %tr
-      %td= trans.id
-      %td= trans.trans_type
-      %td= trans.operation_amount
-      %td= trans.account_before
-      %td= trans.account_after
-      %td= trans.frozen_before
-      %td= trans.frozen_after
+    %dl.filter-items
+      %dt
+        交易类型
+      %dd
+        - {'all' => '全部',
+           'charge' => '充值',
+           'pull' => '提现',
+           'invest' => '投资',
+           'profit' => '收回利息',
+           'refunded' => '收回本金'}.each do |k, v|
+          - conds[:date_range] = queries[:date_range]
+          - conds[:filter] = k
+          - if queries[:filter] == k
+            %a.tradeType.selected{:href => usercenter_console_history_path(conds)}
+              = v
+          - else
+            %a.tradeType{:href => usercenter_console_history_path(conds)}
+              =v
+  .acc5
+  %div
+    %table.table
+      %thead
+        %tr
+          %th
+            交易类型
+          %th
+            交易金额
+          %th
+            交易前账户余额
+          %th
+            交易后账户余额
+          %th
+            交易编号
+          %th
+            交易日期
+      %tbody
+        - @transactions.each do |t|
+          %tr
+            %td
+              =t.trans_type
+            %td
+              =t.operation_amount
+            %td
+              =t.account_before
+            %td
+              =t.account_after
+            %td
+              =t.invest_id
+            %td
+              =t.created_at
+    .digg_pagination
+      .page_info
+        = page_entries_info @transactions
+      = will_paginate @transactions, :container => false
+
+
