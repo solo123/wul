@@ -23,7 +23,7 @@ class FixedDepositsController < ResourcesController
     end
 
     if balance >= invest.amount and @product.free_invest_amount >= invest.amount
-      Transaction.createTransaction("invest", invest.amount, balance, balance - invest.amount, current_user.user_info.id, invest.id)
+      Transaction.createTransaction("invest", invest.amount, balance, balance - invest.amount, current_user.user_info.id,  @product.deposit_number)
       @product.free_invest_amount -= invest.amount
       current_user.user_info.account.balance -= invest.amount
       current_user.save!

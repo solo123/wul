@@ -10,6 +10,14 @@
     - queries = params.except(*request.path_parameters.keys)
     - condi = {}
     - conds = {}
+    - dict = {'all' => '全部',
+               'charge' => '充值',
+               'pull' => '提现',
+               'invest' => '投资产品',
+               'profit' => '收回利息',
+               'buy' => '购买债权',
+               'sell' => '转让债权',
+               'refunded' => '收回本金'}
     %dl.filter-items
       %dt
         起止日期
@@ -33,12 +41,7 @@
       %dt
         交易类型
       %dd
-        - {'all' => '全部',
-           'charge' => '充值',
-           'pull' => '提现',
-           'invest' => '投资',
-           'profit' => '收回利息',
-           'refunded' => '收回本金'}.each do |k, v|
+        - dict.each do |k, v|
           - conds[:date_range] = queries[:date_range]
           - conds[:filter] = k
           - if queries[:filter] == k
@@ -68,7 +71,7 @@
         - @transactions.each do |t|
           %tr
             %td
-              =t.trans_type
+              =dict[t.trans_type]
             %td
               =t.operation_amount
             %td
@@ -76,7 +79,7 @@
             %td
               =t.account_after
             %td
-              =t.invest_id
+              =t.deposit_number
             %td
               =t.created_at
     .digg_pagination

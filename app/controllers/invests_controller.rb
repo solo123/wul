@@ -10,11 +10,16 @@ class InvestsController < ApplicationController
   def buy
     invest = Invest.find(params[:invest_id])
     if invest.onsale
-      if current_user.user_info.account.balance >= invest.amount
+      buyer_balance = current_user.user_info.account.balance
+      seller_balance = invest.user_info.account.balance
+      if buyer_balance >= invest.amount
         current_user.user_info.account.balance -= invest.amount
         current_user.save!
-        invest.create_transaction(current_user.user_info.account)
-        invest.onsale=false
+        Transaction.createTransaction("buy", invest.amount, buyer_balance + invest.amount, buyer_balance, current_user.user_info.id, invest.product.deposit_number)
+        invest.user_info.account.balance += invest.amount
+        invest.user_info.save!
+        Transaction.createTransaction("sell", invest.amount, seller_balance, seller_balance + invest.amount, invest.user_info.id, invest.product.deposit_number)
+        invest.onsale = false
         current_user.user_info.invests << invest
         invest.save!
       else

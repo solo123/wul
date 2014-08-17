@@ -29,11 +29,7 @@
 
   .col-md-1
   .col-md-4
-    - if Time.now > obj.join_date
-      = render "fixed_deposits/join_form", obj: obj
-    - else
-      = render "fixed_deposits/order_form", obj: obj
-
+    = render "fixed_deposits/join_form", obj: obj
 .detail_container
   .col-md-12
     %ul.nav.nav-tabs{:role=>"tablist"}

@@ -18,8 +18,13 @@ module Securecenter
         flash[:notice] = "该号码已经被使用#{phonenum}"
         redirect_to securecenter_secure_confirmphone_path and return
       else
-        flash[:notice] = "该号码可以被使用#{phonenum}"
-        current_user.user_info.mobile=phonenum
+        flash[:notice] = "验证码已经发送到手机：#{phonenum},验证码是：12234"
+        verify = current_user.user_info.verification
+        verify.phone = phonenum
+        verify.verify_code = "12234"
+        verify.phonetime = Time.now
+        verify.save!
+
         current_user.save!
         redirect_to securecenter_secure_confirmphone_path and return
       end
