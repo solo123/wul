@@ -17,6 +17,10 @@ class CreateInvests < ActiveRecord::Migration
 			t.datetime :invest_end_date
 			t.string :remark
 			t.integer :status, default: 0
+      t.string :invest_type, default: 'fixed'
+      t.boolean :onsale, default: false
+      t.decimal :discount_rate, default: 0
+      t.decimal :discount_rate, default: 0
 
       t.timestamps
     end
