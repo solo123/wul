@@ -20,6 +20,7 @@ class CreateFixedDeposits < ActiveRecord::Migration
       t.string :product_type, default: 'fixed'
       t.string :stage, default: '未发布'
       t.string :display, default: 'hide'
+      t.decimal :fixed_amount, default: 0
       t.datetime :profit_date
       t.timestamps
     end
