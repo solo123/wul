@@ -1,1 +1,93 @@
-%h1 自动投资
+.acc1
+  自动投资
+.acc2
+  %a{:href => "#"}
+    %img{:src => image_url("account5.jpg")}
+.acc3
+  您还没有进入排行榜,请再接再厉
+.Auto-invest
+  %ul.zdtz
+    %li.zdtz1
+      %p
+        自动投资状态：
+      %span
+        关闭状态
+      %button.btn.btn-default.zdtza{:type => "button"}
+        开启自动投资
+    %li
+      您的可用余额：
+      %span.zdtzp
+        0.00元
+    %li
+      %form.zdtzb
+        .form-group
+          %label.bq
+            每次投资金额
+          .row
+            .col-xs-3
+              %input.form-control.tzje{:type => "text", :placeholder => "投资金额"}
+            .col-xs-5.bq1
+              %p.bq2
+                元
+              %span
+                该数值须为不小于200元且不大于20,000的整数
+          %br
+          %label.bq
+            最小投资金额
+          .row
+            .col-xs-3
+              %input.form-control.tzje{:type => "text", :placeholder => "投资金额"}
+            .col-xs-5.bq1
+              %p.bq2
+                元
+              %span
+                大于等于50元，小于等于每次投资金额的整数，设置为50可以增加您的资金利用率
+          %br
+          %label.bq
+            借款期限上限
+          .row
+            .col-xs-3
+              %input.form-control.tzje{:type => "text", :placeholder => "借款期限上限"}
+            .col-xs-5.bq1
+              %p.bq2
+                ="%"
+              %span
+          %br
+            %label.bq
+              账户保留金额
+            .row
+              .col-xs-3
+                %input.form-control.tzje{:type => "text", :placeholder => "账户保留金额"}
+              .col-xs-5.bq1
+                %p.bq2
+                  元
+                %span
+                  您可填写一个不大于可用余额的金额，这部分金额不会加入自动投资
+.tool-i
+  %ul
+    %li.tool-i1
+      自动投资工具说明
+    %li
+      1、自动投资工具仅适用于月息通项目；
+    %li
+      2、在有利网充过值的用户可以开启自动投资；
+    %li
+      3、月息通项目进入投资状态十分钟后，才会启动自动投资；
+    %li
+      4、月息通项目投资进度超过95%之后，将停止自动投资；
+    %li
+      5、自动投资工具会根据用户设置的每次投资金额、最小投资金额，结合用户的账户可用余额向符合设置条件的
+    %li
+      月息通项目进行投资，具体规则如下：
+    %li
+      a、账户可用余额 < 最小投资金额，不执行自动投资；
+    %li
+      b、最小投资金额 <= 账户可用余额每次投资金额+50元，执行自动投资，投资金额为账户可用余额的整数部分；
+    %li
+      c、每次投资金额+50元 <= 账户可用余额，执行自动投资，投资金额为设定的每次投资金额。
+    %li
+      6、用户开启此工具，并完成条件设置后，自动投资功能将在五分钟内生效；
+    %li
+      7、单个月息通项目，单个用户至多只有一次自动投资的机会；
+    %li
+      8、投资序列按照用户上一笔成功的自动投资时间先后进行排序。

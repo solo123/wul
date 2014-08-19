@@ -15,7 +15,13 @@ class CreateFixedDeposits < ActiveRecord::Migration
       t.string :repayment_method
       t.string :premature_redemption
       t.string :fee
-
+      t.integer :owner_num, default: 0
+      t.decimal :order_amount, default: 0.0
+      t.string :product_type, default: 'fixed'
+      t.string :stage, default: '未发布'
+      t.string :display, default: 'hide'
+      t.decimal :fixed_amount, default: 0
+      t.datetime :profit_date
       t.timestamps
     end
   end

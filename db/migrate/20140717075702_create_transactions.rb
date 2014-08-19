@@ -7,7 +7,8 @@ class CreateTransactions < ActiveRecord::Migration
       t.decimal :account_after
       t.decimal :frozen_before
       t.decimal :frozen_after
-
+      t.integer :user_info_id
+      t.integer :deposit_number
       t.timestamps
     end
   end

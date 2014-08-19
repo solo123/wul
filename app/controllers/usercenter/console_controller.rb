@@ -48,8 +48,8 @@ module Usercenter
     end
 
     def redemption
-      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed',:onsale =>"false")
-      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month',:onsale =>"false")
+      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed',:onsale => false)
+      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month',:onsale => false)
     end
 
     def agreements
@@ -71,14 +71,16 @@ module Usercenter
     end
 
     def invest_history
-      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed',:onsale =>"false")
-      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month',:onsale =>"false")
+      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed',:onsale => false)
+      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month',:onsale => false)
     end
 
     def charge_mock
-      logger.info(params[:charge_value])
       if current_user
-        current_user.user_info.account.balance += params[:charge_value].to_i
+        charge_val = params[:charge_value].to_i
+        balance = current_user.user_info.account.balance
+        Transaction.createTransaction("charge", charge_val, balance, balance + charge_val, current_user.user_info.id, "充值")
+        current_user.user_info.account.balance += charge_val
         current_user.user_info.save!
       end
       render usercenter_console_charge_bank_path

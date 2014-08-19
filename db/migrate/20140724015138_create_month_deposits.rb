@@ -16,6 +16,12 @@ class CreateMonthDeposits < ActiveRecord::Migration
       t.datetime :invest_end_date
       t.string :remark
       t.integer :status, default: 0
+      t.integer :owner_num, default: 0
+      t.string :guarantee
+      t.datetime :join_date
+      t.datetime :expiring_date
+      t.string :stage, default: '未发布'
+      t.string :display, default: 'hide'
       t.timestamps
     end
   end

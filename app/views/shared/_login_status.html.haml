@@ -1,6 +1,7 @@
 %ul.list-inline.signlink
   - if current_user 
     %li= link_to "欢迎 #{current_user.username}!", usercenter_console_overview_path
+    %li= link_to "安全中心", securecenter_path
     %li= link_to '退出登录', destroy_user_session_path, method: :delete
   - else
     %li
