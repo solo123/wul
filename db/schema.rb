@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818035347) do
+ActiveRecord::Schema.define(version: 20140820085209) do
 
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
@@ -401,6 +401,8 @@ ActiveRecord::Schema.define(version: 20140818035347) do
     t.integer  "status",              default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "payment_password"
+    t.integer  "secury_score",        default: 0
   end
 
   create_table "users", force: true do |t|
@@ -431,7 +433,7 @@ ActiveRecord::Schema.define(version: 20140818035347) do
     t.string   "phonestatus"
     t.string   "emailstatus"
     t.string   "idstatus"
-    t.integer  "securyscore"
+    t.integer  "securyscore",  default: 0
     t.integer  "user_info_id"
     t.string   "verify_code"
     t.datetime "created_at"

@@ -73,6 +73,7 @@ Wooul::Application.routes.draw do
   namespace :securecenter do
     get '/', to: 'secure#index'
     get '/secure/confirmphone'
+    post '/secure/verify_code'
     post '/secure/checkphone'
   end
 
