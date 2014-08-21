@@ -29,7 +29,8 @@ class FixedDepositsController < ResourcesController
       current_user.save!
       @product.owner_num +=1
       @product.save!
-      invest.profit_date = @product.join_date
+      #invest.profit_date = @product.join_date
+      invest.invest_type = "fixed"
       current_user.user_info.invests << invest
       invest.save!
     else

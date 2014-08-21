@@ -100,12 +100,18 @@ body {
 }
 .sjgm{
   height:30px;
-  margin:15px 15px 15px 15px;
+  margin:5px 5px 5px 5px;
 }
 .sjgm_sj{
   float:left;
-  margin:0 5px 20px 5px;
+  margin:0 1px 5px 5px;
+  padding: 0;
+  display: inline-block;
 }
+.btn-small{
+  padding:8px;
+}
+
 .accout_progress{
   margin:0 25px 0 25px;
   height: 10px;

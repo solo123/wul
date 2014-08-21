@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820085209) do
+ActiveRecord::Schema.define(version: 20140821093354) do
 
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
@@ -277,6 +277,8 @@ ActiveRecord::Schema.define(version: 20140820085209) do
     t.string   "display",                                        default: "hide"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "profit_date"
+    t.datetime "principal_date"
   end
 
   create_table "notices", force: true do |t|
@@ -366,7 +368,7 @@ ActiveRecord::Schema.define(version: 20140820085209) do
     t.decimal  "frozen_before",    precision: 10, scale: 0
     t.decimal  "frozen_after",     precision: 10, scale: 0
     t.integer  "user_info_id"
-    t.integer  "deposit_number"
+    t.string   "deposit_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

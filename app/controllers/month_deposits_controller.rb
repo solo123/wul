@@ -12,6 +12,9 @@ class MonthDepositsController < ResourcesController
     invest = Invest.new
     invest.loan_number = @product.deposit_number
     invest.amount = params[:product_value].to_i
+    balance = current_user.user_info.account.balance
+
+
 
     invests = current_user.user_info.invests
     current_amount = 0
@@ -21,12 +24,14 @@ class MonthDepositsController < ResourcesController
       redirect_to month_deposit_path(params[:month_deposit_id]) and return
     end
 
-    if current_user.user_info.account.balance >= invest.amount and @product.free_invest_amount >= invest.amount
+    if balance >= invest.amount and @product.free_invest_amount >= invest.amount
+      Transaction.createTransaction("invest", invest.amount, balance, balance - invest.amount, current_user.user_info.id,  @product.deposit_number)
       @product.free_invest_amount -= invest.amount
       current_user.user_info.account.balance -= invest.amount
       current_user.save!
+      @product.owner_num += 1
       @product.save!
-      invest.create_transaction(current_user.user_info.account)
+      #invest.profit_date = @product.join_date
       invest.invest_type = "month"
       current_user.user_info.invests << invest
       invest.save!
@@ -35,5 +40,7 @@ class MonthDepositsController < ResourcesController
     end
     redirect_to month_deposit_path(params[:month_deposit_id]) and return
   end
+
+
 end
 

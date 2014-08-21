@@ -20,14 +20,19 @@
       .sjgm
         .sjgm_sj
           - if verify.phonestatus == "confirmed"
-            %a.btn.btn-success{:href=> securecenter_secure_confirmphone_path}
-              手机绑定
+            %a.btn.btn-success.btn-small{:href=> securecenter_secure_confirmphone_path}
+              %span.glyphicon.glyphicon-phone
           - else
-            %a.btn{:href=> securecenter_secure_confirmphone_path}
+            %a.btn.btn-small{:href=> securecenter_secure_confirmphone_path}
               手机绑定
         .sjgm_sj
-          %a{:href=>"#"}
-            %img{:src => image_url("account3.jpg") }
+          %a.btn.btn-default.btn-small{:href=>"#"}
+            %span.glyphicon.glyphicon-user
+        .sjgm_sj
+          %a.btn.btn-default.btn-small{:href=>"#"}
+            %span.glyphicon.glyphicon-asterisk
+
+
   %ul
     %li.accout_ye
       我的余额
