@@ -1,0 +1,127 @@
+.reg_frame {
+  background: #f9f9f9;
+  display: block;
+  height: 500px;
+  width: 800px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.reg_title {
+  margin: 0 0 10px 30px;
+  padding-top: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #1bb3da;
+}
+
+.reg_desc {
+  padding: 0 0 20px 30px;
+  border-bottom: 1px dashed #e3e3e3;
+  color: #999;
+}
+
+.reg_radio {
+  margin: 20px 0 0 180px;
+  font-size: 14px;
+}
+
+.mradio {
+  margin-right: 6px;
+  display: inline-block;
+}
+
+.eradio {
+  margin-left: 100px;
+  display: inline-block;
+}
+
+.reg_item {
+  margin-top: 20px;
+  width:100%
+}
+
+.dl_title {
+  width: 60px;
+  padding-left: 0px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 38px;
+  text-align: left;
+  display: inline-block;
+}
+
+.dl_input {
+  height: 38px;
+  margin-bottom: 12px;
+  vertical-align: middle;
+  display: inline-block;
+  width:65%
+}
+
+.dl_input input {
+  float: left;
+}
+
+.reg_input {
+  display: inline-block;
+  height: 20px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #e3e3e3;
+  border-top: 1px solid #ccc;
+  width: 252px;
+  background: #fff image-url('main/input_bgs.png') 0 -118px repeat-x;
+  box-shadow: 0 1px 1px #fff;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;
+
+
+}
+
+.val_m {
+  vertical-align: middle;
+}
+
+.submitbtn{
+  margin-right:130px;
+}
+
+#email-frame{
+  display:none;
+}
+#phone-frame{
+
+}
+
+.code-area{
+  width:106px;
+}
+.code-btn{
+  display: inline-block;
+  width: 120px;
+  font-size: 14px;
+  padding-top: 0;
+  height: 38px;
+  width: 90px;
+  color: #000;
+  font-weight: normal;
+  margin-left: 4px;
+  background: image-url('main/input_bgs.png') 0 -40px repeat-x;
+  box-shadow: 0 1px 1px #f0f0f0;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.nosend{
+  color: #999;
+}
+
+.promo-info{
+  vertical-align: bottom;
+  display: inline-block;
+  padding-bottom:7px;
+  padding-left:20px;
+  color: #999;
+}
