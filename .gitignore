@@ -6,7 +6,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
+Gemfile*
 *.swp
 *.orig
 /public/assets
