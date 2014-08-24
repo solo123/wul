@@ -17,7 +17,6 @@
 $.extend($.fn, {
 	// http://jqueryvalidation.org/validate/
 	validate: function( options ) {
-
 		// if nothing is selected, return nothing; can't chain anyway
 		if ( !this.length ) {
 			if ( options && options.debug && window.console ) {
@@ -130,7 +129,6 @@ $.extend($.fn, {
 	rules: function( command, argument ) {
 		var element = this[ 0 ],
 			settings, staticRules, existingRules, data, param, filtered;
-
 		if ( command ) {
 			settings = $.data( element.form, "validator" ).settings;
 			staticRules = settings.rules;

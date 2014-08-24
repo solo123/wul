@@ -15,6 +15,10 @@ Wooul::Application.routes.draw do
 
   resources :accounts
 
+  post '/regist', to: 'auth#regist'
+  get '/success', to: 'auth#success'
+  post '/checkmobile', to: 'auth#checkmobile'
+
   devise_for :users
 	#root :to => ''
   comfy_route :cms_admin, :path => '/cms-admin'

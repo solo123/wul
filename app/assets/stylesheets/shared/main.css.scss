@@ -905,6 +905,51 @@ footer#footer {
   float: right;
 }
 
+
+.tthp{
+  width:100%;
+  background-color:#fff;
+  border: 1px solid #e7eaec;
+}
+.tthp>.table>tbody>tr>td{
+  padding-top:40px;
+  text-align:center;
+  border-bottom:0px solid #ddd;
+  padding-bottom:10px;
+}
+
+.yy-zgy{
+  padding-left:5%;
+}
+.yy-zgy li{
+  float:left;
+}
+.yy-zhuan{
+  margin-left:10px;
+  background-color: #999;
+  border-radius: 5px;
+}
+
+.yy-yszf{
+  padding-left:20%;
+}
+.yy-yszf li{
+  float:left;
+  margin-left:10px;
+}
+
+.yy-pro{
+  height:15px;
+  margin-bottom:10px;
+}
+
+.yy-time{
+  margin-top:-5px;
+}
+.yy-time li{
+  margin-bottom:5px;
+}
+
 .monthly-interest .auxiliary-info {
   clear: both;
   margin: 12px 0;

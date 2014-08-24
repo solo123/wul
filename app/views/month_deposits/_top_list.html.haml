@@ -1,5 +1,5 @@
-- panel_styles = %w"panel-warning panel-success panel-info"
-.deposit_item.row
-  - MonthDeposit.where(:display => "show").limit(3).each_with_index do |obj, idx|
-    = render 'month_deposits/item', obj: obj, p_style: panel_styles[idx]
+.row.tthp
+  %table.table
+    - MonthDeposit.where(:display => "show").limit(3).each_with_index do |obj, idx|
+      = render 'month_deposits/item', obj: obj
 

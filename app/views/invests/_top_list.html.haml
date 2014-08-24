@@ -1,20 +1,4 @@
-%table.table.table-hover
-  %thead
-    %tr
-      %th 借款用途
-      %th 信用等级
-      %th 年化利率
-      %th 金额
-      %th 期限
-      %th 进度
-      %th
-  %tbody
-    - Invest.limit(5).each do |invest|
-      %tr
-        %td= link_to invest.usage, invest
-        %td= invest.credit_level
-        %td= invest.annual_rate
-        %td= invest.amount
-        %td= invest.repayment_period
-        %td 0%
-        %td button
+.row.tthp
+  %table.table
+    - Invest.where(:onsale => true).limit(5).each_with_index do |obj, idx|
+      = render 'invests/item', obj: obj
