@@ -17,10 +17,15 @@ Wooul::Application.routes.draw do
 
   post '/regist', to: 'auth#regist'
   get '/success', to: 'auth#success'
-  post '/checkmobile', to: 'auth#checkmobile'
 
-  devise_for :users
-	#root :to => ''
+  devise_for :users, controllers: { registrations: "auth" }, path: "reg", path_names: {sign_up: 'signup'}
+  devise_scope :user do
+    post "/checkmobile" => "auth#checkmobile"
+    post "/get_code" => "auth#get_code"
+    post "/new_user" => "auth#create"
+  end
+
+  #root :to => ''
   comfy_route :cms_admin, :path => '/cms-admin'
 
   resources :notices
@@ -39,18 +44,18 @@ Wooul::Application.routes.draw do
     end
   end
 
-	resource :home
-	get 'accounts/:action', to: 'accounts'
-	put 'accounts/:action', to: 'accounts'
-	#resources :accounts do
-	#  collection do 	
+  resource :home
+  #get 'accounts/:action', to: 'accounts'
+  #put 'accounts/:action', to: 'accounts'
+  #resources :accounts do
+  #  collection do
   #		get :secure
-	#  	get :password
-	#		get :my_account
-	#		put :password_update
-	#	  get 'sec/:action'
-	#	end
-	#end
+  #  	get :password
+  #		get :my_account
+  #		put :password_update
+  #	  get 'sec/:action'
+  #	end
+  #end
 
   namespace :usercenter do
     get '/', to: 'console#index'

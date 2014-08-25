@@ -20,7 +20,7 @@ $(document).ready(function () {
         success: showResponse, // post-submit callback
 
         // other available options:
-        url: '/regist', // override for form's 'action' attribute
+        url: '/new_user', // override for form's 'action' attribute
         type: 'post', // 'get' or 'post', override for form's 'method' attribute
         dataType: 'script', // 'xml', 'script', or 'json' (expected server response type)
         clearForm: false // clear all form fields after successful submit

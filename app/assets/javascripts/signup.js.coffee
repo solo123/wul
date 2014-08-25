@@ -22,7 +22,12 @@ $ ->
 
 $ ->
   $("#getcode").click ->
-    alert "验证码已经发送，请查收"
+    $.post(
+      "/get_code"
+      phone_num: $("#reg_phone").val()
+      -> alert('done')
+      'script'
+    )
     $("#getcode").attr('disabled',true)
     $("#getcode").css('background','white')
     $("#getcode").css('color','#999')
