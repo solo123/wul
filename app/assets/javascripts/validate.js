@@ -29,6 +29,7 @@ $(document).ready(function () {
 
     $('#reg_form_phone').ajaxForm(optionsreg);
 
+
     $("#reg_form_phone").validate({
         focusInvalid: true,
         focusCleanup: false,
@@ -76,13 +77,6 @@ $(document).ready(function () {
         errorPlacement: function (error, element) {
             error.appendTo(element.parent().parent().next());
         },
-
-        /*submitHandler : function(form) {
-
-         $("#loginform").ajaxSubmit();
-         return false;
-         },*/
-
         errorClass: "help-inline",
         errorElement: "span"
     });
