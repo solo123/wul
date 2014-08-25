@@ -18,7 +18,7 @@ Wooul::Application.routes.draw do
   post '/regist', to: 'auth#regist'
   get '/success', to: 'auth#success'
 
-  devise_for :users, controllers: { registrations: "auth" }, path: "reg", path_names: {sign_up: 'signup'}
+  devise_for :users, controllers: { registrations: "auth" }
   devise_scope :user do
     post "/checkmobile" => "auth#checkmobile"
     post "/get_code" => "auth#get_code"

@@ -1,7 +1,8 @@
 function showRequest(formData, jqForm, options) {
     var queryString = $.param(formData);
     alert(queryString);
-    return true;
+   // return $('#searchForm').validate().form();
+    //return true;
 }
 
 $(document).ready(function () {
@@ -16,7 +17,10 @@ $(document).ready(function () {
     };
 
     var optionsreg = {
-        beforeSubmit : showRequest, // pre-submit callback
+        //beforeSubmit : showRequest, // pre-submit callback
+        beforeSubmit: function() {
+            return $('#reg_form_phone').validate().form()
+        },
         success: showResponse, // post-submit callback
 
         // other available options:
@@ -39,8 +43,16 @@ $(document).ready(function () {
                 required: true,
                 remote: {
                     url: "/checkmobile",
-                    type: "post"
+                    type: "post",
+                    complete: function(data){
+                        if( data.responseText == "false" ) {
+                           disablecode();
+                        }
+                        else {
+                            enablecode();
+                        }
                     }
+                 }
                 },
             reg_password:{
               required:true,
@@ -96,7 +108,18 @@ function showResponse(responseText, statusText, xhr, $form) {
 
 function regsuccess() {
 }
+function enablecode() {
+    $("#getcode").attr('disabled', false)
+    $("#getcode").css('color', 'black')
+    $("#getcode").css('background', 'orange')
+}
 
+
+function disablecode() {
+    $("#getcode").attr('disabled',true)
+    $("#getcode").css('background','white')
+    $("#getcode").css('color','#999')
+}
 function regfail() {
 }
 

@@ -5,8 +5,8 @@
     %li= link_to '退出登录', destroy_user_session_path, method: :delete
   - else
     %li
-      %a{:href => "/users/sign_up"} 免费注册
+      %a{:href => new_user_registration_path} 免费注册
     %li
-      %a{:href => "/users/sign_in"} 已有账号？
+      %a{:href => new_user_session_path} 已有账号？
   %li
     %a{:href => "#"} 帮助
