@@ -1,4 +1,4 @@
-class AuthController < ApplicationController
+class AuthController < Devise::SessionsController
   def regist
     render :js => "alert('helloworld')"
     #render :js => "window.location.href = '/success'"
