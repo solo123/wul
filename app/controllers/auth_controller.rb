@@ -16,6 +16,16 @@ class AuthController < Devise::SessionsController
     end
   end
 
+
+  def checkemail
+    if User.exists?(:email => params[:reg_email])
+      render :json => "false" and return
+    else
+      render :json => "true" and return
+    end
+  end
+
+
   def get_code
     valid = Verification.where(:phone => params[:phone_num]).first
     verify_code = rand(10 ** 6)
@@ -32,32 +42,56 @@ class AuthController < Devise::SessionsController
   end
 
   def create
-    valid = Verification.where(:phone => params[:reg_phone]).first
-    if valid
-       if User.exists?(:mobile => valid.phone)
-         render :js => "alert('电话号码已经存在,请用别的号码注册')" and return
-       end
-       if valid.verify_code == params[:reg_code]
-         u=User.new
-         u.mobile = valid.phone
-         u.password = u.password_confirmation = params[:reg_password]
-         u.save!
-         valid.phonetime = Time.now
-         u.user_info.verification = valid
-         valid.save!
-         render :js => "window.location.href = '/success'" and return
-         #render :js => "alert('验证通过')" and return
-       end
+    if params[:reg_email]
+      create_email(params)
     else
-      logger.info("position 3")
+      create_mobile(params)
+    end
+  end
+
+  def create_email(params)
+    if User.exists?(:email => params[:reg_email])
+      render :js => "alert('邮件地址已经被使用,请用别的邮箱注册')" and return
+    end
+
+    user = User.new
+    user.email = params[:reg_email]
+    user.password = user.password_confirmation = params[:reg_email_pass]
+    user.save!
+
+    verify = Verification.new
+    verify.email = params[:reg_email]
+    verify.emailstatus = "confirming"
+    verify.email_code = "111111"
+    user.user_info.verification = verify
+    verify.save!
+    render :js => "window.location.href = '/success'" and return
+
+  end
+
+  def create_mobile(params)
+    if valid = Verification.where(:phone => params[:reg_phone]).first
+      if User.exists?(:mobile => valid.phone)
+        render :js => "alert('电话号码已经存在,请用别的号码注册')" and return
+      end
+
+      if valid.verify_code == params[:reg_code]
+        u = User.new
+        u.mobile = valid.phone
+        u.password = u.password_confirmation = params[:reg_password]
+        u.save!
+        valid.phonetime = Time.now
+        valid.phonestatus = "verified"
+        valid.securyscore += 1
+        u.user_info.verification = valid
+        valid.save!
+        render :js => "window.location.href = '/success'" and return
+        #render :js => "alert('验证通过')" and return
+      end
+    else
       render :js => "alert('验证没有通过')" and return
     end
-    logger.info("position 4")
     render :js => "alert('验证码无效,请重新申请')" and return
-
-    #super do |resource|
-    # BackgroundWorker.trigger(resource)
-    #end
   end
 
 end

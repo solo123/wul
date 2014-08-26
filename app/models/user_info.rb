@@ -6,7 +6,7 @@ class UserInfo < ActiveRecord::Base
 	belongs_to :user
   attr_accessor :sec_progress
 
-  after_create :create_verification
+  #after_create :create_verification
 
   def create_verification
    vef = Verification.new
