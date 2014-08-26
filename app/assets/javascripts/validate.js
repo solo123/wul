@@ -16,14 +16,11 @@ $(document).ready(function () {
         clearForm: false // clear all form fields after successful submit
     };
 
-    var optionsreg = {
-        //beforeSubmit : showRequest, // pre-submit callback
+    var optionsphone = {
         beforeSubmit: function() {
             return $('#reg_form_phone').validate().form()
         },
-        //success: showResponse, // post-submit callback
 
-        // other available options:
         url: '/new_user', // override for form's 'action' attribute
         type: 'post', // 'get' or 'post', override for form's 'method' attribute
         dataType: 'script', // 'xml', 'script', or 'json' (expected server response type)
@@ -31,8 +28,76 @@ $(document).ready(function () {
         //resetForm: true        // reset the form after successful submit
     };
 
-    $('#reg_form_phone').ajaxForm(optionsreg);
 
+    var optionsmail = {
+        beforeSubmit: function() {
+            return $('#reg_form_email').validate().form()
+        },
+
+        url: '/new_user', // override for form's 'action' attribute
+        type: 'post', // 'get' or 'post', override for form's 'method' attribute
+        dataType: 'script', // 'xml', 'script', or 'json' (expected server response type)
+        clearForm: false // clear all form fields after successful submit
+        //resetForm: true        // reset the form after successful submit
+    };
+
+    $('#reg_form_phone').ajaxForm(optionsphone);
+    $('#reg_form_email').ajaxForm(optionsmail);
+
+    $('#reg_form_email').validate({
+        focusInvalid : true,
+        focusCleanup : false,
+        onkeyup : false,
+        rules : {
+            reg_email_pass : {
+                required : true,
+                minlength : 6
+            },
+            reg_email_conf : {
+                required : true,
+                minlength : 6,
+                equalTo : "#reg_email_pass"
+            },
+            reg_email : {
+                required : true,
+                email : true,
+                remote : {
+                    url : "/checkemail",
+                    type : "post"
+                }
+            }
+
+        },
+        messages : {
+            reg_email_pass : {
+                required : "密码不能为空",
+                minlength : "密码至少为6位"
+            },
+            reg_email_conf : {
+                required : "请确认密码",
+                minlength : "密码至少为6位",
+                equalTo : "两次输入密码不一致"
+            },
+
+            reg_email : {
+                required : "请输入您的邮件地址",
+                email : "请输入有效邮件地址",
+                remote : "该邮件地址已被使用"
+            }
+        },
+        errorPlacement : function(error, element) {
+            error.appendTo(element.parent().parent().next());
+        },
+
+        /*submitHandler : function(form) {
+
+         $("#loginform").ajaxSubmit();
+         return false;
+         },*/
+
+        errorClass : "help-inline",
+        errorElement : "span",
+    });
 
     $("#reg_form_phone").validate({
         focusInvalid: true,

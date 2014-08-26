@@ -52,17 +52,20 @@
         .dl_title
           &nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;邮箱:
         .dl_input
-          = f.text_field :username, class: "form-control", :autofocus => true
+          %input.form-control#reg_email{:type => "text",:autofocus => true, :name => "reg_email"}
+      .reg_error
       .reg_item
         .dl_title
           设置密码:
         .dl_input
-          = f.text_field :username, class: "form-control"
+          %input.form-control#reg_email_pass{:type => "text", :name => "reg_email_pass"}
+      .reg_error
       .reg_item
         .dl_title
           确认密码:
         .dl_input
-          = f.text_field :username, class: "form-control"
+          %input.form-control#reg_email_conf{:type => "text", :name => "reg_email_conf"}
+      .reg_error
       %input.btn.btn-default.pull-right.submitbtn{:type => "submit", :value => "立即注册"}
 
     -# = devise_error_messages!
