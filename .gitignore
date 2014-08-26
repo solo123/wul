@@ -9,4 +9,6 @@
 Gemfile*
 *.swp
 *.orig
+/public/assets
+/public/system
 
