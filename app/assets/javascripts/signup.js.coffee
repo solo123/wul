@@ -25,7 +25,6 @@ $ ->
     $.post(
       "/get_code"
       phone_num: $("#reg_phone").val()
-      -> alert('done')
       'script'
     )
     $("#getcode").attr('disabled',true)

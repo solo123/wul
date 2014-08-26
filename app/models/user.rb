@@ -5,20 +5,25 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
 
-	validates :username,
-    :uniqueness => {
-      :case_sensitive => false
-    }
+	#validates :username,
+   # :uniqueness => {
+   #   :case_sensitive => false
+   # }
   attr_accessor :login
-	has_one :user_info, :dependent=>:destroy, :autosave=>true
+	has_one :user_info, :dependent => :destroy, :autosave => true
   has_many :bankcards
   has_many :coupons
   has_many :orders
   after_create :create_userinfo
-
+  before_create :init_username
 	def email_required?
 		false
   end
+
+  def init_username
+    self.username = self.mobile || self.email
+  end
+
 
   def create_userinfo
     uinfo = UserInfo.new
@@ -33,10 +38,15 @@ class User < ActiveRecord::Base
 
 	def self.find_first_by_auth_conditions(warden_conditions)
 		conditions = warden_conditions.dup
+    #self.username =conditions[:login]
 		if login = conditions.delete(:login)
-			where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-		else
+      logger.info(login)
+      where(conditions).where(["lower(mobile) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      logger.info("111111111111111")
 			where(conditions).first
 		end
-	end
+  end
+
+
 end

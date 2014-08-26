@@ -21,7 +21,7 @@ $(document).ready(function () {
         beforeSubmit: function() {
             return $('#reg_form_phone').validate().form()
         },
-        success: showResponse, // post-submit callback
+        //success: showResponse, // post-submit callback
 
         // other available options:
         url: '/new_user', // override for form's 'action' attribute

@@ -16,13 +16,13 @@ Wooul::Application.routes.draw do
   resources :accounts
 
   post '/regist', to: 'auth#regist'
-  get '/success', to: 'auth#success'
 
   devise_for :users, controllers: { registrations: "auth" }
   devise_scope :user do
     post "/checkmobile" => "auth#checkmobile"
     post "/get_code" => "auth#get_code"
     post "/new_user" => "auth#create"
+    get "/success" => "auth#success"
   end
 
   #root :to => ''

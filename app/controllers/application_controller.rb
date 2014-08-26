@@ -15,13 +15,14 @@ class ApplicationController < ActionController::Base
         request.path != "/users/password/new" &&
         request.path != "/users/confirmation" &&
         request.path != "/users/sign_out" &&
+        request.path != "/success" &&
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath
     end
   end
 
   def after_sign_in_path_for(resource)
-    session[:previous_url] || root_path
+     session[:previous_url] || root_path
   end
 
 
@@ -30,7 +31,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email, :password, :remember_me) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email, :password, :remember_me, :login) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
   end
 end
