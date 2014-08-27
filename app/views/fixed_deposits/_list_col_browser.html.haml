@@ -5,14 +5,18 @@
       %span
         = link_to "#{obj.deposit_number}", fixed_deposit_path(obj)
   %td
-    #{obj.annual_rate} %
+    .text-center
+      #{obj.annual_rate} %
   %td
-    #{obj.repayment_period} 个月
+    .text-center
+      #{obj.repayment_period} 个月
   %td
     - progess = (obj.total_amount - obj.free_invest_amount) *100 / obj.total_amount
-    #{number_with_precision progess, precision: 2}%
+    .text-center
+      #{number_with_precision progess, precision: 2}%
   %td
-    #{obj.total_amount}
+    .text-center
+      #{obj.total_amount}
   %td
     %a.btn.btn-info{:href => "#{obj.current_action}"}
       #{obj.current_operation}

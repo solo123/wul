@@ -4,17 +4,18 @@
       %li
         月月盈
         %span
-          = obj.deposit_number
+          %a.a-inline{:href => month_deposit_path(obj)}
+            = obj.deposit_number
       %li
         %a{:href => "#"}
           %span.badge.yy-zhuan
-            转
+            月
   %td
-    13.5%
+    #{obj.annual_rate}%
   %td
-    $32988.95
+    ="￥#{obj.free_invest_amount}"
   %td
-    12个月
+    ="#{obj.repayment_period}个月"
   %td
     %ul.yy-yszf
       %li
@@ -26,21 +27,19 @@
   %td
     %ul
       %li
+        - current_progress = (obj.amount - obj.free_invest_amount) * 100 / obj.amount
         .progress.yy-pro
-          .bar{:style => "width:60%"}
+          .bar{:style => "width:#{current_progress}%"}
       %li
         已投资
         %span
-          50%
+          #{number_with_precision current_progress, precision: 0}%
   %td
     %ul.yy-time
       %li
-        %button.btn.btn-info{:type => "button"}
-          立即投标
+        %a.btn.btn-info{:href => month_deposit_path(obj)}
+          马上加入
       %li
-        %span.glyphicon.glyphicon-dashboard
-        %span
-          11.29 15:14
 
 
 

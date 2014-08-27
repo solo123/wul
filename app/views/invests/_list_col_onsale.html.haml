@@ -1,14 +1,30 @@
-%div.list_item
-  .table_cell.col1
-    = link_to "#{obj.product_name} #{obj.loan_number}", invest_path(obj)
-  .table_cell.col2
-    #{obj.product.annual_rate} %
-  .table_cell.col3
-    3 个月
-  .table_cell.col4
-    #{obj.amount}
-  .table_cell.col5
-    #{obj.amount}
-  .table_cell.col6
-    = link_to "购买",  invest_path(obj)
+%tr
+  %td
+    %p
+      = dict[obj.invest_type]
+      %a{:href => invest_path(obj)}
+        ="#{obj.loan_number}"
+  %td
+    .text-center
+      #{obj.product.annual_rate} %
+  %td
+    .text-center
+      #{obj.product.repayment_period} 个月
+  %td
+    .text-center
+      #{obj.amount}
+  %td
+    .text-center
+      #{obj.amount}
+  %td
+    %a.btn.btn-info{:href => invest_path(obj)}
+      购买
+
+
+
+
+
+
+
+
 

@@ -21,7 +21,12 @@ class Invest < ActiveRecord::Base
   end
 
   def product_name
-    "定存宝" if self.invest_type == "fixed"
-    "月月盈" if self.invest_type == "month"
+    if self.invest_type == "fixed"
+      "定存宝"
+    elsif self.invest_type == "month"
+      "月月盈"
+    else
+      ""
+    end
   end
 end

@@ -178,7 +178,7 @@ font-size:30px;
   padding-bottom:2%;
 }
 .wytz-dqb{
-  margin-top:4%;
+  margin-top:3%;
   text-align:center;
 }
 .wytz-dqb th {
@@ -229,4 +229,16 @@ font-size:30px;
   color:#727272;
   font-size:24px;
   font-family: Microsoft YaHei;
+}
+
+.invest-list-frame{
+  margin-right: 0;
+  margin-left: 2px;
+  padding:15px 0 30px 0;
+  background-color: #fff;
+  border:1px solid #d2d2d2;
+  border-radius: 4px 4px 4px 4px;
+  /* -webkit-box-shadow: none; */
+  box-shadow: none;
+  margin-bottom: 4%;
 }

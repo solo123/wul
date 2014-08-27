@@ -1,0 +1,13 @@
+.login_frame.container
+  .login_logo
+    %img.logo_image{:src => image_url("main/wooul.png")}
+  .login-form-area
+    = form_for(resource, :as => resource_name, html: {class: "form-signin"}, :url => session_path(resource_name)) do |f|
+      = f.text_field :login, :autofocus => true, class: "form-control", placeholder: "注册手机号码/邮箱"
+      %br
+      = f.password_field :password, class: "form-control", placeholder: "密码"
+      %input.btn.btn-block.btn-wooul.btn-lg.submitbtn{:type => "submit", :value => "登入"}
+      %a.pull-right.login-link{:href => new_password_path(resource_name) }
+        忘记密码?
+      %a.btn.btn-block.btn-default.btn-lg.login-reg-btn{:href => new_user_registration_path}
+        注册新帐号

@@ -1,19 +1,44 @@
-.container
-  .invest_banner
-    .invest_title
-      %a.btn{:href=> "/invests"} 返回
-      转让专区
-      = render "shared/balance"
-  .fixeddep_table
-    %ul.table_head
-      %li.head_col.col1 名称
-      %li.head_col.col2 实际收益率
-      %li.head_col.col3 剩余期限
-      %li.head_col.col4 转让价格
-      %li.head_col.col5 剩余金额
-      %li.head_col.col6 操作
-    .fixed-deposits
-      - @invests.each do |obj|
-        = render 'invests/list_col_onsale', obj: obj
+.header
+  .container
+    .row.wytz
+      .span9
+        %h1
+          我要投资&nbsp;/&nbsp;转让专区
+        %p.lead.headerp
+      .span3
+        %a.btn.btn-default.pull-right{:href => new_user_session_path }
+          您尚未登录
+.wytz-dqb
+  .container
+    .invest-list-frame
+      - dict = {'fixed' => '定存宝',
+                  'month' => '月月盈'}
+      %table.table
+        %thead
+          %tr
+            %th
+              名称
+            %th
+              实际收益率
+            %th
+              剩余期限
+            %th
+              转让价格
+            %th
+              剩余金额
+            %th
+              操作
+        %tbody
+          - @invests.each do |obj|
+            = render 'invests/list_col_onsale', obj: obj , dict: dict
+
+
+
+
+
+
+
+
+
 
 

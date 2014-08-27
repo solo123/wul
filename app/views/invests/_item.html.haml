@@ -2,19 +2,20 @@
   %td{:width => "200"}
     %ul.yy-zgy
       %li
-        月月盈
+        = dict[obj.invest_type]
         %span
-          = obj.product.deposit_number
+          %a.a-inline{:href => invest_path(obj)}
+            = obj.product.deposit_number
       %li
         %a{:href => "#"}
           %span.badge.yy-zhuan
             转
   %td
-    13.5%
+    #{obj.product.annual_rate}%
   %td
-    $32988.95
+    ="￥#{obj.amount}"
   %td
-    12个月
+    ="#{obj.product.repayment_period}个月"
   %td
     %ul.yy-yszf
       %li
@@ -26,16 +27,12 @@
   %td
     %ul
       %li
-        .progress.yy-pro
-          .bar{:style => "width:60%"}
-      %li
-        已投资
-        %span
-          50%
+        折让率
+        = obj.discount_rate
   %td
     %ul.yy-time
       %li
-        %button.btn.btn-info{:type => "button"}
+        %a.btn.btn-info{:href => invest_path(obj)}
           立即投标
       %li
         %span.glyphicon.glyphicon-dashboard
