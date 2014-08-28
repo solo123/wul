@@ -1,10 +1,11 @@
 class FixedDepositsController < ResourcesController
   def index
-    @fixed_deposits = FixedDeposit.where(:display => "show")
-    if current_user
-       @invests = current_user.user_info.invests
-       @orders = current_user.orders
-    end
+    pages=10
+    @fixed_deposits = FixedDeposit.where(:display => "show").paginate(:page => params[:page], :per_page => pages)
+    #if current_user
+       #@invests = current_user.user_info.invests
+       #@orders = current_user.orders
+    #end
   end
 
   def join
@@ -27,7 +28,7 @@ class FixedDepositsController < ResourcesController
       @product.free_invest_amount -= invest.amount
       current_user.user_info.account.balance -= invest.amount
       current_user.save!
-      @product.owner_num +=1
+      @product.owner_num += 1
       @product.save!
       #invest.profit_date = @product.join_date
       invest.invest_type = "fixed"

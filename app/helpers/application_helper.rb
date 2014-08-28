@@ -21,14 +21,19 @@ module ApplicationHelper
 	end
 
 	def current_main_menu
+    dict = {
+        "/invests" => "invest",
+        "/usercenter" => "account",
+        "/about" => "about",
+        "/fixed_deposits" => "invest",
+        "/month_deposits" => "invest",
+    }
 	  menu_key = 'home'
-		if request.path.start_with?('/invests') 
-			menu_key = 'invest'
-		elsif request.path.start_with?('/account')
-			menu_key = 'account'
-		elsif request.path.start_with?('/about')
-			menu_key = 'about'
-		end
+    dict.each do |k,v|
+      if request.path.start_with?(k)
+        menu_key = v
+      end
+    end
 		menu_key
 	end
 end
