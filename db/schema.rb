@@ -216,6 +216,7 @@ ActiveRecord::Schema.define(version: 20140826132038) do
     t.string   "product_type",                                  default: "fixed"
     t.string   "stage",                                         default: "未发布"
     t.string   "display",                                       default: "hide"
+    t.decimal  "fixed_amount",         precision: 10, scale: 0, default: 0
     t.datetime "profit_date"
     t.datetime "created_at"
     t.datetime "updated_at"
