@@ -31,7 +31,8 @@ class InvestsController < ApplicationController
 
 
   def onsale
-    @invests = Invest.where(:onsale => true)
+    pages=10
+    @invests = Invest.where(:onsale => true).paginate(:page => params[:page], :per_page => pages)
   end
 
   # GET /invests/1

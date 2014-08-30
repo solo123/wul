@@ -38,6 +38,12 @@ Wooul::Application.routes.draw do
     post :join
   end
 
+  get 'DCB', to: 'products#fixed_deposits', as: :product_fixed
+
+  # resources :products do
+  #   get :fixed_deposits
+  # end
+
   resources :invests do
     post :buy
     collection do

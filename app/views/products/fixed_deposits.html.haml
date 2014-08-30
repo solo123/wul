@@ -3,7 +3,7 @@
     .row.wytz
       .span9
         %h1
-          我要投资&nbsp;/&nbsp;月月盈
+          我要投资&nbsp;/&nbsp;定期宝
         %p.lead.headerp
       .span3
         = render "shared/balance"
@@ -22,16 +22,15 @@
             %th
               进度
             %th
-              剩余金额
+              金额
             %th
               操作
         %tbody
-          - @month_deposits.each do |obj|
-            = render 'month_deposits/list_col_browser', obj: obj
+          - @fixed_deposits.each do |obj|
+            = render 'fixed_deposits/list_col_browser', obj: obj
       .invest-pager-container
         .invest_pagination
-          = will_paginate @month_deposits, :container => false
-
+          = will_paginate @fixed_deposits, :container => false
 
 
 
