@@ -1,0 +1,9 @@
+.container
+  .invest_banner.row
+    .invest_title
+      %a.btn{:href=> "/products/#{@object.product_type}"} 返回
+      定存宝详情
+    .invest_title.pull-right
+      = render "shared/balance"
+  - @invests = @object.invests
+  = render "#{@object.product_type}_deposits/item_detail", obj:@object, invests:@invests

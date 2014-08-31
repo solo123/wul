@@ -38,7 +38,9 @@ Wooul::Application.routes.draw do
     post :join
   end
 
-  get 'DCB', to: 'products#fixed_deposits', as: :product_fixed
+  get '/products/:product_type', to: 'products#index', as: :product_list
+  get '/products/:product_type/:id', to: 'products#detail', as: :product_detail
+  post '/products/:product_type/:id/join', to: 'products#join', as: :product_join
 
   # resources :products do
   #   get :fixed_deposits

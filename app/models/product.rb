@@ -1,9 +1,9 @@
 class Product < ActiveRecord::Base
-  attr_accessor :invests, :current_action, :current_operation, :current_stage
-
-  def invests
-    Invest.where(:loan_number => self.deposit_number)
-  end
+  attr_accessor :current_action, :current_operation, :current_stage
+  has_many :invests
+  # def invests
+  #   Invest.where(:loan_number => self.deposit_number)
+  # end
 
   def current_stage
 
@@ -21,6 +21,18 @@ class Product < ActiveRecord::Base
   end
 
   def current_action
-
+    case self.current_stage
+      when "融资中"
+        "/products/#{self.product_type}/#{self.id}"
+      when "收益中"
+        "#"
+      when "已到期"
+        "#"
+    end
   end
+
+  def current_stage
+    self.stage
+  end
+
 end

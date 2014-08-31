@@ -1,6 +1,7 @@
 class Invest < ActiveRecord::Base
   belongs_to :user_info
-  attr_accessor :product, :product_name
+  belongs_to :product
+  attr_accessor :product_name
   def create_transaction(account)
     trans = Transaction.new
     trans.trans_type = "invest"

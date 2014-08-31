@@ -4,11 +4,5 @@
     = label :amount, '预约金额'
     = text_field_tag :product_value
     %br
-    - if current_user
-      当前可用余额 #{current_user.account.balance - current_user.account.frozen_balance}
-    %br
 .panel-footer
-  - if current_user
-    = submit_tag '加入', :class => "btn btn-primary"
-  - else
-    %a.btn.btn-primary{:href => new_user_session_path} 加入
+  %a.btn.btn-success{:href => new_user_session_path} 加入

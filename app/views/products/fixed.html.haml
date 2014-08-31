@@ -1,0 +1,39 @@
+.header
+  .container
+    .row.wytz
+      .span9
+        %h1
+          我要投资&nbsp;/&nbsp;定期宝
+        %p.lead.headerp
+      .span3
+        = render "shared/balance"
+.wytz-dqb
+  .container
+    .invest-list-frame
+      %table.table
+        %thead
+          %tr
+            %th
+              名称
+            %th
+              年化收益率
+            %th
+              期限
+            %th
+              进度
+            %th
+              金额
+            %th
+              操作
+        %tbody
+          - @collection.each do |obj|
+            = render 'fixed_deposits/list_col_browser', obj: obj
+      .invest-pager-container
+        .invest_pagination
+          = will_paginate @collection, :container => false
+
+
+
+
+
+

@@ -3,7 +3,7 @@
     %p
       定存宝
       %span
-        = link_to "#{obj.deposit_number}", fixed_deposit_path(obj)
+        = link_to "#{obj.deposit_number}", product_detail_path("fixed", obj)
   %td
     .text-center
       #{obj.annual_rate} %
