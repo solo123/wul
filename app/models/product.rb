@@ -17,6 +17,8 @@ class Product < ActiveRecord::Base
         "收益中"
       when "已到期"
         "回款中"
+      when "已结束"
+        "已结束"
     end
   end
 
@@ -27,6 +29,8 @@ class Product < ActiveRecord::Base
       when "收益中"
         "#"
       when "已到期"
+        "#"
+      when "已结束"
         "#"
     end
   end

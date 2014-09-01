@@ -1,4 +1,4 @@
-%h1 投资赎回
+%h4 投资赎回
 .detail_container
   .col-md-12
     %ul.nav.nav-tabs{:role=>"tablist"}
@@ -25,7 +25,6 @@
                 %th 待收本金
                 %th 折让率
                 %th 赎回金额
-                %th 状态
                 %th 赎回
               - @fixed_deposits.each do |f|
                 = form_tag usercenter_console_resell_path(f) do
@@ -36,9 +35,11 @@
                     %td= f.amount
                     %td= text_field_tag :discount_rate, nil, class: 'amount'
                     %td= f.amount
-                    %td= "可赎回"
                     %td
-                      %input.btn.btn-primary{:type => "submit",:value => "赎回"}
+                      - if f.product.premature_redemption == "yes"
+                        %input.btn.btn-primary{:type => "submit",:value => "赎回"}
+                      - else
+                        %input.btn.btn-default{:type => "button",:value => "无效" ,:disabled => "true"}
       %div.tab-pane{:id=>"month"}
         .panel
           .panel-body

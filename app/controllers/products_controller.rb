@@ -41,7 +41,8 @@ class ProductsController < ResourcesController
     invest.invest_type = "fixed"
     invest.annual_rate = product.annual_rate
     invest.amount = amount
-    invest.repayment_period = product.annual_rate
+    invest.loan_number = product.deposit_number
+    invest.repayment_period = product.repayment_period
     user.user_info.invests << invest
     @product.invests << invest
     user.user_info.account.balance -= amount
