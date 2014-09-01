@@ -27,9 +27,9 @@
               - @fixed_deposits.each do |f|
                 %tr
                   %td= "定存宝#{f.loan_number}"
-                  %td  #{number_with_precision f.product.annual_rate, precision: 2}%
+                  %td  #{number_with_precision f.annual_rate, precision: 2}%
                   %td= f.amount
-                  %td= "#{f.product.repayment_period}个月"
+                  %td= "#{f.repayment_period}个月"
                   %td
                     银盛担保
       %div.tab-pane{:id=>"month"}
@@ -45,8 +45,8 @@
                 - @month_deposits.each do |f|
                   %tr
                     %td= "月月盈#{f.loan_number}"
-                    %td  #{number_with_precision f.product.annual_rate, precision: 2}%
+                    %td  #{number_with_precision f.annual_rate, precision: 2}%
                     %td= f.amount
-                    %td= "#{f.product.repayment_period}个月"
+                    %td= "#{f.repayment_period}个月"
                     %td
                       银盛担保

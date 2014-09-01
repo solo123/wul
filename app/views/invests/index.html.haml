@@ -13,11 +13,11 @@
   .container
     .f-list.row
       .f-item.col-xs-6.col-sm-6
-        .icn
+        %a.icn{:href => product_list_path("fixed")}
           %img{:src => "images/main/wytz1.png"}
           %p 定期宝
       .f-item.col-xs-6.com-sm-6
-        .icn
+        %a.icn{:href => product_list_path("month")}
           %img{:src => "images/main/wytz2.png"}
           %p 月月盈
     .f-list.row
@@ -46,7 +46,7 @@
             %br
             3、6、12个月，不同期限满足不同流动性需求每月返还收益，支持收益复投，到期返还本金1000元即可加入，期限内可随时赎回
           %p
-            %a{:href => "/month_deposits"}
+            %a{:href => product_list_path("month")}
               查看更多
         .icn2
           %p

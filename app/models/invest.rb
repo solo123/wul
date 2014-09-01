@@ -2,6 +2,7 @@ class Invest < ActiveRecord::Base
   belongs_to :user_info
   belongs_to :product
   attr_accessor :product_name
+
   def create_transaction(account)
     trans = Transaction.new
     trans.trans_type = "invest"
@@ -11,14 +12,6 @@ class Invest < ActiveRecord::Base
     trans.operation_amount = self.amount
     trans.frozen_after = trans.frozen_before
     trans.save!
-  end
-
-  def product
-    if self.invest_type=="fixed"
-       FixedDeposit.where(:deposit_number => self.loan_number).first
-    elsif self.invest_type=="month"
-       MonthDeposit.where(:deposit_number => self.loan_number).first
-    end
   end
 
   def product_name

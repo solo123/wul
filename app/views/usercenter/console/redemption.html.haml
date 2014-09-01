@@ -31,7 +31,7 @@
                 = form_tag usercenter_console_resell_path(f) do
                   %tr
                     %td= f.loan_number
-                    %td  #{number_with_precision f.product.annual_rate, precision: 2}%
+                    %td  #{number_with_precision f.annual_rate, precision: 2}%
                     %td= "1"
                     %td= f.amount
                     %td= text_field_tag :discount_rate, nil, class: 'amount'

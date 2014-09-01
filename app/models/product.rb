@@ -35,4 +35,10 @@ class Product < ActiveRecord::Base
     self.stage
   end
 
+  def product_name
+    dict = {"fixed" => "定存宝",
+            "month" => "月月盈"}
+    dict[self.product_type]
+  end
+
 end

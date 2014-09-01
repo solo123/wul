@@ -5,7 +5,7 @@
         %h4 月月盈 #{obj.deposit_number}
       .panel-body
         %p.info
-          总额度: #{obj.amount}
+          总额度: #{obj.total_amount}
         %p.info
           年化收益率: #{obj.annual_rate}%
         %p.info
@@ -14,7 +14,7 @@
           个月
       .panel-footer
         %p.actions
-          - current_progress = (obj.amount - obj.free_invest_amount) * 100 / obj.amount
+          - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
           当前进度：#{number_with_precision current_progress, precision: 2}%
           .progress
             .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}

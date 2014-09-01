@@ -34,11 +34,14 @@ class ProductsController < ResourcesController
 
   def create_invest(amount, product, user)
     product.free_invest_amount -= amount
+    product.fixed_invest_amount += amount
     product.owner_num += 1
     product.save!
     invest = Invest.new
     invest.invest_type = "fixed"
+    invest.annual_rate = product.annual_rate
     invest.amount = amount
+    invest.repayment_period = product.annual_rate
     user.user_info.invests << invest
     @product.invests << invest
     user.user_info.account.balance -= amount

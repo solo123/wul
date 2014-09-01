@@ -1,4 +1,4 @@
-= form_tag month_deposit_join_path(obj) do
+= form_tag product_join_path("month", obj) do
    .panel{class: "panel-info"}
       .panel-heading
          %h4
@@ -10,7 +10,7 @@
          - invests = current_user.user_info.invests
          .panel-body
             - total_invest = 0
-            - invests.each{|inv| total_invest += inv.amount if inv.loan_number == obj.deposit_number }
+            - invests.each{|inv| total_invest += inv.amount if inv.product_id == obj.id }
             %p.info
                = label :amount, '投资金额'
                = text_field_tag :product_value

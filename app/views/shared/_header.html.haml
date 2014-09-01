@@ -1,15 +1,5 @@
 - menu_key = current_main_menu
 / Static navbar
-.header-tools
-  .container
-    .row
-      .col-md-6
-        .hotline
-          %span.glyphicon.glyphicon-earphone
-          %span.hottitle 客服热线
-          %span.numbers 4001-033-755
-      .col-md-6
-        = render 'shared/login_status'
 %header.navbar.navbar-default.navbar-static-top.header-top
   .container
     .navbar-header
@@ -44,4 +34,14 @@
               %a{:href => "#"} Separated link
             %li
               %a{:href => "#"} One more separated link
+.header-tools
+  .container
+    .row
+      .col-md-6
+        .hotline
+          %span.glyphicon.glyphicon-earphone
+          %span.hottitle 客服热线
+          %span.numbers 4001-033-755
+      .col-md-6
+        = render 'shared/login_status'
 

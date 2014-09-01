@@ -25,6 +25,6 @@
                      %br
          .panel-footer
             - if total_invest >= 100000
-               %a.btn.submitbtn 额度已满
+               %a.btn.btn-primary 额度已满
             - else
-               = submit_tag '加入', :class => "btn submitbtn"
+               = submit_tag '加入', :class => "btn btn-primary"
