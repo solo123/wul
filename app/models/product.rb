@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessor :current_action, :current_operation, :current_stage
+  attr_accessor :current_action, :current_operation, :current_stage, :remain_repayment_period
   has_many :invests
   # def invests
   #   Invest.where(:loan_number => self.deposit_number)
@@ -7,6 +7,16 @@ class Product < ActiveRecord::Base
 
   def current_stage
 
+  end
+
+  def remain_repayment_period
+    months_between(self.profit_date, self.expiring_date)
+  end
+
+
+
+  def months_between(begin_date, end_date)
+    (end_date.year * 12 + end_date.month) - (begin_date.year * 12 + begin_date.month)
   end
 
   def current_operation

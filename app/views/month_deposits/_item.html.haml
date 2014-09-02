@@ -4,7 +4,7 @@
       %li
         月月盈
         %span
-          %a.a-inline{:href => month_deposit_path(obj)}
+          %a.a-inline{:href => product_detail_path("month",obj)}
             = obj.deposit_number
       %li
         %a{:href => "#"}
@@ -27,7 +27,7 @@
   %td
     %ul
       %li
-        - current_progress = (obj.amount - obj.free_invest_amount) * 100 / obj.amount
+        - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
         .progress.yy-pro
           .bar{:style => "width:#{current_progress}%"}
       %li
@@ -37,7 +37,7 @@
   %td
     %ul.yy-time
       %li
-        %a.btn.btn-info{:href => month_deposit_path(obj)}
+        %a.btn.btn-info{:href => product_detail_path("month",obj)}
           马上加入
       %li
 

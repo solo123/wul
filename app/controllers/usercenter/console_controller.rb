@@ -64,7 +64,7 @@ module Usercenter
       invest = Invest.find(params[:format])
       invest.onsale = true
       rate = params[:discount_rate].to_f
-      invest.amount = invest.amount * (100 - rate) /100
+      invest.resell_price = invest.amount * (100 - rate) /100
       invest.discount_rate = rate
       invest.save!
       redirect_to usercenter_console_redemption_path

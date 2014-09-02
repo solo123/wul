@@ -38,7 +38,7 @@ class ProductsController < ResourcesController
     product.owner_num += 1
     product.save!
     invest = Invest.new
-    invest.invest_type = "fixed"
+    invest.invest_type = product.product_type
     invest.annual_rate = product.annual_rate
     invest.amount = amount
     invest.loan_number = product.deposit_number

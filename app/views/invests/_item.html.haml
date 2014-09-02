@@ -13,15 +13,15 @@
   %td
     #{obj.product.annual_rate}%
   %td
-    ="￥#{obj.amount}"
+    ="￥#{obj.resell_price}"
   %td
-    ="#{obj.product.repayment_period}个月"
+    ="#{obj.product.remain_repayment_period}个月"
   %td
     %ul.yy-yszf
       %li
         %img{:src => image_url("main/indexmain7.png")}
       %li
-        银盛支付
+        ="#{obj.product.guarantee}"
       %li
         担保
   %td
@@ -34,10 +34,7 @@
       %li
         %a.btn.btn-info{:href => invest_path(obj)}
           立即投标
-      %li
-        %span.glyphicon.glyphicon-dashboard
-        %span
-          11.29 15:14
+
 
 
 

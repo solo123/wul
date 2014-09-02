@@ -51,17 +51,18 @@
                 %th 待收本金
                 %th 折让率
                 %th 赎回金额
-                %th 状态
                 %th 赎回
-                - @month_deposits.each do |f|
+              - @month_deposits.each do |f|
+                = form_tag usercenter_console_resell_path(f) do
                   %tr
                     %td= f.loan_number
-                    %td= "12%"
+                    %td  #{number_with_precision f.annual_rate, precision: 2}%
                     %td= "1"
-                    %td= "1200"
-                    %td= "1.2%"
-                    %td= "1190"
-                    %td= ""
-                    %td= "赎回"
-          .panel-foot
-            .btn.pull-right.btn-primary 赎回
+                    %td= f.amount
+                    %td= text_field_tag :discount_rate, nil, class: 'amount'
+                    %td= f.amount
+                    %td
+                      - if f.product.premature_redemption == "yes"
+                        %input.btn.btn-primary{:type => "submit",:value => "赎回"}
+                      - else
+                        %input.btn.btn-default{:type => "button",:value => "无效" ,:disabled => "true"}
