@@ -1,17 +1,40 @@
+ {{ cms:asset:about-wooul:css:html_tag }}
 
-<div class="primary-container">
-  
-<div class="container">
-  <div class="row row-offcanvas row-offcanvas-right">
-    <div class="col-xs-12 col-sm-9">
-      {{ cms:snippet:about-banner }}
-      {{ cms:page:content:text }}
-    </div><!--/span-->
-    
+<div class="abust">
+  <div class="container con1">
+    <div class="row abh">
+      <h3>关于我们</h3>
+      <p>沃银网作为第三方金融服务综合平台，服务和产品有所不同，但相互补充，为金融机构、企业和个人共同提供综合金融服务</p>
+      <p>沃银网承诺保障您投入的每一分理财金。多重保障方式让您理财更安心。</p>
+    </div>
+  </div>
+</div>
+<div class="container con1">
+  <div class="row con2">
+    <div class="col-md-9">
+       {{cms:page:content}}
+    </div>
+    <div class="col-md-3 abnav">
+      <div class="list-group">
+        <a href="/about/company" class="list-group-item item ibj">关于我们</a>
+        <a href="/about/team" class="list-group-item item">团队介绍</a>
+        <a href="/about/partner" class="list-group-item item">合作伙伴</a>
+        <a href="#" class="list-group-item item">专家顾问</a>
+        <a href="/press" class="list-group-item item">官方公告</a>
+        <a href="/about/jobs" class="list-group-item item">诚聘英才</a>
+        <a href="/laws" class="list-group-item item ibj">法律法规</a>
+        <a href="/media" class="list-group-item item ibj">媒体报道</a>
+        <a href="/about/contact" class="list-group-item item ibj">联系我们</a>
+        <a href="/support" class="list-group-item item ibj">帮助中心</a>
+        <a href="/topics/novice" class="list-group-item item ibj">新手指引</a>
+      </div>
+    </div>
+  </div>
+</div>
     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
 		{{ cms:snippet:about-sidebar }}
     </div><!--/span-->
   </div><!--/row-->
-</div>
+
 </div>
 

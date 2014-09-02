@@ -1,7 +1,7 @@
 ---
-label: "联系我们"
+label: "新手加入"
 layout: about-wooul
-parent: about
+parent: topics
 target_page: 
 categories: []
 is_published: true

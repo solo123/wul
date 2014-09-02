@@ -1,8 +1,8 @@
 ---
-label: "关于Wooul"
+label: "加入我们"
 layout: about-wooul
-parent: index
-target_page: "/about/company"
+parent: about
+target_page: 
 categories: []
 is_published: true
 position: 9
