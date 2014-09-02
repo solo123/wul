@@ -2,16 +2,25 @@ class UserInfo < ActiveRecord::Base
 	has_many :invests
   has_many :transactions
   has_one :verification
+  has_one :delagator, :dependent=>:destroy, :autosave=>true
   has_one :account, :dependent=>:destroy, :autosave=>true
 	belongs_to :user
   attr_accessor :sec_progress
 
-  #after_create :create_verification
+  after_create :create_delagator
 
   def create_verification
    vef = Verification.new
    self.verification = vef
    vef.save!
+  end
+
+
+  def create_delagator
+    delagator = Delagator.new
+    delagator.last_invest_time = delagator.last_open_time = Time.now
+    self.delagator = delagator
+    delagator.save!
   end
 
   def sec_progress

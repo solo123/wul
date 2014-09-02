@@ -57,7 +57,13 @@ module Usercenter
     end
 
     def autoinvest
-
+      @delagator = current_user.user_info.delagator
+      if params[:delagator][:status] == "1"
+        @delagator.status = 0
+      else
+        @delagator.status = 1
+      end
+      @delagator.save!
     end
 
     def resell
@@ -84,6 +90,13 @@ module Usercenter
         current_user.user_info.save!
       end
       render usercenter_console_charge_bank_path
+    end
+
+    def open_auto_invest
+       delagator = current_user.user_info.delagator
+       delagator.status = 1
+       delagator.save!
+       render :js => "alert(#{u})"
     end
 
     def bankcard
