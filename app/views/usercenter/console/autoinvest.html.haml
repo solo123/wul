@@ -13,7 +13,7 @@
 .acc3
   您还没有进入排行榜,请再接再厉
 .Auto-invest
-  = form_for(@delagator, html: {class: "form-signin", id:"auto_invest_form", method: "post"}, :url => usercenter_auto_invest_path, ) do |f|
+  = form_for(@delagator, html: {class: "form-signin", id:"auto_invest_form", method: "post"}, :url => usercenter_setup_auto_invest_path) do |f|
     = f.hidden_field :status
     %ul.zdtz
       %li.zdtz1
@@ -24,11 +24,6 @@
         %button.btn.btn-default.zdtza#autoinvest{:type => "submit"}
           = button_text[status]
       %li
-        您的可用余额：
-        %span.zdtzp
-          = current_user.user_info.account.balance
-          元
-      %li
         %form.zdtzb
           .form-group
             %label.bq
@@ -36,6 +31,7 @@
             .row
               .col-xs-3
                 = f.text_field :each_invest_amount, :class => "form-control tzje", :disabled => input_status[status]
+                .error-area
               .col-xs-5.bq1
                 %p.bq2
                   元
@@ -47,6 +43,7 @@
             .row
               .col-xs-3
                 = f.text_field :min_invest_amount, :class => "form-control tzje", :disabled => input_status[status]
+                .error-area
               .col-xs-5.bq1
                 %p.bq2
                   元
@@ -58,9 +55,10 @@
             .row
               .col-xs-3
                 = f.text_field :max_invest_period, :class => "form-control tzje", :disabled => input_status[status]
+                .error-area
               .col-xs-5.bq1
                 %p.bq2
-                  ="%"
+                  月
                 %span
             %br
               %label.bq
@@ -68,6 +66,7 @@
               .row
                 .col-xs-3
                   = f.text_field :min_remain_balance, :class => "form-control tzje", :disabled => input_status[status]
+                  .error-area
                 .col-xs-5.bq1
                   %p.bq2
                     元

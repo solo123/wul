@@ -25,28 +25,42 @@ $(document).ready(function () {
         rules: {
             "delagator[each_invest_amount]": {
                 required: true,
-                minlength: 6
+                digits: true,
+                range: [200, 20000]
             },
 
             "delagator[min_invest_amount]": {
                 required: true,
-                minlength: 6
+                digits: true,
+                min: 50
+            },
+            "delagator[min_remain_balance]":{
+                required: true,
+                digits: true
             }
-
         },
         messages: {
             "delagator[each_invest_amount]": {
-                required: "密码不能为空",
-                minlength: "密码至少为6位"
+                required: "请输入投资金额",
+                digits: "应该输入数字",
+                range:"该金额只能在200到20000之间"
             },
             "delagator[min_invest_amount]": {
-                required: "密码不能为空",
-                minlength: "密码至少为6位"
+                required: "请输入最小投资金额",
+                digits: "应该输入数字",
+                min: "金额应该大于50"
+            },
+            "delagator[max_invest_period]": {
+                required: "请输入借款期限上限",
+                digits: "应该输入数字"
+            },
+            "delagator[min_remain_balance]": {
+                required: "请输入最低余额",
+                digits: "应该输入数字"
             }
-
         },
         errorPlacement: function (error, element) {
-            error.appendTo(element.parent().next());
+            error.appendTo(element.next());
         },
 
         submitHandler: function(form) {
@@ -54,15 +68,14 @@ $(document).ready(function () {
             // do other things for a valid form
             if ($('#auto_invest_form').validate().form())
             {
-                alert("yes");
-//                form.submit();
+                 form.submit();
             }
             else
             {alert("no");}
         },
 
-        errorClass: "help-inline",
-        errorElement: "span"
+        errorClass: "error-span",
+        errorElement: "div"
     });
 
 })

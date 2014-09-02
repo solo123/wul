@@ -58,12 +58,24 @@ module Usercenter
 
     def autoinvest
       @delagator = current_user.user_info.delagator
-      if params[:delagator][:status] == "1"
+    end
+
+
+    def setup_autoinvest
+      @delagator = current_user.user_info.delagator
+      delagator_params = params[:delagator]
+      if delagator_params[:status] == "1"
         @delagator.status = 0
       else
         @delagator.status = 1
+        @delagator.each_invest_amount = delagator_params[:each_invest_amount]
+        @delagator.min_invest_amount = delagator_params[:min_invest_amount]
+        @delagator.max_invest_period = delagator_params[:max_invest_period]
+        @delagator.min_remain_balance = delagator_params[:min_remain_balance]
+        @delagator.last_open_time = Time.now
       end
-      @delagator.save!
+        @delagator.save!
+        redirect_to usercenter_console_autoinvest_path
     end
 
     def resell
