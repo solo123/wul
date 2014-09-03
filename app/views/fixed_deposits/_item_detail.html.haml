@@ -30,16 +30,21 @@
           %dl
             %dt 投资期限
             %dd
-              %em 3
+              %em
+                = obj.repayment_period
               个月
-        .working-day 定存宝V每工作日 10:30、14:30、20:00 更新总额度
+        .working-day 定存宝 每工作日 10:30、14:30、20:00 更新产品
         .expl
           %ul
             %li
               %ul.ratio-per
                 %li
+                  - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
                   .progress
-                    .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "60", :style => "width:60%;"}
+                    .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}
+                  .progress-number
+                    %b
+                      = "#{current_progress}%"
                 %li
                   %span 60%
             %li 发布时间：2014.06.21
