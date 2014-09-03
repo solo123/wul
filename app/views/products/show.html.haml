@@ -1,9 +1,14 @@
-.container
-  .invest_banner.row
-    .invest_title
-      %a.btn{:href=> "/products/#{@object.product_type}"} 返回
-      #{@object.product_name} 详情
-    .invest_title.pull-right
-      = render "shared/balance"
-  - @invests = @object.invests
-  = render "#{@object.product_type}_deposits/item_detail", obj:@object, invests:@invests
+- invests = @object.invests
+.header
+  .container
+    .row.wytz
+      .span9.span-inline
+        %a.btn.btn-default.btn-sm{:href=> "/products/#{@object.product_type}"}
+          返回产品列表
+        .product-title
+          %h1
+            我要投资 /
+            =@object.product_name
+      .span3.span-balance
+        = render "shared/balance"
+= render "#{@object.product_type}_deposits/item_detail", obj:@object, invests:invests

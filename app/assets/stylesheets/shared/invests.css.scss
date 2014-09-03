@@ -5,11 +5,6 @@
 ol, ul {
   list-style: none;
 }
-@media screen and (min-width:1200px) {
-  .container {
-    max-width: 1170px
-  }
-}
 .size1of5 {
   width: 20%;
 }
@@ -20,44 +15,47 @@ ol, ul {
   width: 100%
 }
 .span11 {
-  width: 91.66666666666666%
+  width: 91.66%
 }
 .span10 {
-  width: 83.33333333333334%
+  width: 83.33%
 }
 .span9 {
   width: 75%
 }
 .span8 {
-  width: 66.66666666666666%
+  width: 66.66%
 }
 .span7 {
-  width: 58.333333333333336%
+  width: 58.33%
 }
 .span6 {
   width: 50%
 }
 .span5 {
-  width: 41.66666666666667%
+  width: 41.66%
 }
 .span4 {
-  width: 33.33333333333333%
+  width: 33.33%
 }
 .span3 {
   width: 25%
 }
 .span2 {
-  width: 16.666666666666664%
+  width: 16.66%
 }
 .span1 {
-  width: 8.333333333333332%
+  width: 8.33%
 }
 .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
   padding-right: 15px;
   padding-left: 15px
 }
 .wytz{
-  margin-top:20px;
+  margin-top:5px;
+  margin-left: 0;
+  margin-right: 0;
+  vertical-align: middle;
 }
 .header{
   background-color:#1fb4da;
@@ -76,8 +74,8 @@ ol, ul {
 
 .span9 h1{
   color:#fff;
-font-size:30px;
-  margin-bottom:15px;
+font-size:22px;
+  margin-bottom:5px;
 }
 .btn-default {
   color: #1bb3da;

@@ -1,7 +1,9 @@
 - if current_user
-  %a.btn.btn-default.pull-right{:href => usercenter_console_charge_bank_path}
+  %a.btn.btn-default.pull-right.btn-balance{:href => usercenter_console_charge_bank_path, :role => "button"}
     账户余额:
     =current_user.user_info.account.balance
+    %span.glyphicon.glyphicon-plus-sign
 - else
   %a.btn.btn-default.pull-right{:href => new_user_session_path}
     您尚未登录
+    %span.glyphicon.glyphicon-plus-sign

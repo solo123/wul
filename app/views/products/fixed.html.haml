@@ -1,11 +1,13 @@
 .header
   .container
     .row.wytz
-      .span9
-        %h1
-          我要投资&nbsp;/&nbsp;定期宝
-        %p.lead.headerp
-      .span3
+      .span9.span-inline
+        %a.btn.btn-default.btn-sm{:href=> "/invests"}
+          返回投资首页
+        .product-title
+          %h1
+            我要投资&nbsp;/&nbsp;定期宝
+      .span3.span-balance
         = render "shared/balance"
 .wytz-dqb
   .container

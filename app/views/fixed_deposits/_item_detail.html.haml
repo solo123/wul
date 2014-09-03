@@ -1,66 +1,202 @@
-.detail_container
-  .col-md-5
-    .panel{class: "panel-info"}
-      .panel-heading
-        %h4 定存投资 #{obj.deposit_number}
-      .panel-body
-        %p.info
-          总额度: #{obj.total_amount}
-        %p.info
-          年化收益率: #{obj.annual_rate}%
-        %p.info
-          投资期限:
-          #{obj.repayment_period}
-          个月
-      .panel-footer
-        %p.actions
-          - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
-          当前进度：#{number_with_precision current_progress, precision: 2}%
-          .progress
-            .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}
-              %span.sr-only 60% Complete
-
-
-          %div 剩余金额：#{obj.free_invest_amount}
-          - if current_progress >= 100
-            %div.action= link_to '已满', '#'
-          - else
-            %div.action= link_to '开放中', '#'
-
-  .col-md-1
-  .col-md-4
-    = render "fixed_deposits/join_form", obj: obj
-
-
-.detail_container
-  .col-md-12
-    %ul.nav.nav-tabs{:role=>"tablist"}
+.container.transfer
+  .row
+    .col-md-8.modedqb1
+      .model-box
+        .head
+          %h2
+            = obj.product_name
+            = obj.deposit_number
+        .profit
+          %dl.f
+            %dt 总额度
+            %dd
+              %ins ￥
+              %em
+                = number_with_precision(obj.total_amount, precision: 0, delimiter: ',')
+          %dl
+            %dt
+              %b 年化收益率
+            %dd
+              %em
+                = obj.annual_rate.to_i
+              %span
+                - num = obj.annual_rate.to_s.split(".")
+                - frac = num.count > 1 ? num[1].to_s : 0
+                = "."
+                = frac
+              ="%"
+              -#= succeed "%" do
+              -#  %span .00
+          %dl
+            %dt 投资期限
+            %dd
+              %em 3
+              个月
+        .working-day 定存宝V每工作日 10:30、14:30、20:00 更新总额度
+        .expl
+          %ul
+            %li
+              %ul.ratio-per
+                %li
+                  .progress
+                    .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "60", :style => "width:60%;"}
+                %li
+                  %span 60%
+            %li 发布时间：2014.06.21
+            %li
+              %img{:src => image_url("main/wytz5.png")}
+                %p 100%本息保障
+    .col-md-4.modedqb
+      .model-box
+        .head
+          %h2 投资金额
+          %b.tzjedb
+            单笔最多可投
+            = succeed "\u{5143}" do
+              %em 122,000
+        .doned-left
+          %ul
+            %li
+              %dl.dl-horizontal.dldt
+                %dt.dl-horizontaldt
+                  %input.form-control{:placeholder => "Text input", :type => "text"}/
+                %dd 元
+            %li
+              %ul.dldd
+                %li 收益处理方式
+                %li
+                  收益返还
+                  %span.badge ?
+            %li
+              %ul.dldd
+                %li 到期总收益
+                %li
+                  ￥<span">0.00
+            %li
+              %ul.dldd
+                %li 年化收益率
+                %li
+                  <span">10.00
+                  \%
+            %li
+              %ul.dldd.dldd-input
+                %li 验证码
+                %li
+                  %input{:style => "width:85px; height:30px;", :type => "text"}/
+                %li
+                  %img{:height => "30", :src => image_url("main/wytz6.jpg"), :width => "70"}/
+                %li
+                  %img{:height => "30", :src => image_url("main/wytz7.jpg"), :width => "35"}/
+            %li.funds-ord
+              %p
+                %input.io.chek1{:type => "checkbox"} 我同意《
+              .funds-ord1
+                %a{:href => "#"} 沃银网定存宝V投资协议
+                %p 》
+            %li
+              %button.btn.btn-primary.btn-lg.btn-block{:type => "button"} 敬请期待
+  .dqbxq
+    %ul.nav.nav-tabs{:role => "tablist"}
       %li.active
-        %a{:href=>"#detail", :role=>"tab", 'data-toggle'=>"tab"}
-          详细信息
+        %a.tab-item{"data-toggle" => "tab", :href => "#detail", :role => "tab"} 产品详情
       %li
-        %a{:href=>"#ownerlist", :role=>"tab", 'data-toggle'=>"tab"}
-          购买列表
-          %span.badge
-            = @invests.size
-    %div.tab-content
-      %div.tab-pane.active{:id=>"detail"}
-        = render "shared/product_detail", obj:obj
-      %div.tab-pane{:id=>"ownerlist"}
-        %table.table
-          %tr
-            %th 投资人
-            %th 加入金额
-            %th 加入时间
-            %th 状态
-          - if current_user
-            - @invests.each do |invest|
-              %tr
-                %td= invest.user_info.show_id[0, 2] + "***" + invest.user_info.show_id[-2, 2]
-                %td= invest.amount
-                %td= invest.created_at
-                %td  成功
-
-
-
-
+        %a.tab-item{"data-toggle" => "tab", :href => "#prshd", :role => "tab"} 加入记录
+    / Tab panes
+    .tab-content
+      #detail.tab-pane.active
+        %table.table.table-striped.dqbxq-border
+          %thead
+            %tr
+              %th 名称
+              %th 定存宝V124567
+          %tbody
+            %tr
+              %td 产品介绍
+              %td 定存宝V是有利网推出的对100%本息担保的借款项目进行自动投资的理财计划，多种期限可选，满足出借人不同的流动性需要。出借人出借的本金将在投资期限届满后一次性返回其账户，利息收益每月返还，并由系统实现自动化的分散投资，更好的满足了出借人的需求。
+            %tr
+              %td 投资范围
+              %td 由合作机构提供100％本息担保的借款项目，包括信用、保证、抵质押等类型
+            %tr
+              %td 年化收益率
+              %td 10.20%
+            %tr
+              %td 加入期
+              %td 2014.06.21 至 2014.06.23
+            %tr
+              %td 加入条件
+              %td 加入金额1,000元起，且以1000元的倍数递增
+            %tr
+              %td 单笔额度上限
+              %td ￥100,000
+            %tr
+              %td 期限
+              %td 11个月
+            %tr
+              %td 到期日
+              %td
+                %ul.dqbxq-cost
+                  %li
+                    %p
+                      %span> 2015.05.23
+                      （ 定存宝V可能提前还款，收益将根据实际投资天数计算，详情请见《
+                    = succeed "\u{300b}\u{ff09}" do
+                      %a{:href => "#"} 沃银网定存宝V投资协议
+            %tr
+              %td 到期赎回方式
+              %td 平台自动返还剩余本金和当期利息
+            %tr
+              %td 提前赎回方式
+              %td 期限内支持提前赎回，详情请见《沃银网定存宝V投资协议》
+            %tr
+              %td 费用
+              %td
+                %ul.dqbxq-cost
+                  %li
+                    加入费率：
+                    %span 0.00
+                    %span %
+                  %li
+                    %p 管理费率：参见《
+                    = succeed "\u{300b}" do
+                      %a{:href => "#"} 沃银网定存宝V投资协议
+                  %li
+                    到期赎回费率
+                    %span 0.00
+                    %span %
+                  %li
+                    %p
+                      提前赎回费率：最低为待收本金的
+                      %span 23.00
+                      = succeed "\u{ff0c}\u{53c2}\u{89c1}\u{300a}" do
+                        %span %
+                    = succeed "\u{300b}" do
+                      %a{:href => "#"} 沃银网定存宝V投资协议
+                  %li
+            %tr
+              %td 保障方式
+              %td.expl
+                %img{:src => "images/main/wytz5.png"}
+                  %p 100%本息保障
+            %tr
+              %td 电子回单
+              %td 网上交易保障中心证明该项目的电子回单真实、有效、不可篡改
+            %tr
+              %td 定存宝V协议
+              %td
+                %a{:href => "#"} 点击查看
+      #prshd.tab-pane
+        %table.table.dqbxq-jrjl.table-striped.dqbxq-border
+          %thead
+            %tr
+              %th 投资人
+              %th 加入金额
+              %th 加入时间
+              %th 状态
+          %tbody
+            %tr
+              %td 62***kd
+              %td 1,00,00
+              %td 2014.06.21 16:03
+              %td
+                %span.glyphicon.glyphicon-ok>
+                成功
