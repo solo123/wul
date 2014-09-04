@@ -1,7 +1,7 @@
 .transfer{
   background-color:#fff;
   padding-bottom:2%;
-  padding-top:2%;
+  padding-top:1.5%;
   min-height:870px;
 }
 
@@ -186,7 +186,7 @@
 }
 .model-box .expl ul {
   height: 30px;
-  overflow: hidden;
+//  overflow: hidden;
 }
 .model-box .expl li {
   float: left;
@@ -229,6 +229,10 @@
 .ratio-per li:last-child{
   margin-left:0px;
 }
+
+.ratio-per li:first-child{
+  border-left: 0 dashed black;
+}
 .expl img{
   float:left;
 }
@@ -256,12 +260,14 @@
   color:#666;
   font-family: Microsoft YaHei;
 }
+
+
 .model-box .doned-left li>.dldd li:last-child{
   color:#1fb4da;
 }
 .model-box .doned-left li>.dldd li:last-child span{
-  margin-left:10px;
-  margin-right:10px;
+//  margin-left:10px;
+//  margin-right:10px;
 }
 .model-box .doned-left li ul{
   margin-top:10px;
@@ -314,10 +320,10 @@
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 //  margin-top:20px;
-  width:95%;
+  width:100%;
 }
 .dqbxq>.nav-tabs{
-  width:95%;
+  width:100%;
 }
 .dqbxq-border>thead>tr>th, .dqbxq-border>tbody>tr>td{
   font-size:14px;
@@ -335,7 +341,7 @@
   border-right:0;
 }
 .dqbxq-jrjl{
-  width:95%;
+  width:100%;
 //  margin-top:20px;
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
@@ -368,7 +374,7 @@
 }
 
 .span-balance{
-//  margin-bottom: 10px;
+  margin-bottom: 10px;
   vertical-align: middle;
 }
 
@@ -387,7 +393,37 @@
   font-size:14px;
 }
 .progress-number{
-  padding-left:20px;
-  display: inline-block;
+  padding-left:45px;
+  display: inline;
   color:#1fb4da;
+}
+
+#profit_value{
+}
+
+#profit_rate{
+  display: none;
+}
+
+#flash-message{
+  width:35%;
+  display:none;
+}
+
+.flash_all{padding-top:5px;
+  padding-left:5px;
+  padding-bottom:5px;
+  font-size:15px;
+  border-radius: 5px;
+  text-align: center
+}
+
+.flash_notice{
+  background-color: black;
+  color: white;
+}
+
+.flash_success{
+  background-color: green;
+  color: white;
 }

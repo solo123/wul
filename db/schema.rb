@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901092926) do
+ActiveRecord::Schema.define(version: 20140904105222) do
 
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
@@ -166,6 +166,19 @@ ActiveRecord::Schema.define(version: 20140901092926) do
     t.datetime "updated_at"
   end
 
+  create_table "delagators", force: true do |t|
+    t.integer  "user_info_id"
+    t.integer  "each_invest_amount"
+    t.integer  "min_invest_amount"
+    t.integer  "max_invest_period"
+    t.integer  "min_remain_balance"
+    t.datetime "last_open_time"
+    t.datetime "last_invest_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status",             default: 0
+  end
+
   create_table "employees", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -255,6 +268,7 @@ ActiveRecord::Schema.define(version: 20140901092926) do
     t.integer  "product_id"
     t.datetime "profit_date"
     t.datetime "principle_date"
+    t.decimal  "resell_price",          precision: 10, scale: 0
   end
 
   create_table "month_deposits", force: true do |t|
@@ -397,6 +411,15 @@ ActiveRecord::Schema.define(version: 20140901092926) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "simple_captcha_data", force: true do |t|
+    t.string   "key",        limit: 40
+    t.string   "value",      limit: 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "simple_captcha_data", ["key"], name: "idx_key", using: :btree
 
   create_table "transactions", force: true do |t|
     t.string   "trans_type"

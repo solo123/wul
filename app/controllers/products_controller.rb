@@ -58,6 +58,12 @@ class ProductsController < ResourcesController
     amount = params[:product_value].to_i
     balance = current_user.user_info.account.balance
     invests = current_user.user_info.invests
+
+    if amount < 1000
+      flash[:notice] = "本产品最小购买额度为1000元"
+      redirect_to product_detail_path(@product.product_type,@product.id) and return
+    end
+
     if over_limit?(amount, invests, limit ,@product.id)
       flash[:notice] = "已经超过本产品购买额度"
       redirect_to product_detail_path(@product.product_type,@product.id) and return
@@ -74,6 +80,7 @@ class ProductsController < ResourcesController
     end
 
     create_invest(amount, @product, current_user)
+    flash[:success] = "产品购入成功,可在用户中心-投资列表查看"
     redirect_to product_detail_path(@product.product_type,@product.id) and return
   end
 end

@@ -1,3 +1,5 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "showproduct.js"
 - invests = @object.invests
 .header
   .container
@@ -11,4 +13,8 @@
             =@object.product_name
       .span3.span-balance
         = render "shared/balance"
+.container
+  #flash-message.pull-right
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}", :class => "flash_#{name} flash_all"
 = render "#{@object.product_type}_deposits/item_detail", obj:@object, invests:invests
