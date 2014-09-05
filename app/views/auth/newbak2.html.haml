@@ -1,0 +1,75 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "validate.js"
+  = javascript_include_tag "signup.js"
+.container
+  %h4.page-header
+    %p.reg_desc
+      沃银帐号必须使用有效的手机号码或者邮箱注册, 如果您已经有帐号,请直接登录
+      .reg_radio
+        .mradio
+          %input#phonetab{:type => "radio", :name => "reg_phone", :checked => "checked"}
+          %label{:for => "phonetab", :hidefocus => "true"}
+            用手机号码注册
+        .eradio
+          %input#emailtab{:type => "radio", :name => "reg_phone"}
+          %label{:for => "emailtab", :hidefocus => "true"}
+            用邮箱地址注册
+  #phone-frame
+    .reg-items
+      %ul.items
+        %li.txt
+          手机号码
+          %em *
+        %li
+          %input#signName.input{:autocomplete => "off", :maxlength => "18", :name => "signName", :placeholder => "请输入手机号码", :style => "color: rgb(153, 153, 153);", :type => "text"}
+            %span#signNameTip.tip{:style => "color: rgb(255, 0, 0);"} 用户名不能为空
+      %ul.items
+        %li.txt
+          密码
+          %em *
+        %li
+          %input#signName.input{:autocomplete => "off", :maxlength => "18", :name => "signName", :placeholder => "请输入密码", :style => "color: rgb(153, 153, 153);", :type => "text"}
+            %span#signNameTip.tip{:style => "color: rgb(255, 0, 0);"} 密码不能为空
+      %ul.items
+        %li.txt
+          确认密码
+          %em *
+        %li
+          %input#signName.input{:autocomplete => "off", :maxlength => "18", :name => "signName", :placeholder => "请输入确认密码", :style => "color: rgb(153, 153, 153);", :type => "text"}
+            %span#signNameTip.tip{:style => "color: rgb(255, 0, 0);"} 确认密码不能为空
+      .agreement
+        .regest-jiami
+          您的信息已通过256位SGC加密保护，数据传输安全
+      %ul.items
+        %li.regist-bake1.col-sm-5
+          %button.btn.btn-primary{:type => "button"} 注册
+
+  #email-frame
+    .reg-items
+      %ul.items
+        %li.txt
+          用户名
+          %em *
+        %li
+          %input#signName.input{:autocomplete => "off", :maxlength => "18", :name => "signName", :placeholder => "请输入用户名", :style => "color: rgb(153, 153, 153);", :type => "text"}
+            %span#signNameTip.tip{:style => "color: rgb(255, 0, 0);"} 用户名不能为空
+      %ul.items
+        %li.txt
+          密码
+          %em *
+        %li
+          %input#signName.input{:autocomplete => "off", :maxlength => "18", :name => "signName", :placeholder => "请输入密码", :style => "color: rgb(153, 153, 153);", :type => "text"}
+            %span#signNameTip.tip{:style => "color: rgb(255, 0, 0);"} 密码不能为空
+      %ul.items
+        %li.txt
+          确认密码
+          %em *
+        %li
+          %input#signName.input{:autocomplete => "off", :maxlength => "18", :name => "signName", :placeholder => "请输入确认密码", :style => "color: rgb(153, 153, 153);", :type => "text"}
+            %span#signNameTip.tip{:style => "color: rgb(255, 0, 0);"} 确认密码不能为空
+      .agreement
+        .regest-jiami
+          您的信息已通过256位SGC加密保护，数据传输安全
+      %ul.items
+        %li.regist-bake1.col-sm-5
+          %button.btn.btn-primary{:type => "button"} 注册

@@ -1,0 +1,135 @@
+/* CSS Document */
+ul, ol {
+list-style: none;
+}
+.reg-items{
+	margin-left:20%;
+	}
+.reg-items .items {
+height: 50px;
+}
+.reg-items .items li {
+position: relative;
+float: left;
+}
+.reg-items .items li.txt {
+float: left;
+display: inline;
+margin-right: 15px;
+width: 100px;
+text-align: right;
+padding-top:8px;
+}
+input.input {
+height: 18px;
+line-height: 18px;
+width: 240px;
+padding: 18px 5px;
+border: 1px solid #b4b9bd;
+font-size:14px;
+}
+.reg-items .items li.txt em {
+color: #d35353;
+padding-right: 3px;
+}
+.verifycode {
+vertical-align: top;
+margin-left: 5px;
+}
+.reg-items .tip {
+padding-left: 10px;
+position: relative;
+display: inline-block;
+position: absolute;
+left: 250px;
+top: 8px;
+width: 500px;
+color: #8a949c;
+}
+.refreshcode {
+height: 38px;
+width: 42px;
+padding-top:10px;
+display: inline-block;
+background: #e8ecef;
+text-align: center;
+position: relative;
+margin-left: 5px;
+color: #475058;
+}
+.r3, .gbtn, .model-box, .dialog-main, input, .custom-select {
+-moz-border-radius: 3px;
+-khtml-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+.refreshcode i {
+position: absolute;
+left: 13px;
+top: 8px;
+}
+.refresh-todo {
+background-position: -102px -148px;
+width: 12px;
+height: 12px;
+}
+.icons {
+width: 16px;
+height: 16px;
+overflow: hidden;
+font-size: 0;
+line-height: 0;
+text-indent: -9999px;
+display: inline-block;
+}
+.reg-items .agreement {
+padding-left: 115px;
+position: relative;
+font-size:12px;
+
+}
+.wty{
+	font-weight:normal;
+	}
+.regest-jiami{
+	background:url(../images/login/login2.jpg) no-repeat;
+	font-size:12px;
+	padding-left:2%;
+	margin-top:1%;
+	margin-bottom:5%;
+	}
+.regist-bake{
+	text-align:center;
+	margin-top:1%;
+	}
+.regist-bake1{
+	text-align:center;
+	margin-left:10%;
+	}
+.btn-primary:hover{
+	background-color: #17caf6;
+    border-color: #1fb5da;
+	}
+.btn-primary {
+color: #fff;
+background-color: #1fb5da;
+border-color: #1fb5da;
+}
+.sjyz-sy{
+	margin-left:5%;
+	}
+.sjyz-sy1{
+	margin-top:10%;
+	}
+.regist-bake2{
+	text-align:right;
+	}
+.regist-s{
+	width:50%;
+	text-align:center;
+	margin-bottom:2%;
+	}
+.regist-s1{
+	width:50%;
+	text-align:center;
+	}

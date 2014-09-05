@@ -47,8 +47,8 @@ gem "haml-rails"
 gem 'will_paginate', '~> 3.0'
 gem "html5_validators"
 gem 'bootstrap-sass', '~> 3.0.3.0'
-gem 'rmagick'
-gem 'simple_captcha2', require: 'simple_captcha'
+# gem 'rmagick'
+# gem 'simple_captcha2', require: 'simple_captcha'
 #gem 'capistrano', '~> 3.2.1'
 #group :development do
  # gem 'capistrano-unicorn', :require => false
