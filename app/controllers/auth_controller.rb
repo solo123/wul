@@ -1,4 +1,24 @@
 class AuthController < Devise::SessionsController
+  require 'net/https'
+  require "uri"
+
+  def send_sms
+    url = URI.parse('https://sms-api.luosimao.com/v1/send.json')
+    url.user = "api"
+    url.password = "key-618b92cc656f8e532bb2c08a0d8d205a"
+    req = Net::HTTP::Post.new(url.path)
+    data = {'mobile' => '15889667715', 'cb' => 'callback', 'message' => 'from dominic 【沃银金融】' }
+    req.form_data = data
+    req.basic_auth url.user, url.password
+    con = Net::HTTP.new(url.host, url.port)
+    con.use_ssl = true
+    res = con.start {|http| http.request(req)}
+    puts res.body
+    puts res
+    render :js => "alert(#{res.body.to_s})"
+  end
+
+
   def reg
     render :js => "alert('helloworld')"
     #render :js => "window.location.href = '/success'"
@@ -57,14 +77,16 @@ class AuthController < Devise::SessionsController
     user = User.new
     user.email = params[:reg_email]
     user.password = user.password_confirmation = params[:reg_email_pass]
-    user.save!
+    # user.save!
+    # if @user.save
+    Reg.regist_confirm(@user).deliver
 
-    verify = Verification.new
-    verify.email = params[:reg_email]
-    verify.emailstatus = "confirming"
-    verify.email_code = "111111"
-    user.user_info.verification = verify
-    verify.save!
+    # verify = Verification.new
+    # verify.email = params[:reg_email]
+    # verify.emailstatus = "confirming"
+    # verify.email_code = "111111"
+    # user.user_info.verification = verify
+    # verify.save!
     render :js => "window.location.href = '/success'" and return
 
   end

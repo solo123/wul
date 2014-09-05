@@ -6,7 +6,7 @@
       %img{:src => image_url("account5.jpg")}
   .acc3
     您还没有进入排行榜，请再接再厉
-  .model-box.trade-filter
+  .filter-box.trade-filter
     - queries = params.except(*request.path_parameters.keys)
     - condi = {}
     - conds = {}

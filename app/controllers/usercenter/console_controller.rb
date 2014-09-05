@@ -48,12 +48,15 @@ module Usercenter
     end
 
     def redemption
-      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed',:onsale => false)
-      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month',:onsale => false)
+      pages = 10
+      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed',:onsale => false).paginate(:page => params[:page], :per_page => pages)
+      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month',:onsale => false).paginate(:page => params[:page], :per_page => pages)
     end
 
     def agreements
-
+      pages = 10
+      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed',:onsale => false).paginate(:page => params[:page], :per_page => pages)
+      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month',:onsale => false).paginate(:page => params[:page], :per_page => pages)
     end
 
     def autoinvest

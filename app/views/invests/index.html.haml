@@ -5,8 +5,9 @@
         %h1
           我要投资
         %p.leading.headerp
-          您随时可以赎回您的投资，查询或者购买赎回资产，请前往“转让专区”.
-          %a{:href => onsale_invests_path } 立刻前往>>
+          您随时可以赎回您的投资，查询或者购买赎回资产，请前往
+          %a.btn.invest_url.btn-default.btn-sm{:href => onsale_invests_path }
+            转让专区
       .span3
         = render "shared/balance"
 #features

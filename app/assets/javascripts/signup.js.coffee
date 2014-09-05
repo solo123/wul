@@ -23,7 +23,7 @@ $ ->
 $ ->
   $("#getcode").click ->
     $.post(
-      "/get_code"
+      "/send_sms"
       phone_num: $("#reg_phone").val()
       'script'
     )

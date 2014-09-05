@@ -21,6 +21,7 @@ Wooul::Application.routes.draw do
   devise_scope :user do
     post "/checkmobile" => "auth#checkmobile"
     post "/checkemail" => "auth#checkemail"
+    post "/send_sms" => "auth#send_sms"
     post "/get_code" => "auth#get_code"
     post "/new_user" => "auth#create"
     get "/success" => "auth#success"
