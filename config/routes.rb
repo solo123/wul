@@ -24,6 +24,7 @@ Wooul::Application.routes.draw do
     post "/send_sms" => "auth#send_sms"
     post "/get_code" => "auth#get_code"
     post "/new_user" => "auth#create"
+    get "/email_activate" => "auth#useractivate"
     get "/success" => "auth#success"
   end
 

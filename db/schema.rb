@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.datetime "updated_at"
   end
 
-  add_index "cms_blocks", ["page_id", "identifier"], name: "index_cms_blocks_on_page_id_and_identifier", using: :btree
+  add_index "cms_blocks", ["page_id", "identifier"], name: "index_cms_blocks_on_page_id_and_identifier"
 
   create_table "cms_categories", force: true do |t|
     t.integer "site_id",          null: false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.string  "categorized_type", null: false
   end
 
-  add_index "cms_categories", ["site_id", "categorized_type", "label"], name: "index_cms_categories_on_site_id_and_categorized_type_and_label", unique: true, using: :btree
+  add_index "cms_categories", ["site_id", "categorized_type", "label"], name: "index_cms_categories_on_site_id_and_categorized_type_and_label", unique: true
 
   create_table "cms_categorizations", force: true do |t|
     t.integer "category_id",      null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.integer "categorized_id",   null: false
   end
 
-  add_index "cms_categorizations", ["category_id", "categorized_type", "categorized_id"], name: "index_cms_categorizations_on_cat_id_and_catd_type_and_catd_id", unique: true, using: :btree
+  add_index "cms_categorizations", ["category_id", "categorized_type", "categorized_id"], name: "index_cms_categorizations_on_cat_id_and_catd_type_and_catd_id", unique: true
 
   create_table "cms_files", force: true do |t|
     t.integer  "site_id",                                    null: false
@@ -79,10 +79,10 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.datetime "updated_at"
   end
 
-  add_index "cms_files", ["site_id", "block_id"], name: "index_cms_files_on_site_id_and_block_id", using: :btree
-  add_index "cms_files", ["site_id", "file_file_name"], name: "index_cms_files_on_site_id_and_file_file_name", using: :btree
-  add_index "cms_files", ["site_id", "label"], name: "index_cms_files_on_site_id_and_label", using: :btree
-  add_index "cms_files", ["site_id", "position"], name: "index_cms_files_on_site_id_and_position", using: :btree
+  add_index "cms_files", ["site_id", "block_id"], name: "index_cms_files_on_site_id_and_block_id"
+  add_index "cms_files", ["site_id", "file_file_name"], name: "index_cms_files_on_site_id_and_file_file_name"
+  add_index "cms_files", ["site_id", "label"], name: "index_cms_files_on_site_id_and_label"
+  add_index "cms_files", ["site_id", "position"], name: "index_cms_files_on_site_id_and_position"
 
   create_table "cms_layouts", force: true do |t|
     t.integer  "site_id",                                     null: false
@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.datetime "updated_at"
   end
 
-  add_index "cms_layouts", ["parent_id", "position"], name: "index_cms_layouts_on_parent_id_and_position", using: :btree
-  add_index "cms_layouts", ["site_id", "identifier"], name: "index_cms_layouts_on_site_id_and_identifier", unique: true, using: :btree
+  add_index "cms_layouts", ["parent_id", "position"], name: "index_cms_layouts_on_parent_id_and_position"
+  add_index "cms_layouts", ["site_id", "identifier"], name: "index_cms_layouts_on_site_id_and_identifier", unique: true
 
   create_table "cms_pages", force: true do |t|
     t.integer  "site_id",                                         null: false
@@ -119,8 +119,8 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.datetime "updated_at"
   end
 
-  add_index "cms_pages", ["parent_id", "position"], name: "index_cms_pages_on_parent_id_and_position", using: :btree
-  add_index "cms_pages", ["site_id", "full_path"], name: "index_cms_pages_on_site_id_and_full_path", using: :btree
+  add_index "cms_pages", ["parent_id", "position"], name: "index_cms_pages_on_parent_id_and_position"
+  add_index "cms_pages", ["site_id", "full_path"], name: "index_cms_pages_on_site_id_and_full_path"
 
   create_table "cms_revisions", force: true do |t|
     t.string   "record_type",                  null: false
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.datetime "created_at"
   end
 
-  add_index "cms_revisions", ["record_type", "record_id", "created_at"], name: "index_cms_revisions_on_rtype_and_rid_and_created_at", using: :btree
+  add_index "cms_revisions", ["record_type", "record_id", "created_at"], name: "index_cms_revisions_on_rtype_and_rid_and_created_at"
 
   create_table "cms_sites", force: true do |t|
     t.string  "label",                       null: false
@@ -140,8 +140,8 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.boolean "is_mirrored", default: false, null: false
   end
 
-  add_index "cms_sites", ["hostname"], name: "index_cms_sites_on_hostname", using: :btree
-  add_index "cms_sites", ["is_mirrored"], name: "index_cms_sites_on_is_mirrored", using: :btree
+  add_index "cms_sites", ["hostname"], name: "index_cms_sites_on_hostname"
+  add_index "cms_sites", ["is_mirrored"], name: "index_cms_sites_on_is_mirrored"
 
   create_table "cms_snippets", force: true do |t|
     t.integer  "site_id",                                     null: false
@@ -154,8 +154,8 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.datetime "updated_at"
   end
 
-  add_index "cms_snippets", ["site_id", "identifier"], name: "index_cms_snippets_on_site_id_and_identifier", unique: true, using: :btree
-  add_index "cms_snippets", ["site_id", "position"], name: "index_cms_snippets_on_site_id_and_position", using: :btree
+  add_index "cms_snippets", ["site_id", "identifier"], name: "index_cms_snippets_on_site_id_and_identifier", unique: true
+  add_index "cms_snippets", ["site_id", "position"], name: "index_cms_snippets_on_site_id_and_position"
 
   create_table "coupons", force: true do |t|
     t.integer  "user_id"
@@ -200,9 +200,9 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.datetime "updated_at"
   end
 
-  add_index "employees", ["email"], name: "index_employees_on_email", unique: true, using: :btree
-  add_index "employees", ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true, using: :btree
-  add_index "employees", ["unlock_token"], name: "index_employees_on_unlock_token", unique: true, using: :btree
+  add_index "employees", ["email"], name: "index_employees_on_email", unique: true
+  add_index "employees", ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  add_index "employees", ["unlock_token"], name: "index_employees_on_unlock_token", unique: true
 
   create_table "employees_roles", force: true do |t|
     t.integer "employee_id"
@@ -268,7 +268,7 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.integer  "product_id"
     t.datetime "profit_date"
     t.datetime "principle_date"
-    t.decimal  "resell_price",          precision: 10, scale: 0
+    t.decimal  "resell_price"
   end
 
   create_table "month_deposits", force: true do |t|
@@ -374,14 +374,14 @@ ActiveRecord::Schema.define(version: 20140904105222) do
 
   create_table "products", force: true do |t|
     t.string   "deposit_number"
-    t.decimal  "total_amount",          precision: 12, scale: 2
-    t.decimal  "annual_rate",           precision: 5,  scale: 2
+    t.decimal  "total_amount",                     precision: 12, scale: 2
+    t.decimal  "annual_rate",                      precision: 5,  scale: 2
     t.integer  "repayment_period"
-    t.string   "repayment_method",                               default: "profit"
-    t.decimal  "each_repayment_amount", precision: 12, scale: 2
+    t.string   "repayment_method",                                          default: "profit"
+    t.decimal  "each_repayment_amount",            precision: 12, scale: 2
     t.string   "guarantee"
-    t.decimal  "free_invest_amount",    precision: 10, scale: 2
-    t.decimal  "fixed_invest_amount",   precision: 10, scale: 2, default: 0.0
+    t.decimal  "free_invest_amount",               precision: 10, scale: 2
+    t.decimal  "fixed_invest_amount",              precision: 10, scale: 2, default: 0.0
     t.string   "detail"
     t.string   "income_method"
     t.date     "join_date"
@@ -389,21 +389,21 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.date     "expiring_date"
     t.string   "premature_redemption"
     t.integer  "fee"
-    t.integer  "owner_num",                                      default: 0
-    t.decimal  "order_amount",          precision: 10, scale: 0, default: 0
-    t.string   "product_type",                                   default: "fixed"
-    t.string   "stage",                                          default: "未发布"
-    t.string   "display",                                        default: "hide"
+    t.integer  "owner_num",                                                 default: 0
+    t.integer  "order_amount",          limit: 10,                          default: 0
+    t.string   "product_type",                                              default: "fixed"
+    t.string   "stage",                                                     default: "未发布"
+    t.string   "display",                                                   default: "hide"
     t.datetime "profit_date"
     t.string   "address"
     t.string   "usage"
     t.text     "usage_detail"
     t.string   "credit_level"
     t.datetime "principal_date"
-    t.integer  "status",                                         default: 0
+    t.integer  "status",                                                    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "each_repayment_period",                          default: 30
+    t.integer  "each_repayment_period",                                     default: 30
   end
 
   create_table "roles", force: true do |t|
@@ -419,7 +419,7 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.datetime "updated_at"
   end
 
-  add_index "simple_captcha_data", ["key"], name: "idx_key", using: :btree
+  add_index "simple_captcha_data", ["key"], name: "idx_key"
 
   create_table "transactions", force: true do |t|
     t.string   "trans_type"
@@ -485,9 +485,9 @@ ActiveRecord::Schema.define(version: 20140904105222) do
     t.string   "mobile"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["mobile"], name: "index_users_on_mobile", using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["mobile"], name: "index_users_on_mobile"
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "verifications", force: true do |t|
     t.string   "phone"

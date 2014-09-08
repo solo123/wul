@@ -45,6 +45,11 @@ class AuthController < Devise::SessionsController
     end
   end
 
+  def useractivate
+
+  end
+
+
 
   def get_code
     valid = Verification.where(:phone => params[:phone_num]).first
@@ -74,9 +79,9 @@ class AuthController < Devise::SessionsController
       render :js => "alert('邮件地址已经被使用,请用别的邮箱注册')" and return
     end
 
-    user = User.new
-    user.email = params[:reg_email]
-    user.password = user.password_confirmation = params[:reg_email_pass]
+    @user = User.new
+    @user.email = params[:reg_email]
+    @user.password = @user.password_confirmation = params[:reg_email_pass]
     # user.save!
     # if @user.save
     Reg.regist_confirm(@user).deliver
