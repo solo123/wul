@@ -7,6 +7,9 @@
       .reg_frame
         .login_logo
           %img.logo_image{:src => image_url("http://alpha.wooul.com/system/cms/files/files/000/000/006/original/wooul-logo.png")}
+        .login-link 
+          已有帐号，
+          %a{:href => "/users/sign_in"} 登录
         %ul.reg_radio.nav.nav-tabs{:role => "tablist"}
           %li.active
             %a{"data-toggle" => "tab", :href => "#phone-frame", :role => "tab"} 手机号码注册
@@ -18,28 +21,27 @@
               .reg_item.form-group
                 %label.col-sm-2.control-label{:for => "reg_phone"} 手机号码:
                 .col-sm-6
-                  %input.form-control#reg_phone{:type => "text",:autofocus => true, :name => "reg_phone"}
+                  %input.form-control#reg_phone{:type => "text",:autofocus => true, :name => "reg_phone", :placeholder => "请输入您的手机号码"}
                 .col-sm-4
                   %button.code-btn.form-control.nosend#getcode{:disabled => "true"} 获取验证码
               .reg_error
               .reg_item.form-group
                 %label.col-sm-2.control-label{:for => "reg_code"}  验证码:
                 .col-sm-10.code-area
-                  %input.form-control#reg_code{:type => "text",:name => "reg_code",:placeholder => "请输入手机收到的验证码。"}        
+                  %input.form-control#reg_code{:type => "text",:name => "reg_code",:placeholder => "请输入手机收到的验证码"}        
                   .reg_error
               .reg_item.form-group
                 %label.col-sm-2.control-label{:for => "reg_password"} 设置密码:
                 .col-sm-10
-                  %input.form-control#reg_password{:type => "password",:name => "reg_password"}
+                  %input.form-control#reg_password{:type => "password",:name => "reg_password", :placeholder => "请输入密码"}
               .reg_error
               .reg_item.form-group
                 %label.col-sm-2.control-label{:for => "reg_password_confirm"} 确认密码:
                 .col-sm-10
-                  %input.form-control#reg_password_confirm{:type => "password",:name => "reg_password_confirm"}
+                  %input.form-control#reg_password_confirm{:type => "password",:name => "reg_password_confirm", :placeholder => "请重新输入密码"}
               .reg_error
               .col-sm-offset-2.col-sm-10
                 %input.btn.btn-primary.btn-lg{:type => "submit",:value => "立即注册"}
-                %a{:href => "/users/sign_in"}登录
           #email-frame.tab-pane
             = form_for(resource, :as => resource_name, html: {class: "form-signin form-horizontal", id:"reg_form_email"}, :url => registration_path(resource_name)) do |f|
               .reg_item.form-group
