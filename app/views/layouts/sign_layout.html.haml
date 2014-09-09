@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Wooul -- Application
+    %title Wooul -- Sign
     = stylesheet_link_tag    "application", media: "all"
     -#, "data-turbolinks-track" => true
     = javascript_include_tag "application"
@@ -9,7 +9,5 @@
     = yield :javascript_includes
     = csrf_meta_tags
   %body
-    = render 'shared/header'
     = bootstrap_flash
     = yield
-    = cms_snippet_content('footer')

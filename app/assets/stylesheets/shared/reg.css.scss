@@ -1,19 +1,125 @@
-.reg_frame {
-  background: #f9f9f9;
-  display: block;
-  height: 500px;
-  width: 800px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+
+html,body{
+  height:100%;
 }
 
-.reg_title {
-  margin: 0 0 10px 30px;
-  padding-top: 20px;
-  font-size: 22px;
-  font-weight: bold;
-  color: #1bb3da;
+.sign-page{
+  height:100%;
+  margin:0;
 }
+
+
+.sign-area{
+    background: #f9f9f9;
+    height:100%;
+    min-height:800px;
+    display: table;
+}
+
+.sign-form-area{
+    display: table-cell;
+  vertical-align: middle;
+
+}
+
+.media-area{
+    height:100%;
+    min-height:800px;
+    display: table;
+}
+
+
+.login-media{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.login-media img{
+  display: inline-block;
+}
+
+
+
+
+.reg_frame, .login_frame {
+  max-width: 500px;
+  min-height:500px;
+  margin-right:auto;
+  margin-left:auto;
+
+}
+
+.sign-header {
+  margin: 30px 0;
+  text-align: center;
+
+}
+
+
+
+
+
+
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] ,.form-signin .ipt-email{
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .reg_desc {
   padding: 0 0 20px 30px;
@@ -22,7 +128,6 @@
 }
 
 .reg_radio {
-  margin: 20px 0 0 180px;
   font-size: 14px;
 }
 
@@ -96,7 +201,7 @@
 }
 
 .code-area{
-  width:106px;
+  width:80%;
 }
 .code-btn{
   display: inline-block;
@@ -126,28 +231,12 @@
   color: #999;
 }
 
-.login_logo{
-  padding-top: 30px;
-  margin-bottom: 50px;
-  height: 82px;
-}
 
 .logo_image{
-  display: block;
-  height: 65px;
-  width: 200px;
   margin:auto;
   clear:both
 }
 
-.login_frame{
-  background: #ffffff;
-  display: block;
-  height: 450px;
-  width: 700px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
 
 .login-title {
   font-size: 32px;

@@ -1,6 +1,7 @@
 class AuthController < Devise::SessionsController
   require 'net/https'
   require "uri"
+  layout "sign_layout" 
 
   def send_sms
     url = URI.parse('https://sms-api.luosimao.com/v1/send.json')

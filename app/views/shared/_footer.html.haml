@@ -1,99 +1,66 @@
-.wyfoot
-  .row.foot1
-    .foot1_1
-      .col-md-3.w
-        %div
-          %img{:src => image_url("foot/foot1.jpg")}
-        .foot_b
-          %h1
-            30倍
-          %p
-            活期存款收益
-      .col-md-2.w
-        %div
-          %img{:src => image_url("foot/foot1.jpg")}
-        .foot_b
-          %h1
-            50元
-          %p
-            50元即可加入
-      .col-md-2.w
-        %div
-          %img{:src => image_url("foot/foot1.jpg")}
-        .foot_b
-          %h1
-            100%
-          %p
-            100%本息担保
-      .col-md-2.w
-        %div
-          %img{:src => image_url("foot/foot1.jpg")}
-        .foot_b
-          %h1
-            随时
-          %p
-            随时赎回投资
-      .col-md-3.w
-        %div
-          %img{:src => image_url("foot/foot1.jpg")}
-        .foot_b
-          %h1
-            服务
-          %p
-            服务完全免费
+%footer
+  .container
+    .security-identity
+      %ul.list-unstyled.row
+        %li.col-md-3
+          %span.glyphicon.glyphicon-qrcode
+          %p 50元即可加入
+        %li.col-md-3
+          %span.glyphicon.glyphicon-lock
+          %p 100%本息担保
+        %li.col-md-3
+          %span.glyphicon.glyphicon-adjust
+          %p 随时赎回投资
+        %li.col-md-3
+          %span.glyphicon.glyphicon-screenshot
+          %p 服务完全免费
 
-  .row.foot2
-    %ul
-      %li.size1of6
-        %a{:href=>"#"}
-          关于我们
-      %li.size1of6
-        %a{:href=>"#"}
-          法律规定
-      %li.size1of6
-        %a{:href=>"#"}
-          新手指引
-      %li.size1of6
-        %a{:href=>"#"}
-          帮助中心
-      %li.size1of6
-        %a{:href=>"#"}
-          网站地图
-      %li.size1of6
-        %a{:href=>"#"}
-          关注我们
-  .row.foot3
-    %ul
-      %li.size1of3
+    .footnav
+      .row
+        %ul.list-inline
+          %li
+            %a{:href=>"#"}
+              关于我们
+          %li
+            %a{:href=>"#"}
+              法律规定
+          %li
+            %a{:href=>"#"}
+              新手指引
+          %li
+            %a{:href=>"#"}
+              帮助中心
+          %li
+            %a{:href=>"#"}
+              网站地图
+          %li
+            %a{:href=>"#"}
+              关注我们
+    .assist-info
+      .row
         %ul
-          %li
-            %img{:src => image_url("foot/foot4_1.png")}
-          %li
-            %img{:src => image_url("foot/foot4_2.png")}
-          %li
-            %img{:src => image_url("foot/foot4_3.png")}
-          %li
-            %img{:src => image_url("foot/foot4_4.png")}
-          %li
-            %img{:src => image_url("foot/foot4_5.png")}
-      %li.size1of3
-        .foot3_2a
-          @沃银网
-        .foot3_2b
-          沃银网
-      %li.size1of3.foot3_3
-        %div
-          %img{:src => image_url("foot/foot4_8.png")}
-        %div
-          %p
-            客服热线
-          %span
-            400 890 3980
-          %p
-            客服邮箱 support@wooul.com
-  .row.foot4
-    %p
-      2013 沃银网  Copyright 2013 wooul.com, All Rights Reserved   隐私政策   服务条款   京ICP备13047550号-1
-
-  </div>
-</div>
+          %li.size1of3
+            %ul.list-inline
+              %li
+                %img{:src => image_url("foot/foot4_1.png")}
+              %li
+                %img{:src => image_url("foot/foot4_2.png")}
+              %li
+                %img{:src => image_url("foot/foot4_3.png")}
+              %li
+                %img{:src => image_url("foot/foot4_4.png")}
+              %li
+                %img{:src => image_url("foot/foot4_5.png")}
+          %li.size1of3
+            .foot3_2a @沃银网
+            .foot3_2b 沃银网
+          %li.size1of3.foot3_3
+            %div
+              %img{:src => image_url("foot/foot4_8.png")}
+            %div
+              %p 客服热线
+              %span 400 890 3980
+              %p 客服邮箱 support@wooul.com
+    .copyright
+      .row
+        %p 2013 沃银网  Copyright 2013 wooul.com, All Rights Reserved   隐私政策   服务条款   京ICP备13047550号-1
