@@ -23,4 +23,5 @@ class Invest < ActiveRecord::Base
       ""
     end
   end
+
 end
