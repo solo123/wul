@@ -5,64 +5,60 @@
   .col-md-6.col-sm-6.sign-area
     .sign-form-area
       .reg_frame
-        %h2.sign-header
-          注册沃银帐号---
-        %p.reg_desc
-          沃银帐号必须使用有效的手机号码或者邮箱注册, 如果您已经有帐号,请直接
-          %a{:href => "/users/sign_in"}登录
-        .reg_radio
-          .mradio
-            %input#phonetab{:type => "radio", :name => "reg_phone", :checked => "checked"}
-            %label{:for => "phonetab", :hidefocus => "true"}
-              用手机号码注册
-          .eradio
-            %input#emailtab{:type => "radio", :name => "reg_phone"}
-            %label{:for => "emailtab", :hidefocus => "true"}
-              用邮箱地址注册
-        #phone-frame
-          = form_for(resource, :as => resource_name, html: {class: "form-signin form-horizontal", id:"reg_form_phone"}, :url => registration_path(resource_name)) do |f|
-            .reg_item.form-group
-              %label.col-sm-2.control-label{:for => "reg_phone"} 手机号码:
-              .col-sm-10
-                %input.form-control#reg_phone{:type => "text",:autofocus => true, :name => "reg_phone"}
-                  %button.code-btn.nosend#getcode{:disabled => "true"}获取验证码
-            .reg_error
-            .reg_item.form-group
-              %label.col-sm-2.control-label{:for => "reg_code"}  验证码:
-              .col-sm-10.code-area
-                %input.form-control#reg_code{:type => "text",:name => "reg_code",:placeholder => "请输入手机收到的验证码。"}        
-            .reg_error.alert.alert-warning
-            .reg_item.form-group
-              %label.col-sm-2.control-label{:for => "reg_password"} 设置密码:
-              .col-sm-10
-                %input.form-control#reg_password{:type => "password",:name => "reg_password"}
-            .reg_error
-            .reg_item.form-group
-              %label.col-sm-2.control-label{:for => "reg_password_confirm"} 确认密码:
-              .col-sm-10
-                %input.form-control#reg_password_confirm{:type => "password",:name => "reg_password_confirm"}
-            .reg_error
-            .col-sm-offset-2.col-sm-10
-              %input.btn.btn-primary.btn-lg{:type => "submit",:value => "立即注册"}
-        #email-frame
-          = form_for(resource, :as => resource_name, html: {class: "form-signin form-horizontal", id:"reg_form_email"}, :url => registration_path(resource_name)) do |f|
-            .reg_item.form-group
-              %label.col-sm-2.control-label{:for => "reg_email"} 邮箱:
-              .col-sm-10
-                %input.form-control#reg_email{:type => "text",:autofocus => true, :name => "reg_email"}
-            .reg_error
-            .reg_item.form-group
-              %label.col-sm-2.control-label{:for => "reg_email_pass"} 设置密码:
-              .col-sm-10
-                %input.form-control#reg_email_pass{:type => "password", :name => "reg_email_pass"}
-            .reg_error
-            .reg_item.form-group
-              %label.col-sm-2.control-label{:for => "reg_email_conf"} 确认密码:
-              .col-sm-10
-                %input.form-control#reg_email_conf{:type => "password", :name => "reg_email_conf"}
-            .reg_error
-            .col-sm-offset-2.col-sm-10
-              %input.btn.btn-primary.btn-lg{:type => "submit", :value => "立即注册"}
+        .login_logo
+          %img.logo_image{:src => image_url("http://alpha.wooul.com/system/cms/files/files/000/000/006/original/wooul-logo.png")}
+        %ul.reg_radio.nav.nav-tabs{:role => "tablist"}
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#phone-frame", :role => "tab"} 手机号码注册
+          %li
+            %a{"data-toggle" => "tab", :href => "#email-frame", :role => "tab"} 邮箱注册
+        .tab-content
+          #phone-frame.tab-pane.active
+            = form_for(resource, :as => resource_name, html: {class: "form-signin form-horizontal", id:"reg_form_phone"}, :url => registration_path(resource_name)) do |f|
+              .reg_item.form-group
+                %label.col-sm-2.control-label{:for => "reg_phone"} 手机号码:
+                .col-sm-6
+                  %input.form-control#reg_phone{:type => "text",:autofocus => true, :name => "reg_phone"}
+                .col-sm-4
+                  %button.code-btn.form-control.nosend#getcode{:disabled => "true"} 获取验证码
+              .reg_error
+              .reg_item.form-group
+                %label.col-sm-2.control-label{:for => "reg_code"}  验证码:
+                .col-sm-10.code-area
+                  %input.form-control#reg_code{:type => "text",:name => "reg_code",:placeholder => "请输入手机收到的验证码。"}        
+                  .reg_error
+              .reg_item.form-group
+                %label.col-sm-2.control-label{:for => "reg_password"} 设置密码:
+                .col-sm-10
+                  %input.form-control#reg_password{:type => "password",:name => "reg_password"}
+              .reg_error
+              .reg_item.form-group
+                %label.col-sm-2.control-label{:for => "reg_password_confirm"} 确认密码:
+                .col-sm-10
+                  %input.form-control#reg_password_confirm{:type => "password",:name => "reg_password_confirm"}
+              .reg_error
+              .col-sm-offset-2.col-sm-10
+                %input.btn.btn-primary.btn-lg{:type => "submit",:value => "立即注册"}
+                %a{:href => "/users/sign_in"}登录
+          #email-frame.tab-pane
+            = form_for(resource, :as => resource_name, html: {class: "form-signin form-horizontal", id:"reg_form_email"}, :url => registration_path(resource_name)) do |f|
+              .reg_item.form-group
+                %label.col-sm-2.control-label{:for => "reg_email"} 邮箱:
+                .col-sm-10
+                  %input.form-control#reg_email{:type => "text",:autofocus => true, :name => "reg_email"}
+              .reg_error
+              .reg_item.form-group
+                %label.col-sm-2.control-label{:for => "reg_email_pass"} 设置密码:
+                .col-sm-10
+                  %input.form-control#reg_email_pass{:type => "password", :name => "reg_email_pass"}
+              .reg_error
+              .reg_item.form-group
+                %label.col-sm-2.control-label{:for => "reg_email_conf"} 确认密码:
+                .col-sm-10
+                  %input.form-control#reg_email_conf{:type => "password", :name => "reg_email_conf"}
+              .reg_error
+              .col-sm-offset-2.col-sm-10
+                %input.btn.btn-primary.btn-lg{:type => "submit", :value => "立即注册"}
   .col-md-6.col-sm-6.media-area
     .login-media
       %img{:src => "http://alpha.wooul.com/system/cms/files/files/000/000/005/original/wooul-sign-media.jpg"}

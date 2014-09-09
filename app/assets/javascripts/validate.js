@@ -95,7 +95,7 @@ $(document).ready(function () {
          return false;
          },*/
 
-        errorClass : "help-inline",
+        errorClass : "alert alert-danger",
         errorElement : "span",
     });
 
@@ -154,7 +154,7 @@ $(document).ready(function () {
         errorPlacement: function (error, element) {
             error.appendTo(element.parent().parent().next());
         },
-        errorClass: "help-inline",
+        errorClass: "alert alert-danger",
         errorElement: "span"
     });
 
