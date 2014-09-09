@@ -1,3 +1,6 @@
 class LoginController < Devise::SessionsController
-  end
+    layout "sign_layout" 
+    
+end
+  
 

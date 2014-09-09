@@ -1,28 +1,54 @@
 /* CSS Document */
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
-  margin: 0;
-  padding: 0;
+
+
+footer{
+  background:#424d55;
 }
-body {
-  font-family: tahoma, Arial, Microsoft YaHei, SimSun;
-  font-size: 12px;
-  line-height: 1.5em;
+
+
+
+
+
+
+.security-identity{
+  margin-top:22px;
+  margin-bottom:22px;
+  color:#969da5;
 }
-ol, ul {
-  list-style: none;
+
+.security-identity .glyphicon{
+  font-size:40px;
 }
-img {
-  display: block;
-  border: 0;
+.security-identity p{
+  font-size:18px;
+  display:inline;
 }
-a {
-  display: block;
-  text-decoration: none;
-}
-a:focus, a:hover {
-  text-decoration: none;
+
+
+
+
+
+
+.footnav{
+	  padding:22px 0;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .size1of3 {
   width: 33.33333%;
 }
@@ -41,39 +67,10 @@ body {
 .wyfoot{
 
 }
-.foot1{
-  background-color:#1fb4da;
-  text-align:center;
-  margin:auto;
-}
-.w{
-  width:254px;
-  text-align:center;
-  margin-left:10px
-}
-.foot1 img{
-  margin-top:20px;
-  float:left;
-}
-.foot1_1{
-  margin:50px 10% 2% 10%;
-}
-.foot_b{
-  float:left;
-  width:160px;
-  color:#fff;
-}
-.foot_b h1{
-  float:left;
-  margin-left:25px;
-  font-size:46px;
-}
-.foot_b p{
-  margin:15px 0 70px 10px;
-  float:left;
-  font-size:22px;
-  font-family: Microsoft YaHei;
-}
+
+
+
+
 .foot2{
   background-color:#393832;
 }
