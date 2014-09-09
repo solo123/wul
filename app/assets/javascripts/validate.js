@@ -6,15 +6,6 @@ function showRequest(formData, jqForm, options) {
 }
 
 $(document).ready(function () {
-    var options = {
-        target: '#output1', // target element(s) to be updated with server response
-        beforeSubmit: showRequest, // pre-submit callback
-        success: showResponse, // post-submit callback
-        url: '/agency/usercheck', // override for form's 'action' attribute
-        type: 'post', // 'get' or 'post', override for form's 'method' attribute
-        dataType: 'script', // 'xml', 'script', or 'json' (expected server response type)
-        clearForm: false // clear all form fields after successful submit
-    };
 
     var optionsphone = {
         beforeSubmit: function() {
@@ -41,8 +32,8 @@ $(document).ready(function () {
         //resetForm: true        // reset the form after successful submit
     };
 
-    $('#reg_form_phone').ajaxForm(optionsphone);
-    $('#reg_form_email').ajaxForm(optionsmail);
+//    $('#reg_form_phone').ajaxForm(optionsphone);
+//    $('#reg_form_email').ajaxForm(optionsmail);
 
     $('#reg_form_email').validate({
         focusInvalid : true,
@@ -89,14 +80,19 @@ $(document).ready(function () {
             error.appendTo(element.parent().parent().next());
         },
 
-        /*submitHandler : function(form) {
+        submitHandler: function(form) {
 
-         $("#loginform").ajaxSubmit();
-         return false;
-         },*/
+            // do other things for a valid form
+            if ($('#reg_form_email').validate().form())
+            {
+                form.submit();
+            }
+            else
+            {alert("no");}
+        },
 
         errorClass : "help-inline",
-        errorElement : "span",
+        errorElement : "span"
     });
 
     $("#reg_form_phone").validate({
@@ -151,6 +147,17 @@ $(document).ready(function () {
                 required: "验证码不能为空"
             }
         },
+        submitHandler: function(form) {
+
+            // do other things for a valid form
+            if ($('#reg_form_phone').validate().form())
+            {
+                form.submit();
+            }
+            else
+            {alert("no");}
+        },
+
         errorPlacement: function (error, element) {
             error.appendTo(element.parent().parent().next());
         },
