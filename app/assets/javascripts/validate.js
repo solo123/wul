@@ -91,9 +91,9 @@ $(document).ready(function () {
             {alert("no");}
         },
 
-        errorClass : "help-inline",
-        errorElement : "span"
-    });
+        errorClass : "alert alert-danger",
+        errorElement : "span",
+      });
 
     $("#reg_form_phone").validate({
         focusInvalid: true,
@@ -161,7 +161,7 @@ $(document).ready(function () {
         errorPlacement: function (error, element) {
             error.appendTo(element.parent().parent().next());
         },
-        errorClass: "help-inline",
+        errorClass: "alert alert-danger",
         errorElement: "span"
     });
 

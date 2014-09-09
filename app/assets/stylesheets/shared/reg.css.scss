@@ -42,7 +42,7 @@ html,body{
 
 
 .reg_frame, .login_frame {
-  max-width: 500px;
+  max-width: 600px;
   min-height:500px;
   margin-right:auto;
   margin-left:auto;
@@ -57,12 +57,15 @@ html,body{
 
 
 
+.login-link { float:right; }
+
+
+
 
 
 
 
 .form-signin {
-  max-width: 330px;
   padding: 15px;
   margin: 0 auto;
 }
@@ -85,50 +88,13 @@ html,body{
 .form-signin .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="email"] ,.form-signin .ipt-email{
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.reg_desc {
-  padding: 0 0 20px 30px;
-  border-bottom: 0px dashed #e3e3e3;
-  color: #999;
-}
 
 .reg_radio {
-  font-size: 14px;
+
 }
 
 .mradio {
@@ -193,30 +159,13 @@ html,body{
   margin-right:130px;
 }
 
-#email-frame{
-  display:none;
-}
-#phone-frame{
 
-}
 
 .code-area{
-  width:80%;
+
 }
 .code-btn{
-  display: inline-block;
-  width: 120px;
-  font-size: 14px;
-  padding-top: 0;
-  height: 38px;
-  width: 90px;
-  color: #000;
-  font-weight: normal;
-  margin-left: 4px;
-  background: image-url('main/input_bgs.png') 0 -40px repeat-x;
-  box-shadow: 0 1px 1px #f0f0f0;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+
 }
 
 .nosend{
