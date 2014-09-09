@@ -7,16 +7,23 @@ class Reg < ActionMailer::Base
   #   en.regconfirm.regist_confirm.subject
   #
   def regist_confirm(user)
-    @userid= "dominic"
-    @userhash="hash"
-    @username = "dominic"
-    mail :to=> "166706916@qq.com",:subject=>"沃银网注册确认"
+    @username= user.email
+    verification = Verification.new
+    verification.email =@username
+    verification.email_code = create_email_code
+    verification.save!
+    @userhash =  verification.email_code
+    mail :to => user.email,:subject=>"沃银网注册确认"
+  end
+
+  def create_email_code
+     "FX12341123"
   end
 
   def reset_password(user)
-    @userid=user.id
-    @userhash=user.hashed_password
+    @userid = user.id
+    @userhash = user.hashed_password
     @username = user.name
-    mail :to=>user.email,:subject=>"微行微系统密码重设"
+    mail :to=> user.email,:subject => "微行微系统密码重设"
   end
 end

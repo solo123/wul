@@ -4,8 +4,13 @@ source 'https://rubygems.org/'
 gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+<<<<<<< HEAD
 # gem 'mysql2'
 #gem 'tzinfo-data'
+=======
+#gem 'mysql2'
+gem 'tzinfo-data'
+>>>>>>> b5511ae25f33e0a0c525b606c9cadeba130087cf
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
