@@ -3,20 +3,17 @@ class AuthController < Devise::SessionsController
   require "uri"
   layout "sign_layout" 
 
-  def send_sms
+  def send_sms(mobile, code)
     url = URI.parse('https://sms-api.luosimao.com/v1/send.json')
     url.user = "api"
     url.password = "key-618b92cc656f8e532bb2c08a0d8d205a"
     req = Net::HTTP::Post.new(url.path)
-    data = {'mobile' => '15889667715', 'cb' => 'callback', 'message' => 'from dominic 【沃银金融】' }
+    data = {'mobile' => mobile, 'cb' => 'callback', 'message' => "感谢您注册沃银网，您的验证码是#{code}【沃银金融】"}
     req.form_data = data
     req.basic_auth url.user, url.password
     con = Net::HTTP.new(url.host, url.port)
     con.use_ssl = true
-    res = con.start {|http| http.request(req)}
-    puts res.body
-    puts res
-    render :js => "alert(#{res.body.to_s})"
+    res = con.start { |http| http.request(req) }
   end
 
 
@@ -26,6 +23,11 @@ class AuthController < Devise::SessionsController
   end
 
   def success
+    @suc_msg = @success_message
+    @suc_url = @success_url
+  end
+
+  def fail
 
   end
 
@@ -47,23 +49,35 @@ class AuthController < Devise::SessionsController
   end
 
   def useractivate
-
+    if params[:useremail]
+      verification = Verification.where(:email => params[:useremail]).first
+      if verification
+        if params[:token] == verification.email_code
+          verification.emailstatus = "confirmed"
+          verification.securyscore += 1
+          verification.save!
+          redirect_to success_path and return
+        end
+      end
+    end
+    redirect_to fail_path
   end
-
 
 
   def get_code
     valid = Verification.where(:phone => params[:phone_num]).first
     verify_code = rand(10 ** 6)
+    # send_sms(params[:phone_num], verify_code)
     if valid
-      render :js => "alert('验证码已经发送,验证码是#{verify_code}')"
+      render :js => "alert('验证码已经发送,请查收)"
     else
       valid = Verification.new
-      render :js => "alert('验证码已经更新,验证码是#{verify_code}')"
+      render :js => "alert('验证码已经更新,请查收)"
     end
     valid.phone = params[:phone_num]
     valid.phonetime = Time.now
-    valid.verify_code = verify_code
+    valid.verify_code = "111111"
+    # valid.verify_code = verify_code
     valid.save!
   end
 
@@ -83,18 +97,16 @@ class AuthController < Devise::SessionsController
     @user = User.new
     @user.email = params[:reg_email]
     @user.password = @user.password_confirmation = params[:reg_email_pass]
-    # user.save!
-    # if @user.save
-    Reg.regist_confirm(@user).deliver
-
-    # verify = Verification.new
-    # verify.email = params[:reg_email]
-    # verify.emailstatus = "confirming"
-    # verify.email_code = "111111"
-    # user.user_info.verification = verify
-    # verify.save!
-    render :js => "window.location.href = '/success'" and return
-
+    if @user.save!
+      verify = Verification.new
+      verify.email = params[:reg_email]
+      verify.emailstatus = "confirming"
+      verify.email_code = "111112"
+      @user.user_info.verification = verify
+      verify.save!
+    end
+    Reg.regist_confirm(@user.email, verify.email_code).deliver
+    render "success"
   end
 
   def create_mobile(params)
@@ -113,7 +125,7 @@ class AuthController < Devise::SessionsController
         valid.securyscore += 1
         u.user_info.verification = valid
         valid.save!
-        render :js => "window.location.href = '/success'" and return
+        render "success" and return
         #render :js => "alert('验证通过')" and return
       end
     else

@@ -26,6 +26,7 @@ Wooul::Application.routes.draw do
     post "/new_user" => "auth#create"
     get "/email_activate" => "auth#useractivate"
     get "/success" => "auth#success"
+    get "/fail" => "auth#fail"
   end
 
   #root :to => ''

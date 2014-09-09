@@ -28,10 +28,10 @@
       <td colspan="2">
         <p style="margin-top:20px;"><%=@username%>，您好: </p>
         <p>欢迎加入沃银网！</p>
-        <p>您只需要最后一步---验证邮箱，就可以体验沃银网的所有服务.</p> <p><a href="http://127.0.0.1:3000/email_activate?useremail=<%=@userid%>&token=<%=@userhash%>" target="_blank"
+        <p>您只需要最后一步---验证邮箱，就可以体验沃银网的所有服务.</p> <p><a href="http://127.0.0.1:3000/email_activate?useremail=<%=@username%>&token=<%=@userhash%>" target="_blank"
                                                     style="padding:6px 20px;font-size:14px;background:#f09512;border-radius:2px;color:#fff;text-decoration:none;font-weight: bold;">验证邮箱
       </a> <p>
-        如果点击无效，请复制下方网页地址到浏览器地址栏中打开：</br><a href="http://127.0.0.1:3000/email_activate?useremail=<%=@userid%>&token=<%=@userhash%>"></a></p>
+        如果点击无效，请复制下方网页地址到浏览器地址栏中打开：</br><a href="http://127.0.0.1:3000/email_activate?useremail=<%=@username%>&token=<%=@userhash%>"></a></p>
 
         <p>
           祝您使用愉快。如果有任何疑惑，欢迎与我们联系： <a href="mailto:support@wooul.com">support@wooul.com</a> 。

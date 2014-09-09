@@ -6,19 +6,12 @@ class Reg < ActionMailer::Base
   #
   #   en.regconfirm.regist_confirm.subject
   #
-  def regist_confirm(user)
-    @username= user.email
-    verification = Verification.new
-    verification.email =@username
-    verification.email_code = create_email_code
-    verification.save!
-    @userhash =  verification.email_code
-    mail :to => user.email,:subject=>"沃银网注册确认"
+  def regist_confirm(email, code)
+    @username= email
+    @userhash = code
+    mail :to => email,:subject=>"沃银网注册确认"
   end
 
-  def create_email_code
-     "FX12341123"
-  end
 
   def reset_password(user)
     @userid = user.id
