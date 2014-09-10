@@ -96,6 +96,13 @@ Wooul::Application.routes.draw do
   namespace :securecenter do
     get '/', to: 'secure#index'
     get '/secure/confirmphone'
+    get '/secure/real_name'
+    post '/secure/real_name'
+    get '/secure/confirm'
+    get '/secure/change_phone'
+    post '/secure/change_phone'
+    get '/secure/change_email'
+    get '/secure/change_secret'
     post '/secure/verify_code'
     post '/secure/checkphone'
   end

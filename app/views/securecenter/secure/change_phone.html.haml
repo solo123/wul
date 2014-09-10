@@ -1,0 +1,43 @@
+%a.btn.btn-default{:href => securecenter_path }
+  返回
+%h4
+  更换绑定手机
+  - if @verification
+    %p
+      当前手机号码是：
+      = @verification.phone
+    %p
+      验证码
+      %input{:type => "text"}
+      %button.btn.btn-primary
+        获取验证码
+    %p
+      %button.btn.btn-primary
+        下一步
+
+  - else
+    = current_user.id
+    = form_tag securecenter_secure_change_phone_path do
+      .panel
+        .panel-heading
+          .panel-body
+            %p.info
+              = label :number, '手机号码'
+              = text_field_tag :phone_number
+              %br
+              = label :securenumber, '验证码'
+              = text_field_tag :secure_number
+              .button.btn.btn-success#confirmphone{}
+                获取验证码
+              %br
+              = label :paypass, '支付密码'
+              = text_field_tag :pay_password
+              - if flash[:notice]
+                .alert{ :class => "alert-notice"}
+                  %button.close{ :data => { :dismiss => "alert" } }x
+                  %strong
+                  = flash[:notice]
+                  %br
+                  %br
+          .panel-footer
+            = submit_tag '绑定', :class => "btn btn-default"

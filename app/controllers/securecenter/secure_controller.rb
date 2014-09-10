@@ -12,6 +12,67 @@ module Securecenter
 
     end
 
+    def real_name
+      if request.post?
+        if params[:id_number] == "370502198503126415"
+        verification = current_user.user_info.verification
+        verification.realname = params[:real_name]
+        verification.personalid = params[:id_number]
+        verification.idstatus = "verified"
+        verification.securyscore += 1
+        verification.save!
+        else
+        flash[:notice] = "验证失败"
+        end
+      else
+        verification = current_user.user_info.verification
+        if verification.idstatus == "verified"
+          @verify = verification
+        end
+      end
+    end
+
+
+    def confirm
+
+    end
+
+    def change_phone
+      if request.post?
+        phonenum = params[:phone_number]
+        secure_num = params[:secure_number]
+        if UserInfo.exists?(:mobile => phonenum)
+          flash[:notice] = "该号码已经被使用#{phonenum}"
+        else
+          uinfo =current_user.user_info
+          verify = uinfo.verification
+          if verify.phone == phonenum and secure_num == verify.verify_code
+             verify.phonetime = Time.now
+             uinfo.payment_password = params[:pay_password]
+             verify.securyscore += 1
+             verify.phonestatus = "verified"
+             verify.save!
+             uinfo.save!
+             flash[:notice] = "验证成功"
+          else
+            flash[:notice] = "验证码与手机不符"
+          end
+        end
+      else
+        verify = current_user.user_info.verification
+        if verify.phonestatus == "verified"
+          @verification = verify
+        end
+      end
+    end
+
+    def change_email
+    end
+
+
+    def change_secret
+    end
+
     def verify_code
       phonenum = params[:phone]
       verify_code = rand(10 ** 6)

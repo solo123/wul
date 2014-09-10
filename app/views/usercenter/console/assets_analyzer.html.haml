@@ -1,1 +1,270 @@
-%h1 资产统计
+.acc1 资产统计
+.actuary
+  %ul
+    %a{:href => "#"}
+      %li#column1.size1of4.act-border
+        %ul
+          %li.actli-ye1
+            账户余额
+            %span.badge.act-badge ?
+          %li.actli-ye2
+            ￥
+            %span 990.47
+          %li.actli-ye3
+            可用余额 ￥
+            %span 990.47
+            %span.badge.act-badge ?
+    %a{:href => "#"}
+      %li#column2.size1of4.act-border
+        %ul
+          %li.actli1-ye1
+            账户总资产
+            %span.badge.act-badge ?
+          %li.actli1-ye2
+            ￥
+            %span 990.47
+    %a{:href => "#"}
+      %li#column3.size1of4.act-border
+        %ul
+          %li.actli1-ye1
+            累计净收益
+            %span.badge.act-badge ?
+          %li.actli1-ye2
+            ￥
+            %span -9.53
+    %a{:href => "#"}
+      %li#column4.size1of4.act-border.actlast-li
+        %ul
+          %li.actli1-ye1
+            加权收益率
+            %span.badge.act-badge ?
+          %li.actli1-ye2
+            %span> 0.00
+            \%
+#column1-area.actuary1
+  .title-items
+    %h2 账号余额
+    %b.line
+  %table.table.table-bordered
+    %thead
+      %tr.light-bj
+        %th
+        %th 定存宝(￥)
+        %th 月息通(￥)
+        %th 小计(￥)
+    %tbody
+      %tr
+        %th 总充值金额
+        %th.act-colspan.light-green{:colspan => "2"} + 1,005.50
+        %th + 1,005.50
+      %tr
+        %th 回收本金
+        %th.light-green +0.00
+        %th.light-green +0.00
+        %th +0.00
+      %tr
+        %th 回收利息
+        %th.light-green +5.83
+        %th.light-green +0.00
+        %th +5.83
+      %tr
+        %th 复投收益
+        %th.light-org - 0.00
+        %th --
+        %th - 0.00
+      %tr
+        %th 回收罚息
+        %th --
+        %th.light-green +0.00
+        %th +0.00
+      %tr
+        %th 赎回投资
+        %th.light-green + 996.56
+        %th.light-green + 99.58
+        %th + 1,096.14
+      %tr
+        %th 获得垫付资金
+        %th --
+        %th.light-green + 0.00
+        %th + 0.00
+      %tr
+        %th 已投资金额
+        %th.light-org - 1,000.00
+        %th.light-org - 100.00
+        %th - 1,100.00
+      %tr
+        %th 买入债权
+        %th.light-org - 0.00
+        %th.light-org - 0.00
+        %th - 0.00
+      %tr
+        %th 完成提现金额
+        %th.act-colspan.light-org{:colspan => "2"} - 0.00
+        %th - 0.00
+      %tr
+        %th 手续费
+        %th.act-colspan.light-org{:colspan => "2"} - 17.00
+        %th - 17.00
+      %tr.light-bj
+        %th{:colspan => "3"} 账户余额
+        %th 990.47
+      %tr
+        %th 投资中冻结金额
+        %th --
+        %th.light-org - 0.00
+        %th - 0.00
+      %tr
+        %th 预约中冻结金额
+        %th.light-org - 0.00
+        %th --
+        %th - 0.00
+      %tr
+        %th 提现中冻结金额
+        %th.act-colspan.light-org{:colspan => "2"} - 0.00
+        %th - 0.00
+      %tr.light-bj
+        %th{:colspan => "3"} 可用余额
+        %th 990.47
+#column2-area.actuary1{:style => "display:none"}
+  .title-items
+    %h2 账户总资产
+    %b.line
+  %table.table.table-bordered
+    %thead
+      %tr.light-bj
+        %th
+        %th 定存宝(￥)
+        %th 月息通(￥)
+        %th 小计(￥)
+    %tbody
+      %tr
+        %th 待收本金
+        %th.light-green +0.00
+        %th.light-green +0.00
+        %th +0.00
+      %tr
+        %th 待收利息
+        %th.light-green +0.00
+        %th.light-green +0.00
+        %th +0.00
+      %tr
+        %th 复投收益
+        %th.light-green + 0.00
+        %th --
+        %th + 0.00
+      %tr
+        %th 投资中冻结金额
+        %th --
+        %th.light-green +0.00
+        %th +0.00
+      %tr
+        %th 预约中冻结金额
+        %th.light-green +0.00
+        %th.light-green --
+        %th +0.00
+      %tr
+        %th 提现中冻结金额
+        %th.act-colspan.light-green{:colspan => "2"} + 0.00
+        %th + 0.00
+      %tr
+        %th 可用余额
+        %th.act-colspan.light-green{:colspan => "2"} + 990.47
+        %th + 990.47
+      %tr.light-bj
+        %th{:colspan => "3"} 可用余额
+        %th 990.47
+#column3-area.actuary1{:style => "display:none"}
+  .title-items
+    %h2 净收益
+    %b.line
+  %table.table.table-bordered
+    %thead
+      %tr.light-bj
+        %th
+        %th 定存宝(￥)
+        %th 月息通(￥)
+        %th 小计(￥)
+    %tbody
+      %tr
+        %th 回收利息
+        %th.light-green + 5.83
+        %th.light-green +0.00
+        %th + 5.83
+      %tr
+        %th 回收罚息
+        %th.light-green --
+        %th.light-green +0.00
+        %th +0.00
+      %tr
+        %th 活动收益
+        %th.act-colspan.light-green{:colspan => "2"} + 5.50
+        %th + 5.50
+      %tr
+        %th 赎回投资已获利息
+        %th.light-green + 1.56
+        %th + 0.08
+        %th + 1.64
+      %tr
+        %th 购买债权已获折让金额
+        %th + 0.00
+        %th.light-green +0.00
+        %th +0.00
+      %tr
+        %th 出售债权折让金额
+        %th.light-org - 5.00
+        %th.light-org - 5.00
+        %th - 5.50
+      %tr
+        %th 购买债权支付利息
+        %th.light-org - 0.00
+        %th.light-org - 0.00
+        %th - 0.00
+      %tr
+        %th 赎回手续费支出
+        %th.light-org - 15.00
+        %th.light-org - 2.00
+        %th - 17.00
+      %tr.light-bj
+        %th{:colspan => "3"} 累计净收益
+        %th -9.53
+#column4-area.actuary1{:style => "display:none"}
+  .title-items
+    %h2 加权收益率
+    %b.line
+  %table.table.table-bordered.jqsyl
+    %thead
+      %tr.light-bj
+        %th 收益率对比CPI
+        %th 投资分布比例(按金额)
+    %tbody
+      %tr
+        %th
+          %div
+            有利网的收益率是银行活期存款利率的
+            %span.jqsyl-ll> 0.00
+            倍，CPI的
+            %span.jqsyl-ll 0.00
+            倍
+          .jqsyl-l2
+            %ul.jqsyl-llb
+              %li.size1of3
+                %p 0.35%
+                .jqsyl-bl1
+              %li.size1of3
+                %p 0.35%
+                .jqsyl-bl1
+              %li.size1of3
+                %p 0.35%
+                .jqsyl-bl1
+          %div
+            %ul.jqsyl-llb
+              %li.size1of3
+                %p 银行活期存款利率
+              %li.size1of3
+                %p
+                  CPI
+                  %span.badge.act-badge ?
+              %li.size1of3
+                %p 您的收益率
+        %th
+          %div 有利网的收益率是银行活期存款利率的

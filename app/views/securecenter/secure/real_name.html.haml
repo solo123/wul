@@ -1,0 +1,32 @@
+%a.btn.btn-default{:href => securecenter_path }
+  返回
+%h4
+  实名认证
+
+= form_tag securecenter_secure_real_name_path do
+  .panel
+    .panel-heading
+    .panel-body
+      - if @verify
+        您的验证身份证号码是:
+        = @verify.personalid
+        %br
+        您的验证姓名是:
+        = @verify.realname
+      - else
+        %p.info
+          = label :id_number, '身份证号码'
+          = text_field_tag :id_number
+          %br
+          = label :real_name, '真实姓名'
+          = text_field_tag :real_name
+          %br
+          - if flash[:notice]
+            .alert{ :class => "alert-notice"}
+              %button.close{ :data => { :dismiss => "alert" } }x
+              %strong
+              = flash[:notice]
+              %br
+              %br
+        .panel-footer
+          = submit_tag '验证', :class => "btn btn-default"

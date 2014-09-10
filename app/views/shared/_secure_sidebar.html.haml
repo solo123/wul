@@ -1,59 +1,18 @@
 .bs-example
-  %img{:src => image_url("account1.jpg")}
-  .accout_yonghu
-    = current_user.username
-    - secure_progress = current_user.user_info.sec_progress
-    - current_level= current_user.user_info.secury_score - 1
-    - verify = current_user.user_info.verification
-    - level = ["低","中","高"]
-  .accout_progress
-    .progress
-      .progress-bar{:role => "progressbar", "aria-valuenow" => "60", "aria-valuemin" => "0", "aria-valuemax" => "100", :style => "width:#{secure_progress}%" }
-        %span.sr-only
-          60% Complete
-  .accout_ts
-    安全等级
-    = level[current_level]
-    - if current_level < 2
-      [提升]
-    %div
-      .sjgm
-        .sjgm_sj
-          - if verify.phonestatus == "confirmed"
-            %a.btn.btn-success.btn-small{:href=> securecenter_secure_confirmphone_path}
-              %span.glyphicon.glyphicon-phone
-          - else
-            %a.btn.btn-small{:href=> securecenter_secure_confirmphone_path}
-              手机绑定
-        .sjgm_sj
-          %a.btn.btn-default.btn-small{:href=>"#"}
-            %span.glyphicon.glyphicon-user
-        .sjgm_sj
-          %a.btn.btn-default.btn-small{:href=>"#"}
-            %span.glyphicon.glyphicon-asterisk
-
-
+  = render "shared/secure_level"
   %ul
-    %li.accout_ye
-      我的余额
-    .accout_ye1
-      ￥
-      = render "shared/usercenter_balance"
-    %div
-      %a{:href =>usercenter_console_charge_bank_path}
-        %img{:src => image_url("account4.jpg")}
     %li
-      %a{:href => usercenter_console_overview_path}
+      %a{:href => securecenter_secure_real_name_path}
         账户实名认证
     %li
-      %a{:href => usercenter_console_history_path}
+      %a{:href => securecenter_secure_confirm_path}
         账户交易认证
     %li
-      %a{:href => securecenter_secure_confirmphone_path}
+      %a{:href => securecenter_secure_change_phone_path}
         绑定手机
     %li
-      %a{:href => usercenter_console_charge_path}
+      %a{:href => securecenter_secure_change_email_path}
         更换注册邮箱
     %li
-      %a{:href => usercenter_console_coupon_path}
+      %a{:href => securecenter_secure_change_secret_path  }
         启用密保问题
