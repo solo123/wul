@@ -49,7 +49,7 @@ class ProductsController < ResourcesController
     user.save!
     invest.save!
     balance = user.user_info.account.balance
-    Transaction.createTransaction("invest", invest.amount, balance + amount, balance, user.user_info.id,  @product.deposit_number)
+    Transaction.createTransaction("invest", invest.amount, balance + amount, balance, user.user_info.id,  @product.deposit_number, @product.product_type)
   end
 
   def join

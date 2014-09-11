@@ -15,10 +15,10 @@ class InvestsController < ApplicationController
       if buyer_balance >= invest.resell_price
         current_user.user_info.account.balance -= invest.resell_price
         current_user.save!
-        Transaction.createTransaction("buy", invest.resell_price, buyer_balance + invest.resell_price, buyer_balance, current_user.user_info.id, invest.product.deposit_number)
+        Transaction.createTransaction("buy", invest.resell_price, buyer_balance + invest.resell_price, buyer_balance, current_user.user_info.id, invest.product.deposit_number, invest.invest_type)
         invest.user_info.account.balance += invest.resell_price
         invest.user_info.save!
-        Transaction.createTransaction("sell", invest.resell_price, seller_balance, seller_balance + invest.resell_price, invest.user_info.id, invest.product.deposit_number)
+        Transaction.createTransaction("sell", invest.resell_price, seller_balance, seller_balance + invest.resell_price, invest.user_info.id, invest.product.deposit_number,invest.invest_type)
         invest.resell_price = 0
         invest.discount_rate = 0
         invest.onsale = false

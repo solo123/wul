@@ -44,7 +44,7 @@ module Usercenter
     end
 
     def assets_analyzer
-
+      @analyzer = current_user.user_info.analyzer
     end
 
     def redemption
@@ -100,7 +100,7 @@ module Usercenter
       if current_user
         charge_val = params[:charge_value].to_i
         balance = current_user.user_info.account.balance
-        Transaction.createTransaction("charge", charge_val, balance, balance + charge_val, current_user.user_info.id, "充值")
+        Transaction.createTransaction("charge", charge_val, balance, balance + charge_val, current_user.user_info.id, "充值","charge")
         current_user.user_info.account.balance += charge_val
         current_user.user_info.save!
       end

@@ -1,3 +1,5 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "analyzer.js"
 .acc1 资产统计
 .actuary
   %ul
@@ -9,10 +11,12 @@
             %span.badge.act-badge ?
           %li.actli-ye2
             ￥
-            %span 990.47
+            %span
+              = current_user.user_info.account.balance
           %li.actli-ye3
             可用余额 ￥
-            %span 990.47
+            %span
+              = current_user.user_info.account.balance
             %span.badge.act-badge ?
     %a{:href => "#"}
       %li#column2.size1of4.act-border
@@ -55,8 +59,12 @@
     %tbody
       %tr
         %th 总充值金额
-        %th.act-colspan.light-green{:colspan => "2"} + 1,005.50
-        %th + 1,005.50
+        %th.act-colspan.light-green{:colspan => "2"}
+          +
+          = number_with_precision @analyzer.total_charge_amount, precision: 2
+        %th
+          +
+          = number_with_precision @analyzer.total_charge_amount, precision: 2
       %tr
         %th 回收本金
         %th.light-green +0.00
