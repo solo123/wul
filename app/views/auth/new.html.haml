@@ -6,7 +6,8 @@
     .sign-form-area
       .reg_frame
         .login_logo
-          %img.logo_image{:src => image_url("http://alpha.wooul.com/system/cms/files/files/000/000/006/original/wooul-logo.png")}
+          %a{:href => "/"}
+            %img.logo_image{:src => image_url("http://alpha.wooul.com/system/cms/files/files/000/000/006/original/wooul-logo.png")}
         .login-link 
           已有帐号，
           %a{:href => "/users/sign_in"} 登录
@@ -47,17 +48,17 @@
               .reg_item.form-group
                 %label.col-sm-2.control-label{:for => "reg_email"} 邮箱:
                 .col-sm-10
-                  %input.form-control#reg_email{:type => "text",:autofocus => true, :name => "reg_email"}
+                  %input.form-control#reg_email{:type => "text",:autofocus => true, :name => "reg_email",:placeholder => "请输入您的电子邮件地址"}
               .reg_error
               .reg_item.form-group
                 %label.col-sm-2.control-label{:for => "reg_email_pass"} 设置密码:
                 .col-sm-10
-                  %input.form-control#reg_email_pass{:type => "password", :name => "reg_email_pass"}
+                  %input.form-control#reg_email_pass{:type => "password", :name => "reg_email_pass",:placeholder => "请设置密码，不是电子邮件帐户密码"}
               .reg_error
               .reg_item.form-group
                 %label.col-sm-2.control-label{:for => "reg_email_conf"} 确认密码:
                 .col-sm-10
-                  %input.form-control#reg_email_conf{:type => "password", :name => "reg_email_conf"}
+                  %input.form-control#reg_email_conf{:type => "password", :name => "reg_email_conf",:placeholder => "请确认密码"}
               .reg_error
               .col-sm-offset-2.col-sm-10
                 %input.btn.btn-primary.btn-lg{:type => "submit", :value => "立即注册"}

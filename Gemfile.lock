@@ -105,7 +105,6 @@ GEM
     mime-types (1.25.1)
     minitest (5.4.1)
     multi_json (1.10.1)
-    mysql2 (0.3.16)
     orm_adapter (0.5.0)
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
@@ -192,7 +191,6 @@ DEPENDENCIES
   jquery-rails (~> 3.1.0)
   jquery-ui-rails (~> 4.2.1)
   jquery-validation-rails
-  mysql2
   rails (= 4.1.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

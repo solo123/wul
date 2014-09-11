@@ -3,7 +3,8 @@
     .sign-form-area
       .login_frame
         .login_logo
-          %img.logo_image{:src => image_url("http://alpha.wooul.com/system/cms/files/files/000/000/006/original/wooul-logo.png")}
+          %a{:href => "/"}
+            %img.logo_image{:src => image_url("http://alpha.wooul.com/system/cms/files/files/000/000/006/original/wooul-logo.png")}
         .login-form-area
           = form_for(resource, :as => resource_name, html: {class: "form-signin form-horizontal"}, :url => session_path(resource_name)) do |f|
             .form-group
