@@ -1,5 +1,6 @@
 class UserInfo < ActiveRecord::Base
 	has_many :invests
+  has_one :analyzer
   has_many :transactions
   has_one :verification
   has_one :delagator, :dependent=>:destroy, :autosave=>true

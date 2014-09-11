@@ -105,7 +105,7 @@ class AuthController < Devise::SessionsController
       @user.user_info.verification = verify
       verify.save!
     end
-    Reg.regist_confirm(@user.email, verify.email_code).deliver
+    # Reg.regist_confirm(@user.email, verify.email_code).deliver
     render "success"
   end
 

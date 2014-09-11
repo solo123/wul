@@ -1,0 +1,28 @@
+.accout-avatar
+  %img{:src => image_url("account1.jpg")}
+.accout-info.alert.alert-info
+  = current_user.username
+  - secure_progress = current_user.user_info.sec_progress
+  - current_level= current_user.user_info.secury_score - 1
+  - verify = current_user.user_info.verification
+  - level = ["低","中","高"]
+  - status_dict = {"verified" => "btn-success", "confirming" =>"btn-default"}
+.accout-progress
+  .progress
+    .progress-bar{:role => "progressbar", "aria-valuenow" => "60", "aria-valuemin" => "0", "aria-valuemax" => "100", :style => "width:#{secure_progress}%" }
+      %span.sr-only
+        60% Complete
+.accout_ts
+  %p
+    安全等级
+    = level[current_level]
+    - if current_level < 2
+      [提升]
+  %p
+  /%a.btn.btn-success.btn-small{:href=> securecenter_secure_change_phone_path, :class=> "#{status_dict[verify.phonestatus]}"}
+  /    %span.glyphicon.glyphicon-phone
+  /  %a.btn.btn-small{:href=>securecenter_secure_real_name_path, :class=> "#{status_dict[verify.idstatus]}"}
+  /    %span.glyphicon.glyphicon-user
+  /  %a.btn.btn-small{:href=>"#", :class=> "#{status_dict[verify.emailstatus]}"}
+  /    %span.glyphicon.glyphicon-asterisk
+      

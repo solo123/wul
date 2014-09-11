@@ -225,7 +225,8 @@
           %tbody
             - invests.each do |invest|
               %tr
-                %td= invest.user_info.show_id[0, 2] + "***" + invest.user_info.show_id[-2, 2]
+                %td= "134"+ "***" + "223"
+                -#%td= invest.user_info.show_id[0, 2] + "***" + invest.user_info.show_id[-2, 2]
                 %td= invest.amount
                 %td= invest.created_at.strftime("%Y-%m-%d %H:%M")
                 %td

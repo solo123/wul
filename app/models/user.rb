@@ -28,7 +28,9 @@ class User < ActiveRecord::Base
   def create_userinfo
     uinfo = UserInfo.new
     account = Account.new
+    analyzer = Analyzer.new
     uinfo.account = account
+    uinfo.analyzer = analyzer
     uinfo.show_id = self.username
     self.user_info = uinfo
     account.save!
