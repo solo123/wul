@@ -1,52 +1,56 @@
 /*
  *= require_self
  */
-.order_product
-{
-  boder:solid;
-}
 
 
-/* CSS Document */
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: tahoma, Arial, Microsoft YaHei, SimSun;
-  font-size: 12px;
-  line-height: 1.5em;
-}
-ol, ul {
-  list-style: none;
-}
-img {
-  display: block;
-  border: 0;
-}
-a {
-  text-decoration: none;
-}
-a:focus, a:hover {
-  text-decoration: none;
-
-}
-.size1of4 {
-  width: 25%;
-}
-body {
-  background-color: #f1f1f1;
-}
 /* My Account */
-.container-fluid {
-  padding-right: 10%;
-  padding-left: 10%;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top:3%;
+
+
+
+.console-page-area{ margin-top:12px; margin-bottom:12px; }
+
+
+
+
+.sidebar .accout-avatar{ text-align:center; }
+.sidebar .accout-avatar img{ display:inline; }
+
+
+.sidebar .accout-info{ margin: 10px 15px; }
+
+.sidebar .accout-progress{
+  margin:0 15px;
 }
+.sidebar .accout-progress .progress{
+  margin-bottom:5px; 
+}
+
+
+.sidebar .accout_ts{
+  margin:0 15px 10px 15px;
+}
+.sidebar .accout_ts a{
+  margin-right:8px;
+}
+
+
+.accout_ye{
+  margin:20px 15px;
+}
+
+
+
+.sidebar .sidebar-nav{
+  margin:15px; 
+}
+
+
+
+
+
+
 @media (min-width: 768px) {
-  .bs-example {
+  .console-page-area aside.sidebar {
     margin-right: 0;
     margin-left: 2px;
     padding:15px 0 30px 0;
@@ -57,46 +61,12 @@ body {
     box-shadow: none;
   }
 }
-.bs-example img{
-  margin:auto;
-  margin-bottom:10px;
-}
-.accout_ye1{
-  padding:10px 4px 10px 4px;
-  color:#1fb5da;
-  font-size:16px;
-  text-align:center;
-}
-.bs-example li {
-  border-bottom:1px solid #d2d2d2;
-  text-align:center;
-  font-size:14px;
-  text-decoration: none;
-  color:#fff;
-}
-.bs-example li a{
-  color:#666;
-  padding:10px 4px 10px 4px;
-}
-.bs-example li a:hover{
-  background-color:#CCC;
-}
-.accout_yonghu{
-  background-color:#1fb5da;
-  padding:4px 4px 4px 4px;
-  color:#fff;
-  font-size:16px;
-  margin-bottom:15px;
-  text-align:center;
-}
-.accout_ts{
-  color:#666;
-  padding:15px 4px 10px 4px;
-  text-align:center;
-}
-.accout_ts a{
-  float:left;
-}
+
+
+
+
+
+
 .sjgm{
   height:30px;
   margin:5px 5px 5px 5px;
@@ -111,15 +81,8 @@ body {
   padding:8px;
 }
 
-.accout_progress{
-  margin:0 25px 0 25px;
-  height: 10px;
-}
-.accout_ye{
-  background-color:#999;
-  padding:10px 4px 10px 4px;
-  margin-bottom:15px;
-}
+
+
 .accout_lbg{
   background-color:#999;
   padding:10px 4px 10px 4px;

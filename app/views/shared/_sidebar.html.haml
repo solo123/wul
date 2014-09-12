@@ -1,30 +1,28 @@
-.bs-example
+%aside.sidebar
   = render "shared/secure_level"
-  %ul
-    %li.accout_ye
-      我的余额
+  .accout_ye
+    我的余额
+    %strong
     .accout_ye1
       ￥
       = render "shared/usercenter_balance"
-    %div
-      %a{:href =>usercenter_console_charge_bank_path}
-        %img{:src => image_url("account4.jpg")}
-      - {'我的账户' => usercenter_console_overview_path,
-         '交易记录' => usercenter_console_history_path(:filter => "all", :date_range => "all"),
-         '充值提现' =>  usercenter_console_charge_path,
-         '银行卡' => usercenter_console_bankcard_path,
-         '资产统计' => usercenter_console_assets_analyzer_path,
-         '投资记录' => usercenter_console_invest_history_path,
-         '投资赎回' => usercenter_console_redemption_path,
-         '借款协议' => usercenter_console_agreements_path,
-         '自动投资' => usercenter_console_autoinvest_path}.each do |k, v|
-        - if current_page?(v)
-          %li.accout_lbg
-            %a{:href => v}
-              = k
-        - else
-          %li
-            %a{:href => v}
-              = k
+    %a{:href =>usercenter_console_charge_bank_path} 充值
 
-
+  %ul.nav.nav-pills.nav-stacked.sidebar-nav
+    - {'我的账户' => usercenter_console_overview_path,
+       '交易记录' => usercenter_console_history_path(:filter => "all", :date_range => "all"),
+       '充值提现' =>  usercenter_console_charge_path,
+       '银行卡' => usercenter_console_bankcard_path,
+       '资产统计' => usercenter_console_assets_analyzer_path,
+       '投资记录' => usercenter_console_invest_history_path,
+       '投资赎回' => usercenter_console_redemption_path,
+       '借款协议' => usercenter_console_agreements_path,
+       '自动投资' => usercenter_console_autoinvest_path}.each do |k, v|
+      - if current_page?(v)
+        %li.active
+          %a{:href => v}
+            = k
+      - else
+        %li
+          %a{:href => v}
+            = k

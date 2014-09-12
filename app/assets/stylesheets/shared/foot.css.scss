@@ -3,6 +3,7 @@
 
 footer{
   background:#424d55;
+  padding:12px 0;
 }
 
 
@@ -11,13 +12,22 @@ footer{
 
 
 .security-identity{
-  margin-top:22px;
+  margin-top:10px;
   margin-bottom:22px;
+  padding-bottom:22px;
   color:#969da5;
+  border-bottom:1px solid #515e68;
+}
+.security-identity li{ 
+  vertical-align:middle;
+  height:50px;
+  line-height:50px; 
+
 }
 
 .security-identity .glyphicon{
   font-size:40px;
+  top:12px;
 }
 .security-identity p{
   font-size:18px;
@@ -31,13 +41,24 @@ footer{
 
 .footnav{
 	  padding:22px 0;
-
+    color:#a1a1a1;
+}
+.footnav h3{ margin-bottom: 12px; font-size:18px; color:#fff;}
+.footnav a:link, .footnav a:visited{
+  color:#a1a1a1;
+}
+.footnav a:hover{
+  color:#fff;
 }
 
 
 
-
-
+.copyright{
+  padding:50px 0;
+}
+.copy-info{ padding-top:18px; color:#a1a1a1;}
+.copy-logo{ text-align:right;}
+.copy-logo img{display:inline;}
 
 
 

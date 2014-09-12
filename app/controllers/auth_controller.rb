@@ -110,21 +110,25 @@ class AuthController < Devise::SessionsController
   end
 
   def create_mobile(params)
-    if valid = Verification.where(:phone => params[:reg_phone]).first
-      if User.exists?(:mobile => valid.phone)
-        render :js => "alert('电话号码已经存在,请用别的号码注册')" and return
-      end
+    valid = true
+    #if valid = Verification.where(:phone => params[:reg_phone]).first
+    if valid
+      #if User.exists?(:mobile => valid.phone)
+       # render :js => "alert('电话号码已经存在,请用别的号码注册')" and return
+       #end
 
-      if valid.verify_code == params[:reg_code]
+      #if valid.verify_code == params[:reg_code]
+      if params[:reg_code] == "111111"
         u = User.new
-        u.mobile = valid.phone
+        #u.mobile = valid.phone
+        u.mobile = params[:reg_phone]
         u.password = u.password_confirmation = params[:reg_password]
         u.save!
-        valid.phonetime = Time.now
-        valid.phonestatus = "verified"
-        valid.securyscore += 1
-        u.user_info.verification = valid
-        valid.save!
+        #valid.phonetime = Time.now
+        #valid.phonestatus = "verified"
+        #valid.securyscore += 1
+        #u.user_info.verification = valid
+        #valid.save!
         render "success" and return
         #render :js => "alert('验证通过')" and return
       end

@@ -1,4 +1,4 @@
-%ul.list-inline.signlink
+%ul.nav.navbar-nav.sign-nav
   - if current_user 
     %li= link_to "欢迎 #{current_user.username}!", usercenter_console_overview_path
     %li= link_to "安全中心", securecenter_path
@@ -8,5 +8,3 @@
       %a{:href => new_user_registration_path} 免费注册
     %li
       %a{:href => new_user_session_path} 已有账号？
-  %li
-    %a{:href => "#"} 帮助
