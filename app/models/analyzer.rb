@@ -4,7 +4,8 @@ class Analyzer < ActiveRecord::Base
   after_create :init_analyzers
 
   def product(product_type)
-      self.sub_analyzers.where(:product_type => product_type).first
+      dict = {"fixed" => 0, "month" => 1}
+      self.sub_analyzers[dict[product_type]]
   end
 
   def init_analyzers

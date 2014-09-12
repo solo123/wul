@@ -1,6 +1,8 @@
 - content_for :javascript_includes do
   = javascript_include_tag "analyzer.js"
 .acc1 资产统计
+- @fixed_analyzer = @analyzer.product("fixed")
+- @month_analyzer = @analyzer.product("month")
 .actuary
   %ul
     %a{:href => "#"}
@@ -61,20 +63,32 @@
         %th 总充值金额
         %th.act-colspan.light-green{:colspan => "2"}
           +
-          = number_with_precision @analyzer.total_charge_amount, precision: 2
-        %th
+          = number_with_precision @analyzer.total_charge_amount, precision: 2, delimiter: ','
+        %th.light-green
           +
-          = number_with_precision @analyzer.total_charge_amount, precision: 2
+          = number_with_precision @analyzer.total_charge_amount, precision: 2, delimiter: ','
       %tr
         %th 回收本金
-        %th.light-green +0.00
-        %th.light-green +0.00
-        %th +0.00
+        %th.light-green
+          +
+          =  number_with_precision @fixed_analyzer.total_principal, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @month_analyzer.total_principal, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @fixed_analyzer.total_principal + @month_analyzer.total_principal, precision: 2, delimiter: ','
       %tr
         %th 回收利息
-        %th.light-green +5.83
-        %th.light-green +0.00
-        %th +5.83
+        %th.light-green
+          +
+          =  number_with_precision @fixed_analyzer.total_profit, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @month_analyzer.total_profit, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @month_analyzer.total_profit + @fixed_analyzer.total_profit, precision: 2, delimiter: ','
       %tr
         %th 复投收益
         %th.light-org - 0.00
@@ -97,9 +111,15 @@
         %th + 0.00
       %tr
         %th 已投资金额
-        %th.light-org - 1,000.00
-        %th.light-org - 100.00
-        %th - 1,100.00
+        %th.light-org
+          \-
+          = number_with_precision @fixed_analyzer.total_invest_amount, precision: 2, delimiter: ','
+        %th.light-org
+          \-
+          =  number_with_precision @month_analyzer.total_invest_amount, precision: 2, delimiter: ','
+        %th.light-org
+          \-
+          =  number_with_precision @month_analyzer.total_invest_amount + @fixed_analyzer.total_invest_amount, precision: 2, delimiter: ','
       %tr
         %th 买入债权
         %th.light-org - 0.00
@@ -248,22 +268,22 @@
       %tr
         %th
           %div
-            有利网的收益率是银行活期存款利率的
-            %span.jqsyl-ll> 0.00
+            沃银网的收益率是银行活期存款利率的
+            %span.jqsyl-ll> 1.8
             倍，CPI的
-            %span.jqsyl-ll 0.00
+            %span.jqsyl-ll 1.7
             倍
           .jqsyl-l2
             %ul.jqsyl-llb
+              %li.size1of3{:style => "vertical-align:bottom"}
+                %p 6%
+                .jqsyl-bl1#bar1{:style => "height:40px"}
               %li.size1of3
-                %p 0.35%
-                .jqsyl-bl1
+                %p 8%
+                .jqsyl-bl1#bar2
               %li.size1of3
-                %p 0.35%
-                .jqsyl-bl1
-              %li.size1of3
-                %p 0.35%
-                .jqsyl-bl1
+                %p 13%
+                .jqsyl-bl1#bar3
           %div
             %ul.jqsyl-llb
               %li.size1of3
@@ -275,4 +295,5 @@
               %li.size1of3
                 %p 您的收益率
         %th
-          %div 有利网的收益率是银行活期存款利率的
+          %div 银行活期存款利率是沃银网的收益率的16%
+          %span.inlinesparkline#piechart{:values => "45,55"}<

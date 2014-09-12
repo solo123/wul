@@ -1,6 +1,12 @@
 $(document).ready(
-    function(){
 
+    function(){
+        $("#piechart").sparkline('html', {
+            type: 'pie',
+            width: '120',
+            height: '120',
+            sliceColors: ['#FFFFFF','#3366cc'],
+            offset: -90});
         $(".act-border").click(function(){
             $(".act-border").removeClass("selectedarea");
             $(this).addClass("selectedarea");
