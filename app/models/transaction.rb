@@ -16,16 +16,27 @@ class Transaction < ActiveRecord::Base
   def modify_analyzer
     case self.trans_type
       when "charge"
-        add_charge_data(self.user_info_id, self.operation_amount)
+        add_charge_data
+      when "invest"
+        add_analyzer_data("total_invest_amount")
       else
     end
   end
 
 
-  def add_charge_data(uinfo_id, amount)
-    if uinfo = UserInfo.find(uinfo_id)
-      uinfo.analyzer.total_charge_amount += amount
+  def add_charge_data
+    if uinfo = UserInfo.find(self.user_info_id)
+      uinfo.analyzer.total_charge_amount += self.operation_amount
       uinfo.analyzer.save!
     end
   end
+
+  def add_analyzer_data(field)
+    if uinfo = UserInfo.find(self.user_info_id)
+      a = uinfo.analyzer.product(self.product_type)
+      a.send(field + '=', a.send(field) + self.operation_amount)
+      a.save!
+    end
+  end
+
 end

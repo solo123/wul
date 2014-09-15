@@ -25,146 +25,109 @@
     .col-md-8.modedqb1
       .model-box
         .head
-          %h2
-            = obj.product_name
-            = obj.deposit_number
-        .profit
-          %dl.f
-            %dt 购入价格
-            %dd
-              %ins ￥
-              %em
-                = number_with_precision(inv.resell_price, precision: 0, delimiter: ',')
-          %dl
-            %dt
-              %b 实际收益率
-            %dd
-              %em
-                = obj.annual_rate.to_i
-              %span
-                - num = obj.annual_rate.to_s.split(".")
-                - frac = num.count > 1 ? num[1].to_s : 0
-                = "."
-                = frac
-              ="%"
-              -#= succeed "%" do
-              -#  %span .00
-          %dl
-            %dt 剩余期限
-            %dd
-              %em
-                = obj.remain_repayment_period
-              个月
-        .profit
-          %dl.f
-            %dt 债权价值
-            %dd
-              %ins ￥
-              %em
-                = number_with_precision(inv.amount, precision: 0, delimiter: ',')
-          %dl
-            %dt
-              %b 年化收益率
-            %dd
-              %em
-                = obj.annual_rate.to_i
-              %span
-                - num = obj.annual_rate.to_s.split(".")
-                - frac = num.count > 1 ? num[1].to_s : 0
-                = "."
-                = frac
-              ="%"
-              -#= succeed "%" do
-              -#  %span .00
-          %dl
-            %dt 债权期限
-            %dd
-              %em
-                = obj.repayment_period
-              个月
-        .expl
+          %h2 定期宝A140613
+
+        .zyzqxq
+          %ul.zyzqxq1-1
+            %li.size1of4.zyzqxq1.zyzq-borri
+              %ul
+                %li
+                  %button.btn.btn-default{:type => "button"} 购买信息
+                %li
+                  %button.btn.btn-default{:type => "button"} 债权信息
+            %li.size1of4.zyzqxq2.zyzq-borri
+              %ul
+                %li
+                  %p.zyzpp1 购买价格
+                  %p.zyzpp2
+                    ￥
+                    %span.zyzpp2-1
+                      = number_with_precision(inv.resell_price, precision: 0, delimiter: ',')
+                %li
+                  %p.zyzpp1 债权价值
+                  %p.zyzpp2
+                    ￥
+                    %span.zyzpp2-2
+                      = number_with_precision(inv.amount, precision: 0, delimiter: ',')
+            %li.size1of4.zyzqxq2.zyzq-borri
+              %ul
+                %li
+                  %p.zyzpp1
+                    实际收益率
+                    %span.badge ?
+                  %p.zyzpp2
+                    %span.zyzpp2-2 12.76
+                    \%
+                %li
+                  %p.zyzpp1
+                    年化收益率
+                    %span.badge ?
+                  %p.zyzpp2
+                    %span.zyzpp2-2
+                      = obj.annual_rate.to_i
+                      \%
+            %li.size1of4.zyzqxq2
+              %ul
+                %li
+                  %p.zyzpp1 剩余期限
+                  %p.zyzpp2
+                    %span.zyzpp2-1
+                      = obj.remain_repayment_period
+                    个月
+                %li
+                  %p.zyzpp1 原还款期限
+                  %p.zyzpp2
+                    %span.zyzpp2-2
+                      = obj.repayment_period
+                    个月
+        .usage
+          %p
+            %span 借款用途说明
+            客户在深圳市某国营企业工作，收入稳定，本借款用于资金周转。本借款已通过证大速贷及证东咨询初审并被推荐至有利网；推荐方提供...
+            %a{:href => "#"} [详情]
+        .exp2
+          %ul
+            %li.size1of2 发布时间：2014.06.21
+            %li.size1of2
+              %p<
+                %img{:src => image_url("main/wytz5.png")}
+                ="100%本息保障"
+    .col-md-4.modedqb
+      .model-box
+        .head
+          %h2 转让信息
+        .doned-left.doned-zyxx
           %ul
             %li
-              %ul.ratio-per
+              %ul.dldd.doned-zyxxgm
+                %li 购买价格
                 %li
-                  - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
-                  .progress
-                    .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0",:role => "progressbar", :style => "width: #{current_progress}%;"}
-                  .progress-number
-                    %span<
-                      当前进度
-                      = "#{number_with_precision(current_progress , precision: 2)}%"
-
-                  -#  %b
-                  -#    当前进度
-                  -#    = "#{current_progress}%"
+                  ￥<span">
+                  = number_with_precision(inv.resell_price, precision: 0, delimiter: ',')
             %li
-              发布时间
-              = obj.created_at.strftime("%Y-%m-%d")
+              %ul.dldd
+                %li 预期收益
+                - profit = inv.amount * obj.remain_repayment_period * obj.annual_rate.to_i / 12 / 100
+                %li
+                  ￥<span">
+                  = number_with_precision(profit, precision: 0, delimiter: ',')
             %li
-              %img{:src => image_url("main/wytz5.png")}
-                %p
-                  ="100%本息保障"
-    .col-md-4.modedqb
-      = form_tag product_join_path(obj.product_type,obj) do
-        .model-box
-          .head
-            %h2 投资金额
-            %b.tzjedb
-              单笔最多可投100,000元
-          .doned-left
-            %ul
-              %li
-                %dl.dl-horizontal.dldt
-                  %dt.dl-horizontaldt
-                    = text_field_tag :product_value, "", class: "form-control", autocomplete: "off"
-                  %dd 元
-              %li
-                %ul.dldd
-                  %li 收益处理方式
-                  %li
-                    = obj.repayment_method_name
-                    %span.badge.explain{"data-toggle"=>"popover","data-content" => "每周期偿还收益,到期偿还本金","data-placement"=>"bottom"} ?
-              %li
-                %ul.dldd
-                  %li
-                    到期总收益
-                    #profit_rate
-                      =  number_with_precision(obj.annual_rate / 12 / 100 * obj.repayment_period , precision: 2)
-                  %li
-                    %span
-                      ="￥"
-                    %span#profit_value
-                      0.00
-              %li
-                %ul.dldd
-                  %li 年化收益率
-                  %li
-                    %span
-                      ="#{obj.annual_rate} %"
-              %li
-                %ul.dldd.dldd-input
-                  %li 验证码
-                  %li
-                    %input{:style => "width:85px; height:30px;", :type => "text"}/
-                  %li
-                    -#= show_simple_captcha
-                    %img{:height => "30", :src => image_url("main/wytz6.jpg"), :width => "70"}/
-                  %li
-                    %img{:height => "30", :src => image_url("main/wytz7.jpg"), :width => "35"}/
-              %li.funds-ord
-                %p
-                  %input.io.chek1{:type => "checkbox"} 我同意《
-                .funds-ord1
-                  %a{:href => "#"} 沃银网定存宝V投资协议
-                  %p 》
-              %li
-                - if current_user
-                  %button.btn.btn-primary.btn-lg.btn-block#test{:type => "submit"}
-                    = obj.current_operation
-                - else
-                  %a.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path} 加入
-
+              %ul.dldd.dldd-input
+                %li 验证码
+                %li
+                  %input{:style => "width:85px; height:30px;", :type => "text"}/
+                %li
+                  %img{:height => "30", :src => image_url("main/wytz6.jpg"), :width => "70"}/
+                %li
+                  %img{:height => "30", :src => image_url("main/wytz7.jpg"), :width => "35"}/
+            %li.funds-ord
+              %p
+                %input.io.chek1{:type => "checkbox"} 我同意《
+              .funds-ord1
+                %a{:href => "#"} 沃银网定存宝V投资协议
+                %p 》
+            %li
+              %button.btn.btn-primary.btn-lg.btn-block{:type => "button"} 敬请期待
   .dqbxq
     %ul.nav.nav-tabs{:role => "tablist"}
       %li.active
