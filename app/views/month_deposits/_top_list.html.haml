@@ -1,5 +1,5 @@
-.row.tthp
-  %table.table
+%section.home-product-list
+  %table.table.table-hover.table-list
     - Product.where(:display => "show", :product_type=> "month").limit(3).each_with_index do |obj, idx|
       = render 'month_deposits/item', obj: obj
 

@@ -1,3 +1,123 @@
+
+.product-info-area{}
+
+
+
+
+
+
+
+
+
+.model-box .expl {}
+.expl img{
+  float:left;
+}
+.expl li:last-child p{
+  color:#1fb4da;
+}
+.ratio-per li{
+  border-left: 0px solid #d3d8dc;
+  padding-right:0px;
+  padding-left:5px;
+}
+
+.ratio-per li:last-child{
+  margin-left:0px;
+}
+
+.ratio-per li:first-child{
+  border-left: 0 dashed black;
+}
+
+
+
+
+
+
+
+
+.model-box{}
+
+.model-box .head {}
+.model-box .panel-heading{
+  min-height:40px
+}
+.model-box .panel-body{
+  min-height:260px
+}
+
+.model-box .dl-horizontal{
+  margin-top:22px;
+}
+.model-box .dl-horizontal dt{
+  width:120px;
+  font-weight:normal;
+  color:#999;
+}
+.model-box .dl-horizontal dd{
+  margin-left:140px;
+}
+
+.model-box .funds-ord{
+  padding:0 18px;
+}
+
+.model-box .profit {
+
+  position: relative;
+}
+
+
+.model-box .profit dt {
+  font-size:14px;
+  font-weight:normal;
+  color:#999;
+}
+.model-box .profit dd {
+  font-size: 20px;
+  left: 40px;
+  top: 20px;
+  padding: 0;
+  min-height:50px;
+}
+
+.model-box .profit ins {
+  color: #a1acb4;
+  text-decoration: none;
+  font-size:200%;
+  font-weight:normal;
+}
+.model-box .profit em {
+  font-family: Tahoma,Geneva,sans-serif;
+  font-size: 200%;
+  font-style:normal;
+}
+.model-box .profit span {
+  color: #1fb4da;
+}
+
+.model-box .working-day {
+  padding: 30px 0 28px 30px;
+  height: 50px;
+  color: #8a949c;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .transfer{
   background-color:#fff;
   padding-bottom:2%;
@@ -58,234 +178,8 @@
   text-align:center;
 }
 
-.modedqb1{
-  padding-left: 0px;
-}
 
 
-
-.model-box{
-  -moz-border-radius: 3px;
-  -khtml-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-
-  border: 1px solid #1fb4da;
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
-  zoom: 1;
-
-
-  float: left;
-  display: inline;
-//  margin: 0;
-  width:100%;
-  min-height: 320px;
-  height: auto !important;
-  //  height: 320px;
-  _overflow: visible;
-}
-
-.model-box .head {
-  height: 50px;
-  line-height: 50px;
-  background: #1fb4da;
-  border-bottom: 1px solid #1fb4da;
-  padding: 0 15px;
-  position: relative;
-}
-
-.model-box .head b{
-  color:#fff;
-  font-size:16px;
-  margin-left:10px;
-  font-weight:normal;
-  line-height: 55px;
-}
-
-.model-box .head h2 {
-  padding-top:15px;
-  font-size: 20px;
-  color:#fff;
-  float: left;
-  font-family: Microsoft YaHei;
-}
-
-.model-box .profit {
-  padding-top: 30px;
-  overflow: hidden;
-  position: relative;
-}
-.model-box .profit dl.f {
-  width: 50%;
-}
-.model-box .profit dl {
-  float: left;
-  display: inline;
-  border-left: 1px solid #d3d8dc;
-  margin-left: -2px;
-  height: 80px;
-  width: 25%;
-  position: relative;
-  padding-left: 20px;
-}
-
-.model-box .profit dt {
-  line-height: normal;
-  position: relative;
-  font-size:14px;
-  color:#666;
-}
-.model-box .profit dd {
-  font-size: 20px;
-  left: 40px;
-  top: 20px;
-  padding: 0;
-  min-height:50px;
-}
-
-.model-box .profit ins {
-  font-size: 34px;
-  color: #a1acb4;
-  text-decoration: none;
-  font-style: normal;
-  float:left;
-}
-.model-box .profit em {
-  font-family: Tahoma,Geneva,sans-serif;
-  font-size: 40px;
-  color: #1fb4da;
-  font-weight: bold;
-//  padding-right: 5px;
-  min-height:50px;
-  font-style:normal;
-}
-.model-box .profit span {
-  color: #1fb4da;
-}
-
-.model-box .working-day {
-  padding: 30px 0 28px 30px;
-  height: 50px;
-  color: #8a949c;
-}
-
-.model-box .expl {
-  padding: 20px 0;
-  height: 30px;
-  overflow: hidden;
-  width: 100%;
-  border-top: 1px solid #1fb4da;
-  margin-top:6%;
-}
-.model-box .expl ul {
-  height: 30px;
-//  overflow: hidden;
-}
-.model-box .expl li {
-  float: left;
-  display: inline;
-  text-align: center;
-  border-left: 1px solid #1fb4da;
-  margin-left: -2px;
-  position: relative;
-  padding-right:5%;
-  padding-left:4%;
-}
-.model-box .expl .per {
-  height: 10px;
-  width: 60%;
-  font-size: 0;
-  line-height: 0;
-  overflow: hidden;
-  display: inline;
-  background: #e8ecef;
-  margin: 10px 0 0 20px;
-  border-radius: 15px;
-  float: left;
-}
-.model-box .expl strong {
-  font-weight: normal;
-  float: left;
-  margin-left: 5px;
-}
-
-.ratio-per li{
-  border-left: 0px solid #d3d8dc;
-  padding-right:0px;
-  padding-left:5px;
-}
-.ratio-per li>.progress{
-  height:15px;
-  float:left;
-  min-width:100px;
-}
-.ratio-per li:last-child{
-  margin-left:0px;
-}
-
-.ratio-per li:first-child{
-  border-left: 0 dashed black;
-}
-.expl img{
-  float:left;
-}
-.expl li:last-child p{
-  color:#1fb4da;
-}
-
-.model-box .doned-left{
-  margin-top:10px
-}
-.model-box .doned-left li{
-  margin-left:10px;
-}
-.model-box .doned-left li>.dldt dt{
-  padding-right:10px;
-  width: 90%;
-}
-.model-box .doned-left li>.dldt dd{
-  padding-top:10px;
-}
-.model-box .doned-left li>.dldd li:first-child{
-  margin-right:10px;
-  float:left;
-  font-size:14px;
-  color:#666;
-  font-family: Microsoft YaHei;
-}
-
-
-.model-box .doned-left li>.dldd li:last-child{
-  color:#1fb4da;
-}
-.model-box .doned-left li>.dldd li:last-child span{
-//  margin-left:10px;
-//  margin-right:10px;
-}
-.model-box .doned-left li ul{
-  margin-top:10px;
-  font-size:14px;
-  font-family: Microsoft YaHei;
-}
-.model-box .doned-left li>.dldd-input li{
-  float:left;
-}
-.model-box .doned-left li>.dldd-input li:first-child{
-  padding-top:5px;
-}
-.model-box .doned-left li.funds-ord{
-  padding-left:10px;
-  margin-top:45px;
-  padding-bottom:40px;
-}
-.model-box .doned-left li.funds-ord a{
-  margin-top:4px;
-}
-.model-box .doned-left li.funds-ord p:last-child{
-  margin-top:4px;
-}
 
 .doned-left li>.btn-block{
   margin-top:10px;
@@ -373,9 +267,7 @@
   vertical-align: middle;
 }
 
-.btn-balance{
-   margin-bottom: 15px;
-}
+
 
 .product-title{
   margin-left:10px;
@@ -387,11 +279,7 @@
 .tab-item{
   font-size:14px;
 }
-.progress-number{
-  padding-left:45px;
-  display: inline;
-  color:#1fb4da;
-}
+
 
 #profit_value{
 }

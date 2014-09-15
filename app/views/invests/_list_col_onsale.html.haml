@@ -1,21 +1,17 @@
 %tr
   %td
-    %p
+    %span.badge
       = dict[obj.invest_type]
-      %a{:href => invest_path(obj)}
-        ="#{obj.loan_number}"
+    %a{:href => invest_path(obj)}
+      ="#{obj.loan_number}"
   %td
-    .text-center
-      #{obj.product.annual_rate} %
+    #{obj.product.annual_rate} %
   %td
-    .text-center
-      #{obj.product.repayment_period} 个月
+    #{obj.product.repayment_period} 个月
   %td
-    .text-center
-      #{obj.amount}
+    #{obj.amount}
   %td
-    .text-center
-      #{obj.amount}
+    #{obj.amount}
   %td
     %a.btn.btn-info{:href => invest_path(obj)}
       购买

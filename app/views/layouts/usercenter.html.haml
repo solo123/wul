@@ -10,10 +10,11 @@
     = render 'shared/header'
     = bootstrap_flash
 
-    .container.console-page-area
-      .row
-        .col-md-3
-          =render "shared/sidebar"
-        .col-md-9
-          = yield
+    .console-page-area
+      .container
+        .row
+          .col-md-3
+            =render "shared/sidebar"
+          .col-md-9
+            = yield
     = cms_snippet_content('footer')

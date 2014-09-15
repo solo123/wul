@@ -18,17 +18,15 @@
 - content_for :javascript_includes do
   = javascript_include_tag "showproduct.js"
 - invests = @invest.product.invests
-.header
+.auxiliary-info
   .container
-    .row.wytz
-      .span9.span-inline
-        %a.btn.btn-default.btn-sm{:href=> onsale_invests_path}
-          返回转让专区
-        .product-title
-          %h1
-            投资转让
-      .span3.span-balance
-        = render "shared/balance"
+    .row
+      .col-md-8
+        %h1.page-header 投资转让
+      .col-md-4
+        .fun-area
+          %a.btn.btn-default.go-back{:href=> onsale_invests_path} 返回转让专区
+          = render "shared/balance"
 .container
   #flash-message.pull-right
     - flash.each do |name, msg|

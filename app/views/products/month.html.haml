@@ -1,18 +1,16 @@
-.header
+.auxiliary-info
   .container
-    .row.wytz
-      .span9.span-inline
-        %a.btn.btn-default.btn-sm{:href=> "/invests"}
-          返回投资首页
-        .product-title
-          %h1
-            我要投资&nbsp;/&nbsp;月月盈
-      .span3.span-balance
-        = render "shared/balance"
-.wytz-dqb
+    .row
+      .col-md-8
+        %h1.page-header 我要投资 / 月月盈
+      .col-md-4
+        .fun-area
+          %a.btn.btn-default.go-back{:href=> "/invests"} 返回投资首页
+          = render "shared/balance"
+.products-list-area
   .container
     .invest-list-frame
-      %table.table
+      %table.table.table-hover
         %thead
           %tr
             %th

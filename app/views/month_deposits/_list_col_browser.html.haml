@@ -1,22 +1,17 @@
 %tr
   %td
-    %p
-      月月盈
-      %a{:href => product_detail_path("month", obj)}
-        #{obj.deposit_number}
+    %span.badge 月
+    %a{:href => product_detail_path("month", obj)}
+      #{obj.deposit_number}
   %td
-    .text-center
-      #{obj.annual_rate} %
+    #{obj.annual_rate} %
   %td
-    .text-center
-      #{obj.repayment_period} 个月
+    #{obj.repayment_period} 个月
   %td
     - progess = (obj.total_amount - obj.free_invest_amount) *100 / obj.total_amount
-    .text-center
-      #{number_with_precision progess, precision: 2}%
+    #{number_with_precision progess, precision: 2}%
   %td
-    .text-center
-      #{obj.free_invest_amount}
+    #{obj.free_invest_amount}
   %td
     %a.btn.btn-info{:href => "#{obj.current_action}"}
       #{obj.current_operation}

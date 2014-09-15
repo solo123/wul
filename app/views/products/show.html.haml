@@ -1,18 +1,17 @@
 - content_for :javascript_includes do
   = javascript_include_tag "showproduct.js"
 - invests = @object.invests
-.header
+.auxiliary-info
   .container
-    .row.wytz
-      .span9.span-inline
-        %a.btn.btn-default.btn-sm{:href=> "/products/#{@object.product_type}"}
-          返回产品列表
-        .product-title
-          %h1
-            我要投资 /
-            =@object.product_name
-      .span3.span-balance
-        = render "shared/balance"
+    .row
+      .col-md-8
+        %h1.page-header
+          我要投资 / 
+          =@object.product_name
+      .col-md-4
+        .fun-area
+          %a.btn.btn-default.go-back{:href=> "/products/#{@object.product_type}"} 返回产品列表
+          = render "shared/balance"
 .container
   #flash-message.pull-right
     - flash.each do |name, msg|

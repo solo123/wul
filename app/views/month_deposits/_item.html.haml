@@ -1,29 +1,21 @@
 %tr
-  %td{:width => "200"}
-    %ul.yy-zgy
-      %li
-        月月盈
-        %span
-          %a.a-inline{:href => product_detail_path("month",obj)}
-            = obj.deposit_number
-      %li
-        %a{:href => "#"}
-          %span.badge.yy-zhuan
-            月
+  %td
+    %h4.pro-title 
+      月月盈
+      %span
+        %a.a-inline{:href => product_detail_path("month",obj)}
+          = obj.deposit_number
+      %a{:href => "#"}
+        %span.badge 月
+    %p.safe-info
+      %img{:src => image_url("main/indexmain7.png")}
+      银盛支付担保
   %td
     #{obj.annual_rate}%
   %td
     ="￥#{obj.free_invest_amount}"
   %td
     ="#{obj.repayment_period}个月"
-  %td
-    %ul.yy-yszf
-      %li
-        %img{:src => image_url("main/indexmain7.png")}
-      %li
-        银盛支付
-      %li
-        担保
   %td
     %ul
       %li
@@ -34,17 +26,5 @@
         已投资
         %span
           #{number_with_precision current_progress, precision: 0}%
-  %td
-    %ul.yy-time
-      %li
-        %a.btn.btn-info{:href => product_detail_path("month",obj)}
-          马上加入
-      %li
-
-
-
-
-
-
-
-
+  %td.select-col
+    %a.btn.btn-success{:href => product_detail_path("month",obj)} 马上加入

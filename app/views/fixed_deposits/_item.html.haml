@@ -1,41 +1,40 @@
-.dcb-dt.col-lg-4
-  %ul
-    %li.dcb-dt1
-      %img{:src =>"images/main/indexmain5.png"}
-        %p
-          定存宝
-          %span
-            = obj.deposit_number
-    %li.dcb-dt2
-      #{obj.owner_num}人次已经加入
-    %li.dcb-dt3
-      %p
-        %span
-          #{obj.annual_rate}
-          ="% / #{obj.repayment_period}个月"
-    %li.dcb-dt4
-      年化收益率&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期限
-    %li.dcb-dt5
-      %img{:src => "images/main/indexmain6.png"}
-      %p
-        100%本息保障
-    %li.dcb-dt6
-      - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
-      %p.dcb-dt6-1
-        当前进度
-      .progress.dcb-dt6-2
-        .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}
-          %span.sr-only
-            23 Complete
-      %span.dcb-dt6-3
-        #{number_with_precision current_progress, precision: 0}%
-    %li.dcb-dt7
-      %p
-        剩余金额
-        %span
-          ="￥#{obj.free_invest_amount}"
-    %li.dcb-dt8
-      %a.btn.btn-default.dcb-dt8-b{:href => product_detail_path("fixed",obj)} 查看详情
-
-
-
+.col-md-4
+  .item-list.panel.panel-default
+    .panel-heading
+      .panel-title 
+        %a{:href => "#"}
+          %span.badge 定
+        %span 
+          = obj.deposit_number
+    .panel-body
+      %p.number-info
+        %strong #{obj.owner_num}
+        人次已经加入
+      .pro-info.row
+        %dl.col-md-6.yidld-info
+          %dt #{obj.annual_rate} %
+          %dd 年化收益率
+        %dl.col-md-6.term-info
+          %dt #{obj.repayment_period}个月
+          %dd 期限
+      %p.safe-info 100%本息保障
+      .progress-area
+        - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
+        %p.progress-info
+          当前进度
+          %strong #{number_with_precision current_progress, precision: 0}%
+        .progress
+          .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}
+            %span.sr-only
+              23 Complete
+              
+        %p.amount
+          剩余金额
+          %strong
+            ="￥#{obj.free_invest_amount}"
+    .panel-footer
+      %a.btn.btn-success{:href => product_detail_path("fixed",obj)} 查看详情
+    %a.link-block{:href => product_detail_path("fixed",obj)} 查看详情
+        
+  
+  
