@@ -16,4 +16,9 @@ class Analyzer < ActiveRecord::Base
      fixed.save!
      month.save!
   end
+
+  def total_invest_amount
+    self.sub_analyzers.map(&:total_invest_amount).reduce(:+)
+  end
+
 end

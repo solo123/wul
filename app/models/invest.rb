@@ -24,4 +24,16 @@ class Invest < ActiveRecord::Base
     end
   end
 
+  def profit?
+    Time.now >= self.product.profit_date + self.product.each_repayment_period.days
+  end
+
+  def current_profit
+    profit?? calculate_profit : 0
+  end
+
+  def calculate_profit
+    (self.amount * self.annual_rate / 12 /100).round(2)
+  end
+
 end

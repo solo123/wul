@@ -59,6 +59,13 @@ class ProductsController < ResourcesController
     balance = current_user.user_info.account.balance
     invests = current_user.user_info.invests
 
+    if simple_captcha_valid?
+    else
+      flash[:notice] = "验证码不正确"
+      redirect_to product_detail_path(@product.product_type,@product.id) and return
+    end
+
+
     if amount < 1000
       flash[:notice] = "本产品最小购买额度为1000元"
       redirect_to product_detail_path(@product.product_type,@product.id) and return

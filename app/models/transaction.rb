@@ -19,6 +19,10 @@ class Transaction < ActiveRecord::Base
         add_charge_data
       when "invest"
         add_analyzer_data("total_invest_amount")
+      when "sell"
+        add_analyzer_data("resell_amount")
+      when "buy"
+        add_analyzer_data("buyin_amount")
       else
     end
   end

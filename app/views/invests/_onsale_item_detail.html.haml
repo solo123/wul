@@ -94,40 +94,10 @@
                 ="100%本息保障"
     .col-md-4.modedqb
       .model-box
-        .head
-          %h2 转让信息
-        .doned-left.doned-zyxx
-          %ul
-            %li
-              %ul.dldd.doned-zyxxgm
-                %li 购买价格
-                %li
-                  ￥<span">
-                  = number_with_precision(inv.resell_price, precision: 0, delimiter: ',')
-            %li
-              %ul.dldd
-                %li 预期收益
-                - profit = inv.amount * obj.remain_repayment_period * obj.annual_rate.to_i / 12 / 100
-                %li
-                  ￥<span">
-                  = number_with_precision(profit, precision: 0, delimiter: ',')
-            %li
-              %ul.dldd.dldd-input
-                %li 验证码
-                %li
-                  %input{:style => "width:85px; height:30px;", :type => "text"}/
-                %li
-                  %img{:height => "30", :src => image_url("main/wytz6.jpg"), :width => "70"}/
-                %li
-                  %img{:height => "30", :src => image_url("main/wytz7.jpg"), :width => "35"}/
-            %li.funds-ord
-              %p
-                %input.io.chek1{:type => "checkbox"} 我同意《
-              .funds-ord1
-                %a{:href => "#"} 沃银网定存宝V投资协议
-                %p 》
-            %li
-              %button.btn.btn-primary.btn-lg.btn-block{:type => "button"} 敬请期待
+        - if inv.onsale
+          = render "buy_form", inv:inv, obj:obj
+        - else
+          = render "sold_form", inv:inv, obj:obj
   .dqbxq
     %ul.nav.nav-tabs{:role => "tablist"}
       %li.active

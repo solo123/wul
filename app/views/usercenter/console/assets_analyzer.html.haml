@@ -28,7 +28,8 @@
             %span.badge.act-badge ?
           %li.actli1-ye2
             ￥
-            %span 990.47
+            %span
+              = @analyzer.total_invest_amount + current_user.user_info.account.balance
     %a{:href => "#"}
       %li#column3.size1of4.act-border
         %ul
@@ -101,9 +102,15 @@
         %th +0.00
       %tr
         %th 赎回投资
-        %th.light-green + 996.56
-        %th.light-green + 99.58
-        %th + 1,096.14
+        %th.light-green
+          +
+          =  number_with_precision @fixed_analyzer.resell_amount, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @month_analyzer.resell_amount, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          = number_with_precision @fixed_analyzer.resell_amount + @month_analyzer.resell_amount, precision: 2, delimiter: ','
       %tr
         %th 获得垫付资金
         %th --
@@ -122,9 +129,15 @@
           =  number_with_precision @month_analyzer.total_invest_amount + @fixed_analyzer.total_invest_amount, precision: 2, delimiter: ','
       %tr
         %th 买入债权
-        %th.light-org - 0.00
-        %th.light-org - 0.00
-        %th - 0.00
+        %th.light-org
+          -
+          = number_with_precision @fixed_analyzer.buyin_amount, precision: 2, delimiter: ','
+        %th.light-org
+          -
+          = number_with_precision @month_analyzer.buyin_amount, precision: 2, delimiter: ','
+        %th.light-org
+          -
+          = number_with_precision @fixed_analyzer.buyin_amount + @month_analyzer.buyin_amount, precision: 2, delimiter: ','
       %tr
         %th 完成提现金额
         %th.act-colspan.light-org{:colspan => "2"} - 0.00
@@ -135,7 +148,8 @@
         %th - 17.00
       %tr.light-bj
         %th{:colspan => "3"} 账户余额
-        %th 990.47
+        %th
+          = number_with_precision current_user.user_info.account.balance, precision: 2, delimiter: ','
       %tr
         %th 投资中冻结金额
         %th --
@@ -152,7 +166,8 @@
         %th - 0.00
       %tr.light-bj
         %th{:colspan => "3"} 可用余额
-        %th 990.47
+        %th
+          = number_with_precision current_user.user_info.account.balance, precision: 2, delimiter: ','
 #column2-area.actuary1{:style => "display:none"}
   .title-items
     %h2 账户总资产
@@ -167,14 +182,26 @@
     %tbody
       %tr
         %th 待收本金
-        %th.light-green +0.00
-        %th.light-green +0.00
-        %th +0.00
+        %th.light-green
+          +
+          = number_with_precision @fixed_analyzer.current_principal, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          = number_with_precision @month_analyzer.current_principal, precision: 2, delimiter: ','
+        %th
+          +
+          = number_with_precision @fixed_analyzer.current_principal + @month_analyzer.current_principal, precision: 2, delimiter: ','
       %tr
         %th 待收利息
-        %th.light-green +0.00
-        %th.light-green +0.00
-        %th +0.00
+        %th.light-green
+          +
+          = number_with_precision @fixed_analyzer.current_profit, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          = number_with_precision @month_analyzer.current_profit, precision: 2, delimiter: ','
+        %th
+          +
+          = number_with_precision @fixed_analyzer.current_profit + @month_analyzer.current_profit, precision: 2, delimiter: ','
       %tr
         %th 复投收益
         %th.light-green + 0.00

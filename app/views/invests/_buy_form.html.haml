@@ -1,25 +1,35 @@
-= form_tag invest_buy_path(obj) do
-   .panel{class: "panel-info"}
-      .panel-heading
-         %h4
-         购买转让投资
-      - if !current_user
-         = render "invests/buy_new", obj:obj
-
-      - else
-         .panel-body
-            %p.info
-               = label :amount, '转让金额'
-               = label :amounts, obj.amount
-               - if flash[:notice]
-                  .alert{ :class => "alert-notice"}
-                     %button.close{ :data => { :dismiss => "alert" } }x
-                     %strong
-                     = flash[:notice]
-                     %br
-                     %br
-         .panel-footer
-            - if obj.onsale
-               = submit_tag '购买', :class => "btn btn-primary"
-            - else
-               .btn.btn-primary 已转让
+.model-box
+  = form_tag invest_buy_path(inv) do
+    .head
+      %h2 转让信息
+    .doned-left.doned-zyxx
+      %ul
+        %li
+          %ul.dldd.doned-zyxxgm
+            %li 购买价格
+            %li
+              ￥<span">
+              = number_with_precision(inv.resell_price, precision: 0, delimiter: ',')
+        %li
+          %ul.dldd
+            %li 预期收益
+            - profit = inv.amount * obj.remain_repayment_period * obj.annual_rate.to_i / 12 / 100
+            %li
+              ￥<span">
+              = number_with_precision(profit, precision: 0, delimiter: ',')
+        %li
+          %ul.dldd.dldd-input
+            %li 验证码
+            %li
+              = show_simple_captcha(:label => "",:code_type => "numeric")
+        %li.funds-ord
+          %p
+            %input.io.chek1{:type => "checkbox"} 我同意《
+          .funds-ord1
+            %a{:href => "#"} 沃银网定存宝V投资协议
+            %p 》
+        %li
+          - if inv.onsale
+            = submit_tag '购买', :class => "btn btn-primary"
+          - else
+            .btn.btn-primary 已转让

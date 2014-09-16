@@ -8,6 +8,14 @@ class InvestsController < ApplicationController
   end
 
   def buy
+    if !current_user
+      redirect_to new_user_session_path and return
+    end
+
+    if !simple_captcha_valid?
+      flash[:notice] = "验证码不正确"
+      redirect_to invest_path(params[:invest_id]) and return
+    end
     invest = Invest.find(params[:invest_id])
     if invest.onsale
       buyer_balance = current_user.user_info.account.balance
@@ -19,8 +27,8 @@ class InvestsController < ApplicationController
         invest.user_info.account.balance += invest.resell_price
         invest.user_info.save!
         Transaction.createTransaction("sell", invest.resell_price, seller_balance, seller_balance + invest.resell_price, invest.user_info.id, invest.product.deposit_number,invest.invest_type)
-        invest.resell_price = 0
-        invest.discount_rate = 0
+        # invest.resell_price = 0
+        # invest.discount_rate = 0
         invest.onsale = false
         current_user.user_info.invests << invest
         invest.save!
