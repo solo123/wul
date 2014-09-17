@@ -1,6 +1,5 @@
 class InvestsController < ApplicationController
   before_action :set_invest, only: [:show, :edit, :update, :destroy]
-
   # GET /invests
   # GET /invests.json
   def index
@@ -48,6 +47,10 @@ class InvestsController < ApplicationController
   # GET /invests/1
   # GET /invests/1.json
   def show
+  end
+
+  def detail
+
   end
 
   # GET /invests/new

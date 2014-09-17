@@ -1,9 +1,11 @@
 class Product < ActiveRecord::Base
   attr_accessor :current_action, :current_operation, :current_stage, :remain_repayment_period
   has_many :invests
+  has_one :agreement
   # def invests
   #   Invest.where(:loan_number => self.deposit_number)
   # end
+
 
   def current_stage
 

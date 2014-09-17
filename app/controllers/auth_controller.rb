@@ -1,7 +1,9 @@
 class AuthController < Devise::SessionsController
   require 'net/https'
+  require 'json'
   require "uri"
-  layout "sign_layout" 
+  layout "sign_layout"
+  $dest_url = "http://127.0.0.1:3001/accounting/account/execute_cmd"
 
   def send_sms(mobile, code)
     url = URI.parse('https://sms-api.luosimao.com/v1/send.json')
@@ -69,16 +71,48 @@ class AuthController < Devise::SessionsController
     verify_code = rand(10 ** 6)
     # send_sms(params[:phone_num], verify_code)
     if valid
-      render :js => "alert('验证码已经发送,请查收)"
+       if valid.phonestatus == "verified"
+         render :js => "alert('该手机号码已经被注册)" and return
+       else
+         render :js => "alert('验证码已经发送,请查收)"
+       end
     else
       valid = Verification.new
       render :js => "alert('验证码已经更新,请查收)"
     end
     valid.phone = params[:phone_num]
     valid.phonetime = Time.now
-    valid.verify_code = "111111"
+    valid.verify_code = "222222"
     # valid.verify_code = verify_code
     valid.save!
+  end
+
+
+
+  def confirm_code
+    valid = current_user.user_info.verification
+    verify_code = rand(10 ** 6)
+    # send_sms(params[:phone_num], verify_code)
+
+    valid.phone = params[:phone_num]
+    valid.phonetime = Time.now
+    valid.verify_code = "222222"
+    # valid.verify_code = verify_code
+    valid.save!
+    render :js => "alert('验证码已经更新,请查收)"
+  end
+
+
+  def test_json
+    uri = URI.parse($dest_url)
+    http = Net::HTTP.new(uri.host, uri.port)
+    # http.use_ssl = true
+    data= {:api_key => "secret"}
+    request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
+    request.body = data.to_json
+    response = http.request(request)
+    logger.info(response)
+    render :json => "hllo"
   end
 
   def create

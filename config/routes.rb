@@ -23,6 +23,8 @@ Wooul::Application.routes.draw do
     post "/checkemail" => "auth#checkemail"
     post "/send_sms" => "auth#send_sms"
     post "/get_code" => "auth#get_code"
+    post "/confirm_code" => "auth#confirm_code"
+    post "/test_json" => "auth#test_json"
     post "/new_user" => "auth#create"
     get "/email_activate" => "auth#useractivate"
     get "/success" => "auth#success"
@@ -81,10 +83,12 @@ Wooul::Application.routes.draw do
     get '/console/redemption'
     get '/console/agreements'
     get '/console/autoinvest'
+    get '/console/invest_detail'
     post '/console/setup_autoinvest', as: :setup_auto_invest
     get '/console/charge_bank'
     post '/console/resell'
     get '/console/create_order'
+    get '/console/show_agreement'
     post '/console/save_order'
     post '/console/charge_mock'
     post '/console/open_auto_invest'
@@ -97,6 +101,7 @@ Wooul::Application.routes.draw do
     get '/', to: 'secure#index'
     get '/secure/confirmphone'
     get '/secure/real_name'
+    get '/secure/secure_active'
     post '/secure/real_name'
     get '/secure/confirm'
     get '/secure/change_phone'

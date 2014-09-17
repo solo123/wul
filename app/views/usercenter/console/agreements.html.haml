@@ -30,7 +30,8 @@
               %td
                 银盛担保
               %td
-                协议内容
+                %a{:href => usercenter_console_show_agreement_path({:id => f.id})}
+                  协议内容
       .digg_pagination
         .page_info
           = page_entries_info @fixed_deposits

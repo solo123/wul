@@ -3,6 +3,7 @@ module Usercenter
     layout "usercenter"
 
     before_filter :authenticate_user!, :set_cache_buster
+    before_action :confirm_status, only: [:resell]
 
     def index
 
@@ -63,6 +64,10 @@ module Usercenter
       @delagator = current_user.user_info.delagator
     end
 
+    def invest_detail
+
+    end
+
 
     def setup_autoinvest
       @delagator = current_user.user_info.delagator
@@ -81,13 +86,21 @@ module Usercenter
         redirect_to usercenter_console_autoinvest_path
     end
 
+
+    def confirm_status
+      if current_user.user_info.verification.phone_confirm_status
+      end
+    end
+
+    def show_agreement
+        product = Invest.find(params[:id]).product
+        @agreement = product.agreement
+    end
+
     def resell
       invest = Invest.find(params[:format])
-      invest.onsale = true
       rate = params[:discount_rate].to_f
-      invest.resell_price = invest.amount * (100 - rate) /100
-      invest.discount_rate = rate
-      invest.save!
+      invest.resell(rate)
       redirect_to usercenter_console_redemption_path
     end
 

@@ -11,4 +11,8 @@
 %p
   短信验证   未启用  启用此功能后，账户资金提现、赎回时，验证支付密码后还需验证手机短信动态码。双重验证可有效提升账户资金安全。
   %span{:style => "color:blue"}
-    启用
+    %a{:href => securecenter_secure_secure_active_path}
+      - if @phone_confirm
+        关闭
+      - else
+        启用

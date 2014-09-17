@@ -88,10 +88,7 @@
                 ="#{obj.annual_rate} %"
               %dt 验证码
               %dd
-                %input{:style => "width:85px; height:30px;", :type => "text"}/
-                -#= show_simple_captcha
-                %img{:height => "30", :src => image_url("main/wytz6.jpg"), :width => "70"}/
-                %img{:height => "30", :src => image_url("main/wytz7.jpg"), :width => "35"}/
+                = show_simple_captcha(:label => "",:code_type => "numeric")
             %p.funds-ord
               %input.io.chek1{:type => "checkbox"} 我同意《
               %a{:href => "#"} 沃银网定存宝V投资协议

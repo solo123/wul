@@ -3,6 +3,13 @@ class Invest < ActiveRecord::Base
   belongs_to :product
   attr_accessor :product_name
 
+  def resell(rate)
+    self.onsale = true
+    self.resell_price = self.amount * (100 - rate) /100
+    self.discount_rate = rate
+    self.save!
+  end
+
   def create_transaction(account)
     trans = Transaction.new
     trans.trans_type = "invest"

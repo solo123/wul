@@ -26,7 +26,9 @@
                 %th 担保
               - @fixed_deposits.each do |f|
                 %tr
-                  %td= "定存宝#{f.loan_number}"
+                  %td
+                    %a{:href => usercenter_console_invest_detail_path}
+                      = "定存宝#{f.loan_number}"
                   %td  #{number_with_precision f.annual_rate, precision: 2}%
                   %td= f.amount
                   %td= "#{f.repayment_period}个月"
@@ -44,7 +46,9 @@
                 %th 担保
                 - @month_deposits.each do |f|
                   %tr
-                    %td= "月月盈#{f.loan_number}"
+                    %td
+                      %a{:href => usercenter_console_invest_detail_path}
+                        = "月月盈#{f.loan_number}"
                     %td  #{number_with_precision f.annual_rate, precision: 2}%
                     %td= f.amount
                     %td= "#{f.repayment_period}个月"

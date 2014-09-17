@@ -34,7 +34,15 @@ module Securecenter
 
 
     def confirm
+      @phone_confirm = current_user.user_info.verification.phone_confirm_status
+    end
 
+
+    def secure_active
+     verify = current_user.user_info.verification
+     verify.phone_confirm_status =  !verify.phone_confirm_status
+     verify.save!
+     redirect_to securecenter_secure_confirm_path
     end
 
     def change_phone
