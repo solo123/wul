@@ -1,6 +1,7 @@
 - content_for :javascript_includes do
   = javascript_include_tag "analyzer.js"
-.acc1 资产统计
+.console-header-info
+  %h1.page-header 资产统计
 - @fixed_analyzer = @analyzer.product("fixed")
 - @month_analyzer = @analyzer.product("month")
 .actuary

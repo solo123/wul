@@ -100,7 +100,7 @@
             - else
               %a.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path} 加入
 
-  .dqbxq
+  .product-details
     %ul.nav.nav-tabs{:role => "tablist"}
       %li.active
         %a.tab-item{"data-toggle" => "tab", :href => "#detail", :role => "tab"} 产品详情
@@ -112,7 +112,7 @@
     / Tab panes
     .tab-content
       #detail.tab-pane.active
-        %table.table.table-striped.dqbxq-border
+        %table.table.table-striped.product-details-border
           %thead
             %tr
               %th 名称
@@ -147,7 +147,7 @@
             %tr
               %td 到期日
               %td
-                %ul.dqbxq-cost
+                %ul.product-details-cost
                   %li
                     %p
                       %span> 至 #{obj.expiring_date.strftime("%Y-%m-%d")}
@@ -163,7 +163,7 @@
             %tr
               %td 费用
               %td
-                %ul.dqbxq-cost
+                %ul.product-details-cost
                   %li
                     加入费率：
                     %span 0.00
@@ -198,7 +198,7 @@
               %td
                 %a{:href => "#"} 点击查看
       #prshd.tab-pane
-        %table.table.dqbxq-jrjl.table-striped.dqbxq-border
+        %table.table.product-details-jrjl.table-striped.product-details-border
           %thead
             %tr
               %th 投资人

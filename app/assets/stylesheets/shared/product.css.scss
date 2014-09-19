@@ -34,6 +34,15 @@
 
 
 
+.simple_captcha{
+  border: 0px solid #ff0000;
+}
+
+
+
+
+
+
 
 
 
@@ -51,12 +60,12 @@
   margin-top:22px;
 }
 .model-box .dl-horizontal dt{
-  width:120px;
+  width:90px;
   font-weight:normal;
   color:#999;
 }
 .model-box .dl-horizontal dd{
-  margin-left:140px;
+  margin-left:110px;
 }
 
 .model-box .funds-ord{
@@ -197,13 +206,12 @@
   border-color: #1fb4da;
 }
 
-.dqbxq{
+.product-details{
   border: 0px solid grey;
-  padding-left: 10px;
-  margin-left: -15px;
+  margin: 30px 0;
 }
 
-.dqbxq-border{
+.product-details-border{
   border: 0px solid #ddd;
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
@@ -211,10 +219,10 @@
 //  margin-top:20px;
   width:100%;
 }
-.dqbxq>.nav-tabs{
+.product-details>.nav-tabs{
   width:100%;
 }
-.dqbxq-border>thead>tr>th, .dqbxq-border>tbody>tr>td{
+.product-details-border>thead>tr>th, .product-details-border>tbody>tr>td{
   font-size:14px;
   min-width:150px;
   border-bottom:0;
@@ -222,32 +230,41 @@
   padding-top:2%;
   padding-bottom:2%;
 }
-.dqbxq-border>thead>tr>th:first-child, .dqbxq-border>tbody>tr>td:first-child{
-  text-align:center;
+.product-details-border>thead>tr>th:first-child, .product-details-border>tbody>tr>td:first-child{
+  text-align:right;
+  color:#999;
 }
-.dqbxq-border>thead>tr>th:last-child, .dqbxq-border>tbody>tr>td:last-child{
+.product-details-border>thead>tr>th:last-child, .product-details-border>tbody>tr>td:last-child{
   padding-left:20px;
   border-right:0;
+  color:#333;
 }
-.dqbxq-jrjl{
+
+
+.product-details ul{
+  margin:0;
+  padding:0;
+}
+
+.product-details-jrjl{
   width:100%;
 //  margin-top:20px;
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
-.dqbxq-jrjl>thead>tr>th, .dqbxq-jrjl>tbody>tr>td{
+.product-details-jrjl>thead>tr>th, .product-details-jrjl>tbody>tr>td{
   text-align:center;
   border-bottom: 0px solid #ddd;
 }
-.dqbxq-jrjl>thead{
+.product-details-jrjl>thead{
   margin-top:10px;
 }
 
-.dqbxq-jrjl>tbody>tr>td span{
+.product-details-jrjl>tbody>tr>td span{
   color: #1fb4da;
 }
-.dqbxq-cost li p, .dqbxq-cost li a{
+.product-details-cost li p, .product-details-cost li a{
   float:left;
 }
 
