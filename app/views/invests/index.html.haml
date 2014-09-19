@@ -52,30 +52,27 @@
 
 .advantage-area.scheme-shell
   .container
-    .advantage-box.wytz-list
-      %ul
-        %li.wytz-list-l
+    .advantage-box
+      %ul.row
+        %li.col-md-2
+          %span.glyphicon.glyphicon-check
           低门槛
-        %li.wytz-list-l.wytz-list-l1
+        %li.col-md-3
+          %span.glyphicon.glyphicon-plane
           高收益100%
-        %li.wytz-list-l.wytz-list-l1
+        %li.col-md-2
+          %span.glyphicon.glyphicon-gbp
           本息担保
-        %li.wytz-list-l.wytz-list-l1
+        %li.col-md-2
+          %span.glyphicon.glyphicon-hand-up
           随时赎回
-        %li.wytz-list-l1
+        %li.col-md-3
+          %span.glyphicon.glyphicon-ok-sign
           服务完全免费
 
-.wytz-show
+.invests-other-info
   .container
-    %ul.nav.nav-tabs
-      %li.active
-        %a{:href => "#profile","data-toggle" => "tab"}
-          常见问题
-    .tab-content.wytz-show1
-      .tab-pane.active#profile
-        %img{:src=>"images/main/wolwy2.jpg"}
-
-
+    = cms_snippet_content('invests-other-info')
 
 
 

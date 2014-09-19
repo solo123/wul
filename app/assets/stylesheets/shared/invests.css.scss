@@ -74,7 +74,7 @@
 
 .advantage-area{}
 
-.advantage-box{ padding:120px 0;}
+.advantage-box{ padding:120px 0; font-size:150%;}
 
 
 
@@ -102,6 +102,44 @@
 
 .products-list-area .badge{ padding:8px; border-radius: 15px; background:#CCC; font-weight:normal;}
 .products-list-area .table th, .products-list-area .table td{ padding: 22px 15px; }
+
+
+
+
+
+
+.invests-other-info{
+  margin:50px 0;
+}
+
+.invests-other-info .info-area{
+  min-height:500px; 
+  
+}
+.invests-other-info .tab-pane{
+  padding: 22px 0;
+}
+.invests-other-info .tab-pane h4 .text-muted{
+  margin-left:8px; 
+}
+.invests-other-info .tab-pane dl{
+}
+
+.invests-other-info .tab-pane dt{
+  font-size:120%;
+  color:#999;
+  font-weight:normal;
+}
+
+.invests-other-info .tab-pane dd{
+  color:#666;
+  margin-bottom:22px;
+}
+
+
+
+
+
 
 
 
@@ -186,43 +224,8 @@ font-size:22px;
 .wytz-zs{
   background-color:#f1f1f1;
 }
-.wytz-list{
 
-}
-.wytz-list li{
-  float:left;
-  color:#1fb4da;
-  font-size: 24px;
-  font-family: Microsoft YaHei;
-  padding-right:4%;
-}
-.wytz-list-l{
-  border-right:1px solid #1fb4da;
-}
-.wytz-list-l1{
-  padding-left:4%;
-}
-.wytz-show{
-  margin-top:5%;
-  margin-left:4%;
-}
-.wytz-show1{
-  margin-top:5%;
-}
-.wytz-show2{
-  padding-left:0;
-}
-.wytz-show2 img{
-  float:left;
-  padding-left:2%;
-  margin-right:3%;
-}
-.wytz-show2 p{
-  margin: 0 0 5px;
-}
-.wytz-show3{
-  padding-bottom:2%;
-}
+
 
 .wytz-dqb th {
   text-align: center;
@@ -265,12 +268,7 @@ font-size:22px;
   color:#727272;
   font-family: Microsoft YaHei;
 }
-.wytz-list-l>.cap span{
-  margin:20px 0 10px 0;
-  color:#727272;
-  font-size:24px;
-  font-family: Microsoft YaHei;
-}
+
 
 
 
