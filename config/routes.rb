@@ -1,5 +1,7 @@
+require 'sidekiq/web'
 Wooul::Application.routes.draw do
 
+  mount Sidekiq::Web, at: "/sidekiq"
 
   resources :stocks
 

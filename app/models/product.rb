@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :deposit_number
   attr_accessor :current_action, :current_operation, :current_stage, :remain_repayment_period
   has_many :invests
   has_one :agreement
@@ -37,7 +39,7 @@ class Product < ActiveRecord::Base
   def current_action
     case self.current_stage
       when "融资中"
-        "/products/#{self.product_type}/#{self.id}"
+        "/products/#{self.product_type}/#{self.deposit_number}"
       when "收益中"
         "#"
       when "已到期"

@@ -10,7 +10,7 @@ class ProductsController < ResourcesController
   end
 
   def detail
-    @object = Product.find(params[:id])
+    @object = Product.friendly.find(params[:id])
     render "products/show"
   end
 
@@ -53,7 +53,7 @@ class ProductsController < ResourcesController
   end
 
   def join
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
     limit = 100000
     amount = params[:product_value].to_i
     balance = current_user.user_info.account.balance

@@ -104,14 +104,16 @@ class AuthController < Devise::SessionsController
 
 
   def test_json
-    uri = URI.parse($dest_url)
-    http = Net::HTTP.new(uri.host, uri.port)
-    # http.use_ssl = true
-    data= {:api_key => "secret"}
-    request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
-    request.body = data.to_json
-    response = http.request(request)
-    logger.info(response)
+    # AccountOperation.executeTransaction("balance", "100", "plus", "dominic")
+    # uid = current_user.id
+    # operation_id = "WO20140917" + rand(10 ** 6).to_s
+    # AccountOperation.executeTransaction("account", "create", 0,  "system", uid, operation_id)
+    # render :json => "hllo"
+    p = Product.first.to_json(:only => [:deposit_number, :total_amount,:annual_rate, :repayment_period, :each_repayment_amount, :free_invest_amount,
+                                        :fixed_invest_amount, :join_date, :expiring_date, :premature_redemption, :fee, :product_type, :stage, :profit_date,
+                                         :principal_date, :status])
+    operation = AccountOperation.new(:op_name => "product", :op_action => "create", :op_obj => p)
+    operation.execute_transaction
     render :json => "hllo"
   end
 

@@ -47,7 +47,10 @@ gem "haml-rails"
 gem 'will_paginate', '~> 3.0'
 gem "html5_validators"
 gem 'bootstrap-sass', '~> 3.0.3.0'
-
+gem 'friendly_id', '~> 5.0.0'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 # gem 'rmagick'
 gem 'simple_captcha2', require: 'simple_captcha'
 #gem 'capistrano', '~> 3.2.1'
