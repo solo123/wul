@@ -1,31 +1,28 @@
 class AccountOperation < ActiveRecord::Base
+  belongs_to :user_info
   require 'net/https'
   require 'json'
   require "uri"
-  attr_accessor :op_obj
-
   $trans_url = "http://127.0.0.1:3001/accounting/account/execute_cmd"
   $query_url = "http://127.0.0.1:3001/accounting/account/query_cmd"
+  attr_accessor :op_obj, :op_id_head
+
 
   def execute_transaction
-    operation_id = "WO20140917" + rand(10 ** 6).to_s
-    uri = URI.parse($trans_url)
-    http = Net::HTTP.new(uri.host, uri.port)
-    # http.use_ssl = true
-    data= {:api_key => "secret", :op_name => self.op_name, :op_amount => self.op_amount, :op_action => self.op_action, :operator => self.operator,
-    :user_id => self.user_id, :operation_id => operation_id, :op_obj => self.op_obj}
-    request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
-    request.body = data.to_json
-    response = http.request(request)
-    op_res = JSON.parse response.body
-    logger.info(op_res["op_result"])
-    logger.info(op_res["op_result_code"])
-    # rec = new(:op_name => op_name, :op_action => op_action, :op_amount => op_amount, :operator => operator,
-    #                            :op_result_code => op_res["op_result_code"],:op_result => op_res["op_result"],
-    #                            :user_id => uid, :operation_id => op_id)
-    # rec.save!
+    if !self.op_id_head
+      self.op_id_head = "WY"
+    end
+    d = Time.now.to_i
+    self.operation_id = self.op_id_head + d.to_s
+    data = {:op_name => self.op_name, :op_amount => self.op_amount, :op_action => self.op_action, :operator => self.operator,
+            :user_id => self.user_id, :operation_id => self.operation_id, :op_obj => self.op_obj, :op_resource_name => self.op_resource_name,
+            :op_obj => self.op_obj, :op_resource_name => self.op_resource_id, :api_key => "secret", :uinfo_id => self.uinfo_id
+    }
+    # data = self.as_json
+    self.save!
+    # self.perform($trans_url, data, self.id)
+    AccountWorker.perform_async($trans_url, data, self.id)
   end
-
 
   def execute_query
     uri = URI.parse($query_url)
@@ -33,19 +30,32 @@ class AccountOperation < ActiveRecord::Base
     # http.use_ssl = true
     data= {:api_key => "secret", :op_name => self.op_name, :op_amount => self.op_amount, :op_action => self.op_action, :operator => self.operator,
            :user_id => self.user_id, :operation_id => self.operation_id}
-    request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
+    request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
     request.body = data.to_json
     response = http.request(request)
     op_res = JSON.parse response.body
   end
 
 
+  def attach_action
+    if self.op_result
+       self.user_info_id = self.uinfo_id
+       uinfo = UserInfo.find(self.user_info_id)
+       if uinfo
+         uinfo.account.pending_status = true
+         uinfo.save!
+       end
+    end
+  end
 
-
-  # def record(op_name, op_amount, op_action, operator, op_res)
-  #   rec = AccountOperation.new(:op_name => op_name, :op_action => op_action, :op_amount => op_amount, :operator => operator,
-  #                                          :op_result_code => op_res["op_result_code"],:op_result => op_res["op_result"] )
-  #   rec.save!
-  # end
+  def update_status
+    if self.op_name == "account" && self.op_action == "charge"
+      acc = self.user_info.account
+      acc.balance += self.op_amount
+      acc.save!
+      self.user_info = nil
+      self.save!
+    end
+  end
 
 end

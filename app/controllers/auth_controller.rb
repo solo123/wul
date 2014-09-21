@@ -71,11 +71,11 @@ class AuthController < Devise::SessionsController
     verify_code = rand(10 ** 6)
     # send_sms(params[:phone_num], verify_code)
     if valid
-       if valid.phonestatus == "verified"
-         render :js => "alert('该手机号码已经被注册)" and return
-       else
-         render :js => "alert('验证码已经发送,请查收)"
-       end
+      if valid.phonestatus == "verified"
+        render :js => "alert('该手机号码已经被注册)" and return
+      else
+        render :js => "alert('验证码已经发送,请查收)"
+      end
     else
       valid = Verification.new
       render :js => "alert('验证码已经更新,请查收)"
@@ -86,7 +86,6 @@ class AuthController < Devise::SessionsController
     # valid.verify_code = verify_code
     valid.save!
   end
-
 
 
   def confirm_code
@@ -104,17 +103,11 @@ class AuthController < Devise::SessionsController
 
 
   def test_json
-    # AccountOperation.executeTransaction("balance", "100", "plus", "dominic")
-    # uid = current_user.id
-    # operation_id = "WO20140917" + rand(10 ** 6).to_s
-    # AccountOperation.executeTransaction("account", "create", 0,  "system", uid, operation_id)
-    # render :json => "hllo"
-    p = Product.first.to_json(:only => [:deposit_number, :total_amount,:annual_rate, :repayment_period, :each_repayment_amount, :free_invest_amount,
-                                        :fixed_invest_amount, :join_date, :expiring_date, :premature_redemption, :fee, :product_type, :stage, :profit_date,
-                                         :principal_date, :status])
-    operation = AccountOperation.new(:op_name => "product", :op_action => "create", :op_obj => p)
-    operation.execute_transaction
-    render :json => "hllo"
+    #op = AccountOperation.new(:op_name => "account", :op_action => "create", :uinfo_id => current_user.user_info.id, :operator => "system" )
+     op = AccountOperation.new(:op_name => "account", :op_action => "charge", :op_amount => 1000, :operator => "system",:uinfo_id => current_user.user_info.id )
+
+    op.execute_transaction
+    render :json => "OK"
   end
 
   def create
@@ -150,8 +143,8 @@ class AuthController < Devise::SessionsController
     #if valid = Verification.where(:phone => params[:reg_phone]).first
     if valid
       #if User.exists?(:mobile => valid.phone)
-       # render :js => "alert('电话号码已经存在,请用别的号码注册')" and return
-       #end
+      # render :js => "alert('电话号码已经存在,请用别的号码注册')" and return
+      #end
 
       #if valid.verify_code == params[:reg_code]
       if params[:reg_code] == "111111"
