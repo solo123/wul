@@ -109,13 +109,27 @@ module Usercenter
       @month_deposits = current_user.user_info.invests.where(:invest_type => 'month',:onsale => false)
     end
 
+    # def charge_mock
+    #   if current_user
+    #     charge_val = params[:charge_value].to_i
+    #     # balance = current_user.user_info.account.balance
+    #     account = current_user.user_info.account
+    #     account.send_account("charge", "account" )
+    #
+    #     Transaction.createTransaction("charge", charge_val, balance, balance + charge_val, current_user.user_info.id, "充值","charge")
+    #     current_user.user_info.account.balance += charge_val
+    #     current_user.user_info.save!
+    #   end
+    #   render usercenter_console_charge_bank_path
+    # end
+
     def charge_mock
       if current_user
         charge_val = params[:charge_value].to_i
-        balance = current_user.user_info.account.balance
-        Transaction.createTransaction("charge", charge_val, balance, balance + charge_val, current_user.user_info.id, "充值","charge")
-        current_user.user_info.account.balance += charge_val
-        current_user.user_info.save!
+        op = AccountOperation.new(:op_name => "account", :op_action => "charge", :op_amount => charge_val, :operator => "system",:uinfo_id => current_user.user_info.id )
+        op.execute_transaction
+        # current_user.user_info.account.balance += charge_val
+        # current_user.user_info.save!
       end
       render usercenter_console_charge_bank_path
     end
