@@ -104,8 +104,8 @@ class AuthController < Devise::SessionsController
 
   def test_json
     #op = AccountOperation.new(:op_name => "account", :op_action => "create", :uinfo_id => current_user.user_info.id, :operator => "system" )
-     op = AccountOperation.new(:op_name => "account", :op_action => "charge", :op_amount => 1000, :operator => "system",:uinfo_id => current_user.user_info.id )
-
+    # op = AccountOperation.new(:op_name => "account", :op_action => "charge", :op_amount => 1000, :operator => "system",:uinfo_id => current_user.user_info.id )
+    op = AccountOperation.new(:op_name => "invest", :op_action => "join", :op_amount => 1000, :operator => "system",:uinfo_id => current_user.user_info.id, :op_resource_name => "FXDOMI111" )
     op.execute_transaction
     render :json => "OK"
   end

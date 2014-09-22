@@ -18,10 +18,10 @@ class UserInfo < ActiveRecord::Base
   end
 
 
-  # def create_back_account
-  #   op = AccountOperation.new(:op_name => "account", :op_action => "create", :user_id => self .id, :operator => "system" )
-  #   op.execute_transaction
-  # end
+   def create_back_account
+    op = AccountOperation.new(:op_name => "account", :op_action => "create", :uinfo_id => self.id, :operator => "system" )
+    op.execute_transaction
+   end
 
 
   def create_delagator

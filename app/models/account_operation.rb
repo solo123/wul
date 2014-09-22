@@ -16,7 +16,7 @@ class AccountOperation < ActiveRecord::Base
     self.operation_id = self.op_id_head + d.to_s
     data = {:op_name => self.op_name, :op_amount => self.op_amount, :op_action => self.op_action, :operator => self.operator,
             :user_id => self.user_id, :operation_id => self.operation_id, :op_obj => self.op_obj, :op_resource_name => self.op_resource_name,
-            :op_obj => self.op_obj, :op_resource_name => self.op_resource_id, :api_key => "secret", :uinfo_id => self.uinfo_id
+            :op_obj => self.op_obj, :op_resource_name => self.op_resource_name, :api_key => "secret", :uinfo_id => self.uinfo_id
     }
     # data = self.as_json
     self.save!
@@ -51,6 +51,7 @@ class AccountOperation < ActiveRecord::Base
   def update_status
     if self.op_name == "account" && self.op_action == "charge"
       acc = self.user_info.account
+      Transaction.createTransaction("charge", self.op_amount, acc.balance, self.op_amount + acc.balance, self.user_info_id, "充值", "charge")
       acc.balance += self.op_amount
       acc.save!
       self.user_info = nil

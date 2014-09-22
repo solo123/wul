@@ -13,5 +13,7 @@ class Account < ActiveRecord::Base
     self.user_info.account_operations.each do |op|
       op.update_status
     end
+    self.pending_status = false
+    self.save!
   end
 end
