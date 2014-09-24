@@ -63,6 +63,7 @@ class AccountOperation < ActiveRecord::Base
 
     invest = Invest.new
     invest.invest_type = product.product_type
+    invest.asset_id = self.op_asset_id
     invest.amount = self.op_amount
     invest.loan_number = product.deposit_number
     userinfo.invests << invest

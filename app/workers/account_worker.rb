@@ -14,6 +14,8 @@ class AccountWorker
     record.op_result = op_res["op_result"]
     record.op_result_code = op_res["op_result_code"]
     record.op_result_value = op_res["op_result_value"]
+    record.op_asset_id = op_res["op_asset_id"]
+    logger.info(op_res)
     record.attach_action
     record.save!
   end
