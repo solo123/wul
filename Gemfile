@@ -4,11 +4,11 @@ source 'http://ruby.taobao.org/'
 gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-#gem 'mysql2'
+gem 'mysql2'
 
 
 
-#gem 'tzinfo-data'
+# gem 'tzinfo-data'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -53,9 +53,9 @@ gem "html5_validators"
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'friendly_id', '~> 5.0.0'
 gem 'airbrake'
-#gem 'sidekiq'
-#gem 'sinatra', require: false
-#gem 'slim'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 # gem 'rmagick'
 gem 'simple_captcha2', require: 'simple_captcha'
 #gem 'capistrano', '~> 3.2.1'

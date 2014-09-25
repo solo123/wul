@@ -33,23 +33,9 @@ class ProductsController < ResourcesController
   end
 
   def create_invest(amount, product, user)
-    product.free_invest_amount -= amount
-    product.fixed_invest_amount += amount
-    product.owner_num += 1
-    product.save!
-    invest = Invest.new
-    invest.invest_type = product.product_type
-    invest.annual_rate = product.annual_rate
-    invest.amount = amount
-    invest.loan_number = product.deposit_number
-    invest.repayment_period = product.repayment_period
-    user.user_info.invests << invest
-    @product.invests << invest
-    user.user_info.account.balance -= amount
-    user.save!
-    invest.save!
-    balance = user.user_info.account.balance
-    Transaction.createTransaction("invest", invest.amount, balance + amount, balance, user.user_info.id,  @product.deposit_number, @product.product_type)
+    op = AccountOperation.new(:op_name => "invest", :op_action => "join", :op_amount => amount, :operator => "system",:uinfo_id => user.user_info.id,
+                              :op_resouce_name => product.deposit_number, :op_resource_id => product.id)
+    op.execute_transaction
   end
 
   def join
@@ -62,13 +48,13 @@ class ProductsController < ResourcesController
     if simple_captcha_valid?
     else
       flash[:notice] = "验证码不正确"
-      redirect_to product_detail_path(@product.product_type,@product.id) and return
+      redirect_to product_detail_path(@product.product_type, @product.id) and return
     end
 
 
-    if amount < 1000
-      flash[:notice] = "本产品最小购买额度为1000元"
-      redirect_to product_detail_path(@product.product_type,@product.id) and return
+    if amount < @product.min_limit
+      flash[:notice] = "本产品最小购买额度为#{@product.min_limit}元"
+      redirect_to product_detail_path(@product.product_type, @product.id) and return
     end
 
     if over_limit?(amount, invests, limit ,@product.id)
@@ -87,7 +73,7 @@ class ProductsController < ResourcesController
     end
 
     create_invest(amount, @product, current_user)
-    flash[:success] = "产品购入成功,可在用户中心-投资列表查看"
+    flash[:success] = "加入正在审核, 请稍后查看"
     redirect_to product_detail_path(@product.product_type,@product.id) and return
   end
 end

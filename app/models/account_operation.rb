@@ -39,24 +39,41 @@ class AccountOperation < ActiveRecord::Base
 
   def attach_action
     if self.op_result
-       self.user_info_id = self.uinfo_id
-       uinfo = UserInfo.find(self.user_info_id)
-       if uinfo
-         uinfo.account.pending_status = true
-         uinfo.save!
-       end
+      send(self.op_action + "_" + self.op_name)
     end
   end
 
-  def update_status
-    if self.op_name == "account" && self.op_action == "charge"
-      acc = self.user_info.account
-      Transaction.createTransaction("charge", self.op_amount, acc.balance, self.op_amount + acc.balance, self.user_info_id, "充值", "charge")
-      acc.balance += self.op_amount
-      acc.save!
-      self.user_info = nil
-      self.save!
-    end
+  def charge_account
+    uinfo = UserInfo.find(self.uinfo_id)
+    acc = uinfo.account
+    Transaction.createTransaction("charge", self.op_amount, acc.balance, self.op_amount + acc.balance, self.uinfo_id, "充值", "charge")
+    acc.balance = self.op_result_value
+    acc.save!
+  end
+
+
+  def join_invest
+
+    product = Product.find(self.op_resource_id)
+    userinfo = UserInfo.find(self.uinfo_id)
+    product.free_invest_amount -= self.op_amount
+    product.fixed_invest_amount += self.op_amount
+    product.owner_num += 1
+    product.save!
+
+    invest = Invest.new
+    invest.invest_type = product.product_type
+    invest.asset_id = self.op_asset_id
+    invest.amount = self.op_amount
+    invest.loan_number = product.deposit_number
+    userinfo.invests << invest
+    product.invests << invest
+
+    userinfo.account.balance = self.op_result_value
+    userinfo.save!
+    invest.save!
+    balance = userinfo.account.balance
+    Transaction.createTransaction("invest", invest.amount, balance + invest.amount, balance, userinfo.id,  product.deposit_number, product.product_type)
   end
 
 end
