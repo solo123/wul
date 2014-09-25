@@ -126,7 +126,8 @@ module Usercenter
     def charge_mock
       if current_user
         charge_val = params[:charge_value].to_i
-        current_user.user_info.balance += charge_val
+        current_user.user_info.account.balance += charge_val
+        current_user.user_info.save!
         # op = AccountOperation.new(:op_name => "account", :op_action => "charge", :op_amount => charge_val, :operator => "system",:uinfo_id => current_user.user_info.id )
         # op.execute_transaction
       end
