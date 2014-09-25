@@ -76,4 +76,15 @@ class AccountOperation < ActiveRecord::Base
     Transaction.createTransaction("invest", invest.amount, balance + invest.amount, balance, userinfo.id,  product.deposit_number, product.product_type)
   end
 
+
+
+  def create_account
+
+  end
+
+
+  def onsale_invest
+
+  end
+
 end
