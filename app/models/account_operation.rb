@@ -16,7 +16,8 @@ class AccountOperation < ActiveRecord::Base
     self.operation_id = self.op_id_head + d.to_s
     data = {:op_name => self.op_name, :op_amount => self.op_amount, :op_action => self.op_action, :operator => self.operator,
             :user_id => self.user_id, :operation_id => self.operation_id, :op_obj => self.op_obj, :op_resource_name => self.op_resource_name,
-            :op_obj => self.op_obj, :op_resource_name => self.op_resource_name, :api_key => "secret", :uinfo_id => self.uinfo_id
+            :op_obj => self.op_obj, :op_resource_name => self.op_resource_name, :api_key => "secret", :uinfo_id => self.uinfo_id, :op_asset_id =>
+            self.op_asset_id
     }
     # data = self.as_json
     self.save!
@@ -84,7 +85,29 @@ class AccountOperation < ActiveRecord::Base
 
 
   def onsale_invest
+    invest = Invest.find(self.op_resource_id)
+    invest.resell_price = self.op_result_value.to_f
+    invest.discount_rate = self.op_amount
+    invest.onsale = true
+    invest.save!
+  end
 
+  def buy_invest
+    invest = Invest.find(self.op_resource_id)
+    logger.info("uinfo id is:#{self.uinfo_id}")
+    Account.update_balance(self.uinfo_id, self.op_result_value)
+    Account.update_balance(self.uinfo_id2, self.op_result_value2)
+    invest.user_info_id = self.uinfo_id
+    invest.save!
+  end
+
+
+  def fill_params(params)
+    self.op_result = params["op_result"]
+    self.op_result_code = params["op_result_code"]
+    self.op_result_value = params["op_result_value"]
+    self.uinfo_id2 = params["uinfo_id2"]
+    self.op_result_value2 = params["op_result_value2"]
   end
 
 end

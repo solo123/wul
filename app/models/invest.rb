@@ -43,4 +43,35 @@ class Invest < ActiveRecord::Base
     (self.amount * self.annual_rate / 12 /100).round(2)
   end
 
+
+  def current_operation
+    case self.current_stage
+      when "normal"
+        "转让"
+      when "收益中"
+        "收益中"
+      when "已到期"
+        "回款中"
+      when "已结束"
+        "已结束"
+    end
+  end
+
+  def current_action
+    case self.current_stage
+      when "normal"
+        "/products/#{self.product_type}/#{self.deposit_number}"
+      when "收益中"
+        "#"
+      when "已到期"
+        "#"
+      when "已结束"
+        "#"
+    end
+  end
+
+  def current_stage
+    self.stage
+  end
+
 end

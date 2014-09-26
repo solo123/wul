@@ -8,11 +8,6 @@ class Product < ActiveRecord::Base
   #   Invest.where(:loan_number => self.deposit_number)
   # end
 
-
-  def current_stage
-
-  end
-
   def remain_repayment_period
     months_between(self.profit_date, self.expiring_date)
   end

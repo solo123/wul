@@ -11,10 +11,7 @@ class AccountWorker
     response = http.request(request)
     op_res = JSON.parse response.body
     record = AccountOperation.find(record_id)
-    record.op_result = op_res["op_result"]
-    record.op_result_code = op_res["op_result_code"]
-    record.op_result_value = op_res["op_result_value"]
-    record.op_asset_id = op_res["op_asset_id"]
+    record.fill_params(op_res)
     logger.info(op_res)
     record.attach_action
     record.save!

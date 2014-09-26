@@ -112,8 +112,11 @@ class AuthController < Devise::SessionsController
     # op = AccountOperation.new(:op_name => "invest", :op_action => "sell", :operator => "system", :uinfo_id => current_user.user_info.id,
     #                             :op_asset_id => 42 )
 
-      op = AccountOperation.new(:op_name => "invest", :op_action => "onsale", :operator => "system", :uinfo_id => current_user.user_info.id,
-                                  :op_asset_id => 24 )
+      # op = AccountOperation.new(:op_name => "invest", :op_action => "onsale", :operator => "system", :uinfo_id => current_user.user_info.id,
+      #                             :op_asset_id => 1 )
+
+    op = AccountOperation.new(:op_name => "invest", :op_action => "buy", :operator => "system", :uinfo_id => current_user.user_info.id,
+                              :op_asset_id => 12, :op_resource_id => 12 )
 
 
 
