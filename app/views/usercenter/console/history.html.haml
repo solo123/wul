@@ -52,32 +52,32 @@
   %table.table.table-hover
     %thead
       %tr
-        %th
+        %th.text-center
           交易类型
-        %th
+        %th.text-center
           交易金额
-        %th
+        %th.text-center
           交易前账户余额
-        %th
+        %th.text-center
           交易后账户余额
-        %th
+        %th.text-center
           交易编号
-        %th
+        %th.text-center
           交易日期
     %tbody
       - @transactions.each do |t|
         %tr
-          %td
+          %td.text-center
             =dict[t.trans_type]
-          %td
+          %td.text-center
             =t.operation_amount
-          %td
+          %td.text-center
             =t.account_before
-          %td
+          %td.text-center
             =t.account_after
-          %td
+          %td.text-center
             =t.deposit_number
-          %td
+          %td.text-center
             =t.created_at
   .digg_pagination
     .page_info

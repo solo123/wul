@@ -1,13 +1,24 @@
 %h1.page-header 充值提现
-%section
-   交易时间
-   2014-07-07 12：34
-   %br
-   交易类型
-   储值
-   %br
-   交易金额
-   RMB 12000
-%section
-   交易状态
-   成功
+.console-product-intro.panel.panel-default
+  .row
+
+    .col-md-6.item-row
+      %dl.text-center
+        %dt
+          %h3 账户余额
+        %dt
+          可用余额
+          %span.badge
+            ?
+      %dl.text-center
+        %dd
+          %h3 ￥0.47
+        %dd ￥0.47
+    .col-md-3.col-md-offset-1
+      %a.btn.btn-primary.btn-lg{:href => "#"}
+        %span ￥
+        充值
+    .col-md-2
+      %a.btn.btn-success.btn-lg{:href => "#"}
+        %span ￥
+        提现

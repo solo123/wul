@@ -1,0 +1,214 @@
+.container.transfer
+  .row
+    .col-md-8.product-info-area
+      .model-box.panel.panel-default
+        .head.panel-heading
+          %h3.panel-title
+            = obj.product_name
+            = obj.deposit_number
+        .panel-body
+          .profit.row
+            %dl.f.col-md-6
+              %dt 总额度
+              %dd
+                %ins ￥
+                %em
+                  = number_with_precision(obj.total_amount, precision: 0, delimiter: ',')
+            %dl.col-md-3
+              %dt 年化收益率
+              %dd
+                %em
+                  = obj.annual_rate.to_i
+                %span
+                  - num = obj.annual_rate.to_s.split(".")
+                  - frac = num.count > 1 ? num[1].to_s : 0
+                  = "."
+                  = frac
+                ="%"
+                -#= succeed "%" do
+                -#  %span .00
+            %dl.col-md-3
+              %dt 投资期限
+              %dd
+                %em
+                  = obj.repayment_period
+                个月
+          .working-day 定存宝 每工作日 10:30、14:30、20:00 更新产品
+        .panel-footer.expl
+          .row
+            .col-md-6
+              .row
+                - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
+                .col-md-6
+                  .progress
+                    .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0",:role => "progressbar", :style => "width: #{current_progress}%;"}
+                .col-md-6
+                  .progress-number
+                    %span<
+                      当前进度
+                      = "#{number_with_precision(current_progress , precision: 2)}%"
+
+                  -#  %b
+                  -#    当前进度
+                  -#    = "#{current_progress}%"
+            .col-md-3 
+              发布时间
+              = obj.created_at.strftime("%Y-%m-%d")
+            .col-md-3 
+              %img{:src => image_url("main/wytz5.png")}
+                %p
+                  ="100%本息保障"
+    .col-md-4.modedqb
+      = form_tag product_join_path(obj.product_type,obj) do
+        .model-box.panel.panel-default
+          .head.panel-heading
+            %h3.panel-title 
+              投资金额
+              %span.text-right 可投 0 元
+          .doned-left.panel-body
+            %span 剩余可投资金额：0.00元
+
+          .panel-footer
+            - if current_user
+              %button.btn.btn-primary.btn-lg.btn-block#test{:type => "submit"}
+                = obj.current_operation
+            - else
+              %a.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path} 还款中
+
+  .product-details
+    %ul.nav.nav-tabs{:role => "tablist"}
+      %li.active
+        %a.tab-item{"data-toggle" => "tab", :href => "#detail", :role => "tab"} 产品详情
+      %li
+        %a.tab-item{"data-toggle" => "tab", :href => "#prshd", :role => "tab"}
+          加入记录
+          %span.badge
+            = invests.size
+    / Tab panes
+    .tab-content
+      #detail.tab-pane.active
+        %ul.row
+          %li.col-md-6
+            %ul.row
+              %li.col-md-12
+                %strong 借款企业
+              %li.col-md-5  企业所在地
+              %li.col-md-7  广东省深圳市
+              %li.col-md-5  企业经营年限
+              %li.col-md-7  6-9年
+              %li.col-md-5  企业行业
+              %li.col-md-7  其他
+              %li.col-md-5  经营场所类型
+              %li.col-md-7  民营
+              %li.col-md-5  注册资本
+              %li.col-md-7  1000万-5000万
+              %li.col-md-5  净资产
+              %li.col-md-7  1000万元及以下
+              %li.col-md-5  月均销售收入
+              %li.col-md-7  300万元及以上
+
+            %ul.row
+              %li.col-md-12
+                %strong 借款信息
+              %li.col-md-5  借款金额
+              %li.col-md-7  1,700,000元
+              %li.col-md-5  借款期限
+              %li.col-md-7  3个月
+              %li.col-md-5  年化利率
+              %li.col-md-7  7.00%
+              %li.col-md-5  借款用途
+              %li.col-md-7  短期周转
+
+            %ul.row
+              %li.col-md-12
+                %strong 还款信息
+              %li.col-md-5  还款方式
+              %li.col-md-7  每月付息，到期还本
+              %li.col-md-5  还款日期
+              %li.col-md-7  2014.12.12
+              %li.col-md-5  还款来源
+              %li.col-md-7  营业收入
+
+            %ul.row
+              %li.col-md-12
+                %strong 担保信息
+              %li  1. 本企业无限连带责任保证
+
+          %li.col-md-6
+            %table.table
+              %caption 担保机构
+              %tbody
+                %tr
+                  %td {:rowspan => "3"}
+                    %img{:data-src => "holder.js/100%*180"}
+
+                  %td 身份证
+                  %td 于2014.09.11
+                  %td
+                    %span.glyphicon .glyphicon-ok 认证通过
+                %tr
+                  %td 信用报告
+                  %td 于2014.09.11
+                  %td
+                    %span.glyphicon .glyphicon-ok 认证通过
+                %tr
+                  %td 工作证明
+                  %td 于2014.09.11
+                  %td
+                    %span.glyphicon .glyphicon-ok 认证通过
+                %tr
+                  %td
+                    %span.label .label-primary 100%本息担保
+                  %td 收入证明
+                  %td 于2014.09.11
+                  %td
+                    %span.glyphicon .glyphicon-ok 认证通过
+            %h4.strong 有利网借款记录
+            %table.table
+              %thead
+                %tr
+                  %th 共计借入
+                  %th 待还金额
+                  %th 逾期金额
+                  %th 严重逾期
+              %tbody
+                %tr
+                  %td ￥1,700,000.00
+                  %td ￥1,729,749.98
+                  %td ￥0.00
+                  %td 0次
+            %table.table
+              %thead
+                %tr
+                  %th 发布借款笔数
+                  %th 成功借款笔数
+                  %th 还清笔数
+                  %th 逾期次数
+              %tbody
+                %tr
+                  %td 1笔
+                  %td 1笔
+                  %td 0笔
+                  %td 0次
+
+
+      #prshd.tab-pane
+        %table.table.product-details-jrjl.table-striped.product-details-border
+          %thead
+            %tr
+              %th 投资人
+              %th 加入金额
+              %th 加入时间
+              %th 状态
+          %tbody
+            - invests.each do |invest|
+              %tr
+                %td= "134"+ "***" + "223"
+                -#%td= invest.user_info.show_id[0, 2] + "***" + invest.user_info.show_id[-2, 2]
+                %td= invest.amount
+                %td= invest.created_at.strftime("%Y-%m-%d %H:%M")
+                %td
+                  %span.glyphicon.glyphicon-ok>
+                    成功
+
+
