@@ -41,4 +41,10 @@ class UserInfo < ActiveRecord::Base
       self.secury_score * 33
     end
   end
+
+
+  def clear_notify
+    self.notify_num = 0
+    self.save!
+  end
 end
