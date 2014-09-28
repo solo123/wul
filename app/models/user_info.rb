@@ -1,5 +1,6 @@
 class UserInfo < ActiveRecord::Base
 	has_many :invests
+  has_many :messages
   has_one :analyzer
   has_many :transactions
   has_many :account_operations

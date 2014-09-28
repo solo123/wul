@@ -79,6 +79,7 @@ Wooul::Application.routes.draw do
     get '/console/history'
     get '/console/charge'
     get '/console/bankcard'
+    get '/console/message'
     get '/console/coupon'
     get '/console/assets_analyzer'
     get '/console/invest_history'

@@ -1,6 +1,7 @@
 class Transaction < ActiveRecord::Base
   belongs_to :user_info
   after_save :modify_analyzer
+
   def Transaction.createTransaction(transtype, amount, amount_before, amount_after, userid, investid, product_type)
     trans= Transaction.new
     trans.trans_type = transtype
@@ -11,6 +12,23 @@ class Transaction < ActiveRecord::Base
     trans.deposit_number = investid
     trans.product_type = product_type
     trans.save!
+    trans.create_notify
+  end
+
+  def create_notify
+    case self.trans_type
+      when "charge"
+        message = Message.new(:title => "充值成功")
+        message.user_info_id = self.user_info_id
+        message.save!
+      when "invest"
+        # add_analyzer_data("total_invest_amount")
+      when "sell"
+        # add_analyzer_data("resell_amount")
+      when "buy"
+        # add_analyzer_data("buyin_amount")
+      else
+    end
   end
 
   def modify_analyzer

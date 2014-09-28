@@ -9,6 +9,7 @@
 
   %ul.nav.nav-pills.nav-stacked.sidebar-nav
     - {'我的账户' => usercenter_console_overview_path,
+       '系统消息' =>  usercenter_console_message_path,
        '交易记录' => usercenter_console_history_path(:filter => "all", :date_range => "all"),
        '充值提现' =>  usercenter_console_charge_path,
        '银行卡' => usercenter_console_bankcard_path,

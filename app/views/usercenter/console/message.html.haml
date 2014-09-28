@@ -1,0 +1,21 @@
+%h1.page-header 系统消息
+.detail_container
+  .col-md-12
+    .panel
+      .panel-body
+        %table.table
+          %tr
+            %th 来自
+            %th 标题
+            %th 日期
+            %th 状态
+            %th 重要性
+          - @messages.each do |m|
+            %tr
+              %td
+                系统
+              %td
+                = m.title
+              %td= "2014-08-11"
+              %td= "未读"
+              %td= "严重"

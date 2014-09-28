@@ -9,6 +9,11 @@ module Usercenter
 
     end
 
+
+    def message
+      @messages = Message.all
+    end
+
     def overview
       @deposit = current_user.user_info.account
     end
