@@ -4,7 +4,7 @@ class Account < ActiveRecord::Base
     uinfo = UserInfo.find(uinfo_id)
     if uinfo
       uinfo.account.balance = amount
-      uinfo.save!
+      uinfo.account.save!
     end
   end
 end

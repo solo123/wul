@@ -17,24 +17,17 @@ class InvestsController < ApplicationController
     end
     invest = Invest.find(params[:invest_id])
     buyer_balance = current_user.user_info.account.balance
-    if buyer_balance >= invest.resell_price
-      current_user.user_info.account.balance -= invest.resell_price
-      current_user.save!
-      Transaction.createTransaction("buy", invest.resell_price, buyer_balance + invest.resell_price, buyer_balance, current_user.user_info.id, invest.product.deposit_number, invest.invest_type)
-      invest.user_info.account.balance += invest.resell_price
-      invest.user_info.save!
-      Transaction.createTransaction("sell", invest.resell_price, seller_balance, seller_balance + invest.resell_price, invest.user_info.id, invest.product.deposit_number,invest.invest_type)
-      # invest.resell_price = 0
-      # invest.discount_rate = 0
-      invest.onsale = false
-      current_user.user_info.invests << invest
-      invest.save!
-    else
+
+    if buyer_balance < invest.resell_price
       flash[:notice] = "账户余额不足"
+      redirect_to invest_path(params[:invest_id]) and return
+    else
+      op = AccountOperation.new(:op_name => "invest", :op_action => "buy", :operator => "system", :uinfo_id => current_user.user_info.id,
+                                :op_asset_id => invest.asset_id, :op_resource_id => invest.id )
+      op.execute_transaction
+      redirect_to invest_path(params[:invest_id]) and return
+
     end
-
-
-
 
     if invest.onsale
       buyer_balance = current_user.user_info.account.balance

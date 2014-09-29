@@ -94,16 +94,24 @@ class AccountOperation < ActiveRecord::Base
 
   def buy_invest
     invest = Invest.find(self.op_resource_id)
+    buyer_balance = self.op_result_value.to_f
+    seller_balance = self.op_result_value2.to_f
     logger.info("uinfo id is:#{self.uinfo_id}")
-    Account.update_balance(self.uinfo_id, self.op_result_value)
+    Account.update_balance(self.uinfo_id, buyer_balance)
+    Transaction.createTransaction("buy", self.op_amount, buyer_balance, buyer_balance + self.op_amount, self.uinfo_id,  invest.loan_number, invest.product.product_type)
     Account.update_balance(self.uinfo_id2, self.op_result_value2)
+    Transaction.createTransaction("sell", self.op_amount, seller_balance, seller_balance - self.op_amount, self.uinfo_id2,  invest.loan_number, invest.product.product_type)
     invest.user_info_id = self.uinfo_id
+    invest.onsale = false
+    invest.stage = "normal"
     invest.save!
   end
 
 
   def fill_params(params)
     self.op_result = params["op_result"]
+    self.op_amount = params["op_amount"]
+    self.op_asset_id = params["op_asset_id"]
     self.op_result_code = params["op_result_code"]
     self.op_result_value = params["op_result_value"]
     self.uinfo_id2 = params["uinfo_id2"]

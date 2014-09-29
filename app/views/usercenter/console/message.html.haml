@@ -19,3 +19,6 @@
               %td= "2014-08-11"
               %td= "未读"
               %td= "严重"
+              %td
+                %a{:href => usercenter_console_message_path(:message_id => m.id, :pattern => 'detail')}
+                  查看

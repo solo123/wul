@@ -16,19 +16,20 @@ class Transaction < ActiveRecord::Base
   end
 
   def create_notify
+    message = Message.new()
     case self.trans_type
       when "charge"
-        message = Message.new(:title => "充值成功")
-        message.user_info_id = self.user_info_id
-        message.save!
+        message.title = "充值成功"
       when "invest"
-        # add_analyzer_data("total_invest_amount")
+        message.title = "投资成功"
       when "sell"
         # add_analyzer_data("resell_amount")
       when "buy"
         # add_analyzer_data("buyin_amount")
       else
     end
+    message.user_info_id = self.user_info_id
+    message.save!
   end
 
   def modify_analyzer

@@ -11,7 +11,18 @@ module Usercenter
 
 
     def message
-      @messages = Message.all
+      if params[:pattern] == "detail"
+         @message = Message.find(params[:message_id])
+         uinfo = current_user.user_info
+         if @message.status == 0
+           @message.status = 1
+           uinfo.message_num -= 1
+           uinfo.save!
+           @message.save!
+         end
+         render "message_detail" and return
+      end
+      @messages = current_user.user_info.messages
     end
 
     def overview
@@ -55,8 +66,8 @@ module Usercenter
 
     def redemption
       pages = 10
-      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed',:onsale => false).paginate(:page => params[:page], :per_page => pages)
-      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month',:onsale => false).paginate(:page => params[:page], :per_page => pages)
+      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed').paginate(:page => params[:page], :per_page => pages)
+      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month').paginate(:page => params[:page], :per_page => pages)
     end
 
     def agreements
@@ -107,7 +118,6 @@ module Usercenter
       rate = params[:discount_rate].to_f
       invest.stage = "onsale"
       invest.save!
-
       op = AccountOperation.new(:op_name => "invest", :op_action => "onsale", :operator => "system", :uinfo_id => current_user.user_info.id,
                                 :op_asset_id => invest.asset_id, :op_amount =>rate, :op_resource_id => invest.id)
       op.execute_transaction

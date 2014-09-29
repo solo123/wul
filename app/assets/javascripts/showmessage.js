@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 
         $.iGrowl({
-            message: $(this).text(),
+            message: "新消息:" + $(this).text() + "请查看消息中心",
             icon: 'feather-mail',
             animShow: 'fadeInDown',
             animHide: 'fadeOutUp',
