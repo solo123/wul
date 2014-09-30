@@ -11,6 +11,7 @@ module Usercenter
 
 
     def message
+      pages = 10
       if params[:pattern] == "detail"
          @message = Message.find(params[:message_id])
          uinfo = current_user.user_info
@@ -22,11 +23,13 @@ module Usercenter
          end
          render "message_detail" and return
       end
-      @messages = current_user.user_info.messages
+      @messages = current_user.user_info.messages.paginate(:page => params[:page], :per_page => pages)
     end
 
     def overview
       @deposit = current_user.user_info.account
+      @analyzer = current_user.user_info.analyzer
+
     end
 
     def history

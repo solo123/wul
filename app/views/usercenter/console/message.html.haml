@@ -5,20 +5,22 @@
       .panel-body
         %table.table
           %tr
-            %th 来自
             %th 标题
-            %th 日期
+            %th 时间
             %th 状态
             %th 重要性
           - @messages.each do |m|
             %tr
               %td
-                系统
-              %td
                 = m.title
-              %td= "2014-08-11"
+              %td
+                = m.created_at.strftime("%Y-%m-%d %H:%M:%S")
               %td= "未读"
               %td= "严重"
               %td
                 %a{:href => usercenter_console_message_path(:message_id => m.id, :pattern => 'detail')}
                   查看
+      .digg_pagination
+        .page_info
+          = page_entries_info @messages
+        = will_paginate @messages, :container => false

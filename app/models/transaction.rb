@@ -23,9 +23,9 @@ class Transaction < ActiveRecord::Base
       when "invest"
         message.title = "投资成功"
       when "sell"
-        # add_analyzer_data("resell_amount")
+        message.title = "转让债权成功"
       when "buy"
-        # add_analyzer_data("buyin_amount")
+        message.title = "买入债权成功"
       else
     end
     message.user_info_id = self.user_info_id

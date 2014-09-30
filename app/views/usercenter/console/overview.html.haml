@@ -21,23 +21,26 @@
         ?
     .acc4_1b
       ￥
-      = @deposit.total_estate
-  .acc4_1.size1of4
+      = @analyzer.total_invest_amount + current_user.user_info.account.balance
+  .acc4_1.size1of4  
     .acc4_1a
       账户余额
       %span.badge ?
     .acc4_1b
-      ￥0.00
+      ￥
+      = @deposit.balance
     .acc4_12c
       .acc4_12cc
-        可用余额￥12222.00
+        可用余额￥
+        = @deposit.balance - @deposit.frozen_balance
         %span.badge ?
   .acc4_3.size1of4
     .acc4_1a
       账户总资产
       %span.badge ?
     .acc4_1b
-      ￥22222.00
+      ￥
+      = @analyzer.total_invest_amount + current_user.user_info.account.balance
 .acc5
   %dl 初来乍到，您还没有任何记录，快去完成新手任务，领取超多奖励!
   %a{:href => "#"} 立即查看

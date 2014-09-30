@@ -79,7 +79,7 @@
           %td
             =t.deposit_number
           %td
-            =t.created_at
+            =t.created_at.strftime("%Y-%m-%d %H:%M:%S")
   .digg_pagination
     .page_info
       = page_entries_info @transactions
