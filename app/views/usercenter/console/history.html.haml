@@ -48,36 +48,36 @@
         - else
           %a.tradeType{:href => usercenter_console_history_path(conds)}
             =v
-.console-list-area
-  %table.table.table-hover
-    %thead
-      %tr
-        %th.text-center
-          交易类型
-        %th.text-center
-          交易金额
-        %th.text-center
-          交易前账户余额
-        %th.text-center
-          交易后账户余额
-        %th.text-center
-          交易编号
-        %th.text-center
-          交易日期
+.console-list-area.trade-table.trade-table-min
+  %table.table.trade-table-th
     %tbody
+      %tr
+        %th
+          交易类型
+        %th
+          交易金额
+        %th
+          交易前账户余额
+        %th
+          交易后账户余额
+        %th
+          交易编号
+        %th
+          交易日期
+
       - @transactions.each do |t|
         %tr
-          %td.text-center
+          %td
             =dict[t.trans_type]
-          %td.text-center
+          %td
             =t.operation_amount
-          %td.text-center
+          %td
             =t.account_before
-          %td.text-center
+          %td
             =t.account_after
-          %td.text-center
+          %td
             =t.deposit_number
-          %td.text-center
+          %td
             =t.created_at
   .digg_pagination
     .page_info

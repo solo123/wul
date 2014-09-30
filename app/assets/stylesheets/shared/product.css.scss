@@ -443,5 +443,31 @@
 }
 
 .doned-zyxx{
-  margin-top:30px
+  margin-top:30px;
+}
+
+.lab-val {
+  margin-top: 30px;
+  padding: 20px 20px 30px 20px;
+  border: 1px solid #E7ECEE;
+}
+.lab-val li {
+  height: 35px;
+  line-height: 35px;
+  overflow: hidden;
+  float: left;
+}
+.lab-val .items {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #E7ECEE;
+}
+.ycp-items>.table > tbody > tr > td{
+  border-top: 0px solid #DDD;
+}
+.r3 {
+  color: #FFF;
+  background: none repeat scroll 0% 0% #18B160;
+  height: 20px;
+  line-height: 20px;
 }

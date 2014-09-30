@@ -1,24 +1,112 @@
-%h1.page-header 充值提现
-.console-product-intro.panel.panel-default
-  .row
+.console-header-info
+  %h1.page-header 充值提现
 
-    .col-md-6.item-row
-      %dl.text-center
+.console-product-intro.panel.panel-default
+  .row.stats-items
+    .col-md-6.col-sm-6
+      %dl.dl-horizontal.recharge-entry1
         %dt
-          %h3 账户余额
-        %dt
+          账户余额
+        %dd.text-right
+          ￥0.47
+      %dl.dl-horizontal.recharge-entry2
+        %dt.text-left
           可用余额
           %span.badge
             ?
-      %dl.text-center
-        %dd
-          %h3 ￥0.47
-        %dd ￥0.47
-    .col-md-3.col-md-offset-1
+        %dd.text-right ￥0.47
+    .col-md-2.col-md-offset-1.col-sm-2
       %a.btn.btn-primary.btn-lg{:href => "#"}
         %span ￥
         充值
-    .col-md-2
+    .col-md-2.col-sm-2
       %a.btn.btn-success.btn-lg{:href => "#"}
         %span ￥
         提现
+
+.filter-box.trade-filter
+  - queries = params.except(*request.path_parameters.keys)
+  - condi = {}
+  - conds = {}
+  - dict = {'all' => '全部',
+             'charge' => '充值',
+             'pull' => '提现',}
+  %dl.filter-items
+    %dt
+      起止日期
+    %dd
+      - {'all' => '全部',
+         'week' => '最近7天',
+                 'month' => '1个月内',
+                 'month2' => '2个月内',
+                 'month3' => '3个月内' }.each do |k, v|
+
+        - condi[:date_range] = k
+        - condi[:filter] =queries[:filter]
+        - if queries[:date_range] == k
+          %a.timeType.selected{:href => usercenter_console_history_path(condi)}
+            = v
+        - else
+          %a.tradeType{:href => usercenter_console_history_path(condi)}
+            =v
+
+  %dl.filter-items
+    %dt
+      交易类型
+    %dd
+      - dict.each do |k, v|
+        - conds[:date_range] = queries[:date_range]
+        - conds[:filter] = k
+        - if queries[:filter] == k
+          %a.tradeType.selected{:href => usercenter_console_history_path(conds)}
+            = v
+        - else
+          %a.tradeType{:href => usercenter_console_history_path(conds)}
+            =v
+
+.console-list-area.trade-table
+  %table.table.trade-table-th
+    %tbody
+      %tr
+        %th
+          时间
+        %th
+          交易类型|流水号
+        %th
+          对方
+        %th
+          金额(¥) | 明细
+        %th
+          可用余额(¥)
+      %tr
+        %td 2014.9.9
+        %td
+          %p 充值
+          %p 1361454
+        %td 财付通充值账户
+        %td
+          5.00
+          %span.glyphicon.glyphicon-collapse-down
+        %td 1,000.47
+      %tr
+        %td 2014.9.9
+        %td
+          %p 充值
+          %p 1361454
+        %td 财付通充值账户
+        %td
+          5.00
+          %span.glyphicon.glyphicon-collapse-down
+        %td.text-center 1,000.47
+  .trade-table-pagination.text-center
+    %ul.pagination
+      %li
+        %a{:href=> "#"} &laquo;
+      %li
+        %a{:href=> "#"} 1
+      %li
+        %a{:href=> "#"} 2
+      %li
+        %a{:href=> "#"} 3
+      %li
+        %a{:href=> "#"} &raquo;
