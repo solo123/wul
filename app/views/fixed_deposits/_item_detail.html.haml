@@ -64,41 +64,16 @@
           .head.panel-heading
             %h3.panel-title 
               投资金额
-              %span.text-muted 单笔最多可投100,000元
+              %span.text-right 可投 0 元
           .doned-left.panel-body
-            .input-group
-              = text_field_tag :product_value, "", class: "form-control", autocomplete: "off"
-              %span.input-group-addon 元
+            %span 剩余可投资金额：0.00元
 
-            %dl.dl-horizontal
-              %dt 收益处理方式
-              %dd
-                = obj.repayment_method_name
-                %span.badge.explain{"data-toggle"=>"popover","data-content" => "每周期偿还收益,到期偿还本金","data-placement"=>"bottom"} ?
-              %dt
-                到期总收益
-                #profit_rate
-                  =  number_with_precision(obj.annual_rate / 12 / 100 * obj.repayment_period , precision: 2)
-              %dd
-                %span 
-                  ="￥"
-                %span#profit_value 0.00
-              %dt 年化收益率
-              %dd
-                ="#{obj.annual_rate} %"
-              %dt 验证码
-              %dd
-                = show_simple_captcha(:label => "",:code_type => "numeric")
-            %p.funds-ord
-              %input.io.chek1{:type => "checkbox"} 我同意《
-              %a{:href => "#"} 沃银网定存宝V投资协议
-              》
           .panel-footer
             - if current_user
               %button.btn.btn-primary.btn-lg.btn-block#test{:type => "submit"}
                 = obj.current_operation
             - else
-              %a.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path} 加入
+              %a.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path} 还款中
 
   .product-details
     %ul.nav.nav-tabs{:role => "tablist"}
@@ -112,91 +87,121 @@
     / Tab panes
     .tab-content
       #detail.tab-pane.active
-        %table.table.table-striped.product-details-border
-          %thead
-            %tr
-              %th 名称
-              %th
-                = obj.product_name
-                = obj.deposit_number
-          %tbody
-            %tr
-              %td 产品介绍
-              %td 定存宝是沃银网推出的对100%本息担保的借款项目进行自动投资的理财计划，多种期限可选，满足出借人不同的流动性需要。出借人出借的本金将在投资期限届满后一次性返回其账户，利息收益每月返还，并由系统实现自动化的分散投资，更好的满足了出借人的需求。
-            %tr
-              %td 投资范围
-              %td 由合作机构提供100％本息担保的借款项目，包括信用、保证、抵质押等类型
-            %tr
-              %td 年化收益率
-              %td
-                = "#{obj.annual_rate}%"
-            %tr
-              %td 加入期
-              %td
-                = "#{obj.join_date.strftime("%Y-%m-%d")} 至 #{obj.expiring_date.strftime("%Y-%m-%d")}"
-            %tr
-              %td 加入条件
-              %td 加入金额1,000元起，且以1000元的倍数递增
-            %tr
-              %td 单笔额度上限
-              %td ￥100,000
-            %tr
-              %td 期限
-              %td
-                = "#{obj.repayment_period}个月"
-            %tr
-              %td 到期日
-              %td
-                %ul.product-details-cost
-                  %li
-                    %p
-                      %span> 至 #{obj.expiring_date.strftime("%Y-%m-%d")}
-                      （ 定存宝V可能提前还款，收益将根据实际投资天数计算，详情请见《
-                    = succeed "\u{300b}\u{ff09}" do
-                      %a{:href => "#"} 沃银网定存宝V投资协议
-            %tr
-              %td 到期赎回方式
-              %td 平台自动返还剩余本金和当期利息
-            %tr
-              %td 提前赎回方式
-              %td 期限内支持提前赎回，详情请见《沃银网定存宝投资协议》
-            %tr
-              %td 费用
-              %td
-                %ul.product-details-cost
-                  %li
-                    加入费率：
-                    %span 0.00
-                    %span %
-                  %li
-                    %p 管理费率：参见《
-                    = succeed "\u{300b}" do
-                      %a{:href => "#"} 沃银网定存宝V投资协议
-                  %li
-                    到期赎回费率
-                    %span 0.00
-                    %span %
-                  %li
-                    %p
-                      提前赎回费率：最低为待收本金的
-                      %span 23.00
-                      = succeed "\u{ff0c}\u{53c2}\u{89c1}\u{300a}" do
-                        %span %
-                    = succeed "\u{300b}" do
-                      %a{:href => "#"} 沃银网定存宝V投资协议
-                  %li
-            %tr
-              %td 保障方式
-              %td.expl
-                %img{:src => image_url("main/wytz5.png")}
-                  %p &nbsp;100% 本息保障
-            %tr
-              %td 电子回单
-              %td 网上交易保障中心证明该项目的电子回单真实、有效、不可篡改
-            %tr
-              %td 定存宝V协议
-              %td
-                %a{:href => "#"} 点击查看
+        %ul.row
+          %li.col-md-6
+            .lab-val
+              %ul.row.items
+                %li.col-md-12
+                  %strong 个人信息
+                %li.col-md-4  用户ID
+                %li.col-md-8  683880
+                %li.col-md-4  性别
+                %li.col-md-8  男
+                %li.col-md-4  年龄
+                %li.col-md-8  32
+                %li.col-md-4  学历
+                %li.col-md-8  大专
+                %li.col-md-4  是否结婚
+                %li.col-md-8  已婚
+                %li.col-md-4  子女状况
+                %li.col-md-8  有
+                %li.col-md-4  户籍城市
+                %li.col-md-8  四川省南充市
+
+              %ul.row.items
+                %li.col-md-12
+                  %strong 个人资产及征信信息
+                %li.col-md-4  月收入水平
+                %li.col-md-8  5000元-8000元
+                %li.col-md-4  房产
+                %li.col-md-8  无
+                %li.col-md-4  车产
+                %li.col-md-8  无
+                %li.col-md-4  其他信用贷款
+                %li.col-md-8  无
+                %li.col-md-4  未销户信用卡
+                %li.col-md-8  无
+                %li.col-md-4  信用卡额度使用率
+                %li.col-md-8  无信用卡
+
+              %ul.row
+                %li.col-md-12
+                  %strong 工作信息
+                %li.col-md-4  工作城市
+                %li.col-md-8  四川省南充市
+                %li.col-md-4  现公司工作时间
+                %li.col-md-8  2012
+                %li.col-md-4  公司行业
+                %li.col-md-8  教育科研、医院、公共事业、金融业
+                %li.col-md-4  公司性质
+                %li.col-md-8  国营
+                %li.col-md-4  岗位
+                %li.col-md-8  其他基层服务岗位
+
+          %li.col-md-6
+            .lab-val.trade-table.ycp-items
+              %table.table.trade-table-th
+                %strong.text-left 担保机构
+                %tbody
+                  %tr
+                    %td
+                    %td 身份证
+                    %td 于2014.09.11
+                    %td
+                      %span.glyphicon.glyphicon-ok>
+                      认证通过
+                  %tr
+                    %td
+                    %td 信用报告
+                    %td 于2014.09.11
+                    %td
+                      %span.glyphicon.glyphicon-ok>
+                      认证通过
+                  %tr
+                    %td
+                    %td 工作证明
+                    %td 于2014.09.11
+                    %td
+                      %span.glyphicon.glyphicon-ok>
+                      认证通过
+                  %tr
+                    %td
+                      .r3  100%本息担保
+                    %td 收入证明
+                    %td 于2014.09.11
+                    %td
+                      %span.glyphicon.glyphicon-ok>
+                      认证通过
+              %strong 有利网借款记录
+              %table.table.table-bordered.trade-table-th
+                %thead
+                  %tr
+                    %th 共计借入
+                    %th 待还金额
+                    %th 逾期金额
+                    %th 严重逾期
+                %tbody
+                  %tr
+                    %td ￥1,700,000.00
+                    %td ￥1,729,749.98
+                    %td ￥0.00
+                    %td 0次
+
+              %table.table.table-bordered.trade-table-th
+                %tbody
+                  %tr
+                    %th 发布借款笔数
+                    %th 成功借款笔数
+                    %th 还清笔数
+                    %th 逾期次数
+
+                  %tr
+                    %td 1笔
+                    %td 1笔
+                    %td 0笔
+                    %td 0次
+
+
       #prshd.tab-pane
         %table.table.product-details-jrjl.table-striped.product-details-border
           %thead

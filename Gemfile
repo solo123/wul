@@ -1,4 +1,4 @@
-source 'https://rubygems.org/'
+source 'http://ruby.taobao.org/'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
@@ -6,10 +6,17 @@ gem 'rails', '4.1.0'
 gem 'sqlite3'
 #gem 'mysql2'
 
+<<<<<<< HEAD
 #gem 'tzinfo-data'
+=======
+
+
+# gem 'tzinfo-data'
+>>>>>>> bc6074937f20ee9e1d1771b6602d815571767286
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -50,9 +57,10 @@ gem 'will_paginate', '~> 3.0'
 gem "html5_validators"
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'friendly_id', '~> 5.0.0'
-#gem 'sidekiq'
-#gem 'sinatra', require: false
-#gem 'slim'
+gem 'airbrake'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 # gem 'rmagick'
 gem 'simple_captcha2', require: 'simple_captcha'
 #gem 'capistrano', '~> 3.2.1'
