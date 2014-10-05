@@ -18,7 +18,7 @@ God.watch do |w|
   w.restart_grace = 10.seconds
 
   w.uid = UID
-  w.gid = GID
+  #w.gid = GID
 
   w.pid_file = "#{WEB_PID_DIR}/unicorn.pid"
   w.behavior(:clean_pid_file)
