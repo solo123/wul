@@ -81,7 +81,7 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     to :launch do
-     # queue! %[god restart web]
+      queue! %[god restart web]
     end
   end
 end
