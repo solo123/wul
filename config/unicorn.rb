@@ -3,26 +3,26 @@ worker_processes 2
 # Since Unicorn is never exposed to outside clients, it does not need to
 
 # "current" directory that Capistrano sets up.
-APP_PATH = "/home/www/wul"
+APP_PATH = "/home/wooul/www.wooul.com"
 DEPLOY_PATH = "/home/wooul/wooul.com"
-working_directory APP_PATH# available in 0.94.0+
+working_directory APP_PATH + "/current"  # available in 0.94.0+
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
-listen APP_PATH+"/tmp/sockets/unicorn.sock", :backlog => 64
+listen APP_PATH+"/shared/tmp/sockets/unicorn.sock", :backlog => 64
 
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid APP_PATH+"/tmp/pids/unicorn.pid"
+pid APP_PATH+"/shared/tmp/pids/unicorn.pid"
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path APP_PATH+"/log/wooul.stderr.log"
-stdout_path APP_PATH+"/log/wooul.stdout.log"
+stderr_path APP_PATH+"/shared/log/wooul.stderr.log"
+stdout_path APP_PATH+"/shared/log/wooul.stdout.log"
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
@@ -32,7 +32,7 @@ GC.respond_to?(:copy_on_write_friendly=) and
 
 
 before_exec do |server|
-   ENV['BUNDLE_GEMFILE'] = APP_PATH + "/Gemfile"
+   ENV['BUNDLE_GEMFILE'] = APP_PATH + "/current/Gemfile"
 end
 # Enable this flag to have unicorn test client connections by writing the
 # beginning of the HTTP headers before calling the application.  This
