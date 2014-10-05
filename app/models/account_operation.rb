@@ -3,8 +3,8 @@ class AccountOperation < ActiveRecord::Base
   require 'net/https'
   require 'json'
   require "uri"
-  $trans_url = "http://127.0.0.1:3001/accounting/account/execute_cmd"
-  $query_url = "http://127.0.0.1:3001/accounting/account/query_cmd"
+  $trans_url = "http://127.0.0.1:8080/accounting/account/execute_cmd"
+  $query_url = "http://127.0.0.1:8080/accounting/account/query_cmd"
   attr_accessor :op_obj, :op_id_head
 
 
