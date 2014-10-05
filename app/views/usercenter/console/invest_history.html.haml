@@ -1,57 +1,54 @@
 .console-header-info
   %h1.page-header 投资记录
-.detail_container
-  .col-md-12
-    %ul.nav.nav-tabs{:role=>"tablist"}
-      %li.active
-        %a{:href=>"#fixed", :role=>"tab", 'data-toggle'=>"tab"}
-          定存宝
-          %span.badge
-            = @fixed_deposits.size
-      %li
-        %a{:href=>"#month", :role=>"tab", 'data-toggle'=>"tab"}
-          月月盈
-          %span.badge
-            = @month_deposits.size
+.investment-records-area
+  %ul.nav.nav-tabs{:role=>"tablist"}
+    %li.active
+      %a{:href=>"#fixed", :role=>"tab", 'data-toggle'=>"tab"}
+        定存宝
+        %span.badge
+          = @fixed_deposits.size
+    %li
+      %a{:href=>"#month", :role=>"tab", 'data-toggle'=>"tab"}
+        月月盈
+        %span.badge
+          = @month_deposits.size
 
-    %div.tab-content
-      %div.tab-pane.active{:id=>"fixed"}
-        .panel
-          .panel-body
-            %table.table
+  %div.tab-content
+    %div.tab-pane.active{:id=>"fixed"}
+      .console-list-area
+        %table.table
+          %tr
+            %th 名称
+            %th 年化收益率
+            %th 金额（￥）
+            %th 投资期限
+            %th 担保
+          - @fixed_deposits.each do |f|
+            %tr
+              %td
+                %a{:href => usercenter_console_invest_detail_path}
+                  = "定存宝#{f.loan_number}"
+              %td  #{number_with_precision f.product.annual_rate, precision: 2}%
+              %td= f.amount
+              %td= "#{f.product.repayment_period}个月"
+              %td
+                银盛担保
+    %div.tab-pane{:id=>"month"}
+      .console-list-area
+        %table.table
+          %tr
+            %th 名称
+            %th 年化收益率
+            %th 金额（￥）
+            %th 投资期限
+            %th 担保
+            - @month_deposits.each do |f|
               %tr
-                %th 名称
-                %th 年化收益率
-                %th 金额（￥）
-                %th 投资期限
-                %th 担保
-              - @fixed_deposits.each do |f|
-                %tr
-                  %td
-                    %a{:href => usercenter_console_invest_detail_path}
-                      = "定存宝#{f.loan_number}"
-                  %td  #{number_with_precision f.product.annual_rate, precision: 2}%
-                  %td= f.amount
-                  %td= "#{f.product.repayment_period}个月"
-                  %td
-                    银盛担保
-      %div.tab-pane{:id=>"month"}
-        .panel
-          .panel-body
-            %table.table
-              %tr
-                %th 名称
-                %th 年化收益率
-                %th 金额（￥）
-                %th 投资期限
-                %th 担保
-                - @month_deposits.each do |f|
-                  %tr
-                    %td
-                      %a{:href => usercenter_console_invest_detail_path}
-                        = "月月盈#{f.loan_number}"
-                    %td  #{number_with_precision f.product.annual_rate, precision: 2}%
-                    %td= f.amount
-                    %td= "#{f.product.repayment_period}个月"
-                    %td
-                      银盛担保
+                %td
+                  %a{:href => usercenter_console_invest_detail_path}
+                    = "月月盈#{f.loan_number}"
+                %td  #{number_with_precision f.product.annual_rate, precision: 2}%
+                %td= f.amount
+                %td= "#{f.product.repayment_period}个月"
+                %td
+                  银盛担保

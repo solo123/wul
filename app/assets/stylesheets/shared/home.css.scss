@@ -1,0 +1,164 @@
+
+
+.home-area-header{
+	margin:50px 0;	
+}
+
+.home-area-header p{
+	color: #999;
+}
+
+.home-area-header .home-about-intro{
+	padding-right:50px;
+}
+.home-area-header .home-about-intro h3{
+	color:#333;
+	margin:0;
+}
+.home-area-header .home-about-intro p{
+	margin-top:12px;
+}
+
+.home-area-header .home-stat{
+
+}
+.home-area-header .home-stat strong{
+	font-weight:normal;
+	font-size:22px; 
+	color:#ff6600;
+}
+.home-area-header .home-stat p{
+	margin-top:6px;
+}
+
+
+.home-safe-tips{
+	margin:22px 0;	
+}
+
+
+.home-safe-tips .media{
+	min-height:120px;
+}
+.home-safe-tips .media .intro{
+	color:#999;
+}.home-safe-tips .media .media-heading{
+	font-size:24px;
+}
+.home-safe-tips .media .pull-left{
+	margin-right: 20px;
+}
+.home-safe-tips .media .home-safe-icon {
+	display:block;
+	width:150px;
+	height:150px;
+	background: image-url("home-safe-tips-bg.png");
+}
+
+.home-safe-tips .media .home-safe-icon-safe {
+	background-position: 0 0;
+}
+.home-safe-tips .media .home-safe-icon-earnings {
+	background-position: 200px 0;
+}.home-safe-tips .media .home-safe-icon-novice {
+	background-position: 0 200px;
+}.home-safe-tips .media .home-safe-icon-redemption {
+	background-position: 200px 200px;
+}
+
+
+
+
+.home-safe-tips .media .more-link{
+	text-align:right;
+}
+
+/*[ = Home fixed Area ]--------------------------------------*/
+
+.home-fixed-area{}
+.home-fixed-area .home-product-list{
+	margin:22px 0 32px 0;
+}
+
+
+.home-fixed-area .item-list{
+	border:2px solid #CCC;
+	border-radius:10px;
+	-moz-border-radius:10px; /* Old Firefox */
+	background:#FFF;
+  position: relative;
+}
+.home-fixed-area .item-list:hover{
+	border:2px solid #f28558;
+}
+
+
+.home-fixed-area .item-list .link-block{
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999em;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+
+.home-product-list .panel .panel-heading{
+	border-radius:10px 10px 0 0;
+}
+
+.home-product-list .panel .panel-heading .badge{ padding:8px; border-radius: 15px; background:#CCC; font-weight:normal;}
+
+
+.home-product-list .panel .panel-footer{
+	border-radius:0 0 10px 10px;
+}
+
+.home-product-list .item-list .number-info{	text-align:center; color:#999;}
+.home-product-list .item-list .number-info strong{	font-size:150%; font-weight:normal; color: #333;}
+.home-product-list .item-list .pro-info{ margin:0; }
+.home-product-list .item-list .pro-info dl{ padding-left:5px; padding-right:5px; }
+	.home-product-list .item-list .pro-info dl dt{ font-size:200%; font-weight:normal; }
+	.home-product-list .item-list .pro-info dl dd{ color:#999; }
+.home-product-list .item-list .pro-info .yidld-info{ text-align:right;}
+
+.home-product-list .item-list .safe-info{ text-align:center;}
+
+.home-product-list .item-list .progress-area{ }
+.home-product-list .item-list .progress-area .progress-info{ color:#999; }
+.home-product-list .item-list .progress-area .progress-info strong{ font-size:120%; font-weight:normal; color: #333; }
+
+.home-product-list .item-list .amount{ text-align:center; color:#999; }
+.home-product-list .item-list .amount strong{ font-size:150%; font-weight:normal; color: #F60; }
+
+
+.home-product-list .item-list .panel-footer{ text-align:right;}
+
+
+/*[ = Home month Area ]--------------------------------------*/
+.home-month-area{}
+.home-product-list .pro-title{ font-size:120%; font-weight:normal; }
+.home-product-list .pro-title .badge{ padding:8px; border-radius: 15px; background:#CCC; font-weight:normal;}
+.home-product-list .table-list .safe-info{ margin:12px 0; }
+.home-product-list .table-list .select-col{ text-align:right;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,14 +5,7 @@ gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 #gem 'mysql2'
-
-<<<<<<< HEAD
-#gem 'tzinfo-data'
-=======
-
-
 # gem 'tzinfo-data'
->>>>>>> bc6074937f20ee9e1d1771b6602d815571767286
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

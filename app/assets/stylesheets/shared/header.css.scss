@@ -3,6 +3,7 @@
 
 .header-top {
   background: #fff;
+  background: image-url("wooul-bg.gif");
   margin-bottom: 0;
   /*border-top: 5px solid #424d55;*/
   border:0 none;
@@ -38,6 +39,13 @@
   margin-right: 10px;
   font-size: 15px;
 }
+
+
+.header-top .navbar-nav > .active > a, .header-top .navbar-nav > li > a:hover, .header-top .navbar-nav > .open > a, .header-top .navbar-nav > .open > a:hover, .header-top .navbar-nav > .open > a:focus{
+  background: #f1f1f1;
+}
+
+
 
 
 

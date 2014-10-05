@@ -8,13 +8,13 @@
             = obj.deposit_number
         .panel-body
           .profit.row
-            %dl.f.col-md-6
+            %dl.col-md-6.block-area
               %dt 总额度
               %dd
                 %ins ￥
                 %em
                   = number_with_precision(obj.total_amount, precision: 0, delimiter: ',')
-            %dl.col-md-3
+            %dl.col-md-3.block-area
               %dt 年化收益率
               %dd
                 %em
@@ -27,7 +27,7 @@
                 ="%"
                 -#= succeed "%" do
                 -#  %span .00
-            %dl.col-md-3
+            %dl.col-md-3.block-area
               %dt 投资期限
               %dd
                 %em

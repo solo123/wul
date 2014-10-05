@@ -93,6 +93,15 @@
   position: relative;
 }
 
+.model-box .profit .block-area {
+  border-right:1px solid #CCC;
+}
+.model-box .profit .block-area:last-child {
+  border:0;
+}
+
+
+
 
 .model-box .profit dt {
   font-size:14px;

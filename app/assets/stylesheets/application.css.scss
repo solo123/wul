@@ -29,10 +29,10 @@ $sidemenu_padding: 10px;
 .auxiliary-info .page-header{ font-weight: normal; color: #fff; margin: 0 0 20px;padding-top:25px; }
 .auxiliary-info .leading{padding-bottom:25px;}
 .auxiliary-info p{ color: #E6E6E6; }
-.auxiliary-info .fun-area{position: relative; min-height:150px;}
-.auxiliary-info .btn{border-radius: 0; line-height:150px; background:#f1f1f1;}
-.auxiliary-info .fun-area .go-back{position: absolute; height:100%; width:100%; z-index:1; text-align:right;}
-.auxiliary-info .fun-area .btn-balance{position: absolute; height:100%; width:50%; z-index:10;}
+.auxiliary-info .fun-area{ padding-top:40px; }
+.auxiliary-info .btn{ }
+.auxiliary-info .fun-area .go-back{ }
+.auxiliary-info .fun-area .btn-balance{ }
 
 
 
@@ -57,5 +57,13 @@ $sidemenu_padding: 10px;
 .contact-page-area .content-box p{ margin: 22px 0; line-height:180%; color:#666; }
 
 
-.scheme-white{background-color: #fff;}
-.scheme-shell{background-color: #f7f3eb;}
+.scheme-white{background-color: #f4fcfe;}
+.scheme-shell{background: image-url("wooul-bg.gif");}
+
+
+
+
+
+
+.digg_pagination{ padding: 15px 22px; background-color: #E8ECEF;}
+.digg_pagination .page_info{}

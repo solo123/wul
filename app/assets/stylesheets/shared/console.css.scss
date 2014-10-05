@@ -1,12 +1,14 @@
 /*
  *= require_self
  */
-
+ 
 
 /* My Account */
 
 
 
+
+/* =[用户中心页面全局样式] ---------------------------------*/
 
 .console-page-area,.securecenter-page-area{ padding-top:12px; padding-bottom:12px; min-height:650px; background:#f7f3eb;}
 
@@ -18,7 +20,24 @@
 
 
 
-.sidebar .accout-avatar{ text-align:center; }
+
+
+/* =[用户中心边栏] ---------------------------------*/
+
+@media (min-width: 768px) {
+  aside.sidebar {
+    margin-right: 0;
+    margin-left: 2px;
+    padding:15px 0 30px 0;
+    background-color: #fff;
+    border-right:1px solid #00a3d9;
+    box-shadow: none;
+    min-height:720px;
+  }
+}
+
+
+.sidebar .accout-avatar{ display:none; text-align:center; }
 .sidebar .accout-avatar img{ display:inline; }
 
 
@@ -40,22 +59,32 @@
 }
 
 
-.accout_ye{
+.sidebar .accout_ye{
   margin:20px 15px;
 }
 
 
 
 .sidebar .sidebar-nav{
-  margin:15px; 
+  margin:15px 0; 
+}
+.sidebar .sidebar-nav li a{
+  padding: 15px 15px;
+}
+
+.sidebar .nav-pills > li.active > a, 
+.sidebar .nav-pills > li.active > a:hover, 
+.sidebar .nav-pills > li.active > a:focus {
+  color: white;
+  background-color: #00a3d9;
+  border-radius: 4px 0 0 4px;
 }
 
 
 
+/* =[用户中心内容区域] ---------------------------------*/
 
-
-
-.console-main-area{
+.console-main-area,.securecenter-main-area{
   padding:1px 15px;
   min-height:700px; 
   background:#fff;
@@ -65,31 +94,21 @@
 
 
 
+/* =[用户中心页头标题区域] ---------------------------------*/
+
+.console-header-info{}
+.console-header-info .page-header{ color: #00a3d9; font-weight:normal; border-bottom: 1px solid #00a3d9; }
 
 
 
 
 
 
-@media (min-width: 768px) {
-  aside.sidebar {
-    margin-right: 0;
-    margin-left: 2px;
-    padding:15px 0 30px 0;
-    background-color: #fff;
-    border:1px solid #d2d2d2;
-    border-radius: 4px 4px 4px 4px;
-    /* -webkit-box-shadow: none; */
-    box-shadow: none;
-    min-height:600px;
-  }
-}
 
 
 
 
-
-
+/* =[用户中心 - 我的帐户页面统计区域] ---------------------------------*/
 /*= Statistics header ---------------------------------------------------*/
 .statistics-header{ margin-top:15px; margin-bottom:15px; }
 .statistics-header .item-row{ border-left:1px solid #d2d2d2; min-height:150px;  }
@@ -112,8 +131,33 @@
 
 
 
-.console-list-area{ margin: 15px 0;}
-.console-list-area table thead th{ font-weight:normal; color:#999;  }
+.console-list-area{ }
+.console-list-area table th{ font-weight:normal; color:#353535; background: #dbdbdb; }
+.console-list-area table td{ color:#353535; }
+
+.console-list-area .table > thead > tr > th, 
+.console-list-area .table > thead > tr > td, 
+.console-list-area .table > tbody > tr > th, 
+.console-list-area .table > tbody > tr > td, 
+.console-list-area .table > tfoot > tr > th, 
+.console-list-area .table > tfoot > tr > td{
+  padding:15px 5px;
+}
+
+
+
+
+
+.trade-table { }
+.trade-table table { }
+.trade-table th { }
+.trade-table td {  }
+.trade-table td p{  margin-bottom: 0px;}
+
+
+
+
+
 
 
 
@@ -128,6 +172,11 @@
 
 
 
+/* =[投资记录] ---------------------------------*/
+.investment-records-area{}
+.investment-records-area .tab-content{ }
+.investment-records-area .tab-content .table th{ border-top:0; }
+.investment-records-area .tab-content .table td{ }
 
 
 
@@ -135,11 +184,31 @@
 
 
 
+/* =[安全中心 - 交易验证] ---------------------------------*/
+
+
+.transaction-verification{margin:50px 0; }
+.transaction-verification .intro{ font-size:14px; }
+.transaction-verification .btn-block{ min-height:140px; line-height:140px; font-size:28px; }
 
 
 
+.securecenter-home-area{}
+.securecenter-home-area .security-level{ margin:50px 0;}
 
 
+.security-overview{margin:50px 0;}
+
+.security-overview table th{ font-weight:normal; color:#353535; background: #dbdbdb; }
+.security-overview table td{ color:#353535; }
+.security-overview .table > thead > tr > th, 
+.security-overview .table > thead > tr > td, 
+.security-overview .table > tbody > tr > th, 
+.security-overview .table > tbody > tr > td, 
+.security-overview .table > tfoot > tr > th, 
+.security-overview .table > tfoot > tr > td{
+  padding:15px 5px;
+}
 
 
 

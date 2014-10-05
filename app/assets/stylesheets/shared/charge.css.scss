@@ -32,36 +32,3 @@
   font-weight: normal;
   width: 50%;
 }
-.trade-table {
-  overflow: hidden;
-  font-size: 14px;
-  border: 1px solid #E8ECEF;
-}
-.trade-table-min{
-  min-height: 400px;
-}
-.trade-table table {
-  font-size: 14px;
-  width: 100%;
-  text-align: left;
-  line-height: 1.6;
-}
-.trade-table th {
-  height: 50px;
-  vertical-align: middle;
-  text-align: center;
-  background: none repeat scroll 0% 0% #E8ECEF;
-}
-.trade-table td {
-  text-align: center;
-}
-.trade-table td p{
-  margin-bottom: 0px;
-}
- .trade-table-th > tbody > tr > th{
-  line-height: 2.5;
-   color:#475058;
-}
-.trade-table-th > tbody > tr > td{
-  line-height: 1.8;
-}
