@@ -10,8 +10,8 @@ God.watch do |w|
   w.name     = "sidekiq_web"
   w.group = "web"  
 w.interval = 30.seconds
- # w.keepalive(:memory_max => 120.megabytes,
-  #            :cpu_max => 20.percent)
+  w.keepalive(:memory_max => 120.megabytes,
+              :cpu_max => 20.percent)
   w.start = "cd #{WEB_ROOT}; nohup bundle exec sidekiq -e production -C #{WEB_ROOT}/config/sidekiq.yml -i 0 -P #{WEB_PID_DIR}/sidekiq.pid >> #{WEB_ROOT}/log/sidekiq.log 2>&1 &"
   w.stop  = "if [ -d #{WEB_ROOT} ] && [ -f #{WEB_PID_DIR}/sidekiq.pid ] && kill -0 `cat #{WEB_PID_DIR}/sidekiq.pid`> /dev/null 2>&1; then cd #{WEB_ROOT} && bundle exec sidekiqctl stop #{WEB_PID_DIR}/sidekiq.pid 10 ; else echo 'Sidekiq is not running'; fi"
 
