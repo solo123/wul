@@ -1,48 +1,52 @@
 .console-header-info
   .fun-area.pull-right
+    %span.text-muted
+      您还没有进入排行榜，请再接再厉
     %a{:href => "#"} 查看投资榜
   %h1.page-header 我的账户
-  %p 您还没有进入排行榜，请再接再厉
-.acc4
-  .acc4_1.size1of4
-    .acc4_1a
-      账户余额
-      %span.badge
-    .acc4_1b
-      = @deposit.balance
-    .acc4_1c
-      可用余额￥
-      = @deposit.balance - @deposit.frozen_balance
-      %span.badge
-  .acc4_2.size1of4
-    .acc4_1a
-      账户总资产
-      %span.badge
-        ?
-    .acc4_1b
-      ￥
-      = @analyzer.total_invest_amount + current_user.user_info.account.balance
-  .acc4_1.size1of4  
-    .acc4_1a
-      账户余额
-      %span.badge ?
-    .acc4_1b
-      ￥
-      = @deposit.balance
-    .acc4_12c
-      .acc4_12cc
+.statistics-header.row
+  .col-md-3.item-row
+    %dl
+      %dt
+        账户余额
+        %span.badge
+      %dd
+        = @deposit.balance
+      %dt
         可用余额￥
+      %dd
         = @deposit.balance - @deposit.frozen_balance
+        %span.badge
+  .col-md-3.item-row
+    %dl
+      %dt
+        账户总资产
+        %span.badge
+          ?
+      %dd
+        ￥
+        = @deposit.total_estate
+  .col-md-3.item-row
+    %dl
+      %dt
+        账户余额
         %span.badge ?
-  .acc4_3.size1of4
-    .acc4_1a
-      账户总资产
-      %span.badge ?
-    .acc4_1b
-      ￥
-      = @analyzer.total_invest_amount + current_user.user_info.account.balance
-.acc5
-  %dl 初来乍到，您还没有任何记录，快去完成新手任务，领取超多奖励!
-  %a{:href => "#"} 立即查看
+      %dd
+        ￥0.00
+      %dt
+        可用余额
+      %dd
+        ￥12222.00
+        %span.badge ?
+  .col-md-3.item-row
+    %dl
+      %dt
+        账户总资产
+        %span.badge ?
+      %dd
+        ￥22222.00
+.console-content.jumbotron
+  %p 初来乍到，您还没有任何记录，快去完成新手任务，领取超多奖励!
+  %a.btn.btn-primary.btn-lg{:href => "#"} 立即查看
 
 

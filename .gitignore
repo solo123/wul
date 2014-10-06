@@ -5,7 +5,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-Gemfile*
 /db/schema.rb
 *.swp
 *.orig

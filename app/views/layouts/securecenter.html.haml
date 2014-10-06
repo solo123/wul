@@ -16,6 +16,7 @@
           .col-md-3
             =render "shared/secure_sidebar"
           .col-md-9
-            = yield
+            .securecenter-main-area
+              = yield
     = cms_snippet_content('footer')
   = yield :javascript_includes

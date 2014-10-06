@@ -1,9 +1,9 @@
 .console-header-info
   .fun-area.pull-right
+    %span.text-muted
+      您还没有进入排行榜，请再接再厉
     %a{:href => "#"} 查看投资榜
   %h1.page-header 交易记录
-  %p 您还没有进入排行榜，请再接再厉
-
 .filter-box.trade-filter
   - queries = params.except(*request.path_parameters.keys)
   - condi = {}
@@ -48,10 +48,9 @@
         - else
           %a.tradeType{:href => usercenter_console_history_path(conds)}
             =v
-.acc5
-%div
+.console-list-area.trade-table
   %table.table
-    %thead
+    %tbody
       %tr
         %th
           交易类型
@@ -65,7 +64,7 @@
           交易编号
         %th
           交易日期
-    %tbody
+
       - @transactions.each do |t|
         %tr
           %td
