@@ -11,7 +11,7 @@ class UserInfo < ActiveRecord::Base
   attr_accessor :sec_progress
 
   #after_create :create_delagator
-  # after_create :create_back_account
+  after_create :create_back_account
   def create_verification
    vef = Verification.new
    self.verification = vef

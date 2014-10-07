@@ -20,6 +20,7 @@ class Transaction < ActiveRecord::Base
     case self.trans_type
       when "charge"
         message.title = "充值成功"
+        message.content = "您于#{Time.now}，在沃银网充值人民币#{self.operation_amount}元成功."
       when "invest"
         message.title = "投资成功"
       when "sell"

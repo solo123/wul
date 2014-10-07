@@ -15,8 +15,10 @@
                 = m.title
               %td
                 = m.created_at.strftime("%Y-%m-%d %H:%M:%S")
-              %td= "未读"
-              %td= "严重"
+              %td
+                = m.read_status
+              %td
+                普通
               %td
                 %a{:href => usercenter_console_message_path(:message_id => m.id, :pattern => 'detail')}
                   查看

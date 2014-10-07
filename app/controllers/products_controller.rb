@@ -42,7 +42,7 @@ class ProductsController < ResourcesController
 
   def create_invest(amount, product, user)
     op = AccountOperation.new(:op_name => "invest", :op_action => "join", :op_amount => amount, :operator => "system",:uinfo_id => user.user_info.id,
-                              :op_resouce_name => product.deposit_number, :op_resource_id => product.id)
+                              :op_resource_name => product.deposit_number, :op_resource_id => product.id)
     op.execute_transaction
   end
 

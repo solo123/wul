@@ -59,21 +59,30 @@
                 %p
                   ="100%本息保障"
     .col-md-4.modedqb
-      = form_tag product_join_path(obj.product_type,obj) do
-        .model-box.panel.panel-default
-          .head.panel-heading
-            %h3.panel-title 
-              投资金额
-              %span.text-right 可投 0 元
-          .doned-left.panel-body
-            %span 剩余可投资金额：0.00元
+      = render "products/buyform", obj:obj
 
-          .panel-footer
-            - if current_user
-              %button.btn.btn-primary.btn-lg.btn-block#test{:type => "submit"}
-                = obj.current_operation
-            - else
-              %a.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path} 还款中
+
+
+
+
+
+
+
+      -#= form_tag product_join_path(obj.product_type,obj) do
+      -#  .model-box.panel.panel-default
+      -#    .head.panel-heading
+      -#      %h3.panel-title
+      -#        投资金额
+      -#        %span.text-right 可投 0 元
+      -#    .doned-left.panel-body
+      -#      %span 剩余可投资金额：0.00元
+      -#
+      -#    .panel-footer
+      -#      - if current_user
+      -#        %button.btn.btn-primary.btn-lg.btn-block#test{:type => "submit"}
+      -#          = obj.current_operation
+      -#      - else
+      -#        %a.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path} 还款中
 
   .product-details
     %ul.nav.nav-tabs{:role => "tablist"}

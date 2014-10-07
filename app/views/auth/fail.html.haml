@@ -3,6 +3,7 @@
     注册沃银帐号
   #phone-frame
     %div
-      验证失败,请检查您的链接参数
-      %a{:href => new_user_session_path}
-        点击此处登录
+      验证失败,
+      = @message
+      %a{:href => new_user_registration_path}
+        点击此处重新注册
