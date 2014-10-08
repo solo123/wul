@@ -1,7 +1,7 @@
 class Transaction < ActiveRecord::Base
   belongs_to :user_info
   after_save :modify_analyzer
-
+  scope :charges, -> { where(trans_type:['charge','pull']) }
   def Transaction.createTransaction(transtype, amount, amount_before, amount_after, userid, investid, product_type)
     trans= Transaction.new
     trans.trans_type = transtype

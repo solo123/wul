@@ -16,8 +16,8 @@ God.watch do |w|
 
   w.start_grace = 10.seconds
   w.restart_grace = 10.seconds
-  w.keepalive(:memory_max => 130.megabytes,
-              :cpu_max => 20.percent)
+  #w.keepalive(:memory_max => 130.megabytes,
+  #            :cpu_max => 20.percent)
   w.uid = UID
   #w.gid = GID
 
@@ -33,7 +33,7 @@ God.watch do |w|
 
   w.restart_if do |restart|
     restart.condition(:memory_usage) do |c|
-      c.above = 100.megabytes
+      c.above = 130.megabytes
       c.times = [3, 5] # 3 out of 5 intervals
     end
 

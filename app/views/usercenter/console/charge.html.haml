@@ -8,15 +8,18 @@
         %dt
           账户余额
         %dd.text-right
-          ￥0.47
+          ￥
+          =current_user.user_info.account.balance
       %dl.dl-horizontal.recharge-entry2
         %dt.text-left
           可用余额
           %span.badge
             ?
-        %dd.text-right ￥0.47
+        %dd.text-right
+          ￥
+          =current_user.user_info.account.balance
     .col-md-2.col-md-offset-1.col-sm-2
-      %a.btn.btn-primary.btn-lg{:href => "#"}
+      %a.btn.btn-primary.btn-lg{:href => usercenter_console_charge_bank_path}
         %span ￥
         充值
     .col-md-2.col-sm-2
@@ -44,10 +47,10 @@
         - condi[:date_range] = k
         - condi[:filter] =queries[:filter]
         - if queries[:date_range] == k
-          %a.timeType.selected{:href => usercenter_console_history_path(condi)}
+          %a.timeType.selected{:href => usercenter_console_charge_path(condi)}
             = v
         - else
-          %a.tradeType{:href => usercenter_console_history_path(condi)}
+          %a.tradeType{:href => usercenter_console_charge_path(condi)}
             =v
 
   %dl.filter-items
@@ -58,10 +61,10 @@
         - conds[:date_range] = queries[:date_range]
         - conds[:filter] = k
         - if queries[:filter] == k
-          %a.tradeType.selected{:href => usercenter_console_history_path(conds)}
+          %a.tradeType.selected{:href => usercenter_console_charge_path(conds)}
             = v
         - else
-          %a.tradeType{:href => usercenter_console_history_path(conds)}
+          %a.tradeType{:href => usercenter_console_charge_path(conds)}
             =v
 
 .console-list-area.trade-table
@@ -78,26 +81,39 @@
           金额(¥) | 明细
         %th
           可用余额(¥)
-      %tr
-        %td 2014.9.9
-        %td
-          %p 充值
-          %p 1361454
-        %td 财付通充值账户
-        %td
-          5.00
-          %span.glyphicon.glyphicon-collapse-down
-        %td 1,000.47
-      %tr
-        %td 2014.9.9
-        %td
-          %p 充值
-          %p 1361454
-        %td 财付通充值账户
-        %td
-          5.00
-          %span.glyphicon.glyphicon-collapse-down
-        %td.text-center 1,000.47
+      - @transactions.each do |t|
+        %tr
+          %td
+            =t.created_at.strftime("%Y-%m-%d %H:%M:%S")
+          %td
+            =dict[t.trans_type]
+          %td
+            银联
+          %td
+            =t.operation_amount
+          %td
+            =t.account_after
+      -#
+      -#%tr
+      -#  %td 2014.9.9
+      -#  %td
+      -#    %p 充值
+      -#    %p 1361454
+      -#  %td 财付通充值账户
+      -#  %td
+      -#    5.00
+      -#    %span.glyphicon.glyphicon-collapse-down
+      -#  %td 1,000.47
+      -#%tr
+      -#  %td 2014.9.9
+      -#  %td
+      -#    %p 充值
+      -#    %p 1361454
+      -#  %td 财付通充值账户
+      -#  %td
+      -#    5.00
+      -#    %span.glyphicon.glyphicon-collapse-down
+      -#  %td.text-center 1,000.47
   .trade-table-pagination.text-center
     %ul.pagination
       %li
@@ -110,3 +126,8 @@
         %a{:href=> "#"} 3
       %li
         %a{:href=> "#"} &raquo;
+
+  .digg_pagination
+    .page_info
+      = page_entries_info @transactions
+    = will_paginate @transactions, :container => false

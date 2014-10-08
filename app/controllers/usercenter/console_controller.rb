@@ -60,6 +60,30 @@ module Usercenter
     end
 
     def charge
+      pages = 10
+      @transactions = current_user.user_info.transactions.charges
+      @transactions = case params[:filter]
+                        when 'all'
+                          @transactions
+                        else
+                          @transactions.where(:trans_type => params[:filter])
+                      end
+      @transactions = case params[:date_range]
+                        when 'all'
+                          @transactions
+                        when 'week'
+                          @transactions.where("created_at >= ?", 1.week.ago)
+                        when 'month'
+                          @transactions.where("created_at >= ?", 1.month.ago)
+                        when 'month2'
+                          @transactions.where("created_at >= ?", 2.months.ago)
+                        when 'month3'
+                          @transactions.where("created_at >= ?", 3.months.ago)
+                        else
+                          @transactions
+                      end
+
+      @transactions = @transactions.paginate(:page => params[:page], :per_page => pages)
 
     end
 
