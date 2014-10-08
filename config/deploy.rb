@@ -79,9 +79,30 @@ task :deploy => :environment do
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
+       
     invoke :'rails:assets_precompile'
+    queue! %[cd "#{deploy_to}/current" && rake comfortable_mexican_sofa:fixtures:import FROM=wooulalei TO=wul]
     to :launch do
       queue! %[god restart web]
+    end
+  end
+end
+
+
+desc "First deploy"
+task :firstdeploy => :environment do
+  deploy do
+    # Put things that will set up an empty directory into a fully set-up
+    # instance of your project.
+    
+    # invoke :'sidekiq:quiet'
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:db_migrate'
+    invoke :'rails:assets_precompile'
+    to :launch do
+      queue! %[god -c /home/www/god/startgod.god -l /home/www/god/god.log -P /home/www/god/god.pid]
     end
   end
 end
