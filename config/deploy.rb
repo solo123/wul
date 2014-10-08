@@ -13,7 +13,7 @@ set :rvm_path, '/usr/local/rvm/bin/rvm'
 #   deploy_to    - Path to deploy into.
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
-
+set :force_assets, 1
 set :user, "wooul"
 set :domain, 'www.weexing.com'
 set :deploy_to, '/home/wooul/www.wooul.com'
@@ -81,7 +81,7 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
        
     invoke :'rails:assets_precompile'
-    queue! %[cd "#{deploy_to}/current" && rake comfortable_mexican_sofa:fixtures:import FROM=wooulalei TO=wul]
+    queue! %[cd "#{deploy_to}/current" && rake comfortable_mexican_sofa:fixtures:import FROM=wooul-20141005 TO=wul]
     to :launch do
       queue! %[god restart web]
     end
