@@ -58,11 +58,20 @@ class AuthController < Devise::SessionsController
           verification.emailstatus = "confirmed"
           verification.securyscore += 1
           verification.save!
-          redirect_to success_path and return
+          user = User.new
+          user.email = params[:useremail]
+          user.password = user.password_confirmation = verification.passwd
+          user.save!
+          @message = "用户邮件激活成功"
+          render "success" and return
+        else
+          @message = "激活码错误,激活失败"
+          render "fail" and return
         end
       end
     end
-    redirect_to fail_path
+    @message = "激活失败, 用户不存在"
+    render "fail"
   end
 
 
@@ -140,21 +149,22 @@ class AuthController < Devise::SessionsController
       render :js => "alert('邮件地址已经被使用,请用别的邮箱注册')" and return
     end
 
-    @user = User.new
-    @user.email = params[:reg_email]
-    @user.password = @user.password_confirmation = params[:reg_email_pass]
-    if @user.save!
-      verify = Verification.new
-      verify.email = params[:reg_email]
-      verify.emailstatus = "confirming"
-      verify.email_code = "111112"
-      @user.user_info.verification = verify
-      verify.save!
-    end
-    EmailWorker.perform_async(@user.email, verify.email_code)
+    # @user = User.new
+    # @user.email = params[:reg_email]
+    # @user.password = @user.password_confirmation = params[:reg_email_pass]
+    # if @user.save!
+    # sub_product = account.account_sub_products.create_with(account_product_id: product.id, total_amount: 0).find_or_create_by(deposit_number: product.deposit_number)
+    verify_code = rand(10 ** 6)
+    verify = Verification.create_with(emailstatus: "confirming", email_code: verify_code).find_or_create_by(email: params[:reg_email])
+    verify.passwd = params[:reg_email_pass]
+    # @user.user_info.verification = verify
+    verify.save!
+    # end
+    EmailWorker.perform_async(verify.email, verify.email_code)
     # Reg.regist_confirm(@user.email, verify.email_code).deliver
-     @message = "一封验证邮件已经发送到您注册的邮箱内，请查收并验证邮箱"
-    redirect_to success_path
+    @message = "一封验证邮件已经发送到您注册的邮箱内，请查收并验证邮箱,验证后登录"
+    # redirect_to success_path
+    render "success"
   end
 
   def create_mobile(params)
@@ -180,12 +190,12 @@ class AuthController < Devise::SessionsController
         render "success"
       else
         @message = "验证码不正确，请重新验证"
-        redirect_to fail_path
+        render "fail"
         #render :js => "alert('验证没有通过')" and return
       end
     else
       @message = "手机验证失败，请重新申请"
-      redirect_to fail_path
+      render "fail"
       #render :js => "alert('验证码无效,请重新申请')" and return
     end
   end
