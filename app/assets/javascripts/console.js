@@ -1,4 +1,4 @@
-$("#confirmphone").click(
+$(".confirmphone").click(
     function () {
         $.post(
             "/confirm_code",

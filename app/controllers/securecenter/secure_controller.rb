@@ -30,6 +30,21 @@ module Securecenter
 
     end
 
+    def set_real_name
+      verification = current_user.user_info.verification
+      if params[:id_number] == "370502198503126415"
+        verification.realname = params[:real_name]
+        verification.personalid = params[:id_number]
+        verification.idstatus = "verified"
+        verification.securyscore += 1
+        verification.save!
+        @verify = verification
+        render "realname"
+      else
+        render "auth/fail"
+      end
+    end
+
 
     def check_real_name
       verification = current_user.user_info.verification
@@ -50,6 +65,14 @@ module Securecenter
       @phone_confirm = current_user.user_info.verification.phone_confirm_status
     end
 
+
+    def new_phone
+        if params[:verify_code] == current_user.user_info.verification.verify_code
+          render "new_phone" and return
+        else
+          render "auth/fail" and return
+        end
+    end
 
     def secure_active
       verify = current_user.user_info.verification

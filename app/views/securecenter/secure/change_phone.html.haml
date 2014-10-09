@@ -7,24 +7,27 @@
 
 .securecenter-form-area
   - if @verification
-    .form-horizontal
-      .form-group
-        %label.col-sm-2.control-label 当前手机号码是：
-        .col-sm-10
-          = @verification.phone
+    = form_tag securecenter_secure_new_phone_path do
+      .form-horizontal
+        .form-group
+          %label.col-sm-2.control-label 当前手机号码是：
+          .col-sm-10
+            %input#phone_number{:type => "text", :class => "form-control", :name => "phone_number", :value => current_user.user_info.mobile, :disabled=> true }
+            -#= text_field_tag :phone_number, @verification.phone,  class: "form-control", disabled: true
+            -#= @verification.phone
 
-      .form-group
-        %label.col-sm-2.control-label 验证码
-        .col-sm-10
-          %input{:type => "text", :class => "form-control"}
-          %button.btn.btn-primary 获取验证码
+        .form-group
+          %label.col-sm-2.control-label 验证码
+          .col-sm-10
+            %input#verify_code{:type => "text", :class => "form-control", :name => "verify_code"}
+            %a.btn.btn-primary.confirmphone 获取验证码
 
-      .form-group
-        .col-sm-offset-2.col-sm-10
-          %a.btn.btn-primary 下一步
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = submit_tag '下一步', :class => "btn btn-primary"
 
   - else
-    = form_tag securecenter_secure_change_phone_path do
+    = form_tag securecenter_secure_checkphone_path do
       .form-horizontal
         .form-group
           = label :number, '手机号码', class: "col-sm-2 control-label "
@@ -35,7 +38,7 @@
           .col-sm-10
             .input-group
               .input-group-btn
-                .button.btn.btn-success#confirmphone{} 获取验证码
+                .button.btn.btn-success.confirmphone{} 获取验证码
               = text_field_tag :secure_number, '',  class: "form-control"
               .input-group-btn
                 .button.btn.btn-default#jsontest{} 测试后台

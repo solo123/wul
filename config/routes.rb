@@ -104,6 +104,7 @@ Wooul::Application.routes.draw do
     get '/', to: 'secure#index'
     get '/secure/confirmphone'
     get '/secure/real_name'
+    post '/secure/set_real_name'
     get '/secure/secure_active'
     post '/secure/check_real_name'
     get '/secure/confirm'
@@ -113,6 +114,7 @@ Wooul::Application.routes.draw do
     get '/secure/change_secret'
     post '/secure/verify_code'
     post '/secure/checkphone'
+    post '/secure/new_phone'
   end
 
 

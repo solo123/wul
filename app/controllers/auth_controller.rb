@@ -55,13 +55,14 @@ class AuthController < Devise::SessionsController
       verification = Verification.where(:email => params[:useremail]).first
       if verification
         if params[:token] == verification.email_code
-          verification.emailstatus = "confirmed"
+          verification.emailstatus = "verified"
           verification.securyscore += 1
           verification.save!
           user = User.new
           user.email = params[:useremail]
           user.password = user.password_confirmation = verification.passwd
           user.save!
+          user.user_info.verification = verification
           @message = "用户邮件激活成功"
           render "success" and return
         else
@@ -108,10 +109,10 @@ class AuthController < Devise::SessionsController
 
     valid.phone = params[:phone_num]
     valid.phonetime = Time.now
-    valid.verify_code = "222222"
-    # valid.verify_code = verify_code
+    #valid.verify_code = "222222"
+    valid.verify_code = verify_code
     valid.save!
-    render :js => "alert('验证码已经更新,请查收)"
+    render :js => "alert('验证码是#{verify_code}')" and return
   end
 
 
@@ -185,6 +186,8 @@ class AuthController < Devise::SessionsController
         valid.phonestatus = "verified"
         valid.securyscore += 1
         u.user_info.verification = valid
+        u.user_info.mobile = valid.phone
+        u.user_info.save!
         valid.save!
         # render "success" and return
         render "success"
