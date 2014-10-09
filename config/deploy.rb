@@ -81,8 +81,9 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
        
     invoke :'rails:assets_precompile'
-    queue! %[cd "#{deploy_to}/current" && rake comfortable_mexican_sofa:fixtures:import FROM=wooul-20141005 TO=wul]
+    #queue! %[cd "#{deploy_to}/current" && rake comfortable_mexican_sofa:fixtures:import FROM=wooul-20141005 TO=wul]
     to :launch do
+      invoke :cms
       queue! %[god restart web]
     end
   end
@@ -105,6 +106,18 @@ task :firstdeploy => :environment do
       queue! %[god -c /home/www/god/startgod.god -l /home/www/god/god.log -P /home/www/god/god.pid]
     end
   end
+end
+
+
+desc "CMS installing"
+task :cms do
+  queue %[cd #{deploy_to}/current &&  rake comfortable_mexican_sofa:fixtures:import FROM=wooul-20141005 TO=wul]
+end
+
+
+desc "Shows logs."
+task :logs do
+  queue %[cd #{deploy_to} && tail -f logs/error.log]
 end
 
 # For help in making your deploy script, see the Mina documentation:
