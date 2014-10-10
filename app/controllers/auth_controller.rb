@@ -158,7 +158,8 @@ class AuthController < Devise::SessionsController
     verify_code = rand(10 ** 6)
     verify = Verification.create_with(emailstatus: "confirming", email_code: verify_code).find_or_create_by(email: params[:reg_email])
     verify.passwd = params[:reg_email_pass]
-    # @user.user_info.verification = verify
+    user.user_info.verification = verify
+    user.user_info.save!
     verify.save!
     # end
     EmailWorker.perform_async(verify.email, verify.email_code)
