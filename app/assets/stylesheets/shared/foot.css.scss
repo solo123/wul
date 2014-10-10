@@ -16,7 +16,6 @@ footer{
   margin-bottom:22px;
   padding-bottom:22px;
   color:#969da5;
-  border-bottom:1px solid #515e68;
 }
 .security-identity li{ 
   vertical-align:middle;
@@ -33,6 +32,47 @@ footer{
   font-size:18px;
   display:inline;
 }
+
+.security-identity {
+  color: #969da5;
+  background:image-url("foot-bj2.png");
+}
+.security-identity  .list-unstyled, .list-inline {
+  padding-left: 0;
+  list-style: none;
+}
+.security-identity .security-identity-container{
+  background:image-url("foot-bj1.png");
+  width:1360px;
+}
+.security-identity .list-unstyled {
+  margin-top:20px;
+}
+.security-identity .list-unstyled dt{ padding-bottom:5px; }
+.security-identity .list-unstyled dd{ font-size:20px;color:#0099cc;}
+.security-identity .list-unstyled .list-unstyled-borde{
+  margin-top:5px;
+  border-right:1px solid #dfdfdf;
+}
+.footnav-bj{ background-color:#4e5d69;
+  padding-top:20px;
+  padding-bottom:120px;
+  color:#fff;
+}
+.footnav-bj a{
+  color:#fff;
+}
+.footnav-bj .list-unstyled{ padding-left:25px;}
+.footnav-bj .about-us{ padding-left:35px;}
+
+.footnav-bj .footer-border{ border-left:1px solid #fff; padding-left:30px; padding-top:10px; padding-right: 0px;}
+.footnav-bj .footer-address dl{margin-bottom: 10px;}
+
+.footnav-bj .footer-address dd{ font-size:24px;}
+.footnav-bj .footer-address span:first-child{ padding-right:40px;}
+.footnav-bj .footer-address img{ margin-top:80px; margin-bottom:20px;}
+
+
 
 
 
