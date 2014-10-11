@@ -1,6 +1,7 @@
 class Invest < ActiveRecord::Base
   belongs_to :user_info
   belongs_to :product
+  has_many :invest_profits
   attr_accessor :product_name
 
   def resell(rate)

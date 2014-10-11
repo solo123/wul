@@ -108,7 +108,8 @@ module Usercenter
     end
 
     def invest_detail
-
+        @invest = Invest.find(params[:invest])
+        @profits = @invest.invest_profits
     end
 
 
