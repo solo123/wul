@@ -1,6 +1,6 @@
 %section.home-product-list
   - dict = {'fixed' => '定存宝',
             'month' => '月月盈'}
-  %table.table.table-hover
+  %table.table
     -#- Invest.where(:onsale => true).limit(5).each_with_index do |obj, idx|
     = render 'invests/item'

@@ -112,7 +112,10 @@
   cursor: pointer;
 }
 
-
+.row-delet-pading{
+  margin-left: 0px;
+  margin-right: 0px;
+}
 .home-product-list .panel .panel-heading{
 	border-radius:10px 10px 0 0;
 }
@@ -183,7 +186,12 @@
   margin-top:20px;
   border-radius: 4px;
 }
-
+.yyy-list:hover{
+  border:1px solid #f28558;
+}
+.home-product-list  .table > tbody > tr > td{
+  border-top:0px solid #f28558;
+}
 
 .yyy-list-progress{
   border-right:1px dashed #069;
@@ -207,11 +215,11 @@
 .yyy-product-progress .btn-primary{background-color: #00a3d9;border-color: #00a3d9;}
 .yyy-product-progress .time-icon{ padding-bottom:10px; text-align:center;}
 
-.yyy-list-progress li{float: left;}
+.yyy-list-progress .td-list{float: left;}
 .yyy-list-progress dl{ padding-top:15px;}
 .yyy-list-progress dt{ width:130px; font-weight:normal; padding-top:5px;}
 .yyy-list-progress dd{ margin-left:135px;color: #ff6600; font-size:18px; padding-top:2px;}
-.danbao{ text-align: left; padding-top: 20px; padding-left: 0px;}
+.danbao{ text-align: left; padding-top: 20px; padding-left:2px; min-width: 108px;}
 
 
 
