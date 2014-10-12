@@ -45,7 +45,7 @@
             - @month_deposits.each do |f|
               %tr
                 %td
-                  %a{:href => usercenter_console_invest_detail_path}
+                  %a{:href => usercenter_console_invest_detail_path(:invest => f.id)}
                     = "月月盈#{f.loan_number}"
                 %td  #{number_with_precision f.product.annual_rate, precision: 2}%
                 %td= f.amount
