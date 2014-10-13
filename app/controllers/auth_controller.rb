@@ -57,12 +57,12 @@ class AuthController < Devise::SessionsController
         if params[:token] == verification.email_code
           verification.emailstatus = "verified"
           verification.securyscore += 1
-          verification.save!
           user = User.new
           user.email = params[:useremail]
           user.password = user.password_confirmation = verification.passwd
           user.save!
           user.user_info.verification = verification
+          verification.save!
           @message = "用户邮件激活成功"
           render "success" and return
         else
@@ -158,8 +158,8 @@ class AuthController < Devise::SessionsController
     verify_code = rand(10 ** 6)
     verify = Verification.create_with(emailstatus: "confirming", email_code: verify_code).find_or_create_by(email: params[:reg_email])
     verify.passwd = params[:reg_email_pass]
-    user.user_info.verification = verify
-    user.user_info.save!
+    # user.user_info.verification = verify
+    # user.user_info.save!
     verify.save!
     # end
     EmailWorker.perform_async(verify.email, verify.email_code)

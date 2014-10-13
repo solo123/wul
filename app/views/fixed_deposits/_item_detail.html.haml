@@ -59,14 +59,10 @@
                 %p
                   ="100%本息保障"
     .col-md-4.modedqb
-      = render "products/buyform", obj:obj
-
-
-
-
-
-
-
+      - if obj.current_stage == "融资中"
+        = render "products/buyform", obj:obj
+      - else
+        = render "products/showform", obj:obj
 
       -#= form_tag product_join_path(obj.product_type,obj) do
       -#  .model-box.panel.panel-default
