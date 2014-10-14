@@ -2,7 +2,7 @@ module Usercenter
   class ConsoleController< ApplicationController
     layout "usercenter"
 
-    before_filter :authenticate_user!, :set_cache_buster
+    before_filter :authenticate_user!
     before_action :confirm_status, only: [:resell]
 
     def index
@@ -247,12 +247,5 @@ module Usercenter
       order.save!
       redirect_to usercenter_console_history_path
     end
-
-    def set_cache_buster
-      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-      response.headers["Pragma"] = "no-cache"
-      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-    end
-
   end
 end

@@ -1,5 +1,4 @@
 class ProductsController < ResourcesController
-  before_filter :set_cache_buster
   def index
     pages=10
     @collection = Product.where(:display => "show", :product_type => params[:product_type]).paginate(:page => params[:page], :per_page => pages)
@@ -84,12 +83,6 @@ class ProductsController < ResourcesController
     create_invest(amount, @product, current_user)
     flash[:success] = "加入正在审核, 请稍后查看"
     redirect_to product_detail_path(@product.product_type, @product.id) and return
-  end
-
-  def set_cache_buster
-    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
 
 end
