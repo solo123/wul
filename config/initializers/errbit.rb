@@ -1,7 +1,7 @@
-# Airbrake.configure do |config|
-#   config.api_key = 'f724ff29d0907f5761c71eb722667af6'
-#   config.host    = '127.0.0.1'
-#   config.port    = 3002
-#   config.secure  = config.port == 443
-#   config.development_environments = []
-# end
+Airbrake.configure do |config|
+  config.api_key = '5bf1238e387b064e748e8e038375e800'
+  config.host    = '122.112.89.151'
+  config.port    = 3001
+  config.secure  = config.port == 443
+  config.development_environments = []
+end

@@ -3,7 +3,6 @@ class AuthController < Devise::SessionsController
   require 'json'
   require "uri"
   layout "sign_layout"
-  $dest_url = "http://127.0.0.1:3001/accounting/account/execute_cmd"
 
   def send_sms(mobile, code)
     url = URI.parse('https://sms-api.luosimao.com/v1/send.json')
