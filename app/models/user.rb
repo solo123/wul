@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
   end
 
   def init_username
-    self.username = self.mobile || self.email
+    self.username = self.mobile if self.mobile != ""
+    self.username = self.email if self.email != ""
   end
 
 

@@ -27,5 +27,17 @@ Wooul::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-	config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+	config.action_mailer.default_url_options = { :host => 'www.weexing.com' }
+  config.action_mailer.smtp_settings = {
+      :address => "smtp.exmail.qq.com",
+      :port => 25,
+      :domain => "exmail.qq.com",
+      :authentication => "login",
+      :user_name => "dominic@pooul.cn",
+      :password => "wqxyy1985",
+      :enable_starttls_auto => true
+  }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+
 end

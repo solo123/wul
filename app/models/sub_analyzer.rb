@@ -11,6 +11,6 @@ class SubAnalyzer < ActiveRecord::Base
 
   def current_principal
     return 0 if invests.size == 0
-    invests.map(&:current_profit).reduce(:+)
+    invests.map(&:current_principal).reduce(:+)
   end
 end

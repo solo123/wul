@@ -3,7 +3,6 @@ class AuthController < Devise::SessionsController
   require 'json'
   require "uri"
   layout "sign_layout"
-  $dest_url = "http://127.0.0.1:3001/accounting/account/execute_cmd"
 
   def send_sms(mobile, code)
     url = URI.parse('https://sms-api.luosimao.com/v1/send.json')
@@ -55,36 +54,50 @@ class AuthController < Devise::SessionsController
       verification = Verification.where(:email => params[:useremail]).first
       if verification
         if params[:token] == verification.email_code
-          verification.emailstatus = "confirmed"
+          verification.emailstatus = "verified"
           verification.securyscore += 1
+          user = User.new
+          user.email = params[:useremail]
+          user.password = user.password_confirmation = verification.passwd
+          user.save!
+          user.user_info.verification = verification
           verification.save!
-          redirect_to success_path and return
+          @message = "用户邮件激活成功"
+          render "success" and return
+        else
+          @message = "激活码错误,激活失败"
+          render "fail" and return
         end
       end
     end
-    redirect_to fail_path
+    @message = "激活失败, 用户不存在"
+    render "fail"
   end
 
 
   def get_code
     valid = Verification.where(:phone => params[:phone_num]).first
+    if User.exists?(:mobile => params[:phone_num])
+      render :js => "alert('该手机号码已经被注册)" and return
+    end
     verify_code = rand(10 ** 6)
+
     # send_sms(params[:phone_num], verify_code)
     if valid
       if valid.phonestatus == "verified"
         render :js => "alert('该手机号码已经被注册)" and return
       else
-        render :js => "alert('验证码已经发送,请查收)"
+        valid.verify_code = verify_code
+        valid.save!
+        render :js => "alert('该号码的验证码是：#{verify_code}')" and return
       end
     else
       valid = Verification.new
-      render :js => "alert('验证码已经更新,请查收)"
+      valid.phone = params[:phone_num]
+      valid.verify_code = verify_code
+      valid.save!
+      render :js => "alert('该号码的验证码是：#{verify_code}')" and return
     end
-    valid.phone = params[:phone_num]
-    valid.phonetime = Time.now
-    valid.verify_code = "222222"
-    # valid.verify_code = verify_code
-    valid.save!
   end
 
 
@@ -95,10 +108,10 @@ class AuthController < Devise::SessionsController
 
     valid.phone = params[:phone_num]
     valid.phonetime = Time.now
-    valid.verify_code = "222222"
-    # valid.verify_code = verify_code
+    #valid.verify_code = "222222"
+    valid.verify_code = verify_code
     valid.save!
-    render :js => "alert('验证码已经更新,请查收)"
+    render :js => "alert('验证码是#{verify_code}')" and return
   end
 
 
@@ -106,11 +119,17 @@ class AuthController < Devise::SessionsController
     #op = AccountOperation.new(:op_name => "account", :op_action => "create", :uinfo_id => current_user.user_info.id, :operator => "system" )
     # op = AccountOperation.new(:op_name => "account", :op_action => "charge", :op_amount => 1000, :operator => "system",:uinfo_id => current_user.user_info.id )
     # op = AccountOperation.new(:op_name => "invest", :op_action => "join", :op_amount => 1000, :operator => "system",:uinfo_id => current_user.user_info.id, :op_resource_name => "BBC123" )
-    # op = AccountOperation.new(:op_name => "invest", :op_action => "join", :op_amount => 200, :operator => "system",:uinfo_id => current_user.user_info.id,
-    #                            :op_resource_name => "MT2233", :op_resource_id => 43)
+    #  op = AccountOperation.new(:op_name => "invest", :op_action => "join", :op_amount => 200, :operator => "system",:uinfo_id => current_user.user_info.id,
+    #                             :op_resource_name => "FF14", :op_resource_id => 26)
 
-    op = AccountOperation.new(:op_name => "invest", :op_action => "sell", :operator => "system", :uinfo_id => current_user.user_info.id,
-                                :op_asset_id => 42 )
+    # op = AccountOperation.new(:op_name => "invest", :op_action => "sell", :operator => "system", :uinfo_id => current_user.user_info.id,
+    #                             :op_asset_id => 42 )
+
+    # op = AccountOperation.new(:op_name => "invest", :op_action => "onsale", :operator => "system", :uinfo_id => current_user.user_info.id,
+    #                             :op_asset_id => 1 )
+
+    op = AccountOperation.new(:op_name => "invest", :op_action => "buy", :operator => "system", :uinfo_id => current_user.user_info.id,
+                              :op_asset_id => 12, :op_resource_id => 12)
 
 
     op.execute_transaction
@@ -130,48 +149,58 @@ class AuthController < Devise::SessionsController
       render :js => "alert('邮件地址已经被使用,请用别的邮箱注册')" and return
     end
 
-    @user = User.new
-    @user.email = params[:reg_email]
-    @user.password = @user.password_confirmation = params[:reg_email_pass]
-    if @user.save!
-      verify = Verification.new
-      verify.email = params[:reg_email]
-      verify.emailstatus = "confirming"
-      verify.email_code = "111112"
-      @user.user_info.verification = verify
-      verify.save!
-    end
+    # @user = User.new
+    # @user.email = params[:reg_email]
+    # @user.password = @user.password_confirmation = params[:reg_email_pass]
+    # if @user.save!
+    # sub_product = account.account_sub_products.create_with(account_product_id: product.id, total_amount: 0).find_or_create_by(deposit_number: product.deposit_number)
+    verify_code = rand(10 ** 6)
+    verify = Verification.create_with(emailstatus: "confirming", email_code: verify_code).find_or_create_by(email: params[:reg_email])
+    verify.passwd = params[:reg_email_pass]
+    # user.user_info.verification = verify
+    # user.user_info.save!
+    verify.save!
+    # end
+    EmailWorker.perform_async(verify.email, verify.email_code)
     # Reg.regist_confirm(@user.email, verify.email_code).deliver
+    @message = "一封验证邮件已经发送到您注册的邮箱内，请查收并验证邮箱,验证后登录"
+    # redirect_to success_path
     render "success"
   end
 
   def create_mobile(params)
-    valid = true
-    #if valid = Verification.where(:phone => params[:reg_phone]).first
+    # valid = true
+    valid = Verification.where(:phone => params[:reg_phone]).first
     if valid
-      #if User.exists?(:mobile => valid.phone)
-      # render :js => "alert('电话号码已经存在,请用别的号码注册')" and return
-      #end
+      if User.exists?(:mobile => valid.phone)
+        render :js => "alert('电话号码已经存在,请用别的号码注册')" and return
+      end
 
-      #if valid.verify_code == params[:reg_code]
-      if params[:reg_code] == "111111"
+      if valid.verify_code == params[:reg_code]
         u = User.new
-        #u.mobile = valid.phone
-        u.mobile = params[:reg_phone]
+        u.mobile = valid.phone
+        # u.mobile = params[:reg_phone]
         u.password = u.password_confirmation = params[:reg_password]
         u.save!
-        #valid.phonetime = Time.now
-        #valid.phonestatus = "verified"
-        #valid.securyscore += 1
-        #u.user_info.verification = valid
-        #valid.save!
-        render "success" and return
-        #render :js => "alert('验证通过')" and return
+        valid.phonetime = Time.now
+        valid.phonestatus = "verified"
+        valid.securyscore += 1
+        u.user_info.verification = valid
+        u.user_info.mobile = valid.phone
+        u.user_info.save!
+        valid.save!
+        # render "success" and return
+        render "success"
+      else
+        @message = "验证码不正确，请重新验证"
+        render "fail"
+        #render :js => "alert('验证没有通过')" and return
       end
     else
-      render :js => "alert('验证没有通过')" and return
+      @message = "手机验证失败，请重新申请"
+      render "fail"
+      #render :js => "alert('验证码无效,请重新申请')" and return
     end
-    render :js => "alert('验证码无效,请重新申请')" and return
   end
 
 end

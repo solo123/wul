@@ -79,6 +79,7 @@ Wooul::Application.routes.draw do
     get '/console/history'
     get '/console/charge'
     get '/console/bankcard'
+    get '/console/message'
     get '/console/coupon'
     get '/console/assets_analyzer'
     get '/console/invest_history'
@@ -103,8 +104,9 @@ Wooul::Application.routes.draw do
     get '/', to: 'secure#index'
     get '/secure/confirmphone'
     get '/secure/real_name'
+    post '/secure/set_real_name'
     get '/secure/secure_active'
-    post '/secure/real_name'
+    post '/secure/check_real_name'
     get '/secure/confirm'
     get '/secure/change_phone'
     post '/secure/change_phone'
@@ -112,6 +114,7 @@ Wooul::Application.routes.draw do
     get '/secure/change_secret'
     post '/secure/verify_code'
     post '/secure/checkphone'
+    post '/secure/new_phone'
   end
 
 

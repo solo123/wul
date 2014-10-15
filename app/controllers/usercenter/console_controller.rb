@@ -2,15 +2,34 @@ module Usercenter
   class ConsoleController< ApplicationController
     layout "usercenter"
 
-    before_filter :authenticate_user!, :set_cache_buster
+    before_filter :authenticate_user!
     before_action :confirm_status, only: [:resell]
 
     def index
 
     end
 
+
+    def message
+      pages = 10
+      if params[:pattern] == "detail"
+         @message = Message.find(params[:message_id])
+         uinfo = current_user.user_info
+         if @message.status == 0
+           @message.status = 1
+           uinfo.message_num -= 1
+           uinfo.save!
+           @message.save!
+         end
+         render "message_detail" and return
+      end
+      @messages = current_user.user_info.messages.paginate(:page => params[:page], :per_page => pages)
+    end
+
     def overview
       @deposit = current_user.user_info.account
+      @analyzer = current_user.user_info.analyzer
+
     end
 
     def history
@@ -41,6 +60,30 @@ module Usercenter
     end
 
     def charge
+      pages = 10
+      @transactions = current_user.user_info.transactions.charges
+      @transactions = case params[:filter]
+                        when 'all'
+                          @transactions
+                        else
+                          @transactions.where(:trans_type => params[:filter])
+                      end
+      @transactions = case params[:date_range]
+                        when 'all'
+                          @transactions
+                        when 'week'
+                          @transactions.where("created_at >= ?", 1.week.ago)
+                        when 'month'
+                          @transactions.where("created_at >= ?", 1.month.ago)
+                        when 'month2'
+                          @transactions.where("created_at >= ?", 2.months.ago)
+                        when 'month3'
+                          @transactions.where("created_at >= ?", 3.months.ago)
+                        else
+                          @transactions
+                      end
+
+      @transactions = @transactions.paginate(:page => params[:page], :per_page => pages)
 
     end
 
@@ -50,8 +93,8 @@ module Usercenter
 
     def redemption
       pages = 10
-      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed',:onsale => false).paginate(:page => params[:page], :per_page => pages)
-      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month',:onsale => false).paginate(:page => params[:page], :per_page => pages)
+      @fixed_deposits = current_user.user_info.invests.where(:invest_type => 'fixed').paginate(:page => params[:page], :per_page => pages)
+      @month_deposits = current_user.user_info.invests.where(:invest_type => 'month').paginate(:page => params[:page], :per_page => pages)
     end
 
     def agreements
@@ -65,7 +108,8 @@ module Usercenter
     end
 
     def invest_detail
-
+        @invest = Invest.find(params[:invest])
+        @profits = @invest.invest_profits
     end
 
 
@@ -98,9 +142,14 @@ module Usercenter
     end
 
     def resell
-      invest = Invest.find(params[:format])
+      invest = Invest.find(params[:invest_id])
       rate = params[:discount_rate].to_f
-      invest.resell(rate)
+      invest.stage = "onsale"
+      invest.save!
+      op = AccountOperation.new(:op_name => "invest", :op_action => "onsale", :operator => "system", :uinfo_id => current_user.user_info.id,
+                                :op_asset_id => invest.asset_id, :op_amount =>rate, :op_resource_id => invest.id)
+      op.execute_transaction
+      # invest.resell(rate)
       redirect_to usercenter_console_redemption_path
     end
 
@@ -126,10 +175,10 @@ module Usercenter
     def charge_mock
       if current_user
         charge_val = params[:charge_value].to_i
-        current_user.user_info.account.balance += charge_val
-        current_user.user_info.save!
-        # op = AccountOperation.new(:op_name => "account", :op_action => "charge", :op_amount => charge_val, :operator => "system",:uinfo_id => current_user.user_info.id )
-        # op.execute_transaction
+        # current_user.user_info.account.balance += charge_val
+        # current_user.user_info.save!
+        op = AccountOperation.new(:op_name => "account", :op_action => "charge", :op_amount => charge_val, :operator => "system",:uinfo_id => current_user.user_info.id )
+        op.execute_transaction
       end
       redirect_to usercenter_console_charge_bank_path
     end
@@ -198,12 +247,5 @@ module Usercenter
       order.save!
       redirect_to usercenter_console_history_path
     end
-
-    def set_cache_buster
-      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-      response.headers["Pragma"] = "no-cache"
-      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-    end
-
   end
 end

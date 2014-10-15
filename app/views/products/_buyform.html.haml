@@ -1,0 +1,36 @@
+= form_tag product_join_path(obj.product_type,obj) do
+  .model-box.panel.panel-default
+    .head.panel-heading
+      %h3.panel-title
+        投资金额
+        %span.text-muted 单笔最多可投100,000元
+    .doned-left.panel-body
+      .input-group
+        = text_field_tag :product_value, "", class: "form-control", autocomplete: "off"
+        %span.input-group-addon 元
+
+      %dl.dl-horizontal
+        %dt 收益处理方式
+        %dd
+          = obj.repayment_method_name
+          %span.badge.explain{"data-toggle"=>"popover","data-content" => "每周期偿还收益,到期偿还本金","data-placement"=>"bottom"} ?
+        %dt
+          到期总收益
+          #profit_rate
+            =  number_with_precision(obj.annual_rate / 12 / 100 * obj.repayment_period , precision: 2)
+        %dd
+          %span
+            ="￥"
+          %span#profit_value 0.00
+        %dt 年化收益率
+        %dd
+          ="#{obj.annual_rate} %"
+        %dt 验证码
+        %dd
+          = show_simple_captcha(:label => "",:code_type => "numeric")
+    .panel-footer
+      - if current_user
+        %button.btn.btn-primary.btn-lg.btn-block#test{:type => "submit"}
+          = obj.current_operation
+      - else
+        %a.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path} 还款中

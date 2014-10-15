@@ -1,4 +1,6 @@
 %h1.page-header 投资赎回
+- type_dict = {"onsale" => "button", "normal" => "submit"}
+- value_dict = {"onsale" => "赎回中", "normal" => "赎回"}
 .detail_container
   .col-md-12
     %ul.nav.nav-tabs{:role=>"tablist"}
@@ -26,8 +28,9 @@
               %th 赎回金额
               %th 赎回
             - @fixed_deposits.each do |f|
-              = form_tag usercenter_console_resell_path(f) do
+              = form_tag usercenter_console_resell_path do
                 %tr
+                  = hidden_field_tag :invest_id, f.id
                   %td= f.loan_number
                   %td  #{number_with_precision f.annual_rate, precision: 2}%
                   %td= "1"
@@ -36,7 +39,7 @@
                   %td= f.amount
                   %td
                     - if f.product.premature_redemption == "yes"
-                      %input.btn.btn-primary{:type => "submit",:value => "赎回"}
+                      %input.btn.btn-primary{:type => type_dict[f.stage] ,:value => value_dict[f.stage]}
                     - else
                       %input.btn.btn-default{:type => "button",:value => "无效" ,:disabled => "true"}
       %div.tab-pane{:id=>"month"}
@@ -51,8 +54,9 @@
               %th 赎回金额
               %th 赎回
             - @month_deposits.each do |f|
-              = form_tag usercenter_console_resell_path(f) do
+              = form_tag usercenter_console_resell_path do
                 %tr
+                  = hidden_field_tag :invest_id, f.id
                   %td= f.loan_number
                   %td  #{number_with_precision f.annual_rate, precision: 2}%
                   %td= "1"
@@ -61,6 +65,6 @@
                   %td= f.amount
                   %td
                     - if f.product.premature_redemption == "yes"
-                      %input.btn.btn-primary{:type => "submit",:value => "赎回"}
+                      %input.btn.btn-primary{:type => type_dict[f.stage] ,:value => value_dict[f.stage]}
                     - else
                       %input.btn.btn-default{:type => "button",:value => "无效" ,:disabled => "true"}

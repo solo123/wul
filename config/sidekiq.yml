@@ -1,0 +1,2 @@
+:verbose: true
+#:logfile: ./log/sidekiq.log

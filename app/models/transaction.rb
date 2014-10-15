@@ -1,6 +1,7 @@
 class Transaction < ActiveRecord::Base
   belongs_to :user_info
   after_save :modify_analyzer
+  scope :charges, -> { where(trans_type:['charge','pull']) }
   def Transaction.createTransaction(transtype, amount, amount_before, amount_after, userid, investid, product_type)
     trans= Transaction.new
     trans.trans_type = transtype
@@ -11,6 +12,26 @@ class Transaction < ActiveRecord::Base
     trans.deposit_number = investid
     trans.product_type = product_type
     trans.save!
+    trans.create_notify
+  end
+
+  def create_notify
+    message = Message.new()
+    case self.trans_type
+      when "charge"
+        message.title = "充值成功"
+        message.content = "您于#{Time.now}，在沃银网充值人民币#{self.operation_amount}元成功."
+      when "invest"
+        message.title = "投资成功"
+        message.content = "您于#{Time.now}，在沃银网投资产品#{self.deposit_number},投资金额为#{self.operation_amount}元的操作成功."
+      when "sell"
+        message.title = "转让债权成功"
+      when "buy"
+        message.title = "买入债权成功"
+      else
+    end
+    message.user_info_id = self.user_info_id
+    message.save!
   end
 
   def modify_analyzer

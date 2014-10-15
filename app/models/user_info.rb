@@ -1,5 +1,6 @@
 class UserInfo < ActiveRecord::Base
 	has_many :invests
+  has_many :messages
   has_one :analyzer
   has_many :transactions
   has_many :account_operations
@@ -10,7 +11,7 @@ class UserInfo < ActiveRecord::Base
   attr_accessor :sec_progress
 
   #after_create :create_delagator
-  # after_create :create_back_account
+  after_create :create_back_account
   def create_verification
    vef = Verification.new
    self.verification = vef
@@ -39,5 +40,11 @@ class UserInfo < ActiveRecord::Base
     else
       self.secury_score * 33
     end
+  end
+
+
+  def clear_notify
+    self.notify_num = 0
+    self.save!
   end
 end

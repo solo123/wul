@@ -1,0 +1,12 @@
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, class: "form-signin" }) do |f|
+  %h2.form-signin-heading
+    修改您的密码
+    = devise_error_messages!
+    %p
+      = f.hidden_field :reset_password_token
+      = f.label :password, "新密码"
+      = f.password_field :password, :autofocus => true
+      = f.label :password_confirmation, "确认新密码"
+      = f.password_field :password_confirmation, :autofocus => false
+      = f.submit "修改密码"
+      = render "devise/shared/links"

@@ -1,0 +1,24 @@
+.model-box.panel.panel-default
+  .head.panel-heading
+    %h3.panel-title
+      投资金额
+      %span.text-muted 单笔最多可投100,000元
+  .doned-left.panel-body
+    %dl.dl-horizontal
+      %dt 收益处理方式
+      %dd
+        = obj.repayment_method_name
+        %span.badge.explain{"data-toggle"=>"popover","data-content" => "每周期偿还收益,到期偿还本金","data-placement"=>"bottom"} ?
+      %dt
+        项目总金额
+      %dd
+        %span
+          ="￥"
+        %span
+          = obj.fixed_invest_amount
+      %dt 年化收益率
+      %dd
+        ="#{obj.annual_rate} %"
+  .panel-footer
+    %button.btn.btn-primary.btn-lg.btn-block#test{:type => "submit"}
+      = obj.current_operation

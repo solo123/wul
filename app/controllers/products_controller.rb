@@ -22,7 +22,7 @@ class ProductsController < ResourcesController
 
   def over_limit?(amount, invests, limit, product_id)
     current_amount = 0
-    invests.each { |inv| current_amount += inv.amount if inv.product_id == product_id }
+    invests.each{|inv| current_amount += inv.amount if inv.product_id == product_id}
     return current_amount + amount > limit
   end
 
@@ -41,26 +41,10 @@ class ProductsController < ResourcesController
   # end
 
   def create_invest(amount, product, user)
-    product.free_invest_amount -= amount
-    product.fixed_invest_amount += amount
-    product.owner_num += 1
-    product.save!
-
-    invest = Invest.new
-    invest.invest_type = product.product_type
-    # invest.asset_id = self.op_asset_id
-    invest.amount = amount
-    invest.loan_number = product.deposit_number
-    user.user_info.invests << invest
-    product.invests << invest
-
-    user.user_info.account.balance -= amount
-    user.user_info.save!
-    invest.save!
-    balance = user.user_info.account.balance
-    Transaction.createTransaction("invest", invest.amount, balance + invest.amount, balance, user.user_info.id, product.deposit_number, product.product_type)
+    op = AccountOperation.new(:op_name => "invest", :op_action => "join", :op_amount => amount, :operator => "system",:uinfo_id => user.user_info.id,
+                              :op_resource_name => product.deposit_number, :op_resource_id => product.id)
+    op.execute_transaction
   end
-
 
   def join
     @product = Product.friendly.find(params[:id])
@@ -100,5 +84,6 @@ class ProductsController < ResourcesController
     flash[:success] = "加入正在审核, 请稍后查看"
     redirect_to product_detail_path(@product.product_type, @product.id) and return
   end
+
 end
 

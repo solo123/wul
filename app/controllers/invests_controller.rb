@@ -16,6 +16,19 @@ class InvestsController < ApplicationController
       redirect_to invest_path(params[:invest_id]) and return
     end
     invest = Invest.find(params[:invest_id])
+    buyer_balance = current_user.user_info.account.balance
+
+    if buyer_balance < invest.resell_price
+      flash[:notice] = "账户余额不足"
+      redirect_to invest_path(params[:invest_id]) and return
+    else
+      op = AccountOperation.new(:op_name => "invest", :op_action => "buy", :operator => "system", :uinfo_id => current_user.user_info.id,
+                                :op_asset_id => invest.asset_id, :op_resource_id => invest.id )
+      op.execute_transaction
+      redirect_to invest_path(params[:invest_id]) and return
+
+    end
+
     if invest.onsale
       buyer_balance = current_user.user_info.account.balance
       seller_balance = invest.user_info.account.balance
