@@ -1,15 +1,24 @@
-%a.btn.btn-default{:href => securecenter_path }
-  返回
-%h1.page-header 更改邮箱
+.console-header-info
+  .fun-area.pull-right
+    %a.btn.btn-default{:href => securecenter_path }返回
+  %h1.page-header 更改邮箱
+%p 绑定邮箱有利于我们及时通知您在有利网的交易情况以及最新动态。
 
-%p
-  绑定邮箱有利于我们及时通知您在有利网的交易情况以及最新动态。
-%p
-  邮箱:
-  %input{:type => "text"}
-%p
-  支付密码:
-  %input{:type => "text"}
-%p
-  %a.btn.btn-primary
-    下一步
+.securecenter-form-area
+  .form-horizontal
+    .form-group
+      %label.col-sm-2.control-label 邮箱
+      .col-sm-10
+        %input{:type => "text", :class => "form-control"}
+
+    .form-group
+      %label.col-sm-2.control-label 支付密码
+      .col-sm-10
+        %input{:type => "text", :class => "form-control"}
+
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        %a.btn.btn-primary 下一步
+
+
+

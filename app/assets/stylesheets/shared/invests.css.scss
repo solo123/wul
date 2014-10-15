@@ -4,8 +4,9 @@
 /* CSS Document */
 
 
+/*
 .invests-select-area{
-  margin:50px 0;
+  padding:50px 0;
 }
 
 .invests-select-area .select-item{
@@ -88,7 +89,7 @@
   background-color: #fff;
   border:1px solid #d2d2d2;
   border-radius: 10px;
-  /* -webkit-box-shadow: none; */
+  *//* -webkit-box-shadow: none; *//*
   box-shadow: none;
   margin-bottom: 4%;
   
@@ -134,10 +135,102 @@
 .invests-other-info .tab-pane dd{
   color:#666;
   margin-bottom:22px;
+}*/
+
+
+.invests-select-area .select-item {
+  margin-top:50px;
+  margin-bottom:20px;
+  position: relative;
+  border-width: 2px;
+  border:1px solid #ddd;
+  border-radius:5px;
+}
+.invests-select-area .select-item:hover {
+  border-color: #f28558;
+}
+invests-select-area .link-block {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999em;
+  overflow: hidden;
+  cursor: pointer;
+}
+.invests-select-area .select-item .panel-heading {
+  min-height: 150px;
+  padding-top: 20px;
+  border: 0 none;
+  background: transparent;
+  text-align:center;
+  border-bottom:1px solid #ddd;
+}
+.invests-select-area .select-item .panel-heading .select-p{
+  font-size: 260%;
+  color: #428bca;
+  width:200px;
+  border-right:1px solid #ddd;
+  border-left:1px solid #ddd;
+}
+.invests-select-area .select-item .panel-body {
+  min-height: 200px;
+  padding: 30px 11%;
+  margin-top: 10px;
+  line-height:25px;
+  color:#555;
+}
+.invests-select-area .select-item .panel-body .more-link {
+  margin-top: 30px;
+}
+.invests-select-area .select-item .panel-body .more-link .btn-primary{
+  background-color: #00a3d9;
+  border-color: #00a3d9;
+}
+.invests-select-area .select-item .panel-footer {
+  padding: 12px 11%;
+  color: #999;
 }
 
+.invests-select-area .select-item .panel-footer strong{
+  font-size:18px;
+  color: #ff6600;
+}
 
-
+.scheme-shell { margin-top:50px; margin-bottom:50px;
+}
+.advantage-box {
+  padding: 120px 0;
+  font-size: 150%;
+}
+.invests-other-info .info-area .nav-tabs{
+  margin-bottom:30px;
+}
+.invests-other-info .info-area .nav-tabs>li.active>a {
+  border-radius: 5px 5px 0 0;
+  font-size: 18px;
+}
+.invests-other-info .info-area .nav-tabs>li>a {
+  border-radius: 5px;
+  font-size: 18px;
+}
+.invests-other-info {
+  margin: 50px 0;
+}
+.invests-other-info .info-area {
+}
+.invests-other-info .tab-pane dt {
+  font-size: 120%;
+  color: #999;
+  font-weight: normal;
+}
+.invests-other-info .tab-pane dd {
+  color: #666;
+  margin-bottom: 22px;
+}
 
 
 

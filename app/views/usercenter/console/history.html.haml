@@ -48,9 +48,9 @@
         - else
           %a.tradeType{:href => usercenter_console_history_path(conds)}
             =v
-.console-list-area
-  %table.table.table-hover
-    %thead
+.console-list-area.trade-table
+  %table.table
+    %tbody
       %tr
         %th
           交易类型
@@ -64,7 +64,7 @@
           交易编号
         %th
           交易日期
-    %tbody
+
       - @transactions.each do |t|
         %tr
           %td

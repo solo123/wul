@@ -1,30 +1,46 @@
-%tr
-  %td
-    %h4.pro-title 
-      月月盈
-      %span
-        %a.a-inline{:href => product_detail_path("month",obj)}
-          = obj.deposit_number
-      %a{:href => "#"}
-        %span.badge 月
-    %p.safe-info
-      %img{:src => image_url("main/indexmain7.png")}
-      银盛支付担保
-  %td
-    #{obj.annual_rate}%
-  %td
-    ="￥#{obj.free_invest_amount}"
-  %td
-    ="#{obj.repayment_period}个月"
-  %td
-    %ul
+.row.yyy-list.row-delet-pading
+  .col-xs-10.yyy-list-progress
+    %table.table-list
+      %h4
+        %button.btn.btn-primary.yyy-list-btn{:type => "button"} 月
+        月月盈
+        %span.yyy-list-title
+          %a.a-inline{:href => product_detail_path("month",obj)}
+            = obj.deposit_number
+      %tbody
+        %tr
+          %td
+            %span
+              %img{:src => image_url("main/yisheng-icons.jpg")}/
+              银盛支付担保
+          %td.td-list
+            %dl.dl-horizontal
+              %dt 年化收益率：
+              %dd
+                #{obj.annual_rate}%
+          %td.td-list
+            %dl.dl-horizontal
+              %dt 融资金额：
+              %dd
+                ="￥#{obj.free_invest_amount}"
+          %td.td-list
+            %dl.dl-horizontal
+              %dt 借款期限：
+              %dd
+                ="#{obj.repayment_period}个月"
+          %td.td-list
+            %dl.dl-horizontal
+              %dt 加入人数：
+              %dd 1人
+  .col-xs-2.yyy-product-progress
+    %ul.text-left
       %li
         - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
-        .progress.yy-pro
-          .bar{:style => "width:#{current_progress}%"}
+        .row
+          .col-xs-9
+            .progress.progress-striped.active
+              .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}
+                %span.sr-only 40% Complete (success)
+          .col-xs-3.progress-digit #{number_with_precision current_progress, precision: 0}%
       %li
-        已投资
-        %span
-          #{number_with_precision current_progress, precision: 0}%
-  %td.select-col
-    %a.btn.btn-success{:href => product_detail_path("month",obj)} 马上加入
+        %button.btn.btn-primary.btn-block{:href => product_detail_path("month",obj)} 马上加入

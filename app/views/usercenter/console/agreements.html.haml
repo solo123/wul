@@ -8,60 +8,62 @@
       %a{"data-toggle" => "tab", :href => "#profile", :role => "tab"} 月月盈
   .tab-content.tab-cnt
     #home.tab-pane.active
-      %table.table
-        %thead
-          %tr
-            %th 名称
-            %th 借款人
-            %th 金额（￥）
-            %th 购买次数
-            %th 担保
-            %th 项目协议
-        %tbody
-          - @fixed_deposits.each do |f|
+      .console-list-area
+        %table.table
+          %thead
             %tr
-              %td
-                ="定存宝#{f.loan_number}"
-              %td
-                #{number_with_precision f.annual_rate, precision: 2}%
-              %td
-                = f.amount
-              %td
-                = "#{f.repayment_period}个月"
-              %td
-                银盛担保
-              %td
-                %a{:href => usercenter_console_show_agreement_path({:id => f.id})}
-                  协议内容
-      .digg_pagination
-        .page_info
-          = page_entries_info @fixed_deposits
-        = will_paginate @fixed_deposits, :container => false
+              %th 名称
+              %th 借款人
+              %th 金额（￥）
+              %th 购买次数
+              %th 担保
+              %th 项目协议
+          %tbody
+            - @fixed_deposits.each do |f|
+              %tr
+                %td
+                  ="定存宝#{f.loan_number}"
+                %td
+                  #{number_with_precision f.annual_rate, precision: 2}%
+                %td
+                  = f.amount
+                %td
+                  = "#{f.repayment_period}个月"
+                %td
+                  银盛担保
+                %td
+                  %a{:href => usercenter_console_show_agreement_path({:id => f.id})}
+                    协议内容
+        .digg_pagination
+          .page_info
+            = page_entries_info @fixed_deposits
+          = will_paginate @fixed_deposits, :container => false
     #profile.tab-pane
-      %table.table
-        %thead
-          %tr
-            %th 名称
-            %th 年化收益率
-            %th 金额（￥）
-            %th 购买次数
-            %th 担保
-        %tbody
-          - @month_deposits.each do |f|
+      .console-list-area
+        %table.table
+          %thead
             %tr
-              %td
-                ="月月盈#{f.loan_number}"
-              %td
-                #{number_with_precision f.annual_rate, precision: 2}%
-              %td
-                = f.amount
-              %td
-                = "#{f.repayment_period}个月"
-              %td
-                银盛担保
-              %td
-                协议内容
-      .digg_pagination
-        .page_info
-          = page_entries_info @month_deposits
-        = will_paginate @month_deposits, :container => false
+              %th 名称
+              %th 年化收益率
+              %th 金额（￥）
+              %th 购买次数
+              %th 担保
+          %tbody
+            - @month_deposits.each do |f|
+              %tr
+                %td
+                  ="月月盈#{f.loan_number}"
+                %td
+                  #{number_with_precision f.annual_rate, precision: 2}%
+                %td
+                  = f.amount
+                %td
+                  = "#{f.repayment_period}个月"
+                %td
+                  银盛担保
+                %td
+                  协议内容
+        .digg_pagination
+          .page_info
+            = page_entries_info @month_deposits
+          = will_paginate @month_deposits, :container => false
