@@ -14,8 +14,8 @@
       .col-xs-6.col-sm-6
         .select-item.panel.panel-default      
           .panel-heading
-            %img{:src => "images/main/wytz1.png"}
-              %p 定期宝
+            %img{:src => image_url("main/invests2.png")}
+              %h3 定期宝
           .panel-body
             %p
               一次性加入，省去每天投资烦恼
@@ -28,12 +28,12 @@
             人已经加入完成
             %strong 1234567000
             元投资额
-          %a.link-block{:href => product_list_path("fixed")} 查看更多
+          %a.link-block{:href => product_list_path("fixed")}
       .col-xs-6.com-sm-6
         .select-item.panel.panel-default
           .panel-heading
-            %img{:src => "images/main/wytz2.png"}
-            %p 月月盈
+            %img{:src => image_url("main/invests2.png")}/
+            %h3 月月盈
           .panel-body
             %p
               一次性加入，省去每天投资烦恼
@@ -46,30 +46,34 @@
             人已经加入完成
             %strong 1234567000
             元投资额
-          %a.link-block{:href => product_list_path("month")} 查看更多
+          %a.link-block{:href => product_list_path("month")}
           
-          
+
 
 .advantage-area.scheme-shell
-  .container
-    .advantage-box
-      %ul.row
-        %li.col-md-2
-          %span.glyphicon.glyphicon-check
-          低门槛
-        %li.col-md-3
-          %span.glyphicon.glyphicon-plane
-          高收益100%
-        %li.col-md-2
-          %span.glyphicon.glyphicon-gbp
-          本息担保
-        %li.col-md-2
-          %span.glyphicon.glyphicon-hand-up
-          随时赎回
-        %li.col-md-3
-          %span.glyphicon.glyphicon-ok-sign
-          服务完全免费
-
+  .security-identity
+    .container.security-identity-container
+      %ul.row.list-unstyled
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 50元即可加入
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src =>image_url("foot/foot2.jpg")}/
+            %dd 100%本息担保
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src =>image_url("foot/foot3.jpg")}/
+            %dd 随时赎回投资
+        %li.col-xs-3
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot4.jpg")}/
+            %dd 服务完全免费
 .invests-other-info
   .container
     = cms_snippet_content('invests-other-info')
