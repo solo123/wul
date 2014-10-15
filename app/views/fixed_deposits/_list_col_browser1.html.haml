@@ -1,0 +1,20 @@
+%tr
+  %td
+    %span.badge 定
+    = link_to "#{obj.deposit_number}", product_detail_path("fixed", obj)
+  %td
+    #{obj.annual_rate} %
+  %td
+    #{obj.repayment_period} 个月
+  %td
+    - progess = (obj.total_amount - obj.free_invest_amount) *100 / obj.total_amount
+    #{number_with_precision progess, precision: 2}%
+  %td
+    #{obj.total_amount}
+  %td
+    %a.btn.btn-info{:href => "#{obj.current_action}"}
+      #{obj.current_operation}
+
+
+
+

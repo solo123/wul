@@ -10,4 +10,4 @@
 *.orig
 /public/assets
 /public/system
-
+/.idea

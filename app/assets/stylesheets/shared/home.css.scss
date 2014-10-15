@@ -31,6 +31,12 @@
 	margin-top:6px;
 }
 
+.home-area-header .text-muted{ padding-left:10px; color:#000;}
+.home-area-header span{ font-size:14px;}
+.home-area-header strong{ color: #ff6600; font-size:22px; text-align:right; font-weight:500;}
+.home-area-header .intro span{ color: #ff6600; }
+
+
 
 .home-safe-tips{
 	margin:22px 0;	
@@ -106,7 +112,10 @@
   cursor: pointer;
 }
 
-
+.row-delet-pading{
+  margin-left: 0px;
+  margin-right: 0px;
+}
 .home-product-list .panel .panel-heading{
 	border-radius:10px 10px 0 0;
 }
@@ -118,7 +127,7 @@
 	border-radius:0 0 10px 10px;
 }
 
-.home-product-list .item-list .number-info{	text-align:center; color:#999;}
+/*.home-product-list .item-list .number-info{	text-align:center; color:#999;}
 .home-product-list .item-list .number-info strong{	font-size:150%; font-weight:normal; color: #333;}
 .home-product-list .item-list .pro-info{ margin:0; }
 .home-product-list .item-list .pro-info dl{ padding-left:5px; padding-right:5px; }
@@ -136,15 +145,82 @@
 .home-product-list .item-list .amount strong{ font-size:150%; font-weight:normal; color: #F60; }
 
 
-.home-product-list .item-list .panel-footer{ text-align:right;}
+.home-product-list .item-list .panel-footer{ text-align:right;}*/
+
+.home-product-list .item-list .number-info{	text-align:center; color:#999;}
+.home-product-list .item-list .number-info strong{	font-size:150%; font-weight:normal; color: #ff6600;}
+.home-product-list .item-list .pro-info{ margin:0; border-bottom:1px solid #e0e0e0;}
+.home-product-list .item-list .pro-info dl{ padding-left:5px; padding-right:5px;}
+.home-product-list .item-list .pro-info dl:first-child{ border-right:1px solid #e0e0e0;}
+.home-product-list .item-list .pro-info dl dt{ font-size:200%; font-weight:normal; color:#ff6600;}
+.home-product-list .item-list .pro-info dl dd{ color:#999; }
+.home-product-list .item-list .pro-info .yidld-info{}
+
+.home-product-list .item-list .safe-info{ text-align:center; margin:20px 0 30px 0;}
+
+.home-product-list .item-list .progress-area .progress{height: 18px; border-radius: 10px;}
+.home-product-list .item-list .progress-area .progress-info{ color:#999; }
+.home-product-list .item-list .progress-area .progress-info strong{ font-size:120%; font-weight:normal; color: #ff6600; }
+
+.home-product-list .item-list .amount{ text-align:center; color:#999; }
+.home-product-list .item-list .amount strong{ font-size:150%; font-weight:normal; color: #F60; }
+
+.home-product-list .item-list .panel-footer{padding: 0px 0px; border-top: 0px solid #ddd;}
+.home-product-list .item-list .panel-footer a{ text-align:right; padding-right:20px;}
+.home-product-list .item-list .panel-footer .btn{ border-radius:0px 0px 7px 7px;}
+.home-product-list .item-list .panel-footer .btn-success{ background-color: #00a3d9;
+  border-color: #00a3d9;}
 
 
 /*[ = Home month Area ]--------------------------------------*/
-.home-month-area{}
+/*.home-month-area{}
 .home-product-list .pro-title{ font-size:120%; font-weight:normal; }
 .home-product-list .pro-title .badge{ padding:8px; border-radius: 15px; background:#CCC; font-weight:normal;}
 .home-product-list .table-list .safe-info{ margin:12px 0; }
-.home-product-list .table-list .select-col{ text-align:right;}
+.home-product-list .table-list .select-col{ text-align:right;}*/
+
+.yyy-list{
+  border:1px solid #e5e5e5;
+  background-color:#f7fdff;
+  margin-bottom:20px;
+  margin-top:20px;
+  border-radius: 4px;
+}
+.yyy-list:hover{
+  border:1px solid #f28558;
+}
+.home-product-list  .table > tbody > tr > td{
+  border-top:0px solid #f28558;
+}
+
+.yyy-list-progress{
+  border-right:1px dashed #069;
+  margin-top:10px;
+  margin-bottom:10px;
+  padding-left:20px;
+  padding-right:0px;
+}
+.yyy-list-btn{
+  padding: 2px 4px;
+  background:#0099cc;
+}
+.home-product-list .table-list .td-list  dl{ padding-top:15px;}
+.home-product-list .table-list .td-list .dl-horizontal dt{ width:130px; font-weight:normal; padding-top:5px;}
+.home-product-list .table-list .td-list .dl-horizontal dd{ margin-left:135px;color: #ff6600; font-size:18px; padding-top:2px;}
+.yyy-product-progress{ margin-top:15px;}
+.yyy-product-progress .progress{ height: 15px;
+  border-radius: 4px;}
+.progress-digit{padding-left: 0px;}
+.yyy-product-progress ul{ padding: 20px 10px 0 0px; padding-left: 0px;}
+.yyy-product-progress .btn-primary{background-color: #00a3d9;border-color: #00a3d9;}
+.yyy-product-progress .time-icon{ padding-bottom:10px; text-align:center;}
+
+.yyy-list-progress .td-list{float: left;}
+.yyy-list-progress dl{ padding-top:15px;}
+.yyy-list-progress dt{ width:130px; font-weight:normal; padding-top:5px;}
+.yyy-list-progress dd{ margin-left:135px;color: #ff6600; font-size:18px; padding-top:2px;}
+.danbao{ text-align: left; padding-top: 20px; padding-left:2px; min-width: 108px;}
+
 
 
 
