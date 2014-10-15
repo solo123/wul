@@ -81,7 +81,7 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
        
     invoke :'rails:assets_precompile'
-    #queue! %[cd "#{deploy_to}/current" && rake comfortable_mexican_sofa:fixtures:import FROM=wooul-20141005 TO=wul]
+    #queue! %[cd "#{deploy_to}/current" && rake comfortable_mexican_sofa:fixtures:import FROM=wooul-20141014 TO=wul]
     to :launch do
       invoke :cms
       queue! %[god restart web]
