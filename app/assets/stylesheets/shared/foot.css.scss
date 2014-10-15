@@ -41,7 +41,7 @@
   padding-left: 0;
   list-style: none;
 }*/
-.footer{background: image-url("wooul-bg.gif"); padding-top: 50px;}
+.footer{background: image-url("wooul-bg.gif"); }
 .security-identity .security-identity-container{
 
 }
@@ -58,7 +58,7 @@
 .security-identity .list-unstyled dd{ font-size:20px;color:#0099cc;}
 .security-identity .list-unstyled .list-unstyled-borde{
   margin-top:5px;
-  border-right:0px solid #dfdfdf;
+  border-right:1px solid #dfdfdf;
 }
 .security-identity .list-unstyled .list-unstyled-borde-two{ margin-left: 20px; width: 1px;
   height: 100px; background-color: #dfdfdf; float: left;

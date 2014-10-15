@@ -162,7 +162,7 @@ invests-select-area .link-block {
   cursor: pointer;
 }
 .invests-select-area .select-item .panel-heading {
-  min-height: 150px;
+  min-height: 200px;
   padding-top: 20px;
   border: 0 none;
   background: transparent;
@@ -232,8 +232,12 @@ invests-select-area .link-block {
   margin-bottom: 22px;
 }
 
+.scheme-shell { margin-top:80px; margin-bottom:80px;
+}
+.scheme-shell .security-identity {
+  border-bottom: 1px solid #DADADA;
 
-
+}
 
 
 

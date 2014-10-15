@@ -1,76 +1,103 @@
+
 .container.transfer
   .row
-    .col-md-8.product-info-area
+    .col-xs-8.product-info-area
       .model-box.panel.panel-default
         .head.panel-heading
           %h3.panel-title
             = obj.product_name
             = obj.deposit_number
+
         .panel-body
           .profit.row
-            %dl.col-md-6.block-area
+            %dl.col-xs-6.block-area
               %dt 总额度
               %dd
                 %ins ￥
                 %em
                   = number_with_precision(obj.total_amount, precision: 0, delimiter: ',')
-            %dl.col-md-3.block-area
+            %dl.col-xs-3.block-area
               %dt 年化收益率
               %dd
-                %em
-                  = obj.annual_rate.to_i
-                %span
-                  - num = obj.annual_rate.to_s.split(".")
-                  - frac = num.count > 1 ? num[1].to_s : 0
-                  = "."
-                  = frac
-                ="%"
-                -#= succeed "%" do
-                -#  %span .00
-            %dl.col-md-3.block-area
+                %em 12
+                = succeed "%" do
+                  %span .0
+            %dl.col-xs-3.block-area
               %dt 投资期限
               %dd
                 %em
                   = obj.repayment_period
                 个月
-          .working-day 定存宝 每工作日 10:30、14:30、20:00 更新产品
-        .panel-footer.expl
+          .working-day
+            定存宝 每工作日
+            %span 10:30、14:30、20:00
+            更新产品
+          .row.pubdate
+            .col-xs-6
+              %dl.dl-horizontal
+                %dt 发布时间：
+                %dd
+                  = obj.created_at.strftime("%Y-%m-%d")
+            .col-xs-6
+              %dl.dl-horizontal
+                %dt 剩余时间：
+                %dd 6天12时25分
+        .panel-footer
           .row
-            .col-md-6
+            .col-xs-6
+              %span
+                %img{:src => image_url("main/Principal.jpg")}/
+              100%本息保障
+            .col-xs-6
               .row
                 - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
-                .col-md-6
-                  .progress
-                    .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0",:role => "progressbar", :style => "width: #{current_progress}%;"}
-                .col-md-6
-                  .progress-number
-                    %span<
-                      当前进度
-                      = "#{number_with_precision(current_progress , precision: 2)}%"
-
-                  -#  %b
-                  -#    当前进度
-                  -#    = "#{current_progress}%"
-            .col-md-3 
-              发布时间
-              = obj.created_at.strftime("%Y-%m-%d")
-            .col-md-3 
-              %img{:src => image_url("main/wytz5.png")}
-                %p
-                  ="100%本息保障"
-    .col-md-4.modedqb
+                .col-xs-4
+                  投标进度：
+                .col-xs-5
+                  .progress.progress-striped.active
+                    .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0",:role => "progressbar", :style => "width: #{current_progress}%;"}
+                      %span.sr-only 40% Complete (success)
+                .col-xs-3
+                  = "#{number_with_precision(current_progress , precision: 2)}%"
+    .col-xs-4.modedqb
+      %form{:method => "post"}
       = form_tag product_join_path(obj.product_type,obj) do
         .model-box.panel.panel-default
           .head.panel-heading
-            %h3.panel-title 
+            %h3.panel-title
               投资金额
-              %span.text-right 可投 0 元
-          .doned-left.panel-body
-            %span 剩余可投资金额：0.00元
+              %span.text-right 单笔最多可投100,000元
+          .doned.panel-body
+            .input-group
+              %input#product_value.form-control{:autocomplete => "off", :name => "product_value", :type => "text", :value => ""}
+                %span.input-group-addon 元
+            %dl.dl-horizontal
+              %dt 收益处理方式：
+              %dd 收益返还
+              %dt 到期总收益：
+              %dd ￥ 0.00
+            .row
+              .col-xs-3.change-codecol  验证码：
+              .col-xs-9.change-codecol9
+                .simple_captcha.helloooe.row
+                  .simple_captcha_field.col-xs-4
+                    %input#captcha.form-control{:autocomplete => "off", :name => "captcha", :placeholder => "", :required => "required", :type => "text"}
+                    %input#captcha_key{:name => "captcha_key", :type => "hidden", :value => "af45b4406989172453e48eb562e0f7eeb7191edb"}
+                  .simple_captcha_image.col-xs-4
+                    %img#simple_captcha-af45b440698{:alt => "captcha", :src => "/simple_captcha?code=af45b4406989172453e48eb562e0f7eeb7191edb&amp;time=1413022441"}
 
+                  .simple_captcha_refresh_button.col-xs-4
+                    %a{"data-remote" => "true", :href => "/simple_captcha?id=simple_captcha-af45b440698"}
+                      刷新一下
+            .checkbox
+              %label
+                %input{:type => "checkbox"}
+                  我同意
+              %span
+                %a{:href => "#"} 《沃银网定存宝V投资协议》
           .panel-footer
             - if current_user
-              %button.btn.btn-primary.btn-lg.btn-block#test{:type => "submit"}
+              %a.btn.btn-primary.btn-lg.btn-block{:type => "submit"}
                 = obj.current_operation
             - else
               %a.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path} 还款中
@@ -82,98 +109,75 @@
       %li
         %a.tab-item{"data-toggle" => "tab", :href => "#prshd", :role => "tab"}
           加入记录
-          %span.badge
-            = invests.size
-    / Tab panes
+          %span.badge 15
     .tab-content
       #detail.tab-pane.active
-        %ul.row
-          %li.col-md-6
+        .row
+          .col-xs-6
             .lab-val
-              %ul.row.items
-                %li.col-md-12
+              .row.item
+                .col-md-12
                   %strong 个人信息
-                %li.col-md-4  用户ID
-                %li.col-md-8  683880
-                %li.col-md-4  性别
-                %li.col-md-8  男
-                %li.col-md-4  年龄
-                %li.col-md-8  32
-                %li.col-md-4  学历
-                %li.col-md-8  大专
-                %li.col-md-4  是否结婚
-                %li.col-md-8  已婚
-                %li.col-md-4  子女状况
-                %li.col-md-8  有
-                %li.col-md-4  户籍城市
-                %li.col-md-8  四川省南充市
-
-              %ul.row.items
-                %li.col-md-12
+                .col-md-4.boder-color 用户ID
+                .col-md-8.boder-color 683880
+                .col-md-4 性别
+                .col-md-8 男
+                .col-md-4.boder-color 年龄
+                .col-md-8.boder-color 32
+                .col-md-4 学历
+                .col-md-8 大专
+                .col-md-4.boder-color 是否结婚
+                .col-md-8.boder-color 已婚
+                .col-md-4 子女状况
+                .col-md-8 有
+                .col-md-4.boder-color 户籍城市
+                .col-md-8.boder-color 四川省南充市
+                .col-md-12
                   %strong 个人资产及征信信息
-                %li.col-md-4  月收入水平
-                %li.col-md-8  5000元-8000元
-                %li.col-md-4  房产
-                %li.col-md-8  无
-                %li.col-md-4  车产
-                %li.col-md-8  无
-                %li.col-md-4  其他信用贷款
-                %li.col-md-8  无
-                %li.col-md-4  未销户信用卡
-                %li.col-md-8  无
-                %li.col-md-4  信用卡额度使用率
-                %li.col-md-8  无信用卡
-
-              %ul.row
-                %li.col-md-12
+                .col-md-4.boder-color 月收入水平
+                .col-md-8.boder-color 5000元-8000元
+                .col-md-4 房产
+                .col-md-8 无
+                .col-md-4.boder-color 车产
+                .col-md-8.boder-color 无
+                .col-md-4 其他信用贷款
+                .col-md-8 无
+                .col-md-4.boder-color 未销户信用卡
+                .col-md-8.boder-color 无
+                .col-md-4 信用卡额度使用率
+                .col-md-8 无信用卡
+                .col-md-12
                   %strong 工作信息
-                %li.col-md-4  工作城市
-                %li.col-md-8  四川省南充市
-                %li.col-md-4  现公司工作时间
-                %li.col-md-8  2012
-                %li.col-md-4  公司行业
-                %li.col-md-8  教育科研、医院、公共事业、金融业
-                %li.col-md-4  公司性质
-                %li.col-md-8  国营
-                %li.col-md-4  岗位
-                %li.col-md-8  其他基层服务岗位
-
-          %li.col-md-6
-            .lab-val.trade-table.ycp-items
-              %table.table.trade-table-th
-                %strong.text-left 担保机构
-                %tbody
-                  %tr
-                    %td
-                    %td 身份证
-                    %td 于2014.09.11
-                    %td
-                      %span.glyphicon.glyphicon-ok>
-                      认证通过
-                  %tr
-                    %td
-                    %td 信用报告
-                    %td 于2014.09.11
-                    %td
-                      %span.glyphicon.glyphicon-ok>
-                      认证通过
-                  %tr
-                    %td
-                    %td 工作证明
-                    %td 于2014.09.11
-                    %td
-                      %span.glyphicon.glyphicon-ok>
-                      认证通过
-                  %tr
-                    %td
-                      .r3  100%本息担保
-                    %td 收入证明
-                    %td 于2014.09.11
-                    %td
-                      %span.glyphicon.glyphicon-ok>
-                      认证通过
-              %strong 有利网借款记录
-              %table.table.table-bordered.trade-table-th
+                .col-md-4.boder-color 工作城市
+                .col-md-8.boder-color 四川省南充市
+                .col-md-4 现公司工作时间
+                .col-md-8 2012
+                .col-md-4.boder-color 公司行业
+                .col-md-8.boder-color 教育科研、医院、公共事业、金融业
+                .col-md-4 公司性质
+                .col-md-8 国营
+                .col-md-4.boder-color 岗位
+                .col-md-8.boder-color 其他基层服务岗位
+          .col-xs-6
+            .lab-val
+              .row.item
+                .col-md-12
+                  %strong 担保机构
+                .col-md-4.boder-color 身份证
+                .col-md-4.boder-color 于2014.09.11
+                .col-md-4.boder-color.col-noborder 认证通过
+                .col-md-4 信用报告
+                .col-md-4 于2014.09.11
+                .col-md-4.col-noborder 认证通过
+                .col-md-4.boder-color 工作证明
+                .col-md-4.boder-color 于2014.09.11
+                .col-md-4.boder-color.col-noborder 认证通过
+                .col-md-4 收入证明
+                .col-md-4 于2014.09.11
+                .col-md-4.col-noborder 认证通过
+              .col-md-12.wyrecord
+                %strong 沃银网借款记录
+              %table.table.table-bordered
                 %thead
                   %tr
                     %th 共计借入
@@ -183,42 +187,77 @@
                 %tbody
                   %tr
                     %td ￥1,700,000.00
-                    %td ￥1,729,749.98
+                    %td ￥1,700,000.00
                     %td ￥0.00
                     %td 0次
-
-              %table.table.table-bordered.trade-table-th
+              %table.table.table-bordered
+                %thead
+                  %tr
+                    %th.text-center 共计借入
+                    %th.text-center 待还金额
+                    %th.text-center 逾期金额
+                    %th.text-center 严重逾期
                 %tbody
                   %tr
-                    %th 发布借款笔数
-                    %th 成功借款笔数
-                    %th 还清笔数
-                    %th 逾期次数
-
-                  %tr
-                    %td 1笔
-                    %td 1笔
-                    %td 0笔
-                    %td 0次
-
-
+                    %td.text-center 1笔
+                    %td.text-center 1笔
+                    %td.text-center 0笔
+                    %td.text-center 0次
       #prshd.tab-pane
-        %table.table.product-details-jrjl.table-striped.product-details-border
-          %thead
-            %tr
-              %th 投资人
-              %th 加入金额
-              %th 加入时间
-              %th 状态
-          %tbody
-            - invests.each do |invest|
+        .product-details-jrjl
+          %table.table.table-striped.product-details-border
+            %thead
               %tr
-                %td= "134"+ "***" + "223"
-                -#%td= invest.user_info.show_id[0, 2] + "***" + invest.user_info.show_id[-2, 2]
-                %td= invest.amount
-                %td= invest.created_at.strftime("%Y-%m-%d %H:%M")
+                %th 投资人
+                %th 加入金额
+                %th 加入时间
+                %th 状态
+            %tbody
+              %tr
+                %td 134***223
+                %td 1222.0
+                %td 2014-10-08 09:01
                 %td
-                  %span.glyphicon.glyphicon-ok>
-                    成功
-
+                  %span.glyphicon.glyphicon-ok
+                  成功
+              %tr
+                %td 134***223
+                %td 1222.0
+                %td 2014-10-08 09:01
+                %td
+                  %span.glyphicon.glyphicon-ok
+                  成功
+              %tr
+                %td 134***223
+                %td 1222.0
+                %td 2014-10-08 09:01
+                %td
+                  %span.glyphicon.glyphicon-ok
+                  成功
+              %tr
+                %td 134***223
+                %td 1222.0
+                %td 2014-10-08 09:01
+                %td
+                  %span.glyphicon.glyphicon-ok
+                  成功
+              %tr
+                %td 134***223
+                %td 1222.0
+                %td 2014-10-08 09:01
+                %td
+                  %span.glyphicon.glyphicon-ok
+                  成功
+          .text-center
+            %ul.pagination
+              %li
+                %a{:href => "#"} 《上一页
+              %li
+                %a{:href => "#"} 1
+              %li
+                %a{:href => "#"} 2
+              %li
+                %a{:href => "#"} 3
+              %li
+                %a{:href => "#"} 下一页》
 
