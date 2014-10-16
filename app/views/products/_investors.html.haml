@@ -1,0 +1,70 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "pager.js"
+%table.table.table-striped.product-details-border
+  %thead
+    %tr
+      %th 投资人
+      %th 加入金额
+      %th 加入时间
+      %th 状态
+
+  %tbody#investors{:num => invs.size}
+    - invs.each do |invest|
+      %tr.investor
+        -#%td= "134"+ "***" + "223"
+        %td= invest.secret_name
+        %td= invest.amount
+        %td= invest.created_at.strftime("%Y-%m-%d %H:%M")
+        %td
+          %span.glyphicon.glyphicon-ok>
+            成功
+-#%tbody
+  -#  %tr
+  -#    %td 134***223
+  -#    %td 1222.0
+  -#    %td 2014-10-08 09:01
+  -#    %td
+  -#      %span.glyphicon.glyphicon-ok
+  -#      成功
+  -#  %tr
+  -#    %td 134***223
+  -#    %td 1222.0
+  -#    %td 2014-10-08 09:01
+  -#    %td
+  -#      %span.glyphicon.glyphicon-ok
+  -#      成功
+  -#  %tr
+  -#    %td 134***223
+  -#    %td 1222.0
+  -#    %td 2014-10-08 09:01
+  -#    %td
+  -#      %span.glyphicon.glyphicon-ok
+  -#      成功
+  -#  %tr
+  -#    %td 134***223
+  -#    %td 1222.0
+  -#    %td 2014-10-08 09:01
+  -#    %td
+  -#      %span.glyphicon.glyphicon-ok
+  -#      成功
+  -#  %tr
+  -#    %td 134***223
+  -#    %td 1222.0
+  -#    %td 2014-10-08 09:01
+  -#    %td
+  -#      %span.glyphicon.glyphicon-ok
+  -#      成功
+.text-center
+  -if invs.size > 8
+    %ul.pagination
+      #pager
+    -#%li
+    -#  %a{:href => "#"} 《上一页
+    -#%li
+    -#  %a{:href => "#"} 1
+    -#%li
+    -#  %a{:href => "#"} 2
+    -#%li
+    -#  %a{:href => "#"} 3
+    -#%li
+    -#  %a{:href => "#"} 下一页》

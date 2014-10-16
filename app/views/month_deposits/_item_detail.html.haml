@@ -43,7 +43,6 @@
                 %dd 6天12时25分
         .panel-footer
           .row
-            - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
             .col-xs-6
               %span
                 %img{:src => image_url("main/Principal.jpg")}/
@@ -54,10 +53,10 @@
                   投标进度：
                 .col-xs-5
                   .progress.progress-striped.active
-                    .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0",:role => "progressbar", :style => "width: #{current_progress}%;"}
+                    .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0",:role => "progressbar", :style => "width: #{obj.current_progress}%;"}
                       %span.sr-only 40% Complete (success)
                 .col-xs-3
-                  = "#{number_with_precision(current_progress , precision: 2)}%"
+                  = "#{obj.current_progress}%"
     .col-xs-4.modedqb
       %form{:method => "post"}
       = form_tag product_join_path(obj.product_type,obj) do
@@ -108,7 +107,8 @@
       %li
         %a.tab-item{"data-toggle" => "tab", :href => "#prshd", :role => "tab"}
           加入记录
-          %span.badge 15
+          %span.badge
+            = invests.size
     .tab-content
       #detail.tab-pane.active
         .lab-val.lab-val-fixed_item-next1
@@ -182,59 +182,4 @@
                   %a{:href => "#"} 点击查看
       #prshd.tab-pane
         .product-details-jrjl
-          %table.table.table-striped.product-details-border
-            %thead
-              %tr
-                %th 投资人
-                %th 加入金额
-                %th 加入时间
-                %th 状态
-            %tbody
-              %tr
-                %td 134***223
-                %td 1222.0
-                %td 2014-10-08 09:01
-                %td
-                  %span.glyphicon.glyphicon-ok
-                  成功
-              %tr
-                %td 134***223
-                %td 1222.0
-                %td 2014-10-08 09:01
-                %td
-                  %span.glyphicon.glyphicon-ok
-                  成功
-              %tr
-                %td 134***223
-                %td 1222.0
-                %td 2014-10-08 09:01
-                %td
-                  %span.glyphicon.glyphicon-ok
-                  成功
-              %tr
-                %td 134***223
-                %td 1222.0
-                %td 2014-10-08 09:01
-                %td
-                  %span.glyphicon.glyphicon-ok
-                  成功
-              %tr
-                %td 134***223
-                %td 1222.0
-                %td 2014-10-08 09:01
-                %td
-                  %span.glyphicon.glyphicon-ok
-                  成功
-          .text-center
-            %ul.pagination
-              %li
-                %a{:href => "#"} 《上一页
-              %li
-                %a{:href => "#"} 1
-              %li
-                %a{:href => "#"} 2
-              %li
-                %a{:href => "#"} 3
-              %li
-                %a{:href => "#"} 下一页》
-
+          = render 'products/investors', invs: invests

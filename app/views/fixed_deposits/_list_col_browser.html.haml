@@ -12,11 +12,12 @@
     .row
       .col-xs-9
         .progress.progress-striped.active
-          .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", :role => "progressbar", :style => "width: 50%"}
+          .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", :role => "progressbar", :style => "width: #{obj.current_progress}%"}
             %span.sr-only 40% Complete (success)
-      .col-xs-3.progress-digit 50%
+      .col-xs-3.progress-digit
+        #{obj.current_progress}%
   %td
-    %button.btn.btn-primary.btn-sm{:href => "#{obj.current_action}"}
+    %a.btn.btn-primary.btn-sm.index-item{:href => "#{obj.current_action}"}
       #{obj.current_operation}
 
 

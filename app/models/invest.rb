@@ -75,4 +75,12 @@ class Invest < ActiveRecord::Base
     self.stage
   end
 
+  def secret_name
+    if self.owner_name == ""
+      "保密"
+    else
+      self.owner_name[0, 2] + "***" + self.owner_name[-2, 2]
+    end
+  end
+
 end

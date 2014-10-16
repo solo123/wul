@@ -31,6 +31,11 @@ class Product < ActiveRecord::Base
     end
   end
 
+
+   def current_progress
+     ((self.total_amount - self.free_invest_amount) * 100 / self.total_amount).to_i
+   end
+
   def current_action
     case self.current_stage
       when "融资中"

@@ -19,7 +19,6 @@
           %img{:src => image_url("main/Principal.jpg")}/
         100%本息保障
       .progress-area
-        - current_progress = (obj.total_amount - obj.free_invest_amount) * 100 / obj.total_amount
         .row
           .col-xs-7
             %p.progress-info
@@ -28,9 +27,9 @@
           .col-xs-5
             %p.progress-info
               当前进度：
-              %strong #{number_with_precision current_progress, precision: 0}%
+              %strong #{obj.current_progress}%
         .progress.progress-striped.active
-          .progress-bar.progress-bar-success.progress-bar-striped{"aria-valuemax" => "100", "aria-valuemin" => current_progress, "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{current_progress}%;"}
+          .progress-bar.progress-bar-success.progress-bar-striped{"aria-valuemax" => "100",  "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{obj.current_progress}%;"}
             %span.sr-only
               23 Complete
         %p.number-info.text-center
