@@ -10,27 +10,27 @@
 .products-list-area
   .container
     .invest-list-frame
-      %table.table.table-hover
+      %table.table
+        %caption
+          %h3 项目列表
+          %button.btn.btn-primary.btn-xs{:type => "button"} 理财计算器
         %thead
           %tr
             %th
-              名称
+              项目名称
             %th
               年化收益率
             %th
-              期限
+              融资金额
             %th
-              进度
+              借款期限
             %th
-              剩余金额
+              投标进度
             %th
               操作
         %tbody
           - @collection.each do |obj|
-            = render 'month_deposits/list_col_browser', obj: obj
-      .invest-pager-container
-        .invest_pagination
-          = will_paginate @collection, :container => false
+            = render 'fixed_deposits/list_col_browser', obj: obj
 
 
 
