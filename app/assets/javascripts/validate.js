@@ -37,8 +37,8 @@ $(document).ready(function () {
 
     $('#reg_form_email').validate({
         focusInvalid : true,
-        focusCleanup : false,
-        onkeyup : false,
+        focusCleanup :true,
+        onkeyup : true,
         rules : {
             reg_email_pass : {
                 required : true,
@@ -49,6 +49,8 @@ $(document).ready(function () {
                 minlength : 6,
                 equalTo : "#reg_email_pass"
             },
+
+
             reg_email : {
                 required : true,
                 email : true,
@@ -84,6 +86,10 @@ $(document).ready(function () {
             });
             $(element).popover('show');
 //            error.appendTo(element.parent().parent().next());
+        },
+
+        success: function(label,element) {
+            $(element).popover('destroy');
         },
 
         submitHandler: function(form) {
@@ -158,6 +164,10 @@ $(document).ready(function () {
                 equalTo: "确认密码不一致"
             }
 
+        },
+
+        success: function(label,element) {
+            $(element).popover('destroy');
         },
         submitHandler: function(form) {
 
