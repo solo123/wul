@@ -3,12 +3,12 @@
   = javascript_include_tag "signup.js"
 
 .sign-page#page
-  .container
+  .container{:style => "width:1170px !important"}
     .row
       .col-md-7.col-sm-7
         .login-media.Mailbox-img
           %img{:src => image_url("main/Mailbox.png")}
-      .col-md-5.col-sm-5
+      .col-md-5.col-sm-5#reg_panel
         .panel.panel-default.register-panel
           .panel-heading
             .panel-title
@@ -31,14 +31,14 @@
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-phones.jpg")}
-                        %input.form-control#reg_phone{:type => "text",:autofocus => true, :name => "reg_phone", :placeholder => "请输入您的手机号码"}
+                        %input.form-control.tip_holder#reg_phone{:type => "text",:autofocus => true, :name => "reg_phone", :placeholder => "请输入您的手机号码"}
                   .form-group
                     %label.col-sm-offset-1.col-sm-2.control-label{:for => "reg_code"} 验证码
                     .col-sm-4.testincode
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-code.jpg")}
-                        %input.form-control{:type => "text",:name => "reg_code",:placeholder => "验证码"}
+                        %input.form-control.tip_holder{:type => "text",:name => "reg_code",:placeholder => "验证码"}
                     .col-sm-3.testgetcode
                       %button.btn.btn-default.btn-block#getcode{:type => "button",:disabled => "true"} 获取验证码
                   .form-group
@@ -47,14 +47,14 @@
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-lock.jpg")}
-                        %input.form-control{:type => "password",:name => "reg_password", :placeholder => "请输入密码"}
+                        %input.form-control.tip_holder#reg_password{:type => "password",:name => "reg_password", :placeholder => "请输入密码"}
                   .form-group
                     %label.col-sm-offset-1.col-sm-2.control-label{:for => "reg_password_confirm"} 确认密码
                     .col-sm-7
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-lock.jpg")}
-                        %input.form-control{:type => "password",:name => "reg_password_confirm", :placeholder => "请重新输入密码"}
+                        %input.form-control.tip_holder#reg_password_confirm{:type => "password",:name => "reg_password_confirm", :placeholder => "请重新输入密码"}
                   .form-group.formsubmit
                     .col-sm-offset-3.col-sm-7
                       %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 立即注册

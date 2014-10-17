@@ -76,8 +76,14 @@ $(document).ready(function () {
                 remote : "该邮件地址已被使用"
             }
         },
-        errorPlacement : function(error, element) {
-            error.appendTo(element.parent().parent().next());
+        errorPlacement: function (error, element) {
+            $(element).popover({
+                content:$(error).html(),
+                trigger: "manual click",
+                container: '#reg_panel'
+            });
+            $(element).popover('show');
+//            error.appendTo(element.parent().parent().next());
         },
 
         submitHandler: function(form) {
@@ -102,6 +108,8 @@ $(document).ready(function () {
         rules: {
             reg_phone: {
                 required: true,
+                minlength: 11,
+                maxlength: 11,
                 remote: {
                     url: "/checkmobile",
                     type: "post",
@@ -115,6 +123,9 @@ $(document).ready(function () {
                     }
                  }
                 },
+            reg_code: {
+                required: true
+            },
             reg_password:{
               required:true,
               minlength: 6
@@ -123,16 +134,19 @@ $(document).ready(function () {
                 required: true,
                 minlength: 6,
                 equalTo: "#reg_password"
-            },
-
-            reg_code: {
-                required: true
             }
+
+
         },
         messages: {
             reg_phone: {
                 required: "电话号码不能为空",
+                minlength: "请确认手机号码长度",
+                maxlength: "请确认手机号码长度",
                 remote: "该电话号码已经被使用"
+            },
+            reg_code: {
+                required: "验证码不能为空"
             },
             reg_password:{
                 required: "密码不能为空",
@@ -142,10 +156,8 @@ $(document).ready(function () {
                 required:"密码不能为空",
                 minlength:"密码不能少于6位",
                 equalTo: "确认密码不一致"
-            },
-            reg_code: {
-                required: "验证码不能为空"
             }
+
         },
         submitHandler: function(form) {
 
@@ -159,7 +171,13 @@ $(document).ready(function () {
         },
 
         errorPlacement: function (error, element) {
-            error.appendTo(element.parent().parent().next());
+            $(element).popover({
+                content:$(error).html(),
+                trigger: "manual click",
+                container: '#reg_panel'
+            });
+            $(element).popover('show');
+//            error.appendTo(element.parent().parent().next());
         },
         errorClass: "alert alert-danger",
         errorElement: "span"
@@ -184,7 +202,7 @@ function enablecode() {
     $("#getcode").attr('disabled', false);
     $("#getcode").css('color', 'black');
     $("#getcode").css('background', 'orange');
-    alert("fuc2");
+    $("#reg_phone").removeClass("alert-danger");
     $('#reg_phone').popover('destroy');
 }
 
@@ -193,8 +211,7 @@ function disablecode() {
     $("#getcode").attr('disabled',true);
     $("#getcode").css('background','white');
     $("#getcode").css('color','#999');
-    $("#reg_phone").addClass("alert-danger");
-    alert("fuck");
+   $("#reg_phone").addClass("alert-danger");
     $('#reg_phone').popover({
         content:"该手机号码已经被使用",
         trigger: "manual click",
