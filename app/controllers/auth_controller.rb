@@ -21,10 +21,10 @@ class AuthController < Devise::SessionsController
 
   def reg
     render :js => "alert('helloworld')"
-    #render :js => "window.location.href = '/success'"
+    #render :js => "window.location.href = '/success2'"
   end
 
-  def success
+  def success2
     @suc_msg = @success_message
     @suc_url = @success_url
   end
@@ -142,7 +142,7 @@ class AuthController < Devise::SessionsController
       verify.save!
     end
     # Reg.regist_confirm(@user.email, verify.email_code).deliver
-    render "success"
+    render "success2"
   end
 
   def create_mobile(params)
@@ -165,7 +165,7 @@ class AuthController < Devise::SessionsController
         #valid.securyscore += 1
         #u.user_info.verification = valid
         #valid.save!
-        render "success" and return
+        render "success2" and return
         #render :js => "alert('验证通过')" and return
       end
     else

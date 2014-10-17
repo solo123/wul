@@ -7,13 +7,13 @@ class StocksControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index
-    assert_response :success
+    assert_response :success2
     assert_not_nil assigns(:stocks)
   end
 
   test "should get new" do
     get :new
-    assert_response :success
+    assert_response :success2
   end
 
   test "should create stock" do
@@ -26,12 +26,12 @@ class StocksControllerTest < ActionController::TestCase
 
   test "should show stock" do
     get :show, id: @stock
-    assert_response :success
+    assert_response :success2
   end
 
   test "should get edit" do
     get :edit, id: @stock
-    assert_response :success
+    assert_response :success2
   end
 
   test "should update stock" do

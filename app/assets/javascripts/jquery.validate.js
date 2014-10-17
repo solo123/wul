@@ -444,7 +444,7 @@ $.extend( $.validator, {
 						element: this.findByName( name )[ 0 ]
 					});
 				}
-				// remove items from success list
+				// remove items from success2 list
 				this.successList = $.grep( this.successList, function( element ) {
 					return !( element.name in errors );
 				});
@@ -746,7 +746,7 @@ $.extend( $.validator, {
 				elementID = this.idOrName( element ),
 				describedBy = $( element ).attr( "aria-describedby" );
 			if ( error.length ) {
-				// refresh error/success class
+				// refresh error/success2 class
 				error.removeClass( this.settings.validClass ).addClass( this.settings.errorClass );
 				// replace message on existing label
 				error.html( message );

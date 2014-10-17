@@ -1,4 +1,4 @@
-- panel_styles = %w"panel-warning panel-success panel-info"
+- panel_styles = %w"panel-warning panel-success2 panel-info"
 .deposit_item.row
   - Stock.limit(3).each_with_index do |obj, idx|
     = render 'stocks/item', obj: obj, p_style: panel_styles[idx]
