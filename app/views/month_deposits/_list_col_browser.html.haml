@@ -1,21 +1,24 @@
 %tr
   %td
     %span.badge 月
-    %a{:href => product_detail_path("month", obj)}
-      #{obj.deposit_number}
+    = link_to "#{obj.deposit_number}", product_detail_path("month", obj)
   %td
     #{obj.annual_rate} %
   %td
+    #{obj.total_amount}
+  %td
     #{obj.repayment_period} 个月
   %td
-    - progess = (obj.total_amount - obj.free_invest_amount) *100 / obj.total_amount
-    #{number_with_precision progess, precision: 2}%
+    .row
+      .col-xs-9
+        .progress.progress-striped.active
+          .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", :role => "progressbar", :style => "width: #{obj.current_progress}%"}
+            %span.sr-only 40% Complete (success)
+      .col-xs-3.progress-digit
+        #{obj.current_progress}%
   %td
-    #{obj.free_invest_amount}
-  %td
-    %a.btn.btn-info{:href => "#{obj.current_action}"}
+    %a.btn.btn-primary.btn-sm.index-item{:href => "#{obj.current_action}"}
       #{obj.current_operation}
-
 
 
 

@@ -65,4 +65,13 @@ class Product < ActiveRecord::Base
     dict[self.repayment_method]
   end
 
+
+  def rest_time
+    seconds = (self.join_date.to_time.to_i) - Time.now.to_i
+    mm, ss = seconds.divmod(60)
+    hh, mm = mm.divmod(60)
+    dd, hh = hh.divmod(24)
+    return {:days => dd, :hours=> hh, :minutes => mm}
+  end
+
 end

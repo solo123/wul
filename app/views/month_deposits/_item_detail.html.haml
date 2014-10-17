@@ -6,6 +6,7 @@
           %h3.panel-title
             = obj.product_name
             = obj.deposit_number
+
         .panel-body
           .profit.row
             %dl.col-xs-6.block-area
@@ -19,8 +20,10 @@
               %dd
                 %em
                   = obj.annual_rate.to_i
+                  - num = obj.annual_rate.to_s.split(".")
+                  - frac = num.count > 1 ? num[1].to_s : 0
                 = succeed "%" do
-                  %span .0
+                  %span .#{frac}
             %dl.col-xs-3.block-area
               %dt 投资期限
               %dd
@@ -40,7 +43,8 @@
             .col-xs-6
               %dl.dl-horizontal
                 %dt 剩余时间：
-                %dd 6天12时25分
+                - rest_time = obj.rest_time
+                %dd #{rest_time[:days]}天#{rest_time[:hours]}时#{rest_time[:minutes]}分
         .panel-footer
           .row
             .col-xs-6
@@ -73,20 +77,26 @@
               %dt 收益处理方式：
               %dd 收益返还
               %dt 到期总收益：
-              %dd ￥ 0.00
+              %dd
+                #profit_rate
+                  = number_with_precision(obj.annual_rate / 12 / 100 * obj.repayment_period , precision: 2)
+                ￥
+                #profit_value
+                  0.00
             .row
               .col-xs-3.change-codecol  验证码：
               .col-xs-9.change-codecol9
-                .simple_captcha.helloooe.row
-                  .simple_captcha_field.col-xs-4
-                    %input#captcha.form-control{:autocomplete => "off", :name => "captcha", :placeholder => "", :required => "required", :type => "text"}
-                    %input#captcha_key{:name => "captcha_key", :type => "hidden", :value => "af45b4406989172453e48eb562e0f7eeb7191edb"}
-                  .simple_captcha_image.col-xs-4
-                    %img#simple_captcha-af45b440698{:alt => "captcha", :src => "/simple_captcha?code=af45b4406989172453e48eb562e0f7eeb7191edb&amp;time=1413022441"}
-
-                  .simple_captcha_refresh_button.col-xs-4
-                    %a{"data-remote" => "true", :href => "/simple_captcha?id=simple_captcha-af45b440698"}
-                      刷新一下
+                = show_simple_captcha(:label => "",:code_type => "numeric")
+                -#.simple_captcha.helloooe.row
+                -#  .simple_captcha_field.col-xs-4
+                -#    %input#captcha.form-control{:autocomplete => "off", :name => "captcha", :placeholder => "", :required => "required", :type => "text"}
+                -#    %input#captcha_key{:name => "captcha_key", :type => "hidden", :value => "af45b4406989172453e48eb562e0f7eeb7191edb"}
+                -#  .simple_captcha_image.col-xs-4
+                -#    %img#simple_captcha-af45b440698{:alt => "captcha", :src => "/simple_captcha?code=af45b4406989172453e48eb562e0f7eeb7191edb&amp;time=1413022441"}
+                -#
+                -#  .simple_captcha_refresh_button.col-xs-4
+                -#    %a{"data-remote" => "true", :href => "/simple_captcha?id=simple_captcha-af45b440698"}
+                -#      刷新一下
             .checkbox
               %label
                 %input{:type => "checkbox"}
@@ -95,11 +105,11 @@
                 %a{:href => "#"} 《沃银网定存宝V投资协议》
           .panel-footer
             - if current_user
-              %a.btn.btn-primary.btn-lg.btn-block{:type => "submit"}
+              %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"}
                 = obj.current_operation
             - else
-              %a.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path} 还款中
-
+              %button.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path}
+                = obj.current_operation
   .product-details
     %ul.nav.nav-tabs{:role => "tablist"}
       %li.active
@@ -111,75 +121,10 @@
             = invests.size
     .tab-content
       #detail.tab-pane.active
-        .lab-val.lab-val-fixed_item-next1
-          %table.table.table-striped
-            %tbody
-              %tr
-                %td 名称
-                %td 定存宝 FX201408210
-              %tr
-                %td 产品介绍
-                %td
-                  定存宝是沃银网推出的对100%本息担保的借款项目进行自动投资的理财计划，多种期限可选，满足出借人不同的流动性需要。出借人出借的本金将在
-                  投资期限届满后一次性返回其账户，利息收益每月返还，并由系统实现自动化的分散投资，更好的满足了出借人的需求。
-              %tr
-                %td 投资范围
-                %td 由合作机构提供100％本息担保的借款项目，包括信用、保证、抵质押等类型
-              %tr
-                %td 年化收益率
-                %td 13.0%
-              %tr
-                %td 加入期
-                %td 2014-08-11 至 2014-09-09
-              %tr
-                %td 加入条件
-                %td 加入金额1,000元起，且以1000元的倍数递增
-              %tr
-                %td 单笔额度上限
-                %td ￥100,000
-              %tr
-                %td 期限
-                %td 3个月
-              %tr
-                %td 到期日
-                %td
-                  至 2014-09-09（ 定存宝V可能提前还款，收益将根据实际投资天数计算，详情请见
-                  %span
-                    %a{:href => "#"} 《 沃银网定存宝V投资协议》
-                  ）
-              %tr
-                %td 到期赎回方式
-                %td 平台自动返还剩余本金和当期利息
-              %tr
-                %td 提前赎回方式
-                %td
-                  期限内支持提前赎回，详情请见
-                  %span
-                    %a{:href => "#"} 《沃银网定存宝投资协议》
-              %tr
-                %td 费用
-                %td
-                  %ul
-                    %li 加入费率： 0.00 %
-                    %li
-                      管理费率：参见
-                      %span
-                        %a{:href => "#"} 《沃银网定存宝V投资协议》
-                    %li 到期赎回费率 0.00 %
-                    %li
-                      提前赎回费率：最低为待收本金的 23.00 %，参见
-                      %span
-                        %a{:href => "#"} 《 沃银网定存宝V投资协议》
-              %tr
-                %td 保障方式
-                %td 100% 本息保障
-              %tr
-                %td 电子回单
-                %td 网上交易保障中心证明该项目的电子回单真实、有效、不可篡改
-              %tr
-                %td 定存宝V协议
-                %td
-                  %a{:href => "#"} 点击查看
+        = render 'month_deposits/product_info', invs: invests
       #prshd.tab-pane
         .product-details-jrjl
+        - if invests.size > 0
           = render 'products/investors', invs: invests
+        - else
+          = render 'products/empty'
