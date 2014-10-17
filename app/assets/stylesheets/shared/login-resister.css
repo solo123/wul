@@ -1,0 +1,35 @@
+.sign-page {
+    margin:5% 0 5% 0;
+}
+.login-media {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.sign-page .col-sm-7, .sign-page .col-md-7{padding-right: 0px;}
+.sign-page .sign-in-img{ text-align:right;display:block; margin-top:50px;}
+.sign-page .col-sm-5, .sign-page .col-md-5{padding-left: 0px;}
+.sign-page .panel-body{ padding-bottom:0px;background-color: #fafafa; margin-bottom: 0px;}
+.sign-page .sign-panelbody{ padding-top:80px;}
+.sign-page .panel-body .form-horizontal .control-label {
+    padding-top: 10px;font-weight: normal;padding-right: 0px;
+}
+.sign-page .form-signin .input-group-addon{background-color: #fff;}
+.sign-page .form-signin .form-control{ height:40px;}
+.sign-page .form-signin .form-group .forget-password{ padding-top:6px;}
+.sign-page .form-signin .form-group .btn-primary{background-color: #00a3d9;border-color: #00a3d9;}
+.sign-page .panel-footer{ padding: 0px 15px;  padding-bottom:100px;
+    background-color: #fafafa;
+    border-top: 0px solid #ddd;}
+.sign-page .register-panel{ margin-top:80px; min-height: 478px;background-color: #FAFAFA;}
+.sign-page .register-panelbody .register-radio .radio-inline{ margin-top:10px; margin-bottom: 30px;}
+.sign-page .form-signin .testincode{padding-right: 0px}
+.sign-page .form-signin .testgetcode{padding-right: 0px}
+.sign-page .form-signin .testgetcode .btn-default{background-color: #ccc; color:#fff;}
+.sign-page .form-signin .testgetcode .btn{padding:9px 12px;}
+.sign-page .register-panelfooter{padding-bottom: 50px;}
+.sign-page .Mailbox-panelfooter{padding-bottom: 100px;}
+.sign-page .panel-footer .tell-wk{ padding-left: 30px;}
+.sign-page .form-horizontal .formsubmit{
+    margin-bottom: 0px;
+}

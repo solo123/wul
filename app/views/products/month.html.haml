@@ -30,10 +30,7 @@
               操作
         %tbody
           - @collection.each do |obj|
-            = render 'month_deposits/list_col_browser', obj: obj
-      .invest-pager-container
-        .invest_pagination
-          = will_paginate @collection, :container => false
+            = render 'fixed_deposits/list_col_browser', obj: obj
 
 
 
