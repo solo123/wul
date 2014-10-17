@@ -92,12 +92,12 @@ $(document).ready(function () {
         },
 
         errorClass : "alert alert-danger",
-        errorElement : "span",
+        errorElement : "span"
       });
 
     $("#reg_form_phone").validate({
         focusInvalid: true,
-        focusCleanup: false,
+        focusCleanup: true,
         onkeyup: false,
         rules: {
             reg_phone: {
@@ -181,16 +181,26 @@ function showResponse(responseText, statusText, xhr, $form) {
 function regsuccess() {
 }
 function enablecode() {
-    $("#getcode").attr('disabled', false)
-    $("#getcode").css('color', 'black')
-    $("#getcode").css('background', 'orange')
+    $("#getcode").attr('disabled', false);
+    $("#getcode").css('color', 'black');
+    $("#getcode").css('background', 'orange');
+    alert("fuc2");
+    $('#reg_phone').popover('destroy');
 }
 
 
 function disablecode() {
-    $("#getcode").attr('disabled',true)
-    $("#getcode").css('background','white')
-    $("#getcode").css('color','#999')
+    $("#getcode").attr('disabled',true);
+    $("#getcode").css('background','white');
+    $("#getcode").css('color','#999');
+    $("#reg_phone").addClass("alert-danger");
+    alert("fuck");
+    $('#reg_phone').popover({
+        content:"该手机号码已经被使用",
+        trigger: "manual click",
+        container: 'body'
+    });
+    $('#reg_phone').popover('show');
 }
 function regfail() {
 }

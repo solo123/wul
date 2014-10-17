@@ -2,7 +2,7 @@
   = javascript_include_tag "validate.js"
   = javascript_include_tag "signup.js"
 
-.sign-page
+.sign-page#page
   .container
     .row
       .col-md-7.col-sm-7
@@ -17,7 +17,7 @@
 
             .register-radio
               %label.radio-inline.col-sm-offset-3.col-sm-4
-                %input#inlineRadio1{:name => "inlineRadioOptions", :type => "radio", :value => "option1"}
+                %input#inlineRadio1{:name => "inlineRadioOptions", :type => "radio", :value => "option1", :checked => true}
                   手机号码注册
               %label.radio-inline.col-sm-offset-1.col-sm-4
                 %input#inlineRadio2{:name => "inlineRadioOptions", :type => "radio", :value => "option2"}
@@ -31,7 +31,7 @@
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-phones.jpg")}
-                        %input.form-control{:type => "text",:autofocus => true, :name => "reg_phone", :placeholder => "请输入您的手机号码"}
+                        %input.form-control#reg_phone{:type => "text",:autofocus => true, :name => "reg_phone", :placeholder => "请输入您的手机号码"}
                   .form-group
                     %label.col-sm-offset-1.col-sm-2.control-label{:for => "reg_code"} 验证码
                     .col-sm-4.testincode
@@ -73,14 +73,14 @@
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-lock.jpg")}
-                        %input.form-control{:type => "password", :name => "reg_email_pass",:placeholder => "请设置密码，不是电子邮件帐户密码"}
+                        %input.form-control#reg_email_pass{:type => "password", :name => "reg_email_pass",:placeholder => "请设置沃银网的密码"}
                   .form-group
                     %label.col-sm-offset-1.col-sm-2.control-label{:for => "reg_email_conf"} 确认密码
                     .col-sm-7
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-lock.jpg")}
-                        %input.form-control{:type => "password", :name => "reg_email_conf",:placeholder => "请确认密码"}
+                        %input.form-control#reg_email_conf{:type => "password", :name => "reg_email_conf",:placeholder => "请确认密码"}
                   .form-group.formsubmit
                     .col-sm-offset-3.col-sm-7
                       %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 立即注册
@@ -90,6 +90,8 @@
                 已有账号，
                 %span
                   %a{:href => "/users/sign_in"} 立即登录
+
+
 
 
 
