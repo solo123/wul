@@ -73,16 +73,17 @@ $(document).ready(function () {
             },
 
             reg_email : {
-                required : "请输入您的邮件地址",
-                email : "请输入有效邮件地址",
-                remote : "该邮件地址已被使用"
+                required : "需要您的邮箱",
+                email : "需要有效邮箱",
+                remote : "该邮箱已被使用"
             }
         },
         errorPlacement: function (error, element) {
             $(element).popover({
                 content:$(error).html(),
                 trigger: "manual click",
-                container: '#reg_panel'
+                container: '#reg_panel',
+                template: '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content error-msg"></div></div>'
             });
             $(element).popover('show');
 //            error.appendTo(element.parent().parent().next());
