@@ -1,0 +1,48 @@
+.sign-page
+  .container
+    .row
+      .col-md-12.col-sm-12
+        .panel.panel-default
+          .panel-heading
+            .panel-title
+              %h4 找回密码
+          .panel-body.find-password-lbody
+            .text-center.reg-steps
+              %img{:src => image_url("main/find-password4.jpg")}
+            .findpassword-succeed
+              %h2.text-center
+                %span.glyphicon.glyphicon-ok
+                恭喜您，您的密码修改成功
+              %p.text-center.mailboxyh 您现在可以通过新密码登录沃银平台进行理财之旅了！
+              %ul
+                %li
+                  %img{:src => image_url("main/mailbox-succeed1.jpg")}/
+                %li
+                  %a.btn.btn-primary.btn-lg{:href => "#", :role => "button"} 立即登录
+                %li
+                  %img{:src => image_url("main/mailbox-succeed4.jpg")}/
+
+.security-identity
+  .container.security-identity-container
+    %ul.row.list-unstyled
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 50元即可加入
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 100%本息担保
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 随时赎回投资
+      %li.col-xs-3
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 服务完全免费
+= cms_snippet_content('footer')

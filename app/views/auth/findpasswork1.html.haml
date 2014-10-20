@@ -1,0 +1,34 @@
+.sign-page
+  .container
+    .row
+      .col-md-12.col-sm-12
+        .panel.panel-default
+          .panel-heading
+            .panel-title
+              %h4 找回密码
+          .panel-body.find-password-lbody
+            .text-center.reg-steps
+              %img{:src => "images/find-password2.jpg"}
+            .col-sm-offset-3.col-sm-9
+              %form#new_user.form-signin.form-horizontal{"accept-charset" => "UTF-8", :action => "/users/sign_in", :method => "post"}
+                .form-group
+                  %label.col-sm-2.control-label{:for => "inputEmail3"} 手机号码
+                  .col-sm-5
+                    .input-group
+                      .input-group-addon
+                        %img{:src => "images/wy-glyphicon-phones.jpg"}
+                      %input.form-control{:placeholder => "请输入您的手机号", :type => "text"}
+                .form-group
+                  %label.col-sm-2.control-label{:for => "inputEmail3"} 验证码
+                  .col-sm-3.testincode
+                    .input-group
+                      .input-group-addon
+                        %img{:src => "images/wy-glyphicon-code.jpg"}
+                      %input.form-control{:placeholder => "输入验证码", :type => "text"}
+                  .col-sm-2.testgetcode
+                    %a.btn.btn-default.btn-block{:href => "#", :role => "button"} 获取验证码
+                .form-group
+                  .col-sm-offset-2.col-sm-5
+                    %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 下一步
+                  .col-xs-2.backsign
+                    %a{:href => "#"} 返回登录
