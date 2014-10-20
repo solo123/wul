@@ -59,7 +59,7 @@ Wooul::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( signup.js validate.js autoinvest.js showproduct.js analyzer.js console.js showmessage.js pager.js)
+  config.assets.precompile += %w( signup.js validate.js autoinvest.js showproduct.js analyzer.js console.js showmessage.js pager.js animate.js)
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

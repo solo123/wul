@@ -2,115 +2,48 @@
 .container.transfer
   .row
     .col-xs-8.product-info-area
-      .model-box.panel.panel-default
-        .head.panel-heading
-          %h3.panel-title
-            = obj.product_name
-            = obj.deposit_number
-
-        .panel-body
-          .profit.row
-            %dl.col-xs-6.block-area
-              %dt 总额度
-              %dd
-                %ins ￥
-                %em
-                  = number_with_precision(obj.total_amount, precision: 0, delimiter: ',')
-            %dl.col-xs-3.block-area
-              %dt 年化收益率
-              %dd
-                %em
-                  = obj.annual_rate.to_i
-                  - num = obj.annual_rate.to_s.split(".")
-                  - frac = num.count > 1 ? num[1].to_s : 0
-                = succeed "%" do
-                  %span .#{frac}
-            %dl.col-xs-3.block-area
-              %dt 投资期限
-              %dd
-                %em
-                  = obj.repayment_period
-                个月
-          .working-day
-            定存宝 每工作日
-            %span 10:30、14:30、20:00
-            更新产品
-          .row.pubdate
-            .col-xs-6
-              %dl.dl-horizontal
-                %dt 发布时间：
-                %dd
-                  = obj.created_at.strftime("%Y-%m-%d")
-            .col-xs-6
-              %dl.dl-horizontal
-                %dt 剩余时间：
-                - rest_time = obj.rest_time
-                %dd #{rest_time[:days]}天#{rest_time[:hours]}时#{rest_time[:minutes]}分
-        .panel-footer
-          .row
-            .col-xs-6
-              %span
-                %img{:src => image_url("main/Principal.jpg")}/
-              100%本息保障
-            .col-xs-6
-              .row
-                .col-xs-4
-                  投标进度：
-                .col-xs-5
-                  .progress.progress-striped.active
-                    .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0",:role => "progressbar", :style => "width: #{obj.current_progress}%;"}
-                      %span.sr-only 40% Complete (success)
-                .col-xs-3
-                  = "#{obj.current_progress}%"
+      = render 'products/product_info', obj:obj
     .col-xs-4.modedqb
-      %form{:method => "post"}
-      = form_tag product_join_path(obj.product_type,obj) do
-        .model-box.panel.panel-default
-          .head.panel-heading
-            %h3.panel-title
-              投资金额
-              %span.text-right 单笔最多可投100,000元
-          .doned.panel-body
-            .input-group
-              %input#product_value.form-control{:autocomplete => "off", :name => "product_value", :type => "text", :value => ""}
-                %span.input-group-addon 元
-            %dl.dl-horizontal
-              %dt 收益处理方式：
-              %dd 收益返还
-              %dt 到期总收益：
-              %dd
-                #profit_rate
-                  = number_with_precision(obj.annual_rate / 12 / 100 * obj.repayment_period , precision: 2)
-                ￥
-                #profit_value
-                  0.00
-            .row
-              .col-xs-3.change-codecol  验证码：
-              .col-xs-9.change-codecol9
-                = show_simple_captcha(:label => "",:code_type => "numeric")
-                -#.simple_captcha.helloooe.row
-                -#  .simple_captcha_field.col-xs-4
-                -#    %input#captcha.form-control{:autocomplete => "off", :name => "captcha", :placeholder => "", :required => "required", :type => "text"}
-                -#    %input#captcha_key{:name => "captcha_key", :type => "hidden", :value => "af45b4406989172453e48eb562e0f7eeb7191edb"}
-                -#  .simple_captcha_image.col-xs-4
-                -#    %img#simple_captcha-af45b440698{:alt => "captcha", :src => "/simple_captcha?code=af45b4406989172453e48eb562e0f7eeb7191edb&amp;time=1413022441"}
-                -#
-                -#  .simple_captcha_refresh_button.col-xs-4
-                -#    %a{"data-remote" => "true", :href => "/simple_captcha?id=simple_captcha-af45b440698"}
-                -#      刷新一下
-            .checkbox
-              %label
-                %input{:type => "checkbox"}
-                  我同意
-              %span
-                %a{:href => "#"} 《沃银网定存宝V投资协议》
-          .panel-footer
-            - if current_user
-              %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"}
-                = obj.current_operation
-            - else
-              %button.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path}
-                = obj.current_operation
+      - if obj.current_stage == "融资中"
+        = form_tag product_join_path(obj.product_type,obj) do
+          .model-box.panel.panel-default
+            .head.panel-heading
+              %h3.panel-title
+                投资金额
+                %span.text-right 单笔最多可投100,000元
+            .doned.panel-body
+              .input-group
+                %input#product_value.form-control{:autocomplete => "off", :name => "product_value", :type => "text", :value => ""}
+                  %span.input-group-addon 元
+              %dl.dl-horizontal
+                %dt 收益处理方式：
+                %dd 收益返还
+                %dt 到期总收益：
+                %dd
+                  #profit_rate
+                    = number_with_precision(obj.annual_rate / 12 / 100 * obj.repayment_period , precision: 2)
+                  ￥
+                  #profit_value
+                    0.00
+              .row
+                .col-xs-3.change-codecol  验证码：
+                .col-xs-9.change-codecol9
+                  = show_simple_captcha(:label => "",:code_type => "numeric")
+              .checkbox
+                %label
+                  %input{:type => "checkbox"}
+                    我同意
+                %span
+                  %a{:href => "#"} 《沃银网定存宝V投资协议》
+            .panel-footer
+              - if current_user
+                %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"}
+                  = obj.current_operation
+              - else
+                %button.btn.btn-primary.btn-lg.btn-block{:href => new_user_session_path}
+                  = obj.current_operation
+      - else
+        = render 'products/showform', obj: obj
   .product-details
     %ul.nav.nav-tabs{:role => "tablist"}
       %li.active
