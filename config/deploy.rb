@@ -16,7 +16,7 @@ set :rvm_path, '/home/mycloud/.rvm/bin/rvm'
 set :force_assets, 1
 set :user, "mycloud"
 set :domain, 'www.wooul.com'
-set :deploy_to, '/home/mycloud/wul_admin'
+set :deploy_to, '/home/mycloud/wul_web'
 set :repository, 'git://github.com/solo123/wul.git'
 set :branch, 'background'
 set :unicorn_pid, "#{deploy_to}/shared/tmp/pids/unicorn.pid"
