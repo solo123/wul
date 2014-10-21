@@ -5,7 +5,7 @@ require 'mina/unicorn'
 require 'mina_sidekiq/tasks'
 # require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 require 'mina/rvm'    # for rvm support. (http://rvm.io)
-set :rvm_path, '/usr/local/rvm/bin/rvm'
+set :rvm_path, '/home/mycloud/.rvm/bin/rvm'
 
 #invoke :'rvm:use[ruby-2.1.1@default]'
 # Basic settings:
@@ -14,9 +14,9 @@ set :rvm_path, '/usr/local/rvm/bin/rvm'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 set :force_assets, 1
-set :user, "wooul"
-set :domain, 'www.weexing.com'
-set :deploy_to, '/home/wooul/www.wooul.com'
+set :user, "mycloud"
+set :domain, 'www.wooul.com'
+set :deploy_to, '/home/mycloud/wul_admin'
 set :repository, 'git://github.com/solo123/wul.git'
 set :branch, 'background'
 set :unicorn_pid, "#{deploy_to}/shared/tmp/pids/unicorn.pid"
@@ -103,7 +103,7 @@ task :firstdeploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     to :launch do
-      queue! %[god -c /home/www/god/startgod.god -l /home/www/god/god.log -P /home/www/god/god.pid]
+      queue! %[god -c /home/mycloud/god/startgod.god -l /home/mycloud/god/god.log -P /home/mycloud/god/god.pid]
     end
   end
 end
