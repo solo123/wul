@@ -18,7 +18,7 @@ development:
   adapter: mysql2
   database: wooul_dev2
   host: localhost
-  username: wooul
+  username: mycloud
   password: 'wqxyy1985'
   encoding: 'utf8'
 
@@ -26,7 +26,7 @@ cms_development:
   adapter: mysql2
   database: wooul_dev2
   host: localhost
-  username: wooul
+  username: mycloud
   password: 'wqxyy1985'
   encoding: 'utf8'
 #development:
@@ -58,7 +58,7 @@ production:
   adapter: mysql2
   database: wooul_dev2
   host: localhost
-  username: wooul
+  username: mycloud
   password: 'wqxyy1985'
   encoding: 'utf8'
 
@@ -66,6 +66,6 @@ cms_production:
   adapter: mysql2
   database: wooul_dev2
   host: localhost
-  username: wooul
+  username: mycloud
   password: 'wqxyy1985'
   encoding: 'utf8'
