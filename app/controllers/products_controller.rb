@@ -81,7 +81,7 @@ class ProductsController < ResourcesController
     end
 
     create_invest(amount, @product, current_user)
-    flash[:success] = "加入正在审核, 请稍后查看"
+    flash[:success2] = "加入正在审核, 请稍后查看"
     redirect_to product_detail_path(@product.product_type, @product.id) and return
   end
 

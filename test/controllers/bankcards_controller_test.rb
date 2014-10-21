@@ -7,13 +7,13 @@ class BankcardsControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index
-    assert_response :success
+    assert_response :success2
     assert_not_nil assigns(:bankcards)
   end
 
   test "should get new" do
     get :new
-    assert_response :success
+    assert_response :success2
   end
 
   test "should create bankcard" do
@@ -26,12 +26,12 @@ class BankcardsControllerTest < ActionController::TestCase
 
   test "should show bankcard" do
     get :show, id: @bankcard
-    assert_response :success
+    assert_response :success2
   end
 
   test "should get edit" do
     get :edit, id: @bankcard
-    assert_response :success
+    assert_response :success2
   end
 
   test "should update bankcard" do
