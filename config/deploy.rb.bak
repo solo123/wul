@@ -14,9 +14,9 @@ set :rvm_path, '/usr/local/rvm/bin/rvm'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 set :force_assets, 1
-set :user, "mycloud"
-set :domain, 'www.wooul.com'
-set :deploy_to, '/home/mycloud/wul_web'
+set :user, "wooul"
+set :domain, 'www.weexing.com'
+set :deploy_to, '/home/wooul/www.wooul.com'
 set :repository, 'git://github.com/solo123/wul.git'
 set :branch, 'background'
 set :unicorn_pid, "#{deploy_to}/shared/tmp/pids/unicorn.pid"
@@ -103,7 +103,7 @@ task :firstdeploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     to :launch do
-      #queue! %[god -c /home/www/god/startgod.god -l /home/www/god/god.log -P /home/www/god/god.pid]
+      queue! %[god -c /home/www/god/startgod.god -l /home/www/god/god.log -P /home/www/god/god.pid]
     end
   end
 end
