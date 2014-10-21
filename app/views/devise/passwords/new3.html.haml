@@ -8,35 +8,31 @@
               %h4 找回密码
           .panel-body.find-password-lbody
             .text-center.reg-steps
-              %img{:src => image_url("main/find-password1.jpg")}
+              %img{:src => image_url("main/find-password2.jpg") }
             .col-sm-offset-3.col-sm-9
               %form#new_user.form-signin.form-horizontal{"accept-charset" => "UTF-8", :action => "/users/sign_in", :method => "post"}
                 .form-group
-                  %label.col-sm-2.control-label{:for => "inputEmail3"} 用户名
+                  %label.col-sm-2.control-label{:for => "inputEmail3"} 手机号码
                   .col-sm-5
                     .input-group
                       .input-group-addon
-                        %img{:src => image_url("main/wy-glyphicon-user.jpg")}
-                      %input.form-control{:placeholder => "请输入手机号/注册邮箱", :type => "text"}
+                        %img{:src => image_url("main/wy-glyphicon-phones.jpg")}
+                      %input.form-control{:placeholder => "请输入您的手机号", :type => "text"}
                 .form-group
                   %label.col-sm-2.control-label{:for => "inputEmail3"} 验证码
-                  .simple_captcha.helloooe
-                    .simple_captcha_field.col-sm-3.testincode
-                      .input-group
-                        .input-group-addon
-                          %img{:src => image_url("main/wy-glyphicon-code.jpg")}
-                        %input#captcha.form-control{:autocomplete => "off", :name => "captcha", :placeholder => "", :required => "required", :type => "text"}
-                          %input#captcha_key{:name => "captcha_key", :type => "hidden", :value => "af45b4406989172453e48eb562e0f7eeb7191edb"}
-                    .simple_captcha_image.col-xs-2
-                      %img#simple_captcha-af45b440698{:alt => "captcha", :src => "/simple_captcha?code=af45b4406989172453e48eb562e0f7eeb7191edb&amp;time=1413022441"}
-                    .simple_captcha_refresh_button.col-xs-2.backsign
-                      %a{"data-remote" => "true", :href => "/simple_captcha?id=simple_captcha-af45b440698", :t => ""}
-                        刷新一下
+                  .col-sm-3.testincode
+                    .input-group
+                      .input-group-addon
+                        %img{:src => image_url("main/wy-glyphicon-code.jpg")}
+                      %input.form-control{:placeholder => "输入验证码", :type => "text"}
+                  .col-sm-2.testgetcode
+                    %a.btn.btn-default.btn-block{:href => "#", :role => "button"} 获取验证码
                 .form-group
-                  .col-xs-offset-2.col-sm-5
+                  .col-sm-offset-2.col-sm-5
                     %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 下一步
                   .col-xs-2.backsign
                     %a{:href => "#"} 返回登录
+
 .security-identity
   .container.security-identity-container
     %ul.row.list-unstyled

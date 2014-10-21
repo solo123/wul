@@ -7,13 +7,13 @@ class AnalyzersControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index
-    assert_response :success
+    assert_response :success2
     assert_not_nil assigns(:analyzers)
   end
 
   test "should get new" do
     get :new
-    assert_response :success
+    assert_response :success2
   end
 
   test "should create analyzer" do
@@ -26,12 +26,12 @@ class AnalyzersControllerTest < ActionController::TestCase
 
   test "should show analyzer" do
     get :show, id: @analyzer
-    assert_response :success
+    assert_response :success2
   end
 
   test "should get edit" do
     get :edit, id: @analyzer
-    assert_response :success
+    assert_response :success2
   end
 
   test "should update analyzer" do

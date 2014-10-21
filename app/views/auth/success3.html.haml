@@ -1,19 +1,21 @@
 .sign-page
   .container.mailbox-succeed
     %div
-      %h2.text-center.mobile-succeed-size
+      %h2.text-center
         %span.glyphicon.glyphicon-ok
         恭喜您，注册成功
-      %p.text-center.mailboxyh
+      %p.text-center.mailboxyh 我们给您的邮箱发送了一封验证邮件，请按照邮箱里的提示在24小时内激活你的账户。
       %ul
         %li
           %img{:src => image_url("main/mailbox-succeed1.jpg")}/
         %li
-          %a.btn.btn-primary.btn-lg{:href => new_user_session_path} 立即登录
+          %a.btn.btn-primary.btn-lg.mailbox-btn-size{:href => new_user_session_path}前往邮箱查看
+          %span
+            没有找到？
+            %a{:href => "#"} 再次发送
         %li
-          %img{:src => image_url("main/mailbox-succeed2.jpg")}/
-      %p.mailboxmy 立即登录完善个人信息
-
+          %img{:src => image_url("main/mailbox-succeed3.jpg")}/
+      %p.mailboxmy
 .security-identity
   .container.security-identity-container
     %ul.row.list-unstyled

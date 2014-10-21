@@ -7,13 +7,13 @@ class CouponsControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index
-    assert_response :success
+    assert_response :success2
     assert_not_nil assigns(:coupons)
   end
 
   test "should get new" do
     get :new
-    assert_response :success
+    assert_response :success2
   end
 
   test "should create coupon" do
@@ -26,12 +26,12 @@ class CouponsControllerTest < ActionController::TestCase
 
   test "should show coupon" do
     get :show, id: @coupon
-    assert_response :success
+    assert_response :success2
   end
 
   test "should get edit" do
     get :edit, id: @coupon
-    assert_response :success
+    assert_response :success2
   end
 
   test "should update coupon" do

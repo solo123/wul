@@ -7,13 +7,13 @@ class OrdersControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index
-    assert_response :success
+    assert_response :success2
     assert_not_nil assigns(:orders)
   end
 
   test "should get new" do
     get :new
-    assert_response :success
+    assert_response :success2
   end
 
   test "should create order" do
@@ -26,12 +26,12 @@ class OrdersControllerTest < ActionController::TestCase
 
   test "should show order" do
     get :show, id: @order
-    assert_response :success
+    assert_response :success2
   end
 
   test "should get edit" do
     get :edit, id: @order
-    assert_response :success
+    assert_response :success2
   end
 
   test "should update order" do
