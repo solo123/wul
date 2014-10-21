@@ -5,7 +5,7 @@ require 'mina/unicorn'
 require 'mina_sidekiq/tasks'
 # require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 require 'mina/rvm'    # for rvm support. (http://rvm.io)
-set :rvm_path, '/usr/local/rvm/bin/rvm'
+set :rvm_path, '/home/mycloud/.rvm/bin/rvm'
 
 #invoke :'rvm:use[ruby-2.1.1@default]'
 # Basic settings:
