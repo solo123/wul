@@ -1,5 +1,7 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "animate.js"
 %section.home-product-list
-  .row
+  .row#fixed
     - Product.where(:display => "show", :product_type=> "fixed").limit(3).each_with_index do |obj, idx|
       = render 'fixed_deposits/item', obj: obj
   

@@ -58,3 +58,41 @@
   height: 1%; }
 *:first-child + html .invest_pagination {
   overflow: hidden; }
+
+
+
+.message-box {
+  position:relative;
+  width:180px;
+  height:30px;
+  line-height:30px;
+  background:#00a3d9;
+  box-shadow:1px 2px 3px #E9FBE4;
+  border:1px solid #C9E9C0;
+  border-radius:4px;
+  text-align:center;
+  color:#333333;
+  font-size:12px;
+}
+.triangle-border {
+  position:absolute;
+  left:-15px;
+  overflow:hidden;
+  width:0;
+  height:0;
+  border-width:8px;
+  border-style:solid dashed dashed dashed;
+}
+.tb-background {
+  bottom:6px;
+  border-color: transparent #00a3d9 transparent transparent;
+}
+.tb-border {
+  bottom:6px;
+  border-color: transparent #00a3d9 transparent transparent;
+}
+
+.error-msg {
+  font-size:11px;
+  color: #00a3d9;
+}
