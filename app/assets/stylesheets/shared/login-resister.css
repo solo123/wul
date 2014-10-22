@@ -53,3 +53,13 @@ ul, ol {
 .sign-page .find-password-lbody{ background-color:#fff; padding-top:20px; padding-bottom:150px;}
 .sign-page .find-password-lbody .backsign { padding-top:12px; padding-left:0px;}
 .sign-page .find-password-lbody .backsign a{ color:#0099cc;}
+.sign-page .find-password-lbody .findpassword-user{
+    margin-left:280px;color:#555;
+}
+.sign-page .find-password-lbody .findpassword-select{
+    width:600px; height:80px; border:1px solid #e5e5e5; border-radius:6px; margin-left:255px; margin-top:20px; padding:15px 0 0 10px;
+}
+.sign-page .find-password-lbody .findpassword-select strong{ font-size:16px;color:#333;}
+.sign-page .find-password-lbody .findpassword-select p{ margin-top:5px; color:#555;}
+.sign-page .find-password-lbody .findpassword-select .btn{padding: 8px 22px; margin-top:5px; font-size:16px;}
+.sign-page .find-password-select{ padding-bottom:70px;}
