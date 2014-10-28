@@ -1,5 +1,5 @@
 .col-xs-4
-  .item-list.panel.panel-default
+  .item-list.panel.panel-default.fixed-invest
     .panel-heading
       .panel-title
         %a{:href => "#"}
@@ -14,22 +14,27 @@
         %dl.col-xs-6.term-info.text-center
           %dt #{obj.repayment_period}个月
           %dd 借款期限
-      %p.safe-info
-        公司成立于2005年11月15日，注册资本500万元，为自然人独资有限责任公司。公司主营业务为国内知名品牌肉类产品销售。公司所在地交通便利，独特的区位优势为公司...
+      %p.safe-info.text-center
+        %span
+          %img{:src => image_url("main/Principal.jpg")}/
+        100%本息保障
       .progress-area
         .row
           .col-xs-7
             %p.progress-info
-              剩余金额
+              剩余金额：
               %strong #{obj.free_invest_amount}
           .col-xs-5
-            %p.progress-info.text-center
-              当前进度
+            %p.progress-info
+              当前进度：
               %strong #{obj.current_progress}%
         .progress.progress-striped.active
           .progress-bar.progress-bar-success.progress-bar-striped{"aria-valuemax" => "100",  "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{obj.current_progress}%;"}
             %span.sr-only
               23 Complete
+        %p.number-info.text-center
+          %strong #{obj.owner_num}
+          人次已加入
     .panel-footer
-      %a.btn.btn-success.btn-block{:href => product_detail_path("fixed",obj)} 1人次已加入 | 马上加入
+      %a.btn.btn-success.btn-block{:href => product_detail_path("fixed",obj)} 查看详情
     %a.link-block{:href => product_detail_path("fixed",obj)} 查看详情

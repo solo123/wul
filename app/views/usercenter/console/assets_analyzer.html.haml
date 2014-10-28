@@ -7,7 +7,7 @@
 .actuary
   %ul
     %a{:href => "#"}
-      %li#column1.size1of4.act-border
+      %li#column1.col-xs-3.act-border
         %ul
           %li.actli-ye1
             账户余额
@@ -22,7 +22,7 @@
               = current_user.user_info.account.balance
             %span.badge.act-badge ?
     %a{:href => "#"}
-      %li#column2.size1of4.act-border
+      %li#column2.col-xs-3.act-border
         %ul
           %li.actli1-ye1
             账户总资产
@@ -32,7 +32,7 @@
             %span
               = @analyzer.total_invest_amount + current_user.user_info.account.balance
     %a{:href => "#"}
-      %li#column3.size1of4.act-border
+      %li#column3.col-xs-3.act-border
         %ul
           %li.actli1-ye1
             累计净收益
@@ -41,7 +41,7 @@
             ￥
             %span + 0.00
     %a{:href => "#"}
-      %li#column4.size1of4.act-border.actlast-li
+      %li#column4.col-xs-3.act-border.actlast-li
         %ul
           %li.actli1-ye1
             加权收益率
@@ -51,8 +51,7 @@
             \%
 #column1-area.actuary1
   .title-items
-    %h2 账号余额
-    %b.line
+    %h3 账号余额
   %table.table.table-bordered
     %thead
       %tr.light-bj
