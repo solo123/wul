@@ -1,0 +1,245 @@
+/* CSS Document */
+ul, ol {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.wrapper{
+  background-color:#fafafa;
+  border:1px solid #e5e5e5;
+  margin-top:20px;
+  margin-bottom:30px;
+  border-radius:4px;
+}
+aside.sidebar {
+  margin-right: 0;
+  padding: 40px 0 30px 0px;
+  border-right: 1px solid #00a3d9;
+  box-shadow: none;
+  min-height: 720px;
+  color:#333;
+
+}
+.wrapper{
+  background-color:#fafafa;
+  border:1px solid #e5e5e5;
+}
+.wrapper .wrapperbode{
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.sidebar .accout-avatar{
+  border-bottom:1px solid #e5e5e5;
+  padding-left:40px;
+}
+.sidebar .accout-avatar strong{
+  font-size:18px;
+}
+.sidebar .accout_ye {
+  margin: 10px 0 30px 0;
+}
+.sidebar .accout_ye strong{
+  font-size:14px;
+}
+.sidebar .accout_ye a{
+  color:#00a3d9;
+}
+.sidebar .accout_ts {
+  padding: 30px 15px 0 40px;
+  border-bottom:1px solid #e5e5e5;
+}
+.sidebar .accout_ts img{
+  padding-right:10px;
+}
+.sidebar .accout-progress {
+  margin: 25px 15px 10px 0;
+}
+.sidebar .accout-progress .progress{
+  height:15px;
+  border-radius:15px;
+}
+.sidebar .accout-progress .progress .progress-bar-success{
+  background-color: #9eca2f;
+}
+.sidebar .accout-progress a{
+  color:#00a3d9;
+}
+.sidebar .accout-progress .col-xs-4{
+  padding-left: 0px;
+}
+.sidebar .sidebar-nav {
+  margin: 15px 0;
+}
+.sidebar .nav-pills>li.active>a, .sidebar .nav-pills>li.active>a:hover, .sidebar .nav-pills>li.active>a:focus {
+  color: white;
+  background-color: #00a3d9;
+  border-radius: 0;
+}
+.sidebar .nav-pills>li.active>a span, .sidebar .nav-pills>li.active>a span:hover, .sidebar .nav-pills>li.active>a span:focus {
+  color: white;
+
+}
+.sidebar .sidebar-nav li a {
+  font-size:16px;
+  padding: 15px 40px;
+  color:#555;
+}
+.sidebar .accout_ts a {
+  margin-right: 8px;
+}
+.btn-small {
+  padding: 8px;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+.sidebar .accout_ts .btn{
+  border: 1px solid #afe0f0;
+  padding: 16px 13px;
+}
+.sidebar .accout_ts .btn-success{
+  background-color: #9eca2f;
+  border-color: #9eca2f;
+}
+.sidebar .sidebar-nav li span{ padding-right:25px; color:#c7cdd2;
+}
+.light-org {
+  color: #fc9b5e;
+}
+.light-skyblue{ color:#00a3d9;}
+/*.console-page-area .loan-tum{ margin-top:40px; padding-left:20px; padding-right:20px;}
+.console-page-area .loan-tum .loan-box{ border:1px solid #000; border-radius:0 6px 6px 6px;}
+.console-page-area .loan-tum .items:first-child{border-top:1px solid #555;}
+.console-page-area .loan-tum .items{;padding-right: 0px;
+padding-left: 0px;}
+.console-page-area .loan-tum .items li {
+float: left; border-bottom:1px solid #555
+}
+
+.console-page-area .loan-tum .items li span{ border-right:1px solid #555; height:50px;
+padding-top:18px;
+}*/
+.console-page-area .usermain{padding-right: 25px; padding-left: 25px;}
+.userloanbjco{ background-color:#f7fdff;
+}
+.console-page-area .title-items{
+  margin-top:40px;
+  height: 50px;
+  border: 1px solid #d3d8dc;
+  border-bottom:0px;
+  border-radius:6px 6px 0 0;
+  width:18%;
+  background-color:#fff;
+}
+.console-page-area .title-items h3{
+  text-align:center;
+  margin-top:0px;
+  margin-bottom:0px;
+  font-size:18px;
+  font-weight: bold;
+  color:#333;
+  padding:15px 0 15px 0;
+}
+.console-page-area .model-box{border: 1px solid #d3d8dc;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius:0 6px 6px 6px;
+  zoom: 1;}
+.console-page-area .loan-tum .head {
+  height: 60px;
+  background:#f7fdff;
+  line-height: 50px;
+  padding: 0 15px;
+  position: relative;
+}
+.console-page-area .loan-tum .head h2 {
+  padding-left:15px;
+  font-size: 18px;
+  float: left;
+  display: inline;
+  position: relative;
+  font-weight:700;
+}
+.console-page-area .loan-tum .head .r {
+  color:#909090;
+  float: right;
+}
+.console-page-area .loan-parame-post {
+  border-top: 1px solid #e9edef;
+  overflow: hidden;
+  background-color:#fff;
+  zoom: 1;
+}
+.console-page-area .loan-parame-post .items {
+  border-bottom: 1px solid #e9edef;
+  height: 59px;
+  line-height: 59px;
+}
+.console-page-area .loan-parame-post li {
+  position: relative;
+}
+.console-page-area .loan-parame-post li {
+  float: left;
+  display: inline;
+  border-left: 1px solid #e9edef;
+  height: 59px;
+  width: 49%;
+  margin-left: -1px;
+}
+.console-page-area .loan-parame-post span{
+  padding-left:30px;
+}
+.console-page-area .loan-parame-post .tit {
+  display: inline-block;
+  border-right: 1px solid #e9edef;
+  width:40%;
+}
+.console-page-area .loan-parame-post .tet {
+  width:60%;
+  padding-right: 0px;
+}
+.console-page-area .loan-parame-post .tet .col-xs-9{
+  padding-right: 0px;
+  padding-left: 5px;
+}
+.console-page-area .loan-parame-post .tet .col-xs-3{
+  padding-right: 0px;
+  padding-left: 0px;
+  text-align: center;
+}
+.console-page-area .loan-parame-post .tet .progress{
+  height: 15px; margin-top: 22px; margin-bottom: 20px; border-radius:10px;
+}
+.console-page-area .loan-parame-post .tet .progress .progress-bar-success {
+  background-color: #9eca2f;
+}
+.console-page-area .plan-post li {
+  position: relative;
+  float: left;
+  display: inline;
+  border-left: 1px solid #e9edef;
+  height: 59px;
+  width: 100%;
+  margin-left: -1px;
+}
+.console-page-area .plan-post span {
+  padding-left: 30px;
+
+}
+.console-page-area .plan-post .tit {
+  display: inline-block;
+  border-right: 1px solid #e9edef;
+  width:19.5%;
+}
+.console-page-area .plan-post .tit:last-child {
+  border-right: 0px solid #e9edef;
+}
+
+.console-page-area .plan-stats {
+  margin-top:75px;
+  padding: 20px;
+  margin-bottom: 20px;
+}

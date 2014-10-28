@@ -20,8 +20,8 @@ class UserInfo < ActiveRecord::Base
 
 
    def create_back_account
-    op = AccountOperation.new(:op_name => "account", :op_action => "create", :uinfo_id => self.id, :operator => "system" )
-    op.execute_transaction
+    # op = AccountOperation.new(:op_name => "account", :op_action => "create", :uinfo_id => self.id, :operator => "system" )
+    # op.execute_transaction
    end
 
 

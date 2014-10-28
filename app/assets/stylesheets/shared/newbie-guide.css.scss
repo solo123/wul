@@ -1,0 +1,18 @@
+/* CSS Document */
+.guide-banner {
+  width: 100%;
+  height: 400px;
+  background: image_url("main/guide-banner.jpg") no-repeat center center;
+}
+.guide-meet{ margin-top:80px; margin-bottom:80px;}
+.guide-meet h2{ color:#0099cc; font-size:48px; font-weight:bold;}
+.guide-meet .page-header {
+  width:350px;
+  border-bottom: 1px solid #addfef; margin-top:0px;
+}
+.guide-meet .guide-title{ }
+.guide-meet .guid_cont .media{ padding-top:100px;}
+.guide-meet .guid_cont .media .media-object{ border:3px solid #9fc830; border-radius:10px;}
+.guide-meet .guid_cont .media .media-body{ padding-left:20px; width:240px;}
+.guide-meet .guid_cont .guid_contright{ padding-left:45px;}
+.guide-product .guide-title{ padding-top:40px; padding-bottom:50px;}
