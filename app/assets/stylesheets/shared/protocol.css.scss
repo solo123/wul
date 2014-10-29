@@ -1,0 +1,125 @@
+
+.wrapper{ margin-top:30px;border: 1px solid #e7ecee; margin-bottom:30px;}
+.wrapper .title-sub {
+  position: relative;
+  height: 40px;
+  margin-left:50px;
+  border-bottom: 1px solid #e7ecee;
+  clear: both;
+  margin: 0 30px;
+}
+.wrapper .title-sub a{
+  float:left;
+}
+.wrapper .title-sub .button-back .toback {
+  left: 0;
+  right: auto;
+}
+.wrapper  .title-sub .toback {
+  position: absolute;
+  right: 1020px;
+  top: 20px;
+  z-index: 5;
+  float: left;
+  height: 35px;
+  line-height: 30px;
+  width: 70px;
+  background: #e8ecef;
+  text-align: center;
+  color: #475058;
+  padding-top:2px;
+  padding-left:5px;
+}
+.wrapper  .title-sub h2, .title-sub .r {
+  font-size: 18px;
+  height: 30px;
+  line-height: 30px;
+  color: #69737b;
+  position: absolute;
+  left: 100px;
+  top: 0px;
+  z-index: 3;
+  padding: 5px 15px;
+  background: #fff;
+}
+.wrapper  .content-post {
+  padding: 30px 0;
+  margin: 0 30px;
+  min-height: 450px;
+  height: auto !important;
+  height: 450px;
+  _overflow: visible;
+}
+.wrapper  .content-post .laws_h3 {
+  padding: 20px 0 5px;
+  text-align: center;
+  font-size: 16px;
+}
+.wrapper  .content-post .laws_items {
+  position: relative;
+  height: 40px;
+  overflow: hidden;
+}
+.wrapper  .content-post .laws_items .r {
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  color: #8a949c;
+  left: auto;
+  right: 40px;
+  top: 5px;
+  z-index: 3;
+  background: #fff;
+  padding: 0 15px;
+}
+.wrapper  .content-post .laws_items .pdf_word {
+  position: relative;
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  color: #475058;
+}
+.wrapper  .content-post .laws_items .line {
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+  float: left;
+  background: #e7ecee;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 20px;
+}
+.wrapper  .content-post .laws_items .pdf_word a, .pdf_word a:visited {
+  color: #475058;
+}
+.wrapper .content-post .laws_text {
+  color: #475058;
+  padding: 10px;
+}
+.wrapper .content-post .laws_text p{ text-indent:2em;line-height: 25px;
+  margin-bottom:0px;
+}
+.wrapper .content-post .laws_text .tab {
+  width: 1000px;
+  overflow: hidden;
+  position: relative;
+}
+.wrapper .content-post .laws_text .tab table {
+  width: 1000px;
+  border-collapse: collapse;
+  border: 1px solid #e7ecee;
+}
+.wrapper .content-post .laws_text .tab table tr {
+  height: 40px;
+}
+.wrapper .content-post .laws_text .tab table td {
+  border: 1px solid #d0d3d8;
+  text-align: center;
+  min-width:50px;
+}
+.wrapper .content-post .wooul-protocal p{
+  padding-top:5px; padding-bottom:5px;
+}

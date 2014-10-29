@@ -1,7 +1,6 @@
 
-
 .home-area-header{
-	margin:50px 0;	
+	margin:35px 0;
 }
 
 .home-area-header p{
@@ -45,6 +44,7 @@
 
 .home-safe-tips .media{
 	min-height:120px;
+  margin-top: 0px;
 }
 .home-safe-tips .media .intro{
 	color:#999;
@@ -52,8 +52,9 @@
 	font-size:24px;
 }
 .home-safe-tips .media .pull-left{
-	margin-right: 20px;
+	margin-right: 40px;
 }
+
 .home-safe-tips .media .home-safe-icon {
 	display:block;
 	width:150px;
@@ -83,7 +84,7 @@
 
 .home-fixed-area{}
 .home-fixed-area .home-product-list{
-	margin:22px 0 32px 0;
+	margin:22px 0 20px 0;
 }
 
 
@@ -122,10 +123,10 @@
 
 .home-product-list .panel .panel-heading .badge{ padding:8px; border-radius: 15px; background:#CCC; font-weight:normal;}
 
-
 .home-product-list .panel .panel-footer{
-	border-radius:0 0 10px 10px;
+  border-radius:0 0 10px 10px;
 }
+
 
 /*.home-product-list .item-list .number-info{	text-align:center; color:#999;}
 .home-product-list .item-list .number-info strong{	font-size:150%; font-weight:normal; color: #333;}
@@ -156,17 +157,19 @@
 .home-product-list .item-list .pro-info dl dd{ color:#999; }
 .home-product-list .item-list .pro-info .yidld-info{}
 
-.home-product-list .item-list .safe-info{ text-align:center; margin:20px 0 30px 0;}
+.home-product-list .item-list .safe-info{ color:#555; margin:10px 10px 20px 10px; line-height:20px;}
 
-.home-product-list .item-list .progress-area .progress{height: 18px; border-radius: 10px;}
-.home-product-list .item-list .progress-area .progress-info{ color:#999; }
-.home-product-list .item-list .progress-area .progress-info strong{ font-size:120%; font-weight:normal; color: #ff6600; }
+.home-product-list .item-list .progress-area{ padding-left: 10px;  padding-right: 10px;}
+.home-product-list .item-list .progress-area .progress{height: 18px; border-radius: 10px;  margin-right:10px; margin-bottom:10px;}
+.home-product-list .item-list .progress-area .progress-info{ color:#555; padding-bottom:5px;}
+.home-product-list .item-list .progress-area .progress-info strong{ font-size:100%; font-weight:normal; color: #555; }
+.home-product-list .item-list .progress-area .progress-bar-success{background-color: #9eca2f;}
 
 .home-product-list .item-list .amount{ text-align:center; color:#999; }
 .home-product-list .item-list .amount strong{ font-size:150%; font-weight:normal; color: #F60; }
 
 .home-product-list .item-list .panel-footer{padding: 0px 0px; border-top: 0px solid #ddd;}
-.home-product-list .item-list .panel-footer a{ text-align:right; padding-right:20px;}
+.home-product-list .item-list .panel-footer a{ padding-right:20px;}
 .home-product-list .item-list .panel-footer .btn{ border-radius:0px 0px 7px 7px;}
 .home-product-list .item-list .panel-footer .btn-success{ background-color: #00a3d9;
   border-color: #00a3d9;}
@@ -185,33 +188,39 @@
   margin-bottom:20px;
   margin-top:20px;
   border-radius: 4px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 .yyy-list:hover{
   border:1px solid #f28558;
 }
 .home-product-list  .table > tbody > tr > td{
   border-top:0px solid #f28558;
+  padding-top: 0px;
 }
 
 .yyy-list-progress{
   border-right:1px dashed #069;
   margin-top:10px;
   margin-bottom:10px;
-  padding-left:20px;
-  padding-right:0px;
+  padding-left:0px;
+  padding-right:20px;
+
 }
 .yyy-list-btn{
   padding: 2px 4px;
   background:#0099cc;
 }
-.home-product-list .table-list .td-list  dl{ padding-top:15px;}
+/*.home-product-list .table-list .td-list  dl{ padding-top:15px;}
 .home-product-list .table-list .td-list .dl-horizontal dt{ width:130px; font-weight:normal; padding-top:5px;}
-.home-product-list .table-list .td-list .dl-horizontal dd{ margin-left:135px;color: #ff6600; font-size:18px; padding-top:2px;}
+.home-product-list .table-list .td-list .dl-horizontal dd{ margin-left:135px;color: #ff6600; font-size:18px; padding-top:2px;}*/
+.home-product-list .table-list .td-list .dl-horizontal dt{ text-align:left; width:85px; font-weight:normal; padding-top:5px;}
+.home-product-list .table-list .td-list .dl-horizontal dd{ margin-left:90px;color: #ff6600; font-size:18px; margin-right:35px; padding-top:3px;}
 .yyy-product-progress{ margin-top:15px;}
 .yyy-product-progress .progress{ height: 15px;
-  border-radius: 4px;}
+  border-radius: 10px;}
 .progress-digit{padding-left: 0px;}
-.yyy-product-progress ul{ padding: 20px 10px 0 0px; padding-left: 0px;}
+.yyy-product-progress ul{ padding: 20px 0px 0 0px; padding-left: 0px;}
 .yyy-product-progress .btn-primary{background-color: #00a3d9;border-color: #00a3d9;}
 .yyy-product-progress .time-icon{ padding-bottom:10px; text-align:center;}
 
@@ -219,11 +228,24 @@
 .yyy-list-progress dl{ padding-top:15px;}
 .yyy-list-progress dt{ width:130px; font-weight:normal; padding-top:5px;}
 .yyy-list-progress dd{ margin-left:135px;color: #ff6600; font-size:18px; padding-top:2px;}
-.danbao{ text-align: left; padding-top: 20px; padding-left:2px; min-width: 108px;}
+.yyy-list-progress .zyzq-h4{ text-align: left; padding-left: 35px; margin-bottom: 0px;}
+.yyy-list-progress .danbao{ text-align: left; padding-top: 20px; padding-left:35px; min-width: 108px;}
+
+.footnav-findpasswordbj .footer-address img{ margin-top:10px; margin-bottom:20px;}
 
 
+.home-product-list .yyy-list-titlogo{ background-color:#f2f2f2; height:132px; text-align:center; width:150px; padding-top:25px; margin-right:38px;}
+.progress{
+  border-radius:10px;
+}
 
-
+.progress-bar-success {
+  background-color: #9eca2f;
+}
+.yyy-list-progress .yyy-transfer{
+  padding-left:0px;
+}
+.ys-guaranty{}
 
 
 
