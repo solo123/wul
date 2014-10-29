@@ -1,6 +1,6 @@
 
 .home-area-header{
-	margin:50px 0;	
+	margin:35px 0;
 }
 
 .home-area-header p{
@@ -44,6 +44,7 @@
 
 .home-safe-tips .media{
 	min-height:120px;
+  margin-top: 0px;
 }
 .home-safe-tips .media .intro{
 	color:#999;
@@ -51,8 +52,9 @@
 	font-size:24px;
 }
 .home-safe-tips .media .pull-left{
-	margin-right: 20px;
+	margin-right: 40px;
 }
+
 .home-safe-tips .media .home-safe-icon {
 	display:block;
 	width:150px;
@@ -82,7 +84,7 @@
 
 .home-fixed-area{}
 .home-fixed-area .home-product-list{
-	margin:22px 0 32px 0;
+	margin:22px 0 20px 0;
 }
 
 
@@ -194,6 +196,7 @@
 }
 .home-product-list  .table > tbody > tr > td{
   border-top:0px solid #f28558;
+  padding-top: 0px;
 }
 
 .yyy-list-progress{
@@ -225,7 +228,8 @@
 .yyy-list-progress dl{ padding-top:15px;}
 .yyy-list-progress dt{ width:130px; font-weight:normal; padding-top:5px;}
 .yyy-list-progress dd{ margin-left:135px;color: #ff6600; font-size:18px; padding-top:2px;}
-.danbao{ text-align: left; padding-top: 20px; padding-left:2px; min-width: 108px;}
+.yyy-list-progress .zyzq-h4{ text-align: left; padding-left: 35px; margin-bottom: 0px;}
+.yyy-list-progress .danbao{ text-align: left; padding-top: 20px; padding-left:35px; min-width: 108px;}
 
 .footnav-findpasswordbj .footer-address img{ margin-top:10px; margin-bottom:20px;}
 
