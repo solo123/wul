@@ -1,6 +1,10 @@
-%h1.page-header 投资赎回
+- content_for :javascript_includes do
+  = javascript_include_tag "redemption.js"
+.console-header-info
+  %h1.page-header 投资赎回
 - type_dict = {"onsale" => "button", "normal" => "submit"}
 - value_dict = {"onsale" => "赎回中", "normal" => "赎回"}
+- input_dict = {"onsale" => true, "normal" => false}
 .detail_container
   .col-md-12
     %ul.nav.nav-tabs{:role=>"tablist"}
@@ -31,12 +35,21 @@
               = form_tag usercenter_console_resell_path do
                 %tr
                   = hidden_field_tag :invest_id, f.id
-                  %td= f.loan_number
-                  %td  #{number_with_precision f.annual_rate, precision: 2}%
-                  %td= "1"
-                  %td= f.amount
-                  %td= text_field_tag :discount_rate, nil, class: 'amount form-control'
-                  %td= f.amount
+                  %td.vertical-center
+                    = f.loan_number
+                  %td.vertical-center
+                    #{number_with_precision f.annual_rate, precision: 2}%
+                  %td.vertical-center
+                    = "1"
+                  %td.vertical-center
+                    .origin_value
+                      = f.amount
+                  %td{:style=>"width:20%"}
+                    %input.number_range{:type => "text", :value=>"0.00", :name=>"discount",:class=>"col-xs-8 form-control",:disabled=>input_dict[f.stage] }
+                  -#%td= text_field_tag :discount_rate, nil, class: 'amount form-control'
+                  %td.vertical-center
+                    .discount_value
+                      = f.amount
                   %td
                     - if f.product.premature_redemption == "yes"
                       %input.btn.btn-primary{:type => type_dict[f.stage] ,:value => value_dict[f.stage]}

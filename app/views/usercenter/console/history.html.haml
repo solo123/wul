@@ -8,8 +8,7 @@
   - queries = params.except(*request.path_parameters.keys)
   - condi = {}
   - conds = {}
-  - dict = {'all' => '全部',
-             'charge' => '充值',
+  - dict = {  'charge' => '充值',
              'pull' => '提现',
              'invest' => '投资产品',
              'profit' => '收回利息',
@@ -20,8 +19,14 @@
     %dt
       起止日期
     %dd
-      - {'all' => '全部',
-         'week' => '最近7天',
+      - condi[:filter] =queries[:filter]
+      - if !queries[:date_range]
+        %a.timeType.selected{:href => usercenter_console_history_path(condi)}
+          全部
+      - else
+        %a.tradeType{:href => usercenter_console_history_path(condi)}
+          全部
+      - {'week' => '最近7天',
                  'month' => '1个月内',
                  'month2' => '2个月内',
                  'month3' => '3个月内' }.each do |k, v|
@@ -39,6 +44,14 @@
     %dt
       交易类型
     %dd
+      - conds[:date_range] = queries[:date_range]
+      - if !queries[:filter]
+        %a.timeType.selected{:href => usercenter_console_history_path(conds)}
+          全部
+      - else
+        - conds[:filter] = nil
+        %a.tradeType{:href => usercenter_console_history_path(conds)}
+          全部
       - dict.each do |k, v|
         - conds[:date_range] = queries[:date_range]
         - conds[:filter] = k

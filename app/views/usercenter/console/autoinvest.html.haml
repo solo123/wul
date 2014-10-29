@@ -5,13 +5,8 @@
 - color_dict = ["red", "green"]
 - input_status = [false,true]
 - status = @delagator.status
-.acc1
-  自动投资
-.acc2
-  %a{:href => "#"}
-    %img{:src => image_url("account5.jpg")}
-.acc3
-  您还没有进入排行榜,请再接再厉
+.console-header-info
+  %h1.page-header 自动投资
 .Auto-invest
   = form_for(@delagator, html: {class: "form-signin", id:"auto_invest_form", method: "post"}, :url => usercenter_setup_auto_invest_path) do |f|
     = f.hidden_field :status
@@ -77,13 +72,13 @@
     %li.tool-i1
       自动投资工具说明
     %li
-      1、自动投资工具仅适用于月息通项目；
+      1、自动投资工具仅适用于月月盈项目；
     %li
-      2、在有利网充过值的用户可以开启自动投资；
+      2、在沃银网充过值的用户可以开启自动投资；
     %li
-      3、月息通项目进入投资状态十分钟后，才会启动自动投资；
+      3、月月盈项目进入投资状态十分钟后，才会启动自动投资；
     %li
-      4、月息通项目投资进度超过95%之后，将停止自动投资；
+      4、月月盈项目投资进度超过95%之后，将停止自动投资；
     %li
       5、自动投资工具会根据用户设置的每次投资金额、最小投资金额，结合用户的账户可用余额向符合设置条件的
     %li

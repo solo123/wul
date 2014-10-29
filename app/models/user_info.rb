@@ -10,7 +10,7 @@ class UserInfo < ActiveRecord::Base
 	belongs_to :user
   attr_accessor :sec_progress
 
-  #after_create :create_delagator
+  after_create :create_delagator
   after_create :create_back_account
   def create_verification
    vef = Verification.new
@@ -20,8 +20,8 @@ class UserInfo < ActiveRecord::Base
 
 
    def create_back_account
-    # op = AccountOperation.new(:op_name => "account", :op_action => "create", :uinfo_id => self.id, :operator => "system" )
-    # op.execute_transaction
+    op = AccountOperation.new(:op_name => "account", :op_action => "create", :uinfo_id => self.id, :operator => "system" )
+    op.execute_transaction
    end
 
 

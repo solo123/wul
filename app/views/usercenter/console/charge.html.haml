@@ -31,15 +31,20 @@
   - queries = params.except(*request.path_parameters.keys)
   - condi = {}
   - conds = {}
-  - dict = {'all' => '全部',
-             'charge' => '充值',
-             'pull' => '提现',}
+  - dict = { 'charge' => '充值',
+             'pull' => '提现'}
   %dl.filter-items
     %dt
       起止日期
     %dd
-      - {'all' => '全部',
-         'week' => '最近7天',
+      - condi[:filter] =queries[:filter]
+      - if !queries[:date_range]
+        %a.timeType.selected{:href => usercenter_console_charge_path(condi)}
+          全部
+      - else
+        %a.tradeType{:href => usercenter_console_charge_path(condi)}
+          全部
+      - {'week' => '最近7天',
                  'month' => '1个月内',
                  'month2' => '2个月内',
                  'month3' => '3个月内' }.each do |k, v|
@@ -57,6 +62,14 @@
     %dt
       交易类型
     %dd
+      - conds[:date_range] = queries[:date_range]
+      - if !queries[:filter]
+        %a.timeType.selected{:href => usercenter_console_charge_path(conds)}
+          全部
+      - else
+        - conds[:filter] = nil
+        %a.tradeType{:href => usercenter_console_charge_path(conds)}
+          全部
       - dict.each do |k, v|
         - conds[:date_range] = queries[:date_range]
         - conds[:filter] = k
@@ -80,7 +93,9 @@
         %th
           金额(¥) | 明细
         %th
-          可用余额(¥)
+          操作前余额(¥)
+        %th
+          操作后余额(¥)
       - @transactions.each do |t|
         %tr
           %td
@@ -91,6 +106,8 @@
             银联
           %td
             =t.operation_amount
+          %td
+            =t.account_before
           %td
             =t.account_after
       -#
@@ -114,18 +131,6 @@
       -#    5.00
       -#    %span.glyphicon.glyphicon-collapse-down
       -#  %td.text-center 1,000.47
-  .trade-table-pagination.text-center
-    %ul.pagination
-      %li
-        %a{:href=> "#"} &laquo;
-      %li
-        %a{:href=> "#"} 1
-      %li
-        %a{:href=> "#"} 2
-      %li
-        %a{:href=> "#"} 3
-      %li
-        %a{:href=> "#"} &raquo;
 
   .digg_pagination
     .page_info

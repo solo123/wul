@@ -68,6 +68,7 @@ class AccountOperation < ActiveRecord::Base
     invest.asset_id = self.op_asset_id
     invest.amount = self.op_amount
     invest.loan_number = product.deposit_number
+    invest.annual_rate = product.annual_rate
     invest.owner_name = userinfo.user.username
     userinfo.invests << invest
     product.invests << invest

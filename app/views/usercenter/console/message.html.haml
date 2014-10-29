@@ -1,28 +1,84 @@
-%h1.page-header 系统消息
-.detail_container
-  .col-md-12
-    .panel
-      .panel-body
-        %table.table
-          %tr
-            %th 标题
-            %th 时间
-            %th 状态
-            %th 重要性
-          - @messages.each do |m|
-            %tr
-              %td
-                = m.title
-              %td
-                = m.created_at.strftime("%Y-%m-%d %H:%M:%S")
-              %td
-                = m.read_status
-              %td
-                普通
-              %td
-                %a{:href => usercenter_console_message_path(:message_id => m.id, :pattern => 'detail')}
-                  查看
-      .digg_pagination
-        .page_info
-          = page_entries_info @messages
-        = will_paginate @messages, :container => false
+.console-header-info
+  %h1.page-header 系统消息
+.filter-box.trade-filter
+  - queries = params.except(*request.path_parameters.keys)
+  - condi = {}
+  - conds = {}
+  - dict = { '0' => '通知',
+             '1' => '紧急',
+             '2' => '重要'}
+  %dl.filter-items
+    %dt
+      起止日期
+    %dd
+      - condi[:filter] =queries[:filter]
+      - if !queries[:date_range]
+        %a.timeType.selected{:href => usercenter_console_message_path(condi)}
+          全部
+      - else
+        %a.tradeType{:href => usercenter_console_message_path(condi)}
+          全部
+      - {'week' => '最近7天',
+                 'month' => '1个月内',
+                 'month2' => '2个月内',
+                 'month3' => '3个月内' }.each do |k, v|
+
+        - condi[:date_range] = k
+        - if queries[:date_range] == k
+          %a.timeType.selected{:href => usercenter_console_message_path(condi)}
+            = v
+        - else
+          %a.tradeType{:href => usercenter_console_message_path(condi)}
+            =v
+
+  %dl.filter-items
+    %dt
+      重要性
+    %dd
+      - conds[:date_range] = queries[:date_range]
+      - if !queries[:filter]
+        %a.timeType.selected{:href => usercenter_console_message_path(conds)}
+          全部
+      - else
+        - conds[:filter] = nil
+        %a.tradeType{:href => usercenter_console_message_path(conds)}
+          全部
+      - dict.each do |k, v|
+        - conds[:filter] = k
+        - if queries[:filter] == k
+          %a.tradeType.selected{:href => usercenter_console_message_path(conds)}
+            = v
+        - else
+          %a.tradeType{:href => usercenter_console_message_path(conds)}
+            =v
+.console-list-area.trade-table
+  %table.table
+    %tbody
+      %tr
+        %th
+          概要
+        %th
+          时间
+        %th
+          状态
+        %th
+          重要性
+        %th
+          操作
+      - @messages.each do |t|
+        %tr
+          %td
+            = t.title
+          %td
+            = t.created_at.strftime("%Y-%m-%d %H:%M:%S")
+          %td
+            = t.read_status
+          %td
+            普通
+          %td
+            %a{:href => usercenter_console_message_path(:message_id => t.id, :pattern => 'detail')}
+              查看
+  .digg_pagination
+    .page_info
+      = page_entries_info @messages
+    = will_paginate @messages, :container => false

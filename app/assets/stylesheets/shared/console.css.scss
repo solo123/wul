@@ -142,6 +142,7 @@
 .console-list-area .table > tfoot > tr > th, 
 .console-list-area .table > tfoot > tr > td{
   padding:15px 5px;
+  text-align:center;
 }
 
 
@@ -536,3 +537,5 @@
   border-bottom:2px solid #f0f4f7;
   height:220px;
 }
+
+.vertical-center{padding-top:20px!important}
