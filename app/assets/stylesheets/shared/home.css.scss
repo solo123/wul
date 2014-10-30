@@ -1,6 +1,8 @@
-
+.container {
+  width: 1170px;
+}
 .home-area-header{
-	margin:35px 0;
+	margin:35px 0 25px 0;
 }
 
 .home-area-header p{
@@ -23,7 +25,7 @@
 }
 .home-area-header .home-stat strong{
 	font-weight:normal;
-	font-size:22px; 
+	font-size:22px;
 	color:#ff6600;
 }
 .home-area-header .home-stat p{
@@ -32,7 +34,7 @@
 
 .home-area-header .text-muted{ padding-left:10px; color:#000;}
 .home-area-header span{ font-size:14px;}
-.home-area-header strong{ color: #ff6600; font-size:22px; text-align:right; font-weight:500;}
+.home-area-header strong{font-size:22px; text-align:right;}
 .home-area-header .intro span{ color: #ff6600; }
 
 
@@ -207,15 +209,19 @@
   padding-right:20px;
 
 }
+.yyy-list-progress .yyy-h4{ color: #069;}
+.yyy-list-progress .yyy-danbao{padding-left:20px; font-size: 14px;
+  color: #555;}
 .yyy-list-btn{
   padding: 2px 4px;
   background:#0099cc;
+  color: #2A6496;
 }
 /*.home-product-list .table-list .td-list  dl{ padding-top:15px;}
 .home-product-list .table-list .td-list .dl-horizontal dt{ width:130px; font-weight:normal; padding-top:5px;}
 .home-product-list .table-list .td-list .dl-horizontal dd{ margin-left:135px;color: #ff6600; font-size:18px; padding-top:2px;}*/
-.home-product-list .table-list .td-list .dl-horizontal dt{ text-align:left; width:85px; font-weight:normal; padding-top:5px;}
-.home-product-list .table-list .td-list .dl-horizontal dd{ margin-left:90px;color: #ff6600; font-size:18px; margin-right:35px; padding-top:3px;}
+.home-product-list .table-list .td-list .dl-horizontal dt{ width:84px; font-weight:normal; padding-top:5px;}
+.home-product-list .table-list .td-list .dl-horizontal dd{ margin-left:90px;color: #ff6600; font-size:18px; margin-right:30px; padding-top:3px;}
 .yyy-product-progress{ margin-top:15px;}
 .yyy-product-progress .progress{ height: 15px;
   border-radius: 10px;}
