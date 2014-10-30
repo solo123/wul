@@ -1,5 +1,5 @@
 class InvestsController < ApplicationController
-  before_action :set_invest, only: [:show, :edit, :update, :destroy]
+  before_action :set_invest, only: [:edit, :update, :destroy]
   # GET /invests
   # GET /invests.json
   def index
@@ -15,7 +15,7 @@ class InvestsController < ApplicationController
       flash[:notice] = "验证码不正确"
       redirect_to invest_path(params[:invest_id]) and return
     end
-    invest = Invest.find(params[:invest_id])
+    invest = Invest.friendly.find(params[:invest_id])
     buyer_balance = current_user.user_info.account.balance
 
     if buyer_balance < invest.resell_price
@@ -60,6 +60,7 @@ class InvestsController < ApplicationController
   # GET /invests/1
   # GET /invests/1.json
   def show
+      @invest = Invest.friendly.find(params[:id])
   end
 
   def detail

@@ -25,7 +25,7 @@
           ?
       %dd
         ￥
-        = @deposit.total_estate
+        = @analyzer.total_invest_amount + @deposit.balance
   .col-md-3.item-row
     %dl
       %dt
@@ -36,7 +36,8 @@
       %dt
         可用余额
       %dd
-        ￥12222.00
+        ￥
+        = @deposit.balance - @deposit.frozen_balance
         %span.badge ?
   .col-md-3.item-row
     %dl
@@ -44,7 +45,8 @@
         账户总资产
         %span.badge ?
       %dd
-        ￥22222.00
+        ￥
+        = @analyzer.total_invest_amount + @deposit.balance
 .console-content.jumbotron
   %p 初来乍到，您还没有任何记录，快去完成新手任务，领取超多奖励!
   %a.btn.btn-primary.btn-lg{:href => "#"} 立即查看

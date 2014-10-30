@@ -45,8 +45,11 @@
                     .origin_value
                       = f.amount
                   %td{:style=>"width:20%"}
-                    %input.number_range{:type => "text", :value=>"0.00", :name=>"discount",:class=>"col-xs-8 form-control",:disabled=>input_dict[f.stage] }
-                  -#%td= text_field_tag :discount_rate, nil, class: 'amount form-control'
+                    - if f.product.premature_redemption == "yes"
+                      %input.number_range{:type => "text", :value=>"0.00", :name=>"discount",:class=>"col-xs-8 form-control",:disabled=>input_dict[f.stage] }
+                    - else
+                      %input.number_range{:type => "text", :value=>"0.00", :name=>"discount",:class=>"col-xs-8 form-control",:disabled=> true }
+
                   %td.vertical-center
                     .discount_value
                       = f.amount

@@ -3,6 +3,8 @@ class Invest < ActiveRecord::Base
   belongs_to :product
   has_many :invest_profits
   attr_accessor :product_name
+  extend FriendlyId
+  friendly_id :invest_number
 
   def resell(rate)
     self.onsale = true
@@ -10,6 +12,7 @@ class Invest < ActiveRecord::Base
     self.discount_rate = rate
     self.save!
   end
+
 
   def create_transaction(account)
     trans = Transaction.new

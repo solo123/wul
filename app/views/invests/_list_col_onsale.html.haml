@@ -2,8 +2,7 @@
   %td
     %span.badge
       = dict[obj.invest_type]
-    %a{:href => invest_path(obj)}
-      ="#{obj.loan_number}"
+    = link_to "#{obj.loan_number}", invest_path(obj.invest_number)
   %td
     #{obj.product.annual_rate} %
   %td
@@ -13,9 +12,8 @@
   %td
     #{obj.amount}
   %td
-    %a.btn.btn-info{:href => invest_path(obj)}
+    %a.btn.btn-primary.btn-sm.index-item{:href => invest_path(obj.invest_number)}
       购买
-
 
 
 

@@ -13,6 +13,8 @@ Wooul::Application.routes.draw do
 
   resources :coupons
 
+  resources :agreements
+
   resources :bankcards
 
   resources :accounts

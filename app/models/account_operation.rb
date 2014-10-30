@@ -1,4 +1,5 @@
 class AccountOperation < ActiveRecord::Base
+  require 'securerandom'
   belongs_to :user_info
   require 'net/https'
   require 'json'
@@ -7,7 +8,12 @@ class AccountOperation < ActiveRecord::Base
   $query_url = "http://127.0.0.1:8080/accounting/account/query_cmd"
   attr_accessor :op_obj, :op_id_head
   belongs_to :user_info
+  SALT_BYTE_SIZE = 12
 
+
+  def create_invest_id(deposit_number)
+    return deposit_number + SecureRandom.hex(SALT_BYTE_SIZE).to_s
+  end
 
   def execute_transaction
     if !self.op_id_head
@@ -68,8 +74,10 @@ class AccountOperation < ActiveRecord::Base
     invest.asset_id = self.op_asset_id
     invest.amount = self.op_amount
     invest.loan_number = product.deposit_number
-    invest.annual_rate = product.annual_rate
     invest.owner_name = userinfo.user.username
+    invest.invest_number = self.create_invest_id(product.deposit_number)
+    invest.annual_rate = product.annual_rate
+
     userinfo.invests << invest
     product.invests << invest
 
@@ -103,9 +111,9 @@ class AccountOperation < ActiveRecord::Base
     Account.update_balance(self.uinfo_id, buyer_balance)
     Transaction.createTransaction("buy", self.op_amount, buyer_balance, buyer_balance + self.op_amount, self.uinfo_id,  invest.loan_number, invest.product.product_type)
     Account.update_balance(self.uinfo_id2, self.op_result_value2)
-    Transaction.createTransaction("sell", self.op_amount, seller_balance, seller_balance - self.op_amount, self.uinfo_id2,  invest.loan_number, invest.product.product_type)
+    Transaction.createTransaction("sell", self.op_amount, seller_balance - self.op_amount, seller_balance, self.uinfo_id2,  invest.loan_number, invest.product.product_type)
     invest.user_info_id = self.uinfo_id
-    invest.owner_name = self.user_info.user.username
+    # invest.owner_name = self.user_info.user.username
     invest.onsale = false
     invest.stage = "normal"
     invest.save!

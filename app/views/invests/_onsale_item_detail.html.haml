@@ -1,31 +1,12 @@
--#.detail_container
--#  .col-md-5
--#    .panel{class: "panel-info"}
--#      .panel-heading
--#        %h4 定存投资 #{obj.loan_number}
--#      .panel-body
--#        %p.info
--#          金额: #{obj.amount}
--#        %p.info
--#          年化收益率: #{obj.product.annual_rate}%
--#        %p.info
--#          剩余期限:
--#          #{obj.product.repayment_period}
--#          个月
--#      .panel-footer
--#        %p.actions
--#
--#  .col-md-1
--#  .col-md-4
--#    = render "invests/buy_form", obj: obj
--#
 - obj = inv.product
 .container.transfer
   .row
     .col-md-8.modedqb1
       .model-box
         .head
-          %h2 定期宝A140613
+          %h2
+            = obj.product_name
+            = obj.deposit_number
 
         .zyzqxq
           %ul.zyzqxq1-1

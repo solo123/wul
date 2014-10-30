@@ -55,7 +55,7 @@
             = invests.size
     .tab-content
       #detail.tab-pane.active
-        = render 'fixed_deposits/product_info', invs: invests
+        = render 'fixed_deposits/product_info', invs: invests, obj:obj
       #prshd.tab-pane
         .product-details-jrjl
           - if invests.size > 0
