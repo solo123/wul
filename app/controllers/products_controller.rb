@@ -47,6 +47,9 @@ class ProductsController < ResourcesController
   end
 
   def join
+    if !current_user
+      redirect_to new_user_session_path and return
+    end
     @product = Product.friendly.find(params[:id])
     limit = 100000
     amount = params[:product_value].to_i

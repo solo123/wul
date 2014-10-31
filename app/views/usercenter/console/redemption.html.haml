@@ -31,31 +31,32 @@
               %th 折让率
               %th 赎回金额
               %th 赎回
-            - @fixed_deposits.each do |f|
+            - @fixed_deposits.each do |dep|
               = form_tag usercenter_console_resell_path do
                 %tr
-                  = hidden_field_tag :invest_id, f.id
+                  = hidden_field_tag :invest_id, dep.id
                   %td.vertical-center
-                    = f.loan_number
+                    = dep.loan_number
                   %td.vertical-center
-                    #{number_with_precision f.annual_rate, precision: 2}%
+                    #{number_with_precision dep.annual_rate, precision: 2}%
                   %td.vertical-center
                     = "1"
                   %td.vertical-center
                     .origin_value
-                      = f.amount
+                      = dep.amount
                   %td{:style=>"width:20%"}
-                    - if f.product.premature_redemption == "yes"
-                      %input.number_range{:type => "text", :value=>"0.00", :name=>"discount",:class=>"col-xs-8 form-control",:disabled=>input_dict[f.stage] }
+                    - if dep.product.premature_redemption == "yes" && dep.stage == "normal"
+                      = text_field_tag :discount_rt, dep.discount_rate, class: "discount_number"
+                      = hidden_field_tag :discount_rate, dep.discount_rate
                     - else
-                      %input.number_range{:type => "text", :value=>"0.00", :name=>"discount",:class=>"col-xs-8 form-control",:disabled=> true }
+                      %input.number_range#discount_rate{:type => "text", :value=>"0.00", :name=>"discount_rate",:class=>"col-xs-8 form-control",:disabled=> true }
 
                   %td.vertical-center
                     .discount_value
-                      = f.amount
+                      = dep.amount
                   %td
-                    - if f.product.premature_redemption == "yes"
-                      %input.btn.btn-primary{:type => type_dict[f.stage] ,:value => value_dict[f.stage]}
+                    - if dep.product.premature_redemption == "yes"
+                      %input.btn.btn-primary{:type => type_dict[dep.stage] ,:value => value_dict[dep.stage]}
                     - else
                       %input.btn.btn-default{:type => "button",:value => "无效" ,:disabled => "true"}
       %div.tab-pane{:id=>"month"}
@@ -70,7 +71,7 @@
               %th 赎回金额
               %th 赎回
             - @month_deposits.each do |f|
-              = form_tag usercenter_console_resell_path do
+              = form_tag (usercenter_console_resell_path) do
                 %tr
                   = hidden_field_tag :invest_id, f.id
                   %td= f.loan_number
