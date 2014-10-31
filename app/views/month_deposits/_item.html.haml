@@ -3,13 +3,13 @@
     %img{:src => image_url("main/yyy-logo.png")}/
   .col-xs-8.yyy-list-progress
     %table.table-list
-      %h4
+      %h4.yyy-h4
         %button.btn.btn-primary.yyy-list-btn{:type => "button"} 月
         月月盈
         %span.yyy-list-title
           %a.a-inline{:href => product_detail_path("month",obj)}
             = obj.deposit_number
-        %span
+        %span.yyy-danbao
           %img{:src => image_url("main/yisheng-icons.jpg")}/
           银盛支付担保
       %tbody
