@@ -1,20 +1,19 @@
-.model-box
-  .head
-    %h2 转让信息
-  .doned-left.doned-zyxx
-    %ul
-      %li
-        %ul.dldd.doned-zyxxgm
-          %li 购买价格
-          %li
-            ￥<span">
-            = number_with_precision(inv.resell_price, precision: 0, delimiter: ',')
-      %li
-        %ul.dldd
-          %li 预期收益
-          - profit = inv.amount * obj.remain_repayment_period * obj.annual_rate.to_i / 12 / 100
-          %li
-            ￥<span">
-            = number_with_precision(profit, precision: 0, delimiter: ',')
-      %li
-        .btn.btn-primary 已转让
+.head.panel-heading
+  %h3.panel-title
+    投资金额
+    %small.text-right 单笔最多可投100,000元
+.doned.panel-body
+  .input-group.zyzqxq-group
+    %strong
+      ￥
+      %span
+        = number_with_precision(inv.resell_price, precision: 0, delimiter: ',')
+
+  %dl.dl-horizontal
+    %dt 收益处理方式
+    %dd 收益返还
+    %dt 到期总收益
+    %dd ￥ 0.00
+.panel-footer
+  %button.btn.btn-primary.btn-lg.btn-block{:type => "button"}
+    已转让

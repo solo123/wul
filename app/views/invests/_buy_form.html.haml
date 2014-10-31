@@ -1,42 +1,34 @@
-.head.panel-heading
-  %h3.panel-title
-    投资金额
-    %small.text-right 单笔最多可投100,000元
-.doned.panel-body
-  .input-group.zyzqxq-group
-    %strong
-      ￥
-      %span
-        888.00
+= form_tag invest_buy_path(inv) do
+  .head.panel-heading
+    %h3.panel-title
+      投资金额
+      %small.text-right 单笔最多可投100,000元
+  .doned.panel-body
+    .input-group.zyzqxq-group
+      %strong
+        ￥
+        %span
+          = number_with_precision(inv.resell_price, precision: 0, delimiter: ',')
 
-  %dl.dl-horizontal
-    %dt 收益处理方式
-    %dd 收益返还
-    %dt 到期总收益
-    %dd ￥ 0.00
-  .row
-    .col-xs-3.change-codecol 验证码：
-    .col-xs-9.change-codecol9
-      :javascript
-        $(document).ready(function(){
-          $("#captcha").addClass("form-control");
-          $(".simple_captcha_refresh_button>a").html("<span class=\"glyphicon glyphicon-refresh\"></span>");
-        });
-      .simple_captcha.helloooe.row
-        .simple_captcha_field.col-md-4
-          %input#captcha.form-control{:autocomplete => "off", :name => "captcha", :placeholder => "", :required => "required", :type => "text"}/
-          %input#captcha_key{:name => "captcha_key", :type => "hidden", :value => "0f81007700a72814dac9e559e80f2f795a504091"}/
-        .simple_captcha_image.col-md-4
-          %img#simple_captcha-e71f1aabd07{:alt => "captcha", :src => "/simple_captcha?code=0f81007700a72814dac9e559e80f2f795a504091&time=1414726429"}/
-        .simple_captcha_refresh_button.col-md-2
-          %a{"data-remote" => "true", :href => "/simple_captcha?id=simple_captcha-e71f1aabd07"}
-            %span.glyphicon.glyphicon-refresh
-  .checkbox
-    %label
-      %input{:type => "checkbox"}/
-      我同意
-    %span
-      %a{:href => "#"} 《债券转让协议》
-.panel-footer
-  %button.btn.btn-primary.btn-lg.btn-block{:href => "/users/sign_in"}
-    加入
+    %dl.dl-horizontal
+      %dt 收益处理方式
+      %dd 收益返还
+      %dt 到期总收益
+      %dd ￥ 0.00
+    .row
+      .col-xs-3.change-codecol 验证码：
+      .col-xs-9.change-codecol9
+        = show_simple_captcha(:label => "",:code_type => "numeric")
+    .checkbox
+      %label
+        %input{:type => "checkbox"}/
+        我同意
+      %span
+        %a{:href => "#"} 《债券转让协议》
+  .panel-footer
+    - if inv.onsale
+      %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"}
+        购买
+    - else
+      %button.btn.btn-primary.btn-lg.btn-block{:type => "button"}
+        已转让

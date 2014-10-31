@@ -25,7 +25,9 @@
     .col-xs-8.product-info-area
       .model-box.panel.panel-default.zyzqxq-modelbox
         .head.panel-heading
-          %h3.panel-title 长期借款：
+          %h3.panel-title
+            = obj.product_name
+            = obj.deposit_number
         .panel-body
           .profit.row.zyzqxq
             %ul.col-xs-3.zyzqxq-message
@@ -39,37 +41,44 @@
                   %dt 购买价格
                   %dd
                     ￥
-                    %span 889.71
+                    %span
+                      = number_with_precision(inv.resell_price, precision: 0, delimiter: ',')
               %li
                 %dl
                   %dt 债权价值
                   %dd
                     ￥
-                    %span 889.71
+                    %span
+                      = number_with_precision(inv.amount, precision: 0, delimiter: ',')
             %ul.col-xs-3.pro-user
               %li.pro-user-bod
                 %dl
                   %dt 实际收益率
                   %dd
-                    %span 12.69
-                    \%
+                    %span
+                      = obj.annual_rate.to_i
+                      \%
               %li
                 %dl
                   %dt 年化收益率
                   %dd
-                    %span 12.69
-                    \%
+                    %span
+                      = obj.annual_rate.to_i
+                      \%
             %ul.col-xs-3.pro-user.lastboul
               %li.pro-user-bod
                 %dl
                   %dt 剩余期限
                   %dd
-                    %span 10
+                    %span
+                    = obj.remain_repayment_period
                     个月
               %li
                 %dl
                   %dt 原还款期限
-                  %dd 24个月
+                  %dd
+                    = obj.repayment_period
+                    个月
           .zyzqxq-Purpose
             %strong 借款用途说明
             客户在常州市某民营企业工作，收入稳定，本借款用于资金周转。本借款于2013年7月16日通过捷越联合及安家世行审核并被推荐。
@@ -192,65 +201,11 @@
                     %td.text-center 0次
       #prshd.tab-pane
         .product-details-jrjl
-          %table.table.table-striped.product-details-border
-            %thead
-              %tr
-                %th 投资人
-                %th 加入金额
-                %th 加入时间
-                %th 状态
-            %tbody
-              %tr
-                %td 134***223
-                %td 1222.0
-                %td 2014-10-08 09:01
-                %td
-                  %span.glyphicon.glyphicon-ok
-                  成功
-              %tr
-                %td 134***223
-                %td 1222.0
-                %td 2014-10-08 09:01
-                %td
-                  %span.glyphicon.glyphicon-ok
-                  成功
-              %tr
-                %td 134***223
-                %td 1222.0
-                %td 2014-10-08 09:01
-                %td
-                  %span.glyphicon.glyphicon-ok
-                  成功
-              %tr
-                %td 134***223
-                %td 1222.0
-                %td 2014-10-08 09:01
-                %td
-                  %span.glyphicon.glyphicon-ok
-                  成功
-              %tr
-                %td 134***223
-                %td 1222.0
-                %td 2014-10-08 09:01
-                %td
-                  %span.glyphicon.glyphicon-ok
-                  成功
-          .text-center
-            %ul.pagination
-              %li
-                %a{:href => "#"} 《上一页
-              %li
-                %a{:href => "#"} 1
-              %li
-                %a{:href => "#"} 2
-              %li
-                %a{:href => "#"} 3
-              %li
-                %a{:href => "#"} 下一页》n-ok>
+          - if invests.size > 0
+            = render 'products/investors', invs: invests
+          - else
+            = render 'products/empty'
 
 
 
 
-
-
->
