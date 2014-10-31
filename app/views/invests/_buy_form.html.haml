@@ -3,9 +3,12 @@
     投资金额
     %small.text-right 单笔最多可投100,000元
 .doned.panel-body
-  .input-group
-    %input#product_value.form-control{:autocomplete => "off", :name => "product_value", :type => "text", :value => ""}/
-    %span.input-group-addon 元
+  .input-group.zyzqxq-group
+    %strong
+      ￥
+      %span
+        888.00
+
   %dl.dl-horizontal
     %dt 收益处理方式
     %dd 收益返还
@@ -33,7 +36,7 @@
       %input{:type => "checkbox"}/
       我同意
     %span
-      %a{:href => "#"} 《沃银网定存宝V投资协议》
+      %a{:href => "#"} 《债券转让协议》
 .panel-footer
   %button.btn.btn-primary.btn-lg.btn-block{:href => "/users/sign_in"}
     加入
