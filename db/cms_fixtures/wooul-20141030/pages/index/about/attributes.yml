@@ -1,0 +1,8 @@
+---
+label: "关于Wooul"
+layout: about-wooul
+parent: index
+target_page: "/about/company"
+categories: []
+is_published: true
+position: 9
