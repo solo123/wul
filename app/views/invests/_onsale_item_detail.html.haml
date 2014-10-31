@@ -1,202 +1,256 @@
+-#.detail_container
+-#  .col-md-5
+-#    .panel{class: "panel-info"}
+-#      .panel-heading
+-#        %h4 定存投资 #{obj.loan_number}
+-#      .panel-body
+-#        %p.info
+-#          金额: #{obj.amount}
+-#        %p.info
+-#          年化收益率: #{obj.product.annual_rate}%
+-#        %p.info
+-#          剩余期限:
+-#          #{obj.product.repayment_period}
+-#          个月
+-#      .panel-footer
+-#        %p.actions
+-#
+-#  .col-md-1
+-#  .col-md-4
+-#    = render "invests/buy_form", obj: obj
+-#
 - obj = inv.product
 .container.transfer
   .row
-    .col-md-8.modedqb1
-      .model-box
-        .head
-          %h2
-            = obj.product_name
-            = obj.deposit_number
-
-        .zyzqxq
-          %ul.zyzqxq1-1
-            %li.size1of4.zyzqxq1.zyzq-borri
-              %ul
-                %li
-                  %button.btn.btn-default{:type => "button"} 购买信息
-                %li
-                  %button.btn.btn-default{:type => "button"} 债权信息
-            %li.size1of4.zyzqxq2.zyzq-borri
-              %ul
-                %li
-                  %p.zyzpp1 购买价格
-                  %p.zyzpp2
+    .col-xs-8.product-info-area
+      .model-box.panel.panel-default.zyzqxq-modelbox
+        .head.panel-heading
+          %h3.panel-title 长期借款：
+        .panel-body
+          .profit.row.zyzqxq
+            %ul.col-xs-3.zyzqxq-message
+              %li
+                %a.btn.btn-default{:type => "button"} 购买信息
+              %li
+                %a.btn.btn-default{:type => "button"} 债权信息
+            %ul.col-xs-3.pro-user
+              %li.pro-user-bod
+                %dl
+                  %dt 购买价格
+                  %dd
                     ￥
-                    %span.zyzpp2-1
-                      = number_with_precision(inv.resell_price, precision: 0, delimiter: ',')
-                %li
-                  %p.zyzpp1 债权价值
-                  %p.zyzpp2
+                    %span 889.71
+              %li
+                %dl
+                  %dt 债权价值
+                  %dd
                     ￥
-                    %span.zyzpp2-2
-                      = number_with_precision(inv.amount, precision: 0, delimiter: ',')
-            %li.size1of4.zyzqxq2.zyzq-borri
-              %ul
-                %li
-                  %p.zyzpp1
-                    实际收益率
-                    %span.badge ?
-                  %p.zyzpp2
-                    %span.zyzpp2-2 12.76
+                    %span 889.71
+            %ul.col-xs-3.pro-user
+              %li.pro-user-bod
+                %dl
+                  %dt 实际收益率
+                  %dd
+                    %span 12.69
                     \%
-                %li
-                  %p.zyzpp1
-                    年化收益率
-                    %span.badge ?
-                  %p.zyzpp2
-                    %span.zyzpp2-2
-                      = obj.annual_rate.to_i
-                      \%
-            %li.size1of4.zyzqxq2
-              %ul
-                %li
-                  %p.zyzpp1 剩余期限
-                  %p.zyzpp2
-                    %span.zyzpp2-1
-                      = obj.remain_repayment_period
+              %li
+                %dl
+                  %dt 年化收益率
+                  %dd
+                    %span 12.69
+                    \%
+            %ul.col-xs-3.pro-user.lastboul
+              %li.pro-user-bod
+                %dl
+                  %dt 剩余期限
+                  %dd
+                    %span 10
                     个月
-                %li
-                  %p.zyzpp1 原还款期限
-                  %p.zyzpp2
-                    %span.zyzpp2-2
-                      = obj.repayment_period
-                    个月
-        .usage
-          %p
-            %span 借款用途说明
-            客户在深圳市某国营企业工作，收入稳定，本借款用于资金周转。本借款已通过证大速贷及证东咨询初审并被推荐至有利网；推荐方提供...
-            %a{:href => "#"} [详情]
-        .exp2
-          %ul
-            %li.size1of2 发布时间：2014.06.21
-            %li.size1of2
-              %p<
-                %img{:src => image_url("main/wytz5.png")}
-                ="100%本息保障"
+              %li
+                %dl
+                  %dt 原还款期限
+                  %dd 24个月
+          .zyzqxq-Purpose
+            %strong 借款用途说明
+            客户在常州市某民营企业工作，收入稳定，本借款用于资金周转。本借款于2013年7月16日通过捷越联合及安家世行审核并被推荐。
+          .panel-footer
+            .row
+              .col-xs-6
+                %span.tit 下次回款日期
+                %span 2014.09.12
+              .col-xs-6
+                %span
+                  %img{:src => image_url("main/Principal.jpg")}/
+                100%本息保障
+
     .col-md-4.modedqb
-      .model-box
+      .model-box.panel.panel-default.zyzqxq-modedqb
         - if inv.onsale
           = render "buy_form", inv:inv, obj:obj
         - else
           = render "sold_form", inv:inv, obj:obj
-  .dqbxq
+  .product-details
     %ul.nav.nav-tabs{:role => "tablist"}
       %li.active
         %a.tab-item{"data-toggle" => "tab", :href => "#detail", :role => "tab"} 产品详情
       %li
         %a.tab-item{"data-toggle" => "tab", :href => "#prshd", :role => "tab"}
           加入记录
-          %span.badge
-            = invests.size
-    / Tab panes
+          %span.badge 15
     .tab-content
       #detail.tab-pane.active
-        %table.table.table-striped.dqbxq-border
-          %thead
-            %tr
-              %th 名称
-              %th
-                = obj.product_name
-                = obj.deposit_number
-          %tbody
-            %tr
-              %td 产品介绍
-              %td 定存宝是沃银网推出的对100%本息担保的借款项目进行自动投资的理财计划，多种期限可选，满足出借人不同的流动性需要。出借人出借的本金将在投资期限届满后一次性返回其账户，利息收益每月返还，并由系统实现自动化的分散投资，更好的满足了出借人的需求。
-            %tr
-              %td 投资范围
-              %td 由合作机构提供100％本息担保的借款项目，包括信用、保证、抵质押等类型
-            %tr
-              %td 年化收益率
-              %td
-                = "#{obj.annual_rate}%"
-            %tr
-              %td 加入期
-              %td
-                = "#{obj.join_date.strftime("%Y-%m-%d")} 至 #{obj.expiring_date.strftime("%Y-%m-%d")}"
-            %tr
-              %td 加入条件
-              %td 加入金额1,000元起，且以1000元的倍数递增
-            %tr
-              %td 单笔额度上限
-              %td ￥100,000
-            %tr
-              %td 期限
-              %td
-                = "#{obj.repayment_period}个月"
-            %tr
-              %td 到期日
-              %td
-                %ul.dqbxq-cost
-                  %li
-                    %p
-                      %span> 至 #{obj.expiring_date.strftime("%Y-%m-%d")}
-                      （ 定存宝V可能提前还款，收益将根据实际投资天数计算，详情请见《
-                    = succeed "\u{300b}\u{ff09}" do
-                      %a{:href => "#"} 沃银网定存宝V投资协议
-            %tr
-              %td 到期赎回方式
-              %td 平台自动返还剩余本金和当期利息
-            %tr
-              %td 提前赎回方式
-              %td 期限内支持提前赎回，详情请见《沃银网定存宝投资协议》
-            %tr
-              %td 费用
-              %td
-                %ul.dqbxq-cost
-                  %li
-                    加入费率：
-                    %span 0.00
-                    %span %
-                  %li
-                    %p 管理费率：参见《
-                    = succeed "\u{300b}" do
-                      %a{:href => "#"} 沃银网定存宝V投资协议
-                  %li
-                    到期赎回费率
-                    %span 0.00
-                    %span %
-                  %li
-                    %p
-                      提前赎回费率：最低为待收本金的
-                      %span 23.00
-                      = succeed "\u{ff0c}\u{53c2}\u{89c1}\u{300a}" do
-                        %span %
-                    = succeed "\u{300b}" do
-                      %a{:href => "#"} 沃银网定存宝V投资协议
-                  %li
-            %tr
-              %td 保障方式
-              %td.expl
-                %img{:src => image_url("main/wytz5.png")}
-                  %p &nbsp;100% 本息保障
-            %tr
-              %td 电子回单
-              %td 网上交易保障中心证明该项目的电子回单真实、有效、不可篡改
-            %tr
-              %td 定存宝V协议
-              %td
-                %a{:href => "#"} 点击查看
+        %ul.row
+          %li.col-xs-6
+            .lab-val
+              %ul.row.item
+                %li.col-md-12
+                  %strong 个人信息
+                %li.col-md-4.boder-color 用户ID
+                %li.col-md-8.boder-color 683880
+                %li.col-md-4 性别
+                %li.col-md-8 男
+                %li.col-md-4.boder-color 年龄
+                %li.col-md-8.boder-color 32
+                %li.col-md-4 学历
+                %li.col-md-8 大专
+                %li.col-md-4.boder-color 是否结婚
+                %li.col-md-8.boder-color 已婚
+                %li.col-md-4 子女状况
+                %li.col-md-8 有
+                %li.col-md-4.boder-color 户籍城市
+                %li.col-md-8.boder-color 四川省南充市
+                %li.col-md-12
+                  %strong 个人资产及征信信息
+                %li.col-md-4.boder-color 月收入水平
+                %li.col-md-8.boder-color 5000元-8000元
+                %li.col-md-4 房产
+                %li.col-md-8 无
+                %li.col-md-4.boder-color 车产
+                %li.col-md-8.boder-color 无
+                %li.col-md-4 其他信用贷款
+                %li.col-md-8 无
+                %li.col-md-4.boder-color 未销户信用卡
+                %li.col-md-8.boder-color 无
+                %li.col-md-4 信用卡额度使用率
+                %li.col-md-8 无信用卡
+                %li.col-md-12
+                  %strong 工作信息
+                %li.col-md-4.boder-color 工作城市
+                %li.col-md-8.boder-color 四川省南充市
+                %li.col-md-4 现公司工作时间
+                %li.col-md-8 2012
+                %li.col-md-4.boder-color 公司行业
+                %li.col-md-8.boder-color 教育科研、医院、公共事业、金融业
+                %li.col-md-4 公司性质
+                %li.col-md-8 国营
+                %li.col-md-4.boder-color 岗位
+                %li.col-md-8.boder-color 其他基层服务岗位
+          %li.col-xs-6
+            .lab-val
+              %ul.row.item
+                %li.col-md-12
+                  %strong 担保机构
+                %li.col-md-4.boder-color 身份证
+                %li.col-md-4.boder-color 于2014.09.11
+                %li.col-md-4.boder-color.col-noborder 认证通过
+                %li.col-md-4 信用报告
+                %li.col-md-4 于2014.09.11
+                %li.col-md-4.col-noborder 认证通过
+                %li.col-md-4.boder-color 工作证明
+                %li.col-md-4.boder-color 于2014.09.11
+                %li.col-md-4.boder-color.col-noborder 认证通过
+                %li.col-md-4 收入证明
+                %li.col-md-4 于2014.09.11
+                %li.col-md-4.col-noborder 认证通过
+              .col-md-12.wyrecord
+                %strong 沃银网借款记录
+              %table.table.table-bordered
+                %thead
+                  %tr
+                    %th 共计借入
+                    %th 待还金额
+                    %th 逾期金额
+                    %th 严重逾期
+                %tbody
+                  %tr
+                    %td ￥1,700,000.00
+                    %td ￥1,700,000.00
+                    %td ￥0.00
+                    %td 0次
+              %table.table.table-bordered
+                %thead
+                  %tr
+                    %th.text-center 共计借入
+                    %th.text-center 待还金额
+                    %th.text-center 逾期金额
+                    %th.text-center 严重逾期
+                %tbody
+                  %tr
+                    %td.text-center 1笔
+                    %td.text-center 1笔
+                    %td.text-center 0笔
+                    %td.text-center 0次
       #prshd.tab-pane
-        %table.table.dqbxq-jrjl.table-striped.dqbxq-border
-          %thead
-            %tr
-              %th 投资人
-              %th 加入金额
-              %th 加入时间
-              %th 状态
-          %tbody
-            - invests.each do |invest|
+        .product-details-jrjl
+          %table.table.table-striped.product-details-border
+            %thead
               %tr
-                %td= "134"+ "***" + "223"
-                -#%td= invest.user_info.show_id[0, 2] + "***" + invest.user_info.show_id[-2, 2]
-                %td= invest.amount
-                %td= invest.created_at.strftime("%Y-%m-%d %H:%M")
+                %th 投资人
+                %th 加入金额
+                %th 加入时间
+                %th 状态
+            %tbody
+              %tr
+                %td 134***223
+                %td 1222.0
+                %td 2014-10-08 09:01
                 %td
-                  %span.glyphicon.glyphicon-ok>
-                    成功
+                  %span.glyphicon.glyphicon-ok
+                  成功
+              %tr
+                %td 134***223
+                %td 1222.0
+                %td 2014-10-08 09:01
+                %td
+                  %span.glyphicon.glyphicon-ok
+                  成功
+              %tr
+                %td 134***223
+                %td 1222.0
+                %td 2014-10-08 09:01
+                %td
+                  %span.glyphicon.glyphicon-ok
+                  成功
+              %tr
+                %td 134***223
+                %td 1222.0
+                %td 2014-10-08 09:01
+                %td
+                  %span.glyphicon.glyphicon-ok
+                  成功
+              %tr
+                %td 134***223
+                %td 1222.0
+                %td 2014-10-08 09:01
+                %td
+                  %span.glyphicon.glyphicon-ok
+                  成功
+          .text-center
+            %ul.pagination
+              %li
+                %a{:href => "#"} 《上一页
+              %li
+                %a{:href => "#"} 1
+              %li
+                %a{:href => "#"} 2
+              %li
+                %a{:href => "#"} 3
+              %li
+                %a{:href => "#"} 下一页》n-ok>
 
 
 
 
 
 
+>
