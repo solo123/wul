@@ -1,12 +1,11 @@
-%ul.menu.nav
+%ul.nav.navbar-nav.sign-nav
   - if current_user
     = javascript_include_tag "showmessage.js"
     - notify_num = current_user.user_info.notify_num
     %li= link_to "欢迎 #{current_user.username}!", usercenter_console_overview_path
     %li= link_to "消息(#{current_user.user_info.message_num})", usercenter_console_message_path
-    %li
-      %a{:href => "/securecenter"} 安全中心
-    %li.global-fenge= link_to '退出登录', destroy_user_session_path, method: :delete
+    %li= link_to "安全中心", securecenter_path
+    %li= link_to '退出登录', destroy_user_session_path, method: :delete
     %div#message{:style => "display:none"}
       - if notify_num > 0
         - messages = current_user.user_info.messages.order('id DESC').limit(notify_num)
@@ -17,5 +16,6 @@
   - else
     %li
       %a{:href => new_user_registration_path} 免费注册
-    %li.global-fenge
+    %li
       %a{:href => new_user_session_path} 已有账号？
+
