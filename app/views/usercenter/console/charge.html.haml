@@ -132,7 +132,7 @@
       -#    %span.glyphicon.glyphicon-collapse-down
       -#  %td.text-center 1,000.47
 
-  .digg_pagination
-    .page_info
-      = page_entries_info @transactions
-    = will_paginate @transactions, :container => false
+  .pager-center
+    .invest-pager-container
+      .invest_pagination
+        = will_paginate @transactions, :container => false

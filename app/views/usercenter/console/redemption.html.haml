@@ -1,26 +1,31 @@
 - content_for :javascript_includes do
   = javascript_include_tag "redemption.js"
+  = javascript_include_tag "productpager.js"
 .console-header-info
   %h1.page-header 投资赎回
 - type_dict = {"onsale" => "button", "normal" => "submit"}
 - value_dict = {"onsale" => "赎回中", "normal" => "赎回"}
 - input_dict = {"onsale" => true, "normal" => false}
+- if !params[:page]
+  - active_page = {"fixed" =>"active", "month" => ""}
+- else
+  - active_page = {"fixed" => params[:page] == "fixed" ? "active":"", "month" =>  params[:page] == "month" ? "active":""}
 .detail_container
   .col-md-12
     %ul.nav.nav-tabs{:role=>"tablist"}
-      %li.active
+      %li{:class => active_page["fixed"]}
         %a{:href=>"#fixed", :role=>"tab", 'data-toggle'=>"tab"}
           定存宝
           %span.badge
             = @fixed_deposits.size
-      %li
+      %li{:class => active_page["month"]}
         %a{:href=>"#month", :role=>"tab", 'data-toggle'=>"tab"}
           月月盈
           %span.badge
             = @month_deposits.size
 
     %div.tab-content
-      %div.tab-pane.active{:id=>"fixed"}
+      %div.tab-pane{:id => "fixed", :num => @fixed_deposits.size, :class => active_page["fixed"]}
         .console-list-area
           %table.table
             %tr
@@ -32,9 +37,9 @@
               %th 赎回金额
               %th 赎回
             - @fixed_deposits.each do |dep|
-              = form_tag usercenter_console_resell_path do
-                %tr
-                  = hidden_field_tag :invest_id, dep.id
+              = form_tag usercenter_console_resell_path(:page => "fixed") do
+                %tr.fixed_item
+                  = hidden_field_tag :invest_id, dep.invest_number
                   %td.vertical-center
                     = dep.loan_number
                   %td.vertical-center
@@ -59,7 +64,11 @@
                       %input.btn.btn-primary{:type => type_dict[dep.stage] ,:value => value_dict[dep.stage]}
                     - else
                       %input.btn.btn-default{:type => "button",:value => "无效" ,:disabled => "true"}
-      %div.tab-pane{:id=>"month"}
+          .text-center
+            -if @fixed_deposits.size > 10
+              %ul.pagination
+                #fixed_pager
+      %div.tab-pane{:id=>"month", :num => @month_deposits.size, :class => active_page["month"]}
         .console-list-area
           %table.table
             %tr
@@ -70,18 +79,35 @@
               %th 折让率
               %th 赎回金额
               %th 赎回
-            - @month_deposits.each do |f|
-              = form_tag (usercenter_console_resell_path) do
-                %tr
-                  = hidden_field_tag :invest_id, f.id
-                  %td= f.loan_number
-                  %td  #{number_with_precision f.annual_rate, precision: 2}%
-                  %td= "1"
-                  %td= f.amount
-                  %td= text_field_tag :discount_rate, nil, class: 'amount form-control'
-                  %td= f.amount
+            - @month_deposits.each do |dep|
+              = form_tag usercenter_console_resell_path(:page => "month") do
+                %tr.month_item
+                  = hidden_field_tag :invest_id, dep.invest_number
+                  %td.vertical-center
+                    = dep.loan_number
+                  %td.vertical-center
+                    #{number_with_precision dep.annual_rate, precision: 2}%
+                  %td.vertical-center
+                    = "1"
+                  %td.vertical-center
+                    .origin_value
+                      = dep.amount
+                  %td{:style=>"width:20%"}
+                    - if dep.product.premature_redemption == "yes" && dep.stage == "normal"
+                      = text_field_tag :discount_rt, dep.discount_rate, class: "discount_number"
+                      = hidden_field_tag :discount_rate, dep.discount_rate
+                    - else
+                      %input.number_range#discount_rate{:type => "text", :value=>"0.00", :name=>"discount_rate",:class=>"col-xs-8 form-control",:disabled=> true }
+
+                  %td.vertical-center
+                    .discount_value
+                      = dep.amount
                   %td
-                    - if f.product.premature_redemption == "yes"
-                      %input.btn.btn-primary{:type => type_dict[f.stage] ,:value => value_dict[f.stage]}
+                    - if dep.product.premature_redemption == "yes"
+                      %input.btn.btn-primary{:type => type_dict[dep.stage] ,:value => value_dict[dep.stage]}
                     - else
                       %input.btn.btn-default{:type => "button",:value => "无效" ,:disabled => "true"}
+          .text-center
+            -if @month_deposits.size > 10
+              %ul.pagination
+                #month_pager

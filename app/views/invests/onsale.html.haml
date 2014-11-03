@@ -30,9 +30,10 @@
         %tbody
           - @invests.each do |obj|
             = render 'invests/list_col_onsale', obj: obj , dict: dict
-      .invest-pager-container
-        .invest_pagination
-          = will_paginate @invests, :container => false
+      .text-center
+        .invest-pager-container
+          .invest_pagination
+            = will_paginate @invests, :container => false
 
 
 

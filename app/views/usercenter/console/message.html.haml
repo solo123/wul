@@ -78,7 +78,7 @@
           %td
             %a{:href => usercenter_console_message_path(:message_id => t.id, :pattern => 'detail')}
               查看
-  .digg_pagination
-    .page_info
-      = page_entries_info @messages
-    = will_paginate @messages, :container => false
+  .pager-center
+    .invest-pager-container
+      .invest_pagination
+        = will_paginate @messages, :container => false
