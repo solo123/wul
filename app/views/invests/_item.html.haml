@@ -4,26 +4,33 @@
       .col-xs-10.yyy-list-progress
         %h4.zyzq-h4.yyy-h4
           %button.btn.btn-primary.yyy-list-btn{:type => "button"} 月
-          定期宝
+          =obj.product_name
           %span.yyy-list-title
             %a.a-inline{:href =>"#"}
-              20140910
+              =obj.loan_number
         .td-list.danbao
           %span
             %img{:src => image_url("main/yisheng-icons.jpg")}/
-            ICBC担保
+            =obj.product.guarantee
+            担保
         .td-list
           %dl.dl-horizontal
             %dt 年化收益率：
-            %dd 13.00%
+            %dd
+              = obj.product.annual_rate
+              \%
         .td-list
           %dl.dl-horizontal
             %dt 融资金额：
-            %dd ￥19000.00
+            %dd
+              ￥
+              = obj.amount
         .td-list
           %dl.dl-horizontal
             %dt 借款期限：
-            %dd 1个月
+            %dd
+              = obj.product.repayment_period
+              个月
         .td-list
           %dl.dl-horizontal
             %dt 折让率：
@@ -36,4 +43,4 @@
               %img{:src => image_url("main/time-icon.jpg")}/
             剩余时间：30天
           %li
-            %button.btn.btn-primary.btn-block{:type => "button"} 马上购入
+            %a.btn.btn-primary.btn-block{:href => invest_path(obj.invest_number)} 马上购入

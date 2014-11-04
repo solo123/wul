@@ -105,7 +105,8 @@
       %li
         %a.tab-item{"data-toggle" => "tab", :href => "#prshd", :role => "tab"}
           加入记录
-          %span.badge 15
+          %span.badge
+            = invests.size
     .tab-content
       #detail.tab-pane.active
         %ul.row

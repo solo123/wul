@@ -31,5 +31,7 @@
             %span.sr-only
               23 Complete
     .panel-footer
-      %a.btn.btn-success.btn-block{:href => product_detail_path("fixed",obj)} 1人次已加入 | 马上加入
+      %a.btn.btn-success.btn-block{:href => product_detail_path("fixed",obj)}
+        = obj.owner_num
+        人次已加入 | 马上加入
     %a.link-block{:href => product_detail_path("fixed",obj)} 查看详情
