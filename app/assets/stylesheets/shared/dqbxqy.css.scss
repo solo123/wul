@@ -10,23 +10,34 @@ ul, ol {
   margin-bottom:30px;
   border-radius:4px;
 }
+.userwrapper{
+  background-color:#fafafa;
+  border:1px solid #e5e5e5;
+  border-radius:4px;
+}
 aside.sidebar {
   margin-right: 0;
-  padding: 40px 0 30px 0px;
+  padding: 10px 0 30px 0px;
   border-right: 1px solid #00a3d9;
   box-shadow: none;
   min-height: 720px;
   color:#333;
 
 }
-.wrapper{
-  background-color:#fafafa;
-  border:1px solid #e5e5e5;
-}
-.wrapper .wrapperbode{
+.userwrapper .wrapperbode{
   padding-right: 0px;
   padding-left: 0px;
 }
+.sidebar .accout-info{
+  margin: 10px 0px;
+  background-color: transparent;
+  border-color: transparent;
+  border-bottom: 1px solid #e5e5e5;
+  font-weight: bold;
+  color: #555;
+  padding-left:40px;
+ font-size: 16px;}
+
 .sidebar .accout-avatar{
   border-bottom:1px solid #e5e5e5;
   padding-left:40px;
@@ -35,30 +46,35 @@ aside.sidebar {
   font-size:18px;
 }
 .sidebar .accout_ye {
-  margin: 10px 0 30px 0;
+  margin: 10px 0 0px 0;
+  font-size: 14px;
+  padding-bottom: 10px;
 }
 .sidebar .accout_ye strong{
-  font-size:14px;
+
+  font-size:16px;
 }
 .sidebar .accout_ye a{
+  padding-left: 10px;
   color:#00a3d9;
 }
 .sidebar .accout_ts {
-  padding: 30px 15px 0 40px;
+  padding: 20px 15px 0 40px;
   border-bottom:1px solid #e5e5e5;
 }
 .sidebar .accout_ts img{
   padding-right:10px;
 }
 .sidebar .accout-progress {
-  margin: 25px 15px 10px 0;
+  font-weight:bold;
+  margin: 15px 15px 15px 0;
 }
-.sidebar .accout-progress .progress{
+.sidebar .accout-progress  span{
+  margin-left: 10px;
+}
+.sidebar .accout_ts .progress{
   height:15px;
   border-radius:15px;
-}
-.sidebar .accout-progress .progress .progress-bar-success{
-  background-color: #9eca2f;
 }
 .sidebar .accout-progress a{
   color:#00a3d9;
@@ -98,6 +114,12 @@ aside.sidebar {
 .sidebar .accout_ts .btn{
   border: 1px solid #afe0f0;
   padding: 16px 13px;
+}
+.sidebar .accout_ts a:hover{
+  background-color: #00BB00;
+}
+.sidebar .accout_ts a:hover span{
+  color: #fff;
 }
 .sidebar .accout_ts .btn-success{
   background-color: #9eca2f;

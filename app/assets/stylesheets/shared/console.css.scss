@@ -24,24 +24,22 @@
 
 /* =[用户中心边栏] ---------------------------------*/
 
-@media (min-width: 768px) {
-  aside.sidebar {
-    margin-right: 0;
-    margin-left: 2px;
-    padding:15px 0 30px 0;
-    background-color: #fff;
-    border-right:1px solid #00a3d9;
-    box-shadow: none;
-    min-height:720px;
-  }
-}
+//@media (min-width: 768px) {
+//  aside.sidebar {
+//    margin-right: 0;
+//    margin-left: 2px;
+//    padding:15px 0 30px 0;
+//    border-right:1px solid #00a3d9;
+//    box-shadow: none;
+//    min-height:720px;
+//  }
+//}
 
 
 .sidebar .accout-avatar{ display:none; text-align:center; }
 .sidebar .accout-avatar img{ display:inline; }
 
 
-.sidebar .accout-info{ margin: 10px 15px; }
 
 .sidebar .accout-progress{
   margin:0 15px;
@@ -50,20 +48,9 @@
   margin-bottom:5px; 
 }
 
-
-.sidebar .accout_ts{
-  margin:0 15px 10px 15px;
-}
 .sidebar .accout_ts a{
   margin-right:8px;
 }
-
-
-.sidebar .accout_ye{
-  margin:20px 15px;
-}
-
-
 
 .sidebar .sidebar-nav{
   margin:15px 0; 
@@ -84,12 +71,12 @@
 
 /* =[用户中心内容区域] ---------------------------------*/
 
-.console-main-area,.securecenter-main-area{
-  padding:1px 15px;
-  min-height:700px; 
-  background:#fff;
-
-}
+//.console-main-area,.securecenter-main-area{
+//  padding:1px 15px;
+//  min-height:700px;
+//  background:#fff;
+//
+//}
 
 
 
