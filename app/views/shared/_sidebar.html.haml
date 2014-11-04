@@ -1,11 +1,6 @@
 %aside.sidebar
   = render "shared/secure_level"
-  .accout_ye
-    我的余额
-    %strong
-      ￥
-      = render "shared/usercenter_balance"
-    %a{:href =>usercenter_console_charge_bank_path} 充值
+
 
   %ul.nav.nav-pills.nav-stacked.sidebar-nav
     - {'我的账户' => usercenter_console_overview_path,
@@ -25,5 +20,4 @@
       - else
         %li
           %a{:href => v}
-            %span.glyphicon.glyphicon-user
             = k

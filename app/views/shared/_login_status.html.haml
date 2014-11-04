@@ -2,7 +2,7 @@
   - if current_user
     = javascript_include_tag "showmessage.js"
     - notify_num = current_user.user_info.notify_num
-    %li= link_to "欢迎 #{current_user.username}!", usercenter_console_overview_path
+    %li= link_to "您好, #{current_user.username}", usercenter_console_overview_path
     %li= link_to "消息(#{current_user.user_info.message_num})", usercenter_console_message_path
     %li
       %a{:href => "/securecenter"} 安全中心
