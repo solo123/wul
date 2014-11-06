@@ -98,7 +98,7 @@ class AccountOperation < ActiveRecord::Base
   def onsale_invest
     invest = Invest.find(self.op_resource_id)
     invest.resell_price = self.op_result_value.to_f
-    invest.discount_rate = self.op_amount
+    # invest.discount_rate = self.op_amount
     invest.onsale = true
     invest.save!
   end

@@ -6,7 +6,7 @@
           %button.btn.btn-primary.yyy-list-btn{:type => "button"} 月
           =obj.product_name
           %span.yyy-list-title
-            %a.a-inline{:href =>"#"}
+            %a.a-inline{:href => invest_path(obj.invest_number)}
               =obj.loan_number
         .td-list.danbao
           %span
@@ -21,10 +21,10 @@
               \%
         .td-list
           %dl.dl-horizontal
-            %dt 融资金额：
+            %dt 转让金额：
             %dd
               ￥
-              = obj.amount
+              = number_with_precision(obj.resell_price, precision: 0, delimiter: ',')
         .td-list
           %dl.dl-horizontal
             %dt 借款期限：
