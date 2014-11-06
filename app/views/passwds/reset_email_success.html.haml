@@ -21,11 +21,10 @@
         .row.findpassword-select
           .col-xs-9
             %strong 通过电子邮箱
-            %p 如果您的注册邮箱还在正常使用，请选择此方式
+            %p 一封带有修改密码链接的邮件已发到您的注册邮箱,请查收
           .col-xs-3
-            = form_for(:user, :url => sendemail_path(), :html => { :method => :post}) do |f|
-              = hidden_field_tag :username, @username
-              %button.btn.btn-primary{:type => "submit"} 立即找回
+            = form_for(:user, :url => password_path(:user), :html => { :method => :post, class: "form-signin" }) do |f|
+              %a.btn.btn-success{:target => "blank", :href =>"http://" + @email_server} 前往邮箱
         .row.findpassword-select
           .col-xs-9
             %strong 通过安全保护问题
