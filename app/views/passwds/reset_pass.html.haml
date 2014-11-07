@@ -1,0 +1,85 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "password.js"
+.sign-page
+  .container
+    .row
+      #flash-message.pull-right
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}", :class => "flash_#{name} flash_all"
+      .col-md-12.col-sm-12
+        .panel.panel-default
+          .panel-heading
+            .panel-title
+              %h4 找回密码
+          .panel-body.find-password-lbody
+            .text-center.reg-steps
+              %img{:src => image_url("main/find-password3.jpg")}
+            .col-sm-offset-3.col-sm-9
+              = form_for(:user, html: {class: "form-signin form-horizontal", :id => "reset_form"}, :url => reset_password_path) do |f|
+                .form-group
+                  %label.col-sm-2.control-label{:for => "inputEmail3"} 设置密码
+                  .col-sm-4
+                    .input-group
+                      .input-group-addon
+                        %img{:src => image_url("main/wy-glyphicon-phones.jpg")}
+                      = text_field_tag :recover_password, "", class: "form-control", autocomplete: "off", type: "password", placeholder: "请创建登录密码"
+                    .errplace
+                  .col-xs-5.backsign
+                .form-group
+                  %label.col-sm-2.control-label{:for => "inputEmail3"} 确认密码
+                  .col-sm-4
+                    .input-group
+                      .input-group-addon
+                        %img{:src => image_url("main/wy-glyphicon-phones.jpg")}
+                      = text_field_tag :recover_password_confirm, "", class: "form-control", autocomplete: "off", type: "password", placeholder: "请重新输入密码"
+                    .errplace
+                  .col-xs-5.backsign
+                .form-group
+                  .col-sm-offset-2.col-sm-4
+                    %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 确定
+                  .col-xs-2.backsign
+                    %a{:href => "#"} 返回登录
+
+.security-identity
+  .container.security-identity-container
+    %ul.row.list-unstyled
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 50元即可加入
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 100%本息担保
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 随时赎回投资
+      %li.col-xs-3
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 服务完全免费
+
+.footer
+  .footnav-bj.footnav-findpasswordbj
+    .container
+      .row
+        .col-xs-7.footer-address
+          %ul
+            %li
+              %dl
+                %dt 服务热线 (9-18:00)
+                %dd 400-890-3980
+            %li
+              %span 客服邮箱： support@wooul.com
+              %span 新浪微博：@沃银网
+        .col-xs-5.footer-address
+          %ul
+            %li
+              %a{:href => "/"}
+                %img{:src => image_url("foot/wooul-logo-grey.png")}/
+            %li Copyright ©2014 深圳市沃银金融服务有限公司， All Rights Reserved

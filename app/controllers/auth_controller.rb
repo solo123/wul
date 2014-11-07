@@ -116,24 +116,31 @@ class AuthController < Devise::SessionsController
 
 
   def test_json
-    #op = AccountOperation.new(:op_name => "account", :op_action => "create", :uinfo_id => current_user.user_info.id, :operator => "system" )
-    # op = AccountOperation.new(:op_name => "account", :op_action => "charge", :op_amount => 1000, :operator => "system",:uinfo_id => current_user.user_info.id )
-    # op = AccountOperation.new(:op_name => "invest", :op_action => "join", :op_amount => 1000, :operator => "system",:uinfo_id => current_user.user_info.id, :op_resource_name => "BBC123" )
-    #  op = AccountOperation.new(:op_name => "invest", :op_action => "join", :op_amount => 200, :operator => "system",:uinfo_id => current_user.user_info.id,
-    #                             :op_resource_name => "FF14", :op_resource_id => 26)
-
-    # op = AccountOperation.new(:op_name => "invest", :op_action => "sell", :operator => "system", :uinfo_id => current_user.user_info.id,
-    #                             :op_asset_id => 42 )
-
-    # op = AccountOperation.new(:op_name => "invest", :op_action => "onsale", :operator => "system", :uinfo_id => current_user.user_info.id,
-    #                             :op_asset_id => 1 )
-
-    op = AccountOperation.new(:op_name => "invest", :op_action => "buy", :operator => "system", :uinfo_id => current_user.user_info.id,
-                              :op_asset_id => 12, :op_resource_id => 12)
+      url ="http://p2p.ips.net.cn/CreditWeb/CreateNewIpsAcct.aspx"
+      # data={:argMerCode => '808801'}
+      # uri = URI.parse(url)
+      # http = Net::HTTP.new(uri.host, uri.port)
+      # # http.use_ssl = true
+      # request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json', 'argMerCode' => '808801', 'arg3DesXmlPara' =>'232123', 'argSign' => 'agrg'})
+      # # request.body = data.to_json
+      # response = http.request(request)
+      # # op_res = JSON.parse response.body
+      #  logger.info("the errcode is #{response.body}" )
 
 
-    op.execute_transaction
-    render :json => "OK"
+      uri = URI(url)
+      res = Net::HTTP.post_form(uri, 'argMerCode' => '808801', 'arg3DesXmlPara' =>'232123', 'argSign' => 'agrg')
+      puts res.body
+
+
+
+
+    # op = AccountOperation.new(:op_name => "invest", :op_action => "buy", :operator => "system", :uinfo_id => current_user.user_info.id,
+    #                           :op_asset_id => 12, :op_resource_id => 12)
+    #
+    #
+    # op.execute_transaction
+   render :json => "OK"
   end
 
   def create
@@ -149,22 +156,12 @@ class AuthController < Devise::SessionsController
       render :js => "alert('邮件地址已经被使用,请用别的邮箱注册')" and return
     end
 
-    # @user = User.new
-    # @user.email = params[:reg_email]
-    # @user.password = @user.password_confirmation = params[:reg_email_pass]
-    # if @user.save!
-    # sub_product = account.account_sub_products.create_with(account_product_id: product.id, total_amount: 0).find_or_create_by(deposit_number: product.deposit_number)
     verify_code = rand(10 ** 6)
     verify = Verification.create_with(emailstatus: "confirming", email_code: verify_code).find_or_create_by(email: params[:reg_email])
     verify.passwd = params[:reg_email_pass]
-    # user.user_info.verification = verify
-    # user.user_info.save!
     verify.save!
-    # end
-    EmailWorker.perform_async(verify.email, verify.email_code)
-    # Reg.regist_confirm(@user.email, verify.email_code).deliver
+    EmailWorker.perform_async(verify.email, verify.email_code, "reg")
     @message = "一封验证邮件已经发送到您注册的邮箱内，请查收并验证邮箱,验证后登录"
-    # redirect_to success_path
     render "success"
   end
 

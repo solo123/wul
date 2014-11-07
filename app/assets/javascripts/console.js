@@ -8,16 +8,18 @@ $(".confirmphone").click(
     }
 );
 
-$("#jsontest").click(
-    function () {
-        $.post(
-            "/test_json",
-            {phone_num: 112},
-            'script'
-        )
-    }
-);
 
+$(document).ready(function () {
+    $("#jsontest").click(
+        function () {
+            $.post(
+                "/test_json",
+                {phone_num: 112},
+                'script'
+            );
+        }
+    );
+});
 
 //$.ajax(
 //    "http://127.0.0.1:3001/accounting/account/execute_cmd",
