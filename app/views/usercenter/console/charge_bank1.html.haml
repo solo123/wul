@@ -1,0 +1,186 @@
+.acc1
+  充值
+.acc2
+  %a{:href => "#"}
+    %img{:src => image_url("account5.jpg")}
+.acc3
+  您还没有进入排行榜,请再接再厉
+.rech-opts
+  = form_tag usercenter_console_charge_mock_path do
+    .rech-items
+      %h2
+        充值金额
+        %ul.rech-money
+          %li
+            .sum-input
+              .label
+                ￥
+              %input.input.inputErr.focus#charge_value{:type => "text", :name => "charge_value"}
+              = submit_tag '充值', :class => "btn btn-success2"
+          %li{:style => "width:auto"}
+            %p
+              %b
+                当前可用余额
+              %span#curBalance
+                #{current_user.user_info.account.balance - current_user.user_info.account.frozen_balance}
+            %p
+              %b
+                充值后余额
+              %span.light-green#sumBalance
+                0.00
+        %msg-error#chargeSumErr
+          请输入正确的充值金额
+    .rech-items
+      %h2
+        充值方式
+      %ul.rech-mode
+        %li.banks-dir.netbank.selected
+          网上银行充值
+          %i.icons{:style => "display: inline-block"}
+          %i.icons{:style => "display: inline-block"}
+        %li.banks-dir
+          %i.logo-bank.bank-cft
+            财付通
+          %i.icons{:style => "display:none"}
+    .rech-items{:style => "display :block"}
+      %h2
+        %ul.select-bank
+          %li.banks-dir.selected{:title => "工商银行", :style =>"display:list-item", "data-bankcode" => "102"}
+            %i.logo-bank.bank-102
+              工商银行
+            %i.icons
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "建设银行", :style =>"display:list-item", "data-bankcode" => "105"}
+            %i.logo-bank.bank-105
+              建设银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "招商银行", :style =>"display:list-item", "data-bankcode" => "308"}
+            %i.logo-bank.bank-308
+              招商银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "农业银行", :style =>"display:list-item", "data-bankcode" => "103"}
+            %i.logo-bank.bank-103
+              农业银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "交通银行", :style =>"display:list-item", "data-bankcode" => "301"}
+            %i.logo-bank.bank-301
+              交通银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "广发银行", :style =>"display:list-item", "data-bankcode" => "306"}
+            %i.logo-bank.bank-306
+              广发银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "兴业银行", :style =>"display:list-item", "data-bankcode" => "309"}
+            %i.logo-bank.bank-309
+              兴业银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "光大银行", :style =>"display:list-item", "data-bankcode" => "303"}
+            %i.logo-bank.bank-303
+              光大银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "民生银行", :style =>"display:list-item", "data-bankcode" => "305"}
+            %i.logo-bank.bank-305
+              民生银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "中国银行", :style =>"display:list-item", "data-bankcode" => "104"}
+            %i.logo-bank.bank-104
+              中国银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "北京银行", :style =>"display:list-item", "data-bankcode" => "999"}
+            %i.logo-bank.bank-999
+              北京银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "邮政储蓄", :style =>"display:list-item", "data-bankcode" => "403"}
+            %i.logo-bank.bank-403
+              邮政储蓄
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "中信银行", :style =>"display:list-item", "data-bankcode" => "302"}
+            %i.logo-bank.bank-302
+              中信银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "平安银行", :style =>"display:list-item", "data-bankcode" => "313"}
+            %i.logo-bank.bank-313
+              平安银行
+            %i.icons{:style => "display:none"}
+          %li.banks-dir{:title => "浦发银行", :style =>"display:list-item", "data-bankcode" => "313"}
+            %i.logo-bank.bank-313
+              浦发银行
+            %i.icons{:style => "display:none"}
+          %li.other-banks
+            %span
+              选择其他银行
+              %i.icons.arrow-blue-down
+        .bank-desc{:style => "display:block"}
+          %table
+            %tbody
+              %tr
+                %th{:rowspan => "3"}
+                  卡种
+                %th{:colspan => "2", :rowspan => "2"}
+                  U盾客户
+                %th
+                  柜面注册存量
+                %th{:colspan => "2", :rowspan => "2"}
+                  已开通手机短信认证<br>的电子银行口令卡客户
+                %th{:colspan => "2", :rowspan => "2"}
+                  未开通手机短信认证<br>的电子银行口令卡客户
+              %tr
+                %th
+                  静态密码客户
+              %tr
+                %th
+                  单笔限额
+                %th
+                  每日限额
+                %th
+                  总累计限额
+                %th
+                  单笔限额
+                %th
+                  每日限额
+                %th
+                  单笔限额
+                %th
+                  每日限额
+              %tr
+                %td
+                  普通信用卡
+                %td{:colspan => 7}
+                  不支持
+              %tr
+                %td
+                  普通借记卡
+                %td
+                  无限额
+                %td
+                  无限额
+                %td
+                  300
+                %td
+                  2000
+                %td
+                  5000
+                %td
+                  500
+                %td
+                  1000
+      .funds-ord
+        %p
+          %input.io{:type => "checkbox"}
+          我同意《
+          .funds-ord1
+            %a{:href => "#"}
+              沃银网注册协议
+            %p
+              》及《
+            %a{:href => "#"}
+              沃银网投资咨询与管理服务协议
+            》
+          %button.btn.btn-success{:type => "submit"}
+            ￥充值
+          .banks-tips
+            您的资金将从充值银行卡转入合作银行监管账户
+          .yCheckbox#FundsSelect
+            %span.ico.selected
+
+
