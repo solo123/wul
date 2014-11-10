@@ -1,0 +1,78 @@
+.about-data{ margin-top:50px;}
+.about-data .static_nav{ border:1px solid #e5e5e5; background-color:#fff; margin-right:10px; padding-bottom:20px; border-radius:5px;}
+.about-data .static_nav .reg_btn{ padding:50px 30px 50px 30px; border-bottom:1px solid #e5e5e5;}
+.about-data .static_nav .reg_btn .btn-primary{ background-color: #00a3d9;
+  border-color: #00a3d9;}
+.about-data .static_nav li{
+  border-bottom: 1px solid #f0f5f7;
+}
+.about-data .static_nav li:last-child{
+  border-bottom: 0px solid #f0f5f7;
+}
+.about-data .static_nav ul{
+  -webkit-margin-before: 0em;
+  margin-top:20px;
+}
+.about-data .static_nav ul ul{
+  margin-top:0px;
+}
+.about-data .static_nav li{ min-height:50px; padding-top:5px;}
+.about-data .static_nav li a {
+  height: 36px;
+  line-height: 36px;
+  color: #224e73;
+  position: relative;
+  padding-left: 60px;
+  padding-right: 95px;
+  font-size:18px;
+  color:#333;
+
+}
+.about-data .static_nav li a span{
+  font-size:14px;
+  color:#0099cc;
+}
+.about-data .static_nav li li{
+  border-bottom: 0px solid #f0f5f7;
+  padding-top:5px;
+  padding-left: 0px;
+  height: 35px;
+  min-height:30px;
+}
+.about-data .static_nav li li:last-child{
+  margin-bottom:20px;
+}
+.about-data .static_nav li li a {
+  text-align: left;
+  border: none;
+
+  line-height: 30px;
+  padding-left: 80px;
+  font-size:14px;
+}
+.about-data .static_nav .glyphicon-circle{
+  width:5px;
+  height:5px;
+  border-radius:2px;
+  background:#ccc;
+  top:-2px;
+  margin-right:5px;
+}
+.about-data .static_nav li li:hover {
+  /*background:image-url("about-navbj.jpg");*/
+  /* background: image-url("about-navbj.jpg");*/
+  background-color:#ebebeb;
+}
+
+.about-data .aboutm_box{
+  border:1px solid #e5e5e5; background-color:#fff; border-radius:4px 4px 0 0; padding-bottom:50px; margin-bottom:50px;
+}
+.about-data .about-content{padding-right: 0px;
+  padding-left: 0px;}
+.about-data .aboutm_box .about-banner img{ width:100%;}
+.about-data .aboutm_box .about-wyw{ padding:0 30px; margin-top:30px; color:#333;}
+.about-data .aboutm_box .about-wyw p{text-indent:2em; line-height:25px;}
+.about-data .aboutm_box .team img{ width:100%;}
+
+.about-data .aboutm_box .about-faq{ padding:0 30px; margin-top:30px; color:#333;}
+.about-data .aboutm_box .about-faq p{text-indent:2em; line-height:18px;}

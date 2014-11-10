@@ -12,9 +12,8 @@
     .console-page-area
       .container
         .row.userwrapper
-          .col-md-3.wrapperbode
+          .col-xs-3.wrapperbode
             =render "shared/sidebar"
-          .col-md-9
-            .console-main-area
-              = yield
+          .col-xs-9.usermain
+            = yield
     = cms_snippet_content('footer')
