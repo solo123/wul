@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title 沃银网 -- 登录
+    = stylesheet_link_tag    "application", media: "all"
+    -#, "data-turbolinks-track" => true
+    = javascript_include_tag "application"
+    -#= airbrake_javascript_notifier
+    -#, "data-turbolinks-track" => true
+    = yield :javascript_includes
+  %body
+    = bootstrap_flash
+    = yield

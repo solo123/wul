@@ -80,3 +80,6 @@ function show_flash_message() {
 function flash_exist() {
     return $("#flash-message").children().length > 0;
 }
+
+
+

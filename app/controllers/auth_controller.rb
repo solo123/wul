@@ -1,7 +1,9 @@
+# coding: utf-8
 class AuthController < Devise::SessionsController
   require 'net/https'
   require 'json'
   require "uri"
+  require 'openssl'
   layout "sign_layout"
 
   def send_sms(mobile, code)
@@ -16,6 +18,11 @@ class AuthController < Devise::SessionsController
     con.use_ssl = true
     res = con.start { |http| http.request(req) }
   end
+
+
+  # def sendsms
+  #   logger.info(params)
+  # end
 
 
   def reg
@@ -116,31 +123,91 @@ class AuthController < Devise::SessionsController
 
 
   def test_json
-      url ="http://p2p.ips.net.cn/CreditWeb/CreateNewIpsAcct.aspx"
-      # data={:argMerCode => '808801'}
-      # uri = URI.parse(url)
-      # http = Net::HTTP.new(uri.host, uri.port)
-      # # http.use_ssl = true
-      # request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json', 'argMerCode' => '808801', 'arg3DesXmlPara' =>'232123', 'argSign' => 'agrg'})
-      # # request.body = data.to_json
-      # response = http.request(request)
-      # # op_res = JSON.parse response.body
-      #  logger.info("the errcode is #{response.body}" )
 
 
-      uri = URI(url)
-      res = Net::HTTP.post_form(uri, 'argMerCode' => '808801', 'arg3DesXmlPara' =>'232123', 'argSign' => 'agrg')
-      puts res.body
+    @pMerCode = params["pMerCode"]
+    strxml = ""
+    $pMerBillNo = params["pMerBillNo"]
+    $pIdentType = params["pIdentType"]
+    $pIdentNo = params["pIdentNo"]
+    $pRealName = params["pRealName"]
+    $pMobileNo = params["pMobileNo"]
+    $pEmail = params["pEmail"]
+    $pSmDate = params["pSmDate"]
+    $pWebUrl = params["pWebUrl"]
+    $pS2SUrl = params["pS2SUrl"]
+    $pMemo1 = params["pMemo1"]
+    $pMemo2 = params["pMemo2"]
+    $pMemo3 = params["pMemo3"]
+
+    $strxml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +"<pReq>"+"<pMerBillNo>" + $pMerBillNo + "</pMerBillNo>" \
+    + "<pIdentType>" + $pIdentType + "</pIdentType>" \
+    + "<pIdentNo>" + $pIdentNo + "</pIdentNo>" \
+    +"<pRealName>" + $pRealName + "</pRealName>" \
+    +"<pMobileNo>" + $pMobileNo + "</pMobileNo>" \
+    +"<pEmail>" + $pEmail + "</pEmail>" \
+    +"<pSmDate>" + $pSmDate + "</pSmDate>" \
+    +"<pWebUrl>" + $pWebUrl + "</pWebUrl>" \
+    +"<pS2SUrl>" + $pS2SUrl + "</pS2SUrl>" \
+    +"<pMemo1>" + $pMemo1 + "</pMemo1>" \
+    +"<pMemo2>" + $pMemo2 + "</pMemo2>" \
+    +"<pMemo3>" + $pMemo3 + "</pMemo3>" \
+    +"</pReq>"
 
 
 
+
+
+    url ="http://p2p.ips.net.cn/CreditWeb/CreateNewIpsAcct.aspx"
+    # url ="http://127.0.0.1:8080/accounting/account/test_inter"
+    ips_md5="GPhKt7sh4dxQQZZkINGFtefRKNPyAj8S00cgAwtRyy0ufD7alNC28xCBKpa6IU7u54zzWSAv4PqUDKMgpOnM7fucO1wuwMi4RgPAnietmqYIhHXZ3TqTGKNzkxA55qYH"
+    des_key='ICHuQplJ0YR9l7XeVNKi6FMn'
+    vec='2EDxsEfp'
+
+    $strxml.gsub!(/[\s]{2,}/, "")
+    $strxml.gsub!('\\', '')
+    sec = encrypt($strxml, vec, des_key)
+
+
+
+    # res = decrypt(sec, vec, des_key)
+    str = @pMerCode + sec + ips_md5
+    psign = Digest::MD5.hexdigest(str)
+
+
+    # logger.info(res)
+
+    # data={:argMerCode => '808801'}
+    # uri = URI.parse(url)
+    # http = Net::HTTP.new(uri.host, uri.port)
+    # # # http.use_ssl = true
+    # request = Net::HTTP::Post.new(uri.path, {'argMerCode' => pMerCode , 'arg3DesXmlPara' =>sec, 'argSign' => psign})
+    # # # request.body = data.to_json
+    # response = http.request(request)
+    # # # op_res = JSON.parse response.body
+    # logger.info("the result is #{response.body}" )
+
+    logger.info("mcode is #{@pMerCode}")
+    logger.info("param is #{sec.to_s.force_encoding("UTF-8")}")
+    logger.info("psign is #{psign}")
+
+    uri = URI(url)
+
+    # logger.info("res is #{res}")
+
+    # res = Net::HTTP.post_form(uri, 'argMerCode' => pMerCode , 'arg3DesXmlPara' =>sec, 'argSign' => psign, 'api_key' => "secret")
+    #  puts res.body
 
     # op = AccountOperation.new(:op_name => "invest", :op_action => "buy", :operator => "system", :uinfo_id => current_user.user_info.id,
     #                           :op_asset_id => 12, :op_resource_id => 12)
     #
     #
     # op.execute_transaction
-   render :json => "OK"
+    @argMercode = @pMercode
+    @arg3DesXmlPara = sec
+    @argSign = psign
+
+    render "test_json"
   end
 
   def create
@@ -164,6 +231,7 @@ class AuthController < Devise::SessionsController
     @message = "一封验证邮件已经发送到您注册的邮箱内，请查收并验证邮箱,验证后登录"
     render "success"
   end
+
 
   def create_mobile(params)
     # valid = true
@@ -198,6 +266,39 @@ class AuthController < Devise::SessionsController
       render "fail"
       #render :js => "alert('验证码无效,请重新申请')" and return
     end
+  end
+
+
+  def encrypt(data, vec, key)
+    cipher = OpenSSL::Cipher::Cipher.new('DES-EDE3-CBC')
+    cipher.encrypt # Must be called before anything else
+
+    # Generate the key and initialization vector for the algorithm.
+    # Alternatively, you can specify the initialization vector and cipher key
+    # specifically using `cipher.iv = 'some iv'` and `cipher.key = 'some key'`
+    cipher.iv = vec
+    cipher.key = key
+    # cipher.pkcs5_keyivgen('SOME_PASS_PHRASE_GOES_HERE')
+
+    output = cipher.update(data)
+    output << cipher.final
+    output
+    out = Base64.encode64(output).gsub(/\n/, "")
+  end
+
+  def decrypt(data, vec, key)
+    # Effectively the same as the `encrypt` method
+    cipher = OpenSSL::Cipher::Cipher.new('DES-EDE3-CBC')
+    # cipher = OpenSSL::Cipher::Cipher.new('DES-EDE3-CBC')
+    cipher.decrypt # Also must be called before anything else
+
+    # cipher.pkcs5_keyivgen('SOME_PASS_PHRASE_GOES_HERE')
+    cipher.iv = vec
+    cipher.key = key
+
+    output = cipher.update(data)
+    output << cipher.final
+    output
   end
 
 end

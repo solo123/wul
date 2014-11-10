@@ -20,7 +20,7 @@ Wooul::Application.routes.draw do
   resources :accounts
 
   post '/regist', to: 'auth#regist'
-
+  post '/showparams', to: 'test#showparams'
   devise_for :users, controllers: { registrations: "auth", sessions: "login", passwords:"passwds"}
   devise_scope :user do
     post "/checkmobile" => "auth#checkmobile"
