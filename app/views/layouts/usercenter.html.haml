@@ -14,7 +14,6 @@
         .row.userwrapper
           .col-xs-3.wrapperbode
             =render "shared/sidebar"
-          .col-xs-9
-            .console-main-area
-              = yield
+          .col-xs-9.usermain
+            = yield
     = cms_snippet_content('footer')

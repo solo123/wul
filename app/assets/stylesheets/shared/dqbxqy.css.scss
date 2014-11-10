@@ -265,3 +265,159 @@ padding-top:18px;
   padding: 20px;
   margin-bottom: 20px;
 }
+
+/* withdraw2*/
+.usermain .abtitle-sub {
+  position: relative;
+  height: 40px;
+  border-bottom: 1px solid #0099cc;
+  clear: both;
+}
+.usermain .abtitle-sub .button-back .toback {
+  left: 0;
+  right: auto;
+}
+.usermain .abtitle-sub .abtitle-return{
+  position: absolute;
+  right: 50px;
+  top: 25px;
+  z-index: 5;
+  float: left;
+  line-height: 30px;
+  width: 70px;
+  background: #e8ecef;
+  text-align: center;
+  color: #475058;
+  padding-top:1px;
+  width:80px; background-color:#fafafa;}
+.usermain .abtitle-sub .toback {
+  width: 60px;
+  height: 30px;
+  padding: 5px 12px;
+  color: #fff;
+  background-color: #00a3d9;
+  border-color: #00a3d9;
+}
+.usermain .abtitle-sub h2{
+  font-size: 24px;
+  height: 30px;
+  line-height: 30px;
+  color: #0099cc;
+  position: absolute;
+  z-index: 3;
+  padding: 5px 15px 5px 0px;
+  background-color:#fafafa;
+}
+.usermain .abuser-box {
+  border: 1px solid #d3d8dc;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  zoom: 1;
+  margin-top:50px;
+  border-radius:4px;
+}
+.usermain .withdraw-post{ padding-top:30px; padding-bottom:30px;}
+.usermain .withdraw-post .dl-horizontal dt{
+  font-weight: normal;
+  margin-bottom:30px;
+}
+.usermain .withdraw-post .dl-horizontal dd{
+  margin-left:195px;
+}
+.usermain .withdraw-post .dl-horizontal dd span{
+  font-weight:600;
+  font-size:18px;
+  padding-right:20px;
+}
+.usermain .withdraw-post .dl-horizontal .caption{
+  font-weight: normal;
+  font-size:14px;
+  padding-right:0px;
+  color: #555;
+}
+.usermain .withdraw-post .dl-horizontal .forget-paydt{
+  padding-top:10px;
+}
+.usermain .withdraw-post .dl-horizontal .forget-pay{
+  font-weight: normal;
+  font-size:14px;
+  padding-left:20px;
+  color: #0099cc;
+}
+.usermain .withdraw-post .dl-horizontal .input-lg{
+  height: 40px;
+  font-size:14px;
+  padding: 8px 16px;
+}
+.usermain .withdraw-post .dl-horizontal .btn-lg{
+  padding: 8px 40px;
+}
+/* withdraw1*/
+.usermain .withdraw-post .dl-horizontal .input-group{
+  width: 190px;
+}
+.usermain .withdraw-post .dl-horizontal .input-group .input-group-addon{
+  background-color: #fff;
+  padding: 6px 10px 6px 10px;
+}
+.usermain .withdraw-post .dl-horizontal .withdraw-bank a{ margin-right:30px;}
+.usermain .withdraw-post .dl-horizontal .withdraw-bank a:hover{
+  background-color:#fff;
+  border-color: #0099cc;
+}
+.usermain .withdraw-post .dl-horizontal .withdraw-bank .withdraw-addbank{ height:46px; padding-top:12px; font-size:16px;}
+.usermain .withdraw-post .dl-horizontal .withdraw-bank .withdraw-addbank span{color: #0099cc; font-size:16px;}
+.usermain .withdraw-post .dl-horizontal .withdraw-bank .withdraw-addbank .withdraw-addbanktext{color: #333;}
+
+/*  bankcard-post  */
+.usermain .bankcard-post{ padding-top:30px; padding-bottom:30px;border: 0px solid #d3d8dc;}
+.usermain .bankcard-post .bankcardone{ padding-left:50px; padding-right:20px;}
+.usermain .bankcard-post .bankcardone .model-box{ border-radius:6px;}
+.usermain .bankcard-post .bankcardone .panel-heading span{ font-size:14px; padding-left:40px; width:125px; text-align:right;}
+.usermain .bankcard-post .bankcardone .panel-heading .text-right span{ color:#9fc830;}
+.bankcardone .panel-body .dl-horizontal dt{ width:90px; margin-bottom:10px; font-weight:normal;}
+.bankcardone .panel-body .dl-horizontal dd{margin-left: 110px;}
+.usermain .bankcard-post .bankcardtwo{ padding-left:10px; padding-right:60px;}
+.usermain .bankcard-post .bankcardtwo .panel-heading{ min-height:53px;}
+.usermain .bankcard-post .bankcardtwo .panel-body{ min-height:154px; text-align:center;}
+.usermain .bankcard-post .bankcardtwo .panel-body .withdraw-addbank{ margin-top:40px; border:0px;font-size:18px;}
+.usermain .bankcard-post .bankcardtwo .panel-body .withdraw-addbank:hover{ background-color:transparent;}
+.usermain .bankcard-post .bankcardtwo .panel-body .withdraw-addbank span{ color:#0099cc;}
+/*  bankcard-post2  */
+.usermain .bankcard-post .bankcardtwo .panel-body .form-horizontal{ margin-top:10px;}
+.usermain .bankcard-post .bankcardtwo .panel-body .form-horizontal .form-group{ margin-bottom:20px;}
+.usermain .bankcard-post .bankcardtwo .panel-body .form-horizontal .form-control{ height:41px;}
+.seleinput-bank{padding:3px 5px 3px 0px; border-left:0px;}
+.seleinput-bank:hover{ background-color:#fff; border-color:#ccc;}
+.usermain .bankcard-post .bankcardtwo .panel-body .form-horizontal .control-label{ font-weight:normal;padding-right: 0px; padding-top:12px;}
+.bank-addbank{ padding-left:0px;}
+.bank-addbank .btn-primary{background-color:#00a3d9;border-color: #00a3d9;}
+.bank-resetbank{padding-right:0px;}
+.bank-resetbank .btn-primary{background-color:#ccc;border-color: #ccc;}
+
+/*  newdetails  */
+.usermain .newdetails-post{padding:30px 0px 30px 30px;}
+
+  /*  accounttop  */
+.usermain .accounttop-post{ padding-top:30px; padding-bottom:30px;}
+.usermain .accounttop-post .accoun-selebank .btn-primary{color: #555;
+  background-color: #fff;
+  border-color: #e0e0e0;
+  min-height:45px;
+}
+.accoun-selebank .accountnow .input-group .input-group-addon{background-color: #fff;}
+.accountnow p{ padding-top:12px;}
+.usermain .accounttop-post .accoun-selebank .btn-primary:hover{
+  border-color: #0099cc;}
+.usermain .accounttop-post .accoun-selebank li{ padding-right:5px;}
+.usermain .accounttop-post .accoun-selebank .btn-lg{ font-size:14px; padding-top:12px;}
+.usermain .accounttop-post .dl-horizontal dt{ width:100px; font-weight:normal; margin-bottom:30px; padding-top:12px;}
+.usermain .accounttop-post .dl-horizontal dd{margin-left: 120px;}
+.usermain .accounttop-post .submit-top .accoun-selebank .btn-primary{color: #fff;
+  background-color: #00a3d9;
+  border-color: #00a3d9;
+  min-height:45px;
+  margin-top:30px;
+}
+.usermain .accounttop-post .submit-top .accoun-selebank .btn-lg{ font-size:18px;}
