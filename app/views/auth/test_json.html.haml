@@ -1,0 +1,11 @@
+%h1
+  test_json
+%form#reg_form{"accept-charset" => "UTF-8", :action => "/showparams", :method => "post",:name =>"reg_form"}
+  = hidden_field_tag :argMerCode, @pMerCode
+  -#= @arg3DesXmlPara.to_s.force_encoding("UTF-8")
+  = hidden_field_tag :arg3DesXmlPara, @arg3DesXmlPara
+  = hidden_field_tag :argSign, @argSign
+  = submit_tag "提交"
+
+:javascript
+  //document.reg_form.submit();

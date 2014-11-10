@@ -20,8 +20,8 @@ Wooul::Application.routes.draw do
   resources :accounts
 
   post '/regist', to: 'auth#regist'
-
-  devise_for :users, controllers: { registrations: "auth", sessions: "login", passwords:"passwd"}
+  post '/showparams', to: 'test#showparams'
+  devise_for :users, controllers: { registrations: "auth", sessions: "login", passwords:"passwds"}
   devise_scope :user do
     post "/checkmobile" => "auth#checkmobile"
     post "/checkemail" => "auth#checkemail"
@@ -30,6 +30,12 @@ Wooul::Application.routes.draw do
     post "/confirm_code" => "auth#confirm_code"
     post "/test_json" => "auth#test_json"
     post "/new_user" => "auth#create"
+    post "/verify_username" => "passwds#verify_username"
+    post "/sendemail" => "passwds#sendemail"
+    post "/reset_password" => "passwds#reset_password"
+    get "/username" => "passwds#recover_username"
+    get "/reset_pass" => "passwds#reset_pass"
+    get "/verify_method" => "passwds#verify_method"
     get "/email_activate" => "auth#useractivate"
     get "/success" => "auth#success"
     get "/fail" => "auth#fail"

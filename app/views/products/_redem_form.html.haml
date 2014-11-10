@@ -1,0 +1,44 @@
+- type_dict = {"onsale" => "button", "normal" => "submit"}
+- value_dict = {"onsale" => "赎回中", "normal" => "赎回"}
+- input_dict = {"onsale" => true, "normal" => false}
+%table.table
+  %tr
+    %th 名称
+    %th 年化收益率
+    %th 已持有期数
+    %th 待收本金
+    %th 折让率
+    %th 赎回金额
+    %th 赎回
+  - invests.each do |dep|
+    = form_tag usercenter_console_resell_path(:page => product_type) do
+      %tr{:class => "#{product_type}_item"}
+        = hidden_field_tag :invest_id, dep.invest_number
+        %td.vertical-center
+          = dep.loan_number
+        %td.vertical-center
+          #{number_with_precision dep.annual_rate, precision: 2}%
+        %td.vertical-center
+          = "1"
+        %td.vertical-center
+          .origin_value
+            = dep.amount
+        %td{:style=>"width:20%"}
+          - if dep.product.premature_redemption == "yes" && dep.stage == "normal"
+            = text_field_tag :discount_rt, dep.discount_rate, class: "discount_number"
+            = hidden_field_tag :discount_rate, dep.discount_rate
+          - else
+            %input.number_range#discount_rate{:type => "text", :value=>dep.discount_rate, :name=>"discount_rate",:class=>"col-xs-8 form-control",:disabled=> true }
+
+        %td.vertical-center
+          .discount_value
+            - if dep.onsale
+              = dep.resell_price
+            - else
+              - resell_price = dep.amount * (100 - dep.discount_rate) / 100
+              = number_with_precision resell_price, precision: 1
+        %td
+          - if dep.product.premature_redemption == "yes"
+            %input.btn.btn-primary{:type => type_dict[dep.stage] ,:value => value_dict[dep.stage]}
+          - else
+            %input.btn.btn-default{:type => "button", :value => "无效", :disabled => "true"}

@@ -13,10 +13,9 @@ class Reg < ActionMailer::Base
   end
 
 
-  def reset_password(user)
-    @userid = user.id
-    @userhash = user.hashed_password
-    @username = user.name
-    mail :to=> user.email,:subject => "微行微系统密码重设"
+  def reset_password(email, code)
+    @username= email
+    @userhash = code
+    mail :to=> email,:subject => "沃银网密码重设"
   end
 end

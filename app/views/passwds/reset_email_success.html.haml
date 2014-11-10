@@ -1,0 +1,77 @@
+.sign-page
+  .container
+    .panel.panel-default
+      .panel-heading
+        .panel-title
+          %h4 找回密码
+      .panel-body.find-password-lbody.find-password-select
+        .text-center.reg-steps
+          %img{:src => image_url("main/find-password2.jpg")}
+        .findpassword-user
+          您正在为账户
+          %span.light-org
+            =@username
+          重置登录密码，请选择找回方式：
+        .row.findpassword-select
+          .col-xs-9
+            %strong 通过手机验证码（推荐）
+            %p 如果您的186****9436手机还在正常使用，请选择此方式
+          .col-xs-3
+            %a.btn.btn-primary{:href => "#", :role => "button"} 立即找回
+        .row.findpassword-select
+          .col-xs-9
+            %strong 通过电子邮箱
+            %p 一封带有修改密码链接的邮件已发到您的注册邮箱,请查收
+          .col-xs-3
+            = form_for(:user, :url => password_path(:user), :html => { :method => :post, class: "form-signin" }) do |f|
+              %a.btn.btn-success{:target => "blank", :href =>"http://" + @email_server} 前往邮箱
+        .row.findpassword-select
+          .col-xs-9
+            %strong 通过安全保护问题
+            %p 如果您记得预留的安全保护问题，请选择此方式
+          .col-xs-3
+            %a.btn.btn-primary{:href => "#", :role => "button"} 立即找回
+
+.security-identity
+  .container.security-identity-container
+    %ul.row.list-unstyled
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 50元即可加入
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 100%本息担保
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 随时赎回投资
+      %li.col-xs-3
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 服务完全免费
+
+.footer
+  .footnav-bj.footnav-findpasswordbj
+    .container
+      .row
+        .col-xs-7.footer-address
+          %ul
+            %li
+              %dl
+                %dt 服务热线 (9-18:00)
+                %dd 400-890-3980
+            %li
+              %span 客服邮箱： support@wooul.com
+              %span 新浪微博：@沃银网
+        .col-xs-5.footer-address
+          %ul
+            %li
+              %a{:href => "/"}
+                %img{:src => image_url("foot/wooul-logo-grey.png")}/
+            %li Copyright ©2014 深圳市沃银金融服务有限公司， All Rights Reserved
