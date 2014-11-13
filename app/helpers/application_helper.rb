@@ -27,6 +27,7 @@ module ApplicationHelper
         "/about" => "about",
         "/fixed_deposits" => "invest",
         "/month_deposits" => "invest",
+        "/securecenter" => "account",
     }
 	  menu_key = 'home'
     dict.each do |k,v|

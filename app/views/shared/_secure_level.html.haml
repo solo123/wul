@@ -5,7 +5,7 @@
   - current_level= current_user.user_info.secury_score - 1
   - verify = current_user.user_info.verification
   - level = ["低","中","高"]
-  - status_dict = {"verified" => "btn-success2", "confirming" =>"btn-default"}
+  - status_dict = {"verified" => "btn-success", "confirming" =>"btn-default"}
   .accout_ye
     我的余额
     %strong
@@ -19,7 +19,7 @@
       %span.glyphicon.glyphicon-phone
     %a.btn.btn-small{:href=>securecenter_secure_real_name_path, :class=> "#{status_dict[verify.idstatus]}"}
       %span.glyphicon.glyphicon-user
-    %a.btn.btn-small{:href=>"#", :class=> "#{status_dict[verify.emailstatus]}"}
+    %a.btn.btn-small{:href=>securecenter_secure_confirm_path, :class=> "#{status_dict[verify.passwordstatus]}"}
       %span.glyphicon.glyphicon-asterisk
   .accout-progress
     安全等级

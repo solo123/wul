@@ -12,6 +12,38 @@ module Securecenter
 
     end
 
+    def payment_pass
+      uinfo = current_user.user_info
+      if params[:old_pass] != uinfo.payment_password
+        flash[:notice] = "原支付密码验证失败"
+        redirect_to securecenter_secure_confirm_path and return
+      end
+
+      if params[:new_pass].size < 6
+        flash[:notice] = "支付密码不能小于6位"
+        redirect_to securecenter_secure_confirm_path and return
+      end
+
+      if params[:new_pass] == uinfo.payment_password
+        flash[:notice] = "新支付密码不能与旧密码相同"
+        redirect_to securecenter_secure_confirm_path and return
+      end
+
+      if params[:new_pass] != params[:new_pass_confirm]
+        flash[:notice] = "两次输入的支付密码不一致"
+        redirect_to securecenter_secure_confirm_path and return
+      end
+
+      uinfo.payment_password = params[:new_pass]
+      verification = uinfo.verification
+      verification.passwordstatus = "verified"
+      verification.securyscore += 1
+      verification.save!
+      uinfo.save!
+      flash[:notice] = "支付密码修改成功"
+      redirect_to securecenter_secure_confirm_path
+    end
+
     def real_name
       verification = current_user.user_info.verification
       if verification.idstatus == "verified"
@@ -70,7 +102,8 @@ module Securecenter
       if params[:verify_code] == current_user.user_info.verification.verify_code
         render "new_phone" and return
       else
-        render "auth/fail" and return
+        flash[:notice] = "验证码错误"
+        redirect_to securecenter_secure_change_phone_path and return
       end
     end
 
@@ -82,32 +115,7 @@ module Securecenter
     end
 
     def change_phone
-      # if request.post?
-      #   phonenum = params[:phone_number]
-      #   secure_num = params[:secure_number]
-      #   if UserInfo.exists?(:mobile => phonenum)
-      #     flash[:notice] = "该号码已经被使用#{phonenum}"
-      #   else
-      #     uinfo =current_user.user_info
-      #     verify = uinfo.verification
-      #     if verify.phone == phonenum and secure_num == verify.verify_code
-      #       verify.phonetime = Time.now
-      #       uinfo.payment_password = params[:pay_password]
-      #       verify.securyscore += 1
-      #       verify.phonestatus = "verified"
-      #       verify.save!
-      #       uinfo.save!
-      #       flash[:notice] = "验证成功"
-      #     else
-      #       flash[:notice] = "验证码与手机不符"
-      #     end
-      #   end
-      # else
-      #   verify = current_user.user_info.verification
-      #   if verify.phonestatus == "verified"
-      #     @verification = verify
-      #   end
-      # end
+
       verify = current_user.user_info.verification
       if verify.phonestatus == "verified"
         @verification = verify
@@ -135,6 +143,7 @@ module Securecenter
     def checkphone
       phonenum = params[:phone_number]
       secure_num = params[:secure_number]
+      paypass = params[:paypass]
       if UserInfo.exists?(:mobile => phonenum)
         flash[:notice] = "该号码已经被使用#{phonenum}"
         redirect_to securecenter_secure_change_phone_path and return
@@ -143,6 +152,11 @@ module Securecenter
         verify = uinfo.verification
 
         if verify.phone == phonenum and secure_num == verify.verify_code
+          if uinfo.payment_password != paypass
+            flash[:notice] = "支付密码验证失败"
+            redirect_to securecenter_secure_change_phone_path and return
+          end
+
           uinfo.mobile = phonenum
           uinfo.mobile_verify_date = Time.now
           uinfo.payment_password = params[:pay_password]
