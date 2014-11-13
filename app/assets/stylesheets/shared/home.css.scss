@@ -4,7 +4,7 @@
 
 }
 .home-area-header{
-	margin:80px 0 50px 0;
+	margin:80px 0 30px 0;
 }
 
 .home-area-header p{
@@ -195,13 +195,10 @@
 .yyy-list:hover{
   border:1px solid #f28558;
 }
-.home-product-list  .table > tbody > tr{
-  height: 200px;bottom: 20px;}
 .home-product-list  .table > tbody > tr > td{
   border-top:0px solid #f28558;
   padding-top: 0px;
 }
-.hhh{ margin-bottom: 20px;}
 .yyy-list-progress{
   border-right:1px dashed #069;
   margin-top:10px;
@@ -252,7 +249,18 @@
 .yyy-list-progress .yyy-transfer{
   padding-left:0px;
 }
-.ys-guaranty{}
+.home-onsale-area{ margin-bottom: 30px;}
+.home-onsale-area .td-list{ float:left; margin-bottom:10px;}
+.home-onsale-area .zyzq-transfer .td-list .dl-horizontal dt{width: 100px; font-weight:normal; padding-top:5px;}
+.home-onsale-area .zyzq-transfer .td-list .dl-horizontal dd{margin-left: 100px; padding-right:25px;color: #ff6600; font-size:18px;}
+.home-onsale-area .table>tbody>tr>td{border-top: 0px solid #ddd; padding: 0px;}
+.zyzq-transfer .danbao{
+  text-align: left;
+  padding-top: 20px;
+  min-width: 180px;
+}
+.home-onsale-area .container{ padding-left: 15px; padding-right: 15px;}
+.home-onsale-area .yyy-list{margin-bottom: 0px;}
 
 
 
