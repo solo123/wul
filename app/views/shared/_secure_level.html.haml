@@ -1,9 +1,10 @@
 .accout-info.alert.alert-info
   您好,
   = current_user.username
-  - secure_progress = current_user.user_info.sec_progress
-  - current_level= current_user.user_info.secury_score - 1
+
   - verify = current_user.user_info.verification
+  - current_level= verify.securyscore - 1
+  - secure_progress = verify.sec_progress
   - level = ["低","中","高"]
   - status_dict = {"verified" => "btn-success", "confirming" =>"btn-default"}
   .accout_ye
@@ -30,7 +31,7 @@
   .row
     .col-xs-8
       .progress.progress-striped.active
-        .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "45", :role => "progressbar", :style => "width: 45%"}
+        .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "45", :role => "progressbar", :style => "width:#{secure_progress}%"}
           %span.sr-only 45% Complete
     .col-xs-4.wrapperbode
       %a{:href => "#"}

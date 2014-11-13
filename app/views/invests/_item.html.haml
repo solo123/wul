@@ -1,41 +1,42 @@
-%tr.yyy-list
+%tr
   %td
-    .row.hhh
+    .row.yyy-list
       .col-xs-10.yyy-list-progress
-        %h4.zyzq-h4.yyy-h4
-          %button.btn.btn-primary.yyy-list-btn{:type => "button"} 月
-          = dict[obj.invest_type]
-          %span.yyy-list-title
-            %a.a-inline{:href =>"#"}
+        .yyy-transfer.zyzq-transfer
+          %h4.zyzq-h4.yyy-h4
+            %button.btn.btn-primary.yyy-list-btn{:type => "button"} 月
+            %span.yyy-list-title
+              = dict[obj.invest_type]
               = obj.loan_number
-        .td-list.danbao
-          %span
-            %img{:src => image_url("main/yisheng-icons.jpg")}/
-            = obj.product.guarantee
-        .td-list
-          %dl.dl-horizontal
-            %dt 年化收益率：
-            %dd
-              = obj.product.annual_rate
-              \%
-        .td-list
-          %dl.dl-horizontal
-            %dt 融资金额：
-            %dd
-              ￥
-              = obj.resell_price
-        .td-list
-          %dl.dl-horizontal
-            %dt 借款期限：
-            %dd
-              = obj.product.remain_repayment_period
-              个月
-        .td-list
-          %dl.dl-horizontal
-            %dt 折让率：
-            %dd
-              = (100-obj.discount_rate)/10
-              折
+          .td-list.danbao
+            %span
+              %img{:src => image_url("main/yisheng-icons.jpg")}
+                = obj.product.guarantee
+                担保
+          .td-list
+            %dl.dl-horizontal
+              %dt 年化收益率：
+              %dd
+                = obj.product.annual_rate
+                \%
+          .td-list
+            %dl.dl-horizontal
+              %dt 融资金额：
+              %dd
+                ￥
+                = obj.resell_price
+          .td-list
+            %dl.dl-horizontal
+              %dt 借款期限：
+              %dd
+                = obj.product.remain_repayment_period
+                个月
+          .td-list
+            %dl.dl-horizontal
+              %dt 折让率：
+              %dd
+                = (100-obj.discount_rate)/10
+                折
       .col-xs-2.yyy-product-progress
         %ul
           %li.time-icon
@@ -43,6 +44,13 @@
               %img{:src => image_url("main/time-icon.jpg")}/
             剩余时间：30天
           %li
-            %a.btn.btn-primary.btn-block{:href => invest_path(obj)}
+            %a.btn.btn-primary.btn-block{:href => invest_path(obj.invest_number)}
               马上购入
+
+
+
+
+
+
+
 

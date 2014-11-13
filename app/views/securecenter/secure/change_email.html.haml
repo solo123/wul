@@ -1,3 +1,5 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "console.js"
 .console-header-info
   .fun-area.pull-right
     %a.btn.btn-default{:href => securecenter_path }返回
@@ -6,19 +8,25 @@
 
 .securecenter-form-area
   .form-horizontal
+  = form_tag securecenter_secure_new_email_path do
     .form-group
       %label.col-sm-2.control-label 邮箱
       .col-sm-10
-        %input{:type => "text", :class => "form-control"}
-
+        = text_field_tag :new_email, '',  class: "form-control"
     .form-group
       %label.col-sm-2.control-label 支付密码
       .col-sm-10
-        %input{:type => "text", :class => "form-control"}
-
+        = text_field_tag :payment_pass, '',  class: "form-control"
+    - if flash[:notice]
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          .alert.alert-danger
+            %button.close{ :data => { :dismiss => "alert" } }
+            = flash[:notice]
     .form-group
       .col-sm-offset-2.col-sm-10
-        %a.btn.btn-primary 下一步
+        %button.btn.btn-primary{:type => "submit"}
+          下一步
 
 
 

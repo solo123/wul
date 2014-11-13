@@ -127,6 +127,7 @@ Wooul::Application.routes.draw do
     post '/secure/new_phone'
     post '/secure/change_question'
     post '/secure/payment_pass'
+    post '/secure/new_email'
   end
 
 

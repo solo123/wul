@@ -12,6 +12,19 @@ module Securecenter
 
     end
 
+    def new_email
+      uinfo = current_user.user_info
+      if params[:payment_pass] != uinfo.payment_password
+        flash[:notice] = "原支付密码验证失败"
+        redirect_to securecenter_secure_change_email_path and return
+      end
+      current_user.email = params[:new_email]
+      uinfo.verification.email = params[:new_email]
+      flash[:notice] = "邮箱修改成功"
+      current_user.save!
+      redirect_to securecenter_secure_change_email_path and return
+    end
+
     def payment_pass
       uinfo = current_user.user_info
       if params[:old_pass] != uinfo.payment_password

@@ -32,17 +32,6 @@ class UserInfo < ActiveRecord::Base
     delagator.save!
   end
 
-  def sec_progress
-    if self.secury_score == 0
-      self.secury_score
-    elsif self.secury_score == 3
-      100
-    else
-      self.secury_score * 33
-    end
-  end
-
-
   def clear_notify
     self.notify_num = 0
     self.save!
