@@ -189,21 +189,19 @@
 .yyy-list{
   border:1px solid #e5e5e5;
   background-color:#f7fdff;
-  margin-bottom:50x;
   margin-top:20px;
   border-radius: 4px;
-  margin-left: 0px;
-  margin-right: 0px;
 }
 .yyy-list:hover{
   border:1px solid #f28558;
 }
-.home-product-list  .table > tbody > tr{ margin-bottom: 20px;}
+.home-product-list  .table > tbody > tr{
+  height: 200px;bottom: 20px;}
 .home-product-list  .table > tbody > tr > td{
   border-top:0px solid #f28558;
   padding-top: 0px;
 }
-
+.hhh{ margin-bottom: 20px;}
 .yyy-list-progress{
   border-right:1px dashed #069;
   margin-top:10px;
