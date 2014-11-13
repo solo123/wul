@@ -13,14 +13,14 @@
           %label.col-sm-2.control-label 当前手机号码是：
           .col-sm-10
             %input#phone_number{:type => "text", :class => "form-control", :name => "phone_number", :value => current_user.user_info.mobile, :disabled=> true }
-            -#= text_field_tag :phone_number, @verification.phone,  class: "form-control", disabled: true
-            -#= @verification.phone
-
         .form-group
           %label.col-sm-2.control-label 验证码
           .col-sm-10
             %input#verify_code{:type => "text", :class => "form-control", :name => "verify_code"}
             %a.btn.btn-primary.confirmphone 获取验证码
+            #flash-message.pull-right
+              - flash.each do |name, msg|
+                = content_tag :div, msg, :id => "flash_#{name}", :class => "flash_#{name} flash_all"
 
         .form-group
           .col-sm-offset-2.col-sm-10
@@ -35,6 +35,9 @@
             = text_field_tag :phone_number, '',  class: "form-control"
         .form-group 
           = label :securenumber, '验证码', class: "col-sm-2 control-label "
+          #flash-message.pull-right
+            - flash.each do |name, msg|
+              = content_tag :div, msg, :id => "flash_#{name}", :class => "flash_#{name} flash_all"
           .col-sm-10
             .input-group
               .input-group-btn

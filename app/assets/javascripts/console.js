@@ -10,6 +10,7 @@ $(".confirmphone").click(
 
 
 $(document).ready(function () {
+    show_flash_message();
     $("#jsontest").click(
         function () {
             $.post(
@@ -82,7 +83,16 @@ function submitXml(){
 };
 
 
+function show_flash_message() {
+    if (flash_exist()) {
+        $("#flash-message").delay(500).show("slideUp");
+        $("#flash-message").delay(2500).hide("slideUp");
+    }
+}
 
+function flash_exist(){
+    return $("#flash-message").children().length > 0;
+}
 
 //$.ajax(
 //    "http://127.0.0.1:3001/accounting/account/execute_cmd",

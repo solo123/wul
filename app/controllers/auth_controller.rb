@@ -1,5 +1,5 @@
 # coding: utf-8
-class AuthController < Devise::RegistrationsController
+class AuthController < Devise::SessionsController
   require 'net/https'
   require 'json'
   require "uri"

@@ -1,25 +1,54 @@
 .console-header-info
   .fun-area.pull-right
     %a.btn.btn-default{:href => securecenter_path }返回
-  %h1.page-header 交易验证
+  %h1.page-header 支付密码
 
 .transaction-verification
   .row
-    .col-md-7
+    .col-md-12
       .intro
-        %p
-          账户资金提现、赎回时，为确保安全，需进行验证
         %p
           支付密码
           %span{:style => "color:green"}
             已启用
+        %p
           账户资金提现、赎回时，需验证支付密码，此项不可撤销。
         %p
-          短信验证   未启用  启用此功能后，账户资金提现、赎回时，验证支付密码后还需验证手机短信动态码。双重验证可有效提升账户资金安全。
-    .col-md-5
-      - if @phone_confirm
-        %a.btn.btn-success.btn-lg.btn-block{:href => securecenter_secure_secure_active_path} 已启用，需要关闭？
-      - else
-        %a.btn.btn-info.btn-lg.btn-block{:href => securecenter_secure_secure_active_path} 未启用，需要启用？
-
-          
+          初始支付密码和用户登录密码相同, 请尽快修改以策安全。
+  .row
+    .col-md-12
+      = form_tag securecenter_secure_payment_pass_path do
+        .securecenter-form-area
+          - if @verify
+            .form-horizontal
+              .form-group
+                %label.col-sm-2.control-label 您的验证身份证号码是:
+                .col-sm-10
+                  = @verify.personalid
+              .form-group
+                %label.col-sm-2.control-label 您的验证姓名是:
+                .col-sm-10
+                  = @verify.realname
+          - else
+            .form-horizontal
+              .form-group
+                = label :id_number, '原支付密码', class: "col-sm-2 control-label "
+                .col-sm-10
+                  = text_field_tag :old_pass, '',  class: "form-control"
+              .form-group
+                = label :real_name, '新支付密码', class: "col-sm-2 control-label "
+                .col-sm-10
+                  = text_field_tag :new_pass, '',  class: "form-control"
+              .form-group
+                = label :real_name, '确认新密码', class: "col-sm-2 control-label "
+                .col-sm-10
+                  = text_field_tag :new_pass_confirm, '',  class: "form-control"
+              - if flash[:notice]
+                .form-group
+                  .col-sm-offset-2.col-sm-10
+                    .alert.alert-danger
+                      %button.close{ :data => { :dismiss => "alert" } }x
+                      = flash[:notice]
+              .form-group
+                .col-sm-offset-2.col-sm-10
+                  = submit_tag '修改', :class => "btn btn-default"
