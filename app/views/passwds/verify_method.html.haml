@@ -13,19 +13,39 @@
             =@username
           重置登录密码，请选择找回方式：
         .row.findpassword-select
-          .col-xs-9
-            %strong 通过手机验证码（推荐）
-            %p 如果您的186****9436手机还在正常使用，请选择此方式
-          .col-xs-3
-            %a.btn.btn-primary{:href => "#", :role => "button"} 立即找回
+          - if @mobile.nil?
+            .col-xs-9
+              %strong 通过手机验证码
+              %p 您沒有绑定手机, 无法使用手机找回密码
+            .col-xs-3
+              %button.btn.btn-default{:type => "button"} 选项无效
+          - else
+            .col-xs-9
+              %strong 通过手机验证码（推荐）
+              %p
+                如果您的
+                = @mobile[0, 3] + "***" + @mobile[-4, 4]
+                手机还在正常使用，请选择此方式
+            .col-xs-3
+              = form_for(:user, :url => sendsms_path, :html => { :method => :post}) do |f|
+                = hidden_field_tag :username, @username
+                %button.btn.btn-primary{:type => "submit"} 立即找回
         .row.findpassword-select
-          .col-xs-9
-            %strong 通过电子邮箱
-            %p 如果您的注册邮箱还在正常使用，请选择此方式
-          .col-xs-3
-            = form_for(:user, :url => sendemail_path(), :html => { :method => :post}) do |f|
-              = hidden_field_tag :username, @username
-              %button.btn.btn-primary{:type => "submit"} 立即找回
+          - if @email.nil?
+            .col-xs-9
+              %strong 通过电子邮箱
+              %p 您沒有注册邮箱, 无法使用邮箱找回密码
+            .col-xs-3
+              %button.btn.btn-default{:type => "button"} 选项无效
+          - else
+            .col-xs-9
+              %strong
+                通过电子邮箱
+              %p 如果您的注册邮箱还在正常使用，请选择此方式
+            .col-xs-3
+              = form_for(:user, :url => sendemail_path(), :html => { :method => :post}) do |f|
+                = hidden_field_tag :username, @username
+                %button.btn.btn-primary{:type => "submit"} 立即找回
         .row.findpassword-select
           .col-xs-9
             %strong 通过安全保护问题

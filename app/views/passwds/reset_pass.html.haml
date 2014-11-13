@@ -16,6 +16,8 @@
               %img{:src => image_url("main/find-password3.jpg")}
             .col-sm-offset-3.col-sm-9
               = form_for(:user, html: {class: "form-signin form-horizontal", :id => "reset_form"}, :url => reset_password_path) do |f|
+                = hidden_field_tag :email, params["email"]
+                = hidden_field_tag :mobile, params["mobile"]
                 .form-group
                   %label.col-sm-2.control-label{:for => "inputEmail3"} 设置密码
                   .col-sm-4

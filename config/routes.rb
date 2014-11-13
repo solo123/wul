@@ -32,7 +32,9 @@ Wooul::Application.routes.draw do
     post "/new_user" => "auth#create"
     post "/verify_username" => "passwds#verify_username"
     post "/sendemail" => "passwds#sendemail"
+    post "/sendsms" => "passwds#sendsms"
     post "/reset_password" => "passwds#reset_password"
+    post "/reset_pass_sms" => "passwds#reset_pass_sms"
     get "/username" => "passwds#recover_username"
     get "/reset_pass" => "passwds#reset_pass"
     get "/verify_method" => "passwds#verify_method"
@@ -123,6 +125,7 @@ Wooul::Application.routes.draw do
     post '/secure/verify_code'
     post '/secure/checkphone'
     post '/secure/new_phone'
+    post '/secure/change_question'
   end
 
 

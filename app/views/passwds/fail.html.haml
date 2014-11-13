@@ -1,0 +1,67 @@
+.sign-page
+  .container
+    .row
+      .col-md-12.col-sm-12
+        .panel.panel-default
+          .panel-heading
+            .panel-title
+              %h4 找回密码
+          .panel-body.find-password-lbody
+            .text-center.reg-steps
+              %img{:src => image_url("main/find-password3.jpg")}
+            .findpassword-succeed
+              %h2.text-center
+                %span.glyphicon.glyphicon-ok
+                出错了！ 验证码错误, 或者用户不存在
+              %p.text-center.mailboxyh
+              %ul
+                %li
+                  %img{:src => image_url("main/mailbox-succeed1.jpg")}/
+                %li
+                  %a.btn.btn-primary.btn-lg{:href => "#", :role => "button"} 返回重设密码
+                %li
+                  %img{:src => image_url("main/mailbox-succeed4.jpg")}/
+
+.security-identity
+  .container.security-identity-container
+    %ul.row.list-unstyled
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 50元即可加入
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 100%本息担保
+      %li.col-xs-3.list-unstyled-borde
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 随时赎回投资
+      %li.col-xs-3
+        %dl.text-center
+          %dt
+            %img{:src => image_url("foot/foot1.jpg")}/
+          %dd 服务完全免费
+
+.footer
+  .footnav-bj.footnav-findpasswordbj
+    .container
+      .row
+        .col-xs-7.footer-address
+          %ul
+            %li
+              %dl
+                %dt 服务热线 (9-18:00)
+                %dd 400-890-3980
+            %li
+              %span 客服邮箱： support@wooul.com
+              %span 新浪微博：@沃银网
+        .col-xs-5.footer-address
+          %ul
+            %li
+              %a{:href => "/"}
+                %img{:src => image_url("foot/wooul-logo-grey.png")}/
+            %li Copyright ©2014 深圳市沃银金融服务有限公司， All Rights Reserved

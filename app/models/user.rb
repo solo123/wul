@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
     uinfo.account = account
     uinfo.analyzer = analyzer
     uinfo.show_id = self.username
+    uinfo.payment_password = self.
     self.user_info = uinfo
     account.save!
     uinfo.save!

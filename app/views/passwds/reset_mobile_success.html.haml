@@ -1,3 +1,7 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "password.js"
+#verify_code{:style => "display:none;"}
+  =@verify_code
 .sign-page
   .container
     .panel.panel-default
@@ -14,21 +18,28 @@
           重置登录密码，请选择找回方式：
         .row.findpassword-select
           .col-xs-9
-            %strong 通过手机验证码（推荐）
+            %strong 通过手机验证码
             %p
-              如果您的
-              = @mobile[0, 3] + "***" + @mobile[-4, 4]
-              手机还在正常使用，请选择此方式
+              = form_for(:user, :url => reset_pass_sms_path, :html => { :method => :post}) do |f|
+                = hidden_field_tag :mobile, @mobile
+                = text_field_tag :verify_code, "", class: "form-control", autocomplete: "off", placeholder: "输入收到的验证码"
+                %button.btn.btn-success{:type => "submit"}
+                  验证
           .col-xs-3
             = form_for(:user, :url => sendsms_path, :html => { :method => :post}) do |f|
               = hidden_field_tag :username, @username
-              %button.btn.btn-primary{:type => "submit"} 立即找回
+              %button.btn.btn-warning#phonebutton{:href => "#", :role => "button", :disabled => true}
+                重发
+                %span#timer
         .row.findpassword-select
           .col-xs-9
-            %strong 通过电子邮箱
-            %p 一封带有修改密码链接的邮件已发到您的注册邮箱,请查收
+            %strong
+              通过电子邮箱
+            %p 如果您的注册邮箱还在正常使用，请选择此方式
           .col-xs-3
-            %a.btn.btn-success{:target => "blank", :href =>"http://" + @email_server} 前往邮箱
+            = form_for(:user, :url => sendemail_path(), :html => { :method => :post}) do |f|
+              = hidden_field_tag :username, @username
+              %button.btn.btn-primary{:type => "submit"} 立即找回
         .row.findpassword-select
           .col-xs-9
             %strong 通过安全保护问题
