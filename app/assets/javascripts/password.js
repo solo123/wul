@@ -1,5 +1,18 @@
+var count = 10;
+var counter;
+
+
+
+
 $(document).ready(function () {
     show_flash_message();
+    if ($("#timer").length) {
+        counter = setInterval(timer, 1000); //1000 will  run it every 1 second
+    }
+
+    if ($("#verify_code").length) {
+       alert("验证码是" + $("#verify_code").html() )
+    }
 
     var options_reset = {
         beforeSubmit: function () {
@@ -16,7 +29,7 @@ $(document).ready(function () {
 //    $('#reset_form').ajaxForm(options_reset);
 
     $("#reset_form").validate({
-        focusInvalid: true,
+        focusInvalid: false,
         focusCleanup: true,
         onkeyup: false,
         rules: {
@@ -79,6 +92,18 @@ function show_flash_message() {
 
 function flash_exist() {
     return $("#flash-message").children().length > 0;
+}
+
+function timer() {
+    count = count - 1;
+    if (count <= 0) {
+        clearInterval(counter);
+        $('#timer').html("");
+        $('#phonebutton').removeAttr('disabled');
+        return;
+    }
+
+    document.getElementById("timer").innerHTML = "(" + count + ")";
 }
 
 

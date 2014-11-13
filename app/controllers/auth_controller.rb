@@ -1,5 +1,5 @@
 # coding: utf-8
-class AuthController < Devise::SessionsController
+class AuthController < Devise::RegistrationsController
   require 'net/https'
   require 'json'
   require "uri"
@@ -18,7 +18,6 @@ class AuthController < Devise::SessionsController
     con.use_ssl = true
     res = con.start { |http| http.request(req) }
   end
-
 
   # def sendsms
   #   logger.info(params)
