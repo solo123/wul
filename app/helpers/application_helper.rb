@@ -25,7 +25,7 @@ module ApplicationHelper
         "/invests" => "invest",
         "/usercenter" => "account",
         "/about" => "about",
-        "/fixed_deposits" => "invest",
+        "/fixed_deposgit ts" => "invest",
         "/month_deposits" => "invest",
         "/securecenter" => "account",
     }
