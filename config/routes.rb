@@ -35,6 +35,8 @@ Wooul::Application.routes.draw do
     post "/sendsms" => "passwds#sendsms"
     post "/reset_password" => "passwds#reset_password"
     post "/reset_pass_sms" => "passwds#reset_pass_sms"
+    post "/reset_pass_question" => "passwds#reset_pass_question"
+    post "/confirm_question" => "passwds#confirm_question"
     get "/username" => "passwds#recover_username"
     get "/reset_pass" => "passwds#reset_pass"
     get "/verify_method" => "passwds#verify_method"

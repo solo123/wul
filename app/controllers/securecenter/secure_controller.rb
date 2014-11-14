@@ -22,6 +22,7 @@ module Securecenter
       uinfo.verification.email = params[:new_email]
       flash[:notice] = "邮箱修改成功"
       current_user.save!
+      @current_email = current_user.email
       redirect_to securecenter_secure_change_email_path and return
     end
 
@@ -136,10 +137,13 @@ module Securecenter
     end
 
     def change_email
+      @current_email = current_user.email
+
     end
 
 
     def change_secret
+      @verify = current_user.user_info.verification
     end
 
     def verify_code
@@ -194,6 +198,23 @@ module Securecenter
 
 
     def change_question
+      uinfo = current_user.user_info
+      if params[:payment_pass] != uinfo.payment_password
+        flash[:notice] = "原支付密码验证失败"
+        redirect_to securecenter_secure_change_secret_path and return
+      end
+
+      if params[:answer] == ""
+        flash[:notice] = "安全问题答案不能为空"
+        redirect_to securecenter_secure_change_secret_path and return
+      end
+
+      @verify = uinfo.verification
+      @verify.safe_question_answer = params[:answer]
+      @verify.safe_question_id = params[:safe_question]
+      @verify.save!
+      flash[:notice] = "问题修改成功"
+      redirect_to securecenter_secure_change_secret_path and return
     end
   end
 end

@@ -51,7 +51,9 @@
             %strong 通过安全保护问题
             %p 如果您记得预留的安全保护问题，请选择此方式
           .col-xs-3
-            %a.btn.btn-primary{:href => "#", :role => "button"} 立即找回
+            = form_for(:user, :url => reset_pass_question_path, :html => { :method => :post}) do |f|
+              = hidden_field_tag :username, @username
+              %button.btn.btn-primary{:type => "submit"} 立即找回
 
 .security-identity
   .container.security-identity-container

@@ -67,6 +67,7 @@ class PasswdsController < Devise::PasswordsController
 
   def reset_pass
     email= params[:email]
+    username = params[:username]
     if email
       user = User.find_by email: email
       verify = user.user_info.verification
@@ -76,7 +77,8 @@ class PasswdsController < Devise::PasswordsController
         render "fail" and return
       end
     else
-      render "fail" and return
+      user = User.find_by username: username
+      render "reset_pass" and return
     end
   end
 
@@ -122,6 +124,27 @@ class PasswdsController < Devise::PasswordsController
   end
 
 
+  def reset_pass_question
+    user = User.find_by username: params[:username]
+    @verify = user.user_info.verification
+    @verify.question_change = true
+    @verify.verify_secret =
+    @username= params[:username]
+    render "reset_question_success" and return
+  end
+
+  def confirm_question
+    user = User.find_by username: params[:username]
+    @verify = user.user_info.verification
+    if params[:answer] == @verify.safe_question_answer
+      redirect_to reset_pass_path(:username=>params[:username])
+    else
+      render "fail" and return
+    end
+
+  end
+
+
   def reset_password
     password = params[:recover_password]
     if params[:email] != ""
@@ -144,7 +167,14 @@ class PasswdsController < Devise::PasswordsController
       end
 
     else
-      render "fail"
+      user = User.find_by username: params[:username]
+      if user
+        user.password = user.password_confirmation = params[:recover_password]
+        user.save!
+        render "success"
+      else
+        render "fail" and return
+      end
 
     end
 
