@@ -1,11 +1,6 @@
-- content_for :javascript_includes do
-  = javascript_include_tag "password.js"
 .sign-page
   .container
     .row
-      #flash-message.pull-right
-        - flash.each do |name, msg|
-          = content_tag :div, msg, :id => "flash_#{name}", :class => "flash_#{name} flash_all"
       .col-md-12.col-sm-12
         .panel.panel-default
           .panel-heading
@@ -13,37 +8,25 @@
               %h4 找回密码
           .panel-body.find-password-lbody
             .text-center.reg-steps
-              %img{:src => image_url("main/find-password3.jpg")}
+              %img{:src => image_url("main/find-password1.jpg")}
             .col-sm-offset-3.col-sm-9
-              = form_for(:user, html: {class: "form-signin form-horizontal", :id => "reset_form"}, :url => reset_password_path) do |f|
-                = hidden_field_tag :email, params["email"]
-                = hidden_field_tag :mobile, params["mobile"]
-                = hidden_field_tag :username, params["username"]
-                = hidden_field_tag :token, params["token"]
+              = form_for(:user, html: {class: "new_user.form-signin.form-horizontal"}, :url => username_path) do |f|
                 .form-group
-                  %label.col-sm-2.control-label{:for => "inputEmail3"} 设置密码
-                  .col-sm-4
+                  %label.col-sm-2.control-label{:for => "inputEmail3"} 用户名
+                  .col-sm-5
                     .input-group
                       .input-group-addon
-                        %img{:src => image_url("main/wy-glyphicon-phones.jpg")}
-                      = text_field_tag :recover_password, "", class: "form-control", autocomplete: "off", type: "password", placeholder: "请创建登录密码"
-                    .errplace
-                  .col-xs-5.backsign
+                        %img{:src => image_url("main/wy-glyphicon-user.jpg")}
+                      %input.form-control{:placeholder => "请输入手机号/注册邮箱", :type => "text"}
                 .form-group
-                  %label.col-sm-2.control-label{:for => "inputEmail3"} 确认密码
-                  .col-sm-4
-                    .input-group
-                      .input-group-addon
-                        %img{:src => image_url("main/wy-glyphicon-phones.jpg")}
-                      = text_field_tag :recover_password_confirm, "", class: "form-control", autocomplete: "off", type: "password", placeholder: "请重新输入密码"
-                    .errplace
-                  .col-xs-5.backsign
+                  %label.col-sm-2.control-label{:for => "inputEmail3"}
+                    验证码
+                  = show_simple_captcha(:label => "",:code_type => "numeric")
                 .form-group
-                  .col-sm-offset-2.col-sm-4
-                    %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 确定
+                  .col-xs-offset-2.col-sm-5
+                    %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 下一步
                   .col-xs-2.backsign
                     %a{:href => "#"} 返回登录
-
 .security-identity
   .container.security-identity-container
     %ul.row.list-unstyled

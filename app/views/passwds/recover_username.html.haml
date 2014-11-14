@@ -17,17 +17,19 @@
                   = content_tag :div, msg, :id => "flash_#{name}", :class => "flash_#{name} flash_all"
             .col-sm-offset-3.col-sm-9
               = form_for(:user, html: {class: "new_user.form-signin.form-horizontal"}, :url => verify_username_path) do |f|
-                .form-group
+                .form-group.row
                   %label.col-sm-2.control-label{:for => "inputEmail3"} 用户名
                   .col-sm-5
                     .input-group
                       .input-group-addon
                         %img{:src => image_url("main/wy-glyphicon-user.jpg")}
                       = text_field_tag :username, "", class: "form-control", autocomplete: "off", placeholder: "请输入手机号/注册邮箱"
-                .form-group
+                .form-group.row
                   %label.col-sm-2.control-label{:for => "inputEmail3"}
                     验证码
-                  = show_simple_captcha(:label => "",:code_type => "numeric")
+                  .col-sm-5
+                    .input-group
+                      = show_simple_captcha(:label => "",:code_type => "numeric")
                 .form-group
                   .col-xs-offset-2.col-sm-5
                     %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 下一步

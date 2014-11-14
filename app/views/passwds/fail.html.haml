@@ -12,13 +12,14 @@
             .findpassword-succeed
               %h2.text-center
                 %span.glyphicon.glyphicon-ok
-                出错了！ 验证码错误, 或者用户不存在
+                出错了!
+                = @err_message
               %p.text-center.mailboxyh
               %ul
                 %li
                   %img{:src => image_url("main/mailbox-succeed1.jpg")}/
                 %li
-                  %a.btn.btn-primary.btn-lg{:href => "#", :role => "button"} 返回重设密码
+                  %a.btn.btn-primary.btn-lg{:href => username_path, :role => "button"} 返回重设密码
                 %li
                   %img{:src => image_url("main/mailbox-succeed4.jpg")}/
 

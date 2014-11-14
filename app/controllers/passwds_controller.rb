@@ -1,4 +1,5 @@
 class PasswdsController < Devise::PasswordsController
+  require 'securerandom'
   layout "sign_layout"
 
   def new
@@ -128,16 +129,18 @@ class PasswdsController < Devise::PasswordsController
     user = User.find_by username: params[:username]
     @verify = user.user_info.verification
     @verify.question_change = true
-    @verify.verify_secret =
+    @verify.verify_secret = SecureRandom.hex
+    @verify.save!
     @username= params[:username]
     render "reset_question_success" and return
   end
 
   def confirm_question
     user = User.find_by username: params[:username]
-    @verify = user.user_info.verification
-    if params[:answer] == @verify.safe_question_answer
-      redirect_to reset_pass_path(:username=>params[:username])
+    verify = user.user_info.verification
+
+    if params[:answer] == verify.safe_question_answer
+      redirect_to reset_pass_path(:username=>params[:username], :token => verify.verify_secret)
     else
       render "fail" and return
     end
@@ -166,16 +169,26 @@ class PasswdsController < Devise::PasswordsController
         render "fail" and return
       end
 
-    else
+    elsif params[:username] != ""
       user = User.find_by username: params[:username]
       if user
+        verify = user.user_info.verification
+        if !verify.question_change || verify.verify_secret != params[:token]
+          @err_message = "修改密码请求已经失效，请重新申请修改"
+          render "fail" and return
+        end
+        verify.question_change = false
+        verify.save!
         user.password = user.password_confirmation = params[:recover_password]
         user.save!
         render "success"
       else
+        @err_message = "用户不存在"
         render "fail" and return
       end
 
+    else
+      render "fail" and return
     end
 
   end
