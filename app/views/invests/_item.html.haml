@@ -35,8 +35,11 @@
             %dl.dl-horizontal
               %dt 折让率：
               %dd
-                = (100-obj.discount_rate)/10
-                折
+                -if obj.discount_rate && obj.discount_rate > 0
+                  = (100-obj.discount_rate)/10
+                  折
+                -else
+                  全价
       .col-xs-2.yyy-product-progress
         %ul
           %li.time-icon
