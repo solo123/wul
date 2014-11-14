@@ -232,9 +232,11 @@
 .filter-box {
   border: 1px solid #D3D8DC;
   margin-bottom: 20px;
+  margin-top:40px;
   position: relative;
   overflow: hidden;
   zoom: 1;
+  border-radius: 4px;
 }
 
 .trade-filter {
@@ -250,11 +252,13 @@
 }
 
 .filter-items dt {
-  width: 65px;
+  width: 85px;
   float: left;
   display: inline;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 2.1;
+  font-weight: 550;
+  color: #333;
 }
 .filter-items dd {
   margin-left: 80px;

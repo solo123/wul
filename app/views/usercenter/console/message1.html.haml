@@ -1,0 +1,28 @@
+%h1.page-header 系统消息
+.detail_container
+  .col-md-12
+    .panel
+      .panel-body
+        %table.table
+          %tr
+            %th 标题
+            %th 时间
+            %th 状态
+            %th 重要性
+          - @messages.each do |m|
+            %tr
+              %td
+                = m.title
+              %td
+                = m.created_at.strftime("%Y-%m-%d %H:%M:%S")
+              %td
+                = m.read_status
+              %td
+                普通
+              %td
+                %a{:href => usercenter_console_message_path(:message_id => m.id, :pattern => 'detail')}
+                  查看
+      .digg_pagination
+        .page_info
+          = page_entries_info @messages
+        = will_paginate @messages, :container => false

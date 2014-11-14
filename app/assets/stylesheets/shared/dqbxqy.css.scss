@@ -421,3 +421,17 @@ padding-top:18px;
   margin-top:30px;
 }
 .usermain .accounttop-post .submit-top .accoun-selebank .btn-lg{ font-size:18px;}
+
+/* systemnews */
+.systemnews{ border:1px solid #e5e5e5; border-radius:4px; margin-top:30px;}
+.systemnews .table>thead>tr{ background:image-url("user/systenbews-bj.jpg");}
+.systemnews .table>thead>tr>td{border-bottom: 1px solid #ddd; height:50px;padding: 20px 0 20px 0; color:#333; font-size:16px;}
+.systemnews .table>thead>tr>td:first-child{ padding-left:50px;}
+.systemnews .table>tbody>tr>td{ padding-top:0px;border-top: 0px solid #ddd; border-bottom: 1px solid #ddd;padding:18px 0px 18px 2px; color:#333; text-align:left;}
+.systemnews .table>tbody>tr>td .form-group{margin-bottom: 0px;}
+.systemnews .table>tbody>tr>td .form-group .checkbox{margin-top: 0px; margin-bottom: 0px;}
+.systemnews .table>tbody>tr>td:first-child{ padding-left:50px;}
+.systemnews .systemnews-fenye{background-color:transparent;
+  border: 0px solid #d2d2d2;
+  border-radius: 0px; text-align:right; padding-right:10px;}
+.systemnews .systemnews-number{background-color: #f7fdff;margin-top: 50px;}
