@@ -1,0 +1,66 @@
+.abtitle-sub
+  %h2 银行卡管理
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => "#", :role => "button"} 返回
+.abuser-box.bankcard-post
+  .row
+    .col-xs-6.bankcardone
+      .model-box.panel.panel-default
+        .head.panel-heading
+          %h3.panel-title
+            %img{:src => "images/about/bank-cmbc.jpg"}
+              %span.text-right
+                %span.glyphicon.glyphicon-ok
+                已绑定
+        .panel-body
+          %dl.dl-horizontal
+            %dt 尾号
+            %dd 2409
+            %dt 户名
+            %dd 雷有民
+            %dt 开户行
+            %dd
+              招商银行深圳东滨支付
+              %span
+                %a.light-skyblue{:href => "#"} 修改
+    .col-xs-6.bankcardtwo
+      .model-box.panel.panel-default
+        .head.panel-heading
+          %h3.panel-title
+            添加新银行卡
+        .panel-body
+          %form.form-horizontal{:role => "form"}
+            .form-group
+              %label.col-xs-3.control-label{:for => "bank-name"} 姓名
+              .col-xs-8
+                %input#bank-name.form-control{:placeholder => "请输入持卡人姓名", :type => "text"}
+            .form-group
+              %label.col-xs-3.control-label{:for => "bank-card"} 卡号
+              .col-xs-8
+                %input#bank-card.form-control{:placeholder => "请输入银行卡号", :type => "text"}
+            .form-group
+              %label.col-xs-3.control-label{:for => "bank-bank"} 银行
+              .col-xs-8
+                .input-group
+                  %input.form-control{:type => "text"}
+                    %span.input-group-btn
+                      %a.btn.btn-default.seleinput-bank{:href => "#", :type => "button"}
+                        %img{:src => "images/about/selebank-icon.jpg"}
+            .form-group
+              %label.col-xs-3.control-label{:for => "bank-city"} 开户城市
+              .col-xs-8
+                %input#bank-city.form-control{:placeholder => "请输入开户城市", :type => "text"}
+            .form-group
+              %label.col-xs-3.control-label{:for => "inputEmail3"} 开户行
+              .col-xs-8
+                %input#inputEmail3.form-control{:placeholder => "请输入开户行", :type => "text"}
+            .form-group
+              %label.col-xs-3.control-label{:for => "bank-paypasswork"} 支付密码
+              .col-xs-8
+                %input#bank-paypasswork.form-control{:placeholder => "请输入您在沃银网的支付密码", :type => "password"}
+            .form-group
+              .col-xs-8.col-xs-offset-3
+                .col-xs-6.bank-addbank
+                  %button.btn.btn-primary.btn-block{:type => "button"} 添加
+                .col-xs-6.bank-resetbank
+                  %button.btn.btn-primary.btn-block{:type => "reset"} 取消
