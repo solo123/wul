@@ -1,0 +1,136 @@
+<<<<<<< HEAD
+- content_for :javascript_includes do
+  = javascript_include_tag "console.js"
+.container
+  .wrapper
+    .title-sub
+      %a.btn.btn-default.toback{:href => "#", :role => "button"}
+        %span.glyphicon.glyphicon-chevron-left
+        返回
+      %h2 法律法规
+    .content-post
+      %h3.laws_h3
+        沃银网债权转让协议
+        %button.btn.btn-primary#jsontest
+          测试
+      .laws_items
+        .row
+          %span.pdf_word
+            %a{:href => "#"} 下载PDF版本
+        %b.line
+      .laws_text
+        %p.text-right
+          沃银网编号：
+          %span
+            DCBV2014912046320YL
+= form_tag('/test_json', authenticity_token: "9hO84PpelQxfGgvu8SJH0lDpXyMeWqHe/YX9Aj95qRk=", :id => 'message_form') do
+  %table{:align => "center", :border => "1", :cellpadding => "3", :cellspacing => "0", :style => "background-color: #F0F0FF; text-align: left; vertical-align: middle; width: 784px;"}
+    %tr{:style => "background-color: #8070FF; color: #FFFF00"}
+      %td{:align => "Center", :colspan => "2"}
+        %b 开户
+    %tr
+      %td{:style => "width: 50%"} 平台账号
+      %td{:style => "width: 50%"}
+        %input#pMerCode{:name => "pMerCode", :type => "text", :value => "808801"}/
+        = succeed "\u{7531}IPS\u{9881}\u{53d1}\u{7684}\u{5546}\u{6237}\u{53f7}" do
+          %br/
+    %tr
+      %td 商户开户流水号
+      %td
+        %input#pMerBillNo{:name => "pMerBillNo", :type => "text", :value => "801112235"}/
+        = succeed "\u{5546}\u{6237}\u{7cfb}\u{7edf}\u{552f}\u{4e00}\u{4e0d}\u{91cd}\u{590d}" do
+          %br/
+    %tr
+      %td 证件类型
+      %td
+        %input#pIdentType{:name => "pIdentType", :type => "text", :value => "1"}/
+        = succeed "1#\u{8eab}\u{4efd}\u{8bc1}\u{ff0c}\u{9ed8}\u{8ba4}\u{ff1a}1" do
+          %br/
+    %tr
+      %td 证件号码
+      %td
+        %input#pIdentNo{:name => "pIdentNo", :type => "text", :value => "410621198406155011"}/
+    %tr
+      %td 姓名
+      %td
+        %input#pRealName{:name => "pRealName", :type => "text", :value => "环迅"}/
+    %tr
+      %td 手机号
+      %td
+        %input#pMobileNo{:name => "pMobileNo", :type => "text", :value => "13590296140"}/
+    %tr
+      %td 注册邮件
+      %td
+        %input#pEmail{:name => "pEmail", :type => "text", :value => "dominic0312@126.com"}/
+    %tr
+      %td 提交日期
+      %td
+        %input#pSmDate{:name => "pSmDate", :type => "text", :value => "20141111"}/
+        = succeed "\u{65f6}\u{95f4}\u{683c}\u{5f0f}\u{201c}yyyyMMdd\u{201d}," do
+          %br/
+        商户提交日期。
+    %tr
+      %td 结果成功返回的商户URL
+      %td
+        %input#pWebUrl{:name => "pWebUrl", :style => "width:100%;", :type => "text", :value => "http://www.wooul.com/showparams"}/
+    %tr
+      %td S2S返回地址
+      %td
+        %input#pS2SUrl{:name => "pS2SUrl", :style => "width:100%;", :type => "text", :value => "http://www.wooul.com/showparams"}/
+    %tr
+      %td 备注1
+      %td
+        %input#pMemo1{:name => "pMemo1", :type => "text", :value => "备注1"}/
+    %tr
+      %td 备注2
+      %td
+        %input#pMemo2{:name => "pMemo2", :type => "text", :value => "备注2"}/
+    %tr
+      %td 备注3
+      %td
+        %input#pMemo3{:name => "pMemo3", :type => "text", :value => "备注3"}/
+    %tr
+      %td{:align => "center", :colspan => "2"}
+        %input{:name => "submit", :type => "submit", :value => "提 post 交"}/
+    -#%tr
+    -#  %td{:colspan => "2"}
+    -#    手动修改报文信息
+    -#    %textarea#txtXml{:cols => "100%", :rows => "6"}
+    -#%tr
+    -#  %td{:align => "center", :colspan => "2"}
+    -#    %input#btnPost{:onclick => "submitXml();", :type => "button", :value => "手动改报文提交"}/
+=======
+.abtitle-sub
+  %h2 银行卡管理
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => "#", :role => "button"} 返回
+.abuser-box.bankcard-post
+  .row
+    .col-xs-6.bankcardone
+      .model-box.panel.panel-default
+        .head.panel-heading
+          %h3.panel-title
+            %img{:src => "images/about/bank-cmbc.jpg"}/
+            %span.text-right
+              %span.glyphicon.glyphicon-ok
+              已绑定
+        .panel-body
+          %dl.dl-horizontal
+            %dt 尾号
+            %dd 2409
+            %dt 户名
+            %dd 雷有民
+            %dt 开户行
+            %dd
+              招商银行深圳东滨支付
+              %span
+                %a.light-skyblue{:href => "#"} 修改
+    .col-xs-6.bankcardtwo
+      .model-box.panel.panel-default
+        .head.panel-heading
+          %h3.panel-title
+        .panel-body
+          %a.btn.btn-default.withdraw-addbank{:href => "#", :type => "button"}
+            %span.glyphicon.glyphicon-plus-sign
+            添加银行卡
+>>>>>>> 57c5b7bf668e28f5203bc1a0988d42d52529f69f
