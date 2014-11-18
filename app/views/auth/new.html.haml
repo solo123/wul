@@ -16,77 +16,77 @@
           .panel-body.register-panelbody
 
             .register-radio
-              %label.radio-inline.col-sm-offset-3.col-sm-4
+              %label.radio-inline.col-xs-offset-3.col-xs-4
                 %input#inlineRadio1{:name => "inlineRadioOptions", :type => "radio", :value => "option1", :checked => true}
                   手机号码注册
-              %label.radio-inline.col-sm-offset-1.col-sm-4
+              %label.radio-inline.col-xs-offset-1.col-xs-4
                 %input#inlineRadio2{:name => "inlineRadioOptions", :type => "radio", :value => "option2"}
                   邮箱注册
 
               #phone-frame.mobile-phone
                 = form_for(resource, :as => resource_name, html: {class: "form-signin form-horizontal", id:"reg_form_phone"}, :url => registration_path(resource_name)) do |f|
                   .form-group
-                    %label.col-sm-offset-1.col-sm-2.control-label{:for => "reg_phone"} 手机号码
-                    .col-sm-7
+                    %label.col-xs-offset-1.col-xs-2.control-label{:for => "reg_phone"} 手机号码
+                    .col-xs-7
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-phones.jpg")}
                         %input.form-control.tip_holder#reg_phone{:type => "text",:autofocus => true, :name => "reg_phone", :placeholder => "请输入您的手机号码"}
                   .form-group
-                    %label.col-sm-offset-1.col-sm-2.control-label{:for => "reg_code"} 验证码
-                    .col-sm-4.testincode
+                    %label.col-xs-offset-1.col-xs-2.control-label{:for => "reg_code"} 验证码
+                    .col-xs-4.testincode
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-code.jpg")}
                         %input.form-control.tip_holder{:type => "text",:name => "reg_code",:placeholder => "验证码"}
-                    .col-sm-3.testgetcode
+                    .col-xs-3.testgetcode
                       %button.btn.btn-default.btn-block#getcode{:type => "button",:disabled => "true"} 获取验证码
                   .form-group
-                    %label.col-sm-offset-1.col-sm-2.control-label{:for => "reg_password"} 设置密码
-                    .col-sm-7
+                    %label.col-xs-offset-1.col-xs-2.control-label{:for => "reg_password"} 设置密码
+                    .col-xs-7
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-lock.jpg")}
                         %input.form-control.tip_holder#reg_password{:type => "password",:name => "reg_password", :placeholder => "请输入密码"}
                   .form-group
-                    %label.col-sm-offset-1.col-sm-2.control-label{:for => "reg_password_confirm"} 确认密码
-                    .col-sm-7
+                    %label.col-xs-offset-1.col-xs-2.control-label{:for => "reg_password_confirm"} 确认密码
+                    .col-xs-7
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-lock.jpg")}
                         %input.form-control.tip_holder#reg_password_confirm{:type => "password",:name => "reg_password_confirm", :placeholder => "请重新输入密码"}
                   .form-group.formsubmit
-                    .col-sm-offset-3.col-sm-7
+                    .col-xs-offset-3.col-xs-7
                       %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 立即注册
               #email-frame.mailbox{:style => "display:none;"}
                 = form_for(resource, :as => resource_name, html: {class: "form-signin form-horizontal", id:"reg_form_email"}, :url => registration_path(resource_name)) do |f|
                   .form-group
-                    %label.col-sm-offset-1.col-sm-2.control-label{:for => "reg_email"} 邮箱
-                    .col-sm-7
+                    %label.col-xs-offset-1.col-xs-2.control-label{:for => "reg_email"} 邮箱
+                    .col-xs-7
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-envelope.jpg") }
                         %input.form-control#reg_email{:type => "text",:autofocus => true, :name => "reg_email",:placeholder => "请输入您的电子邮件地址"}
                   .form-group
-                    %label.col-sm-offset-1.col-sm-2.control-label{:for => "reg_email_pass"} 设置密码
-                    .col-sm-7
+                    %label.col-xs-offset-1.col-xs-2.control-label{:for => "reg_email_pass"} 设置密码
+                    .col-xs-7
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-lock.jpg")}
                         %input.form-control#reg_email_pass{:type => "password", :name => "reg_email_pass",:placeholder => "请设置沃银网的密码"}
                   .form-group
-                    %label.col-sm-offset-1.col-sm-2.control-label{:for => "reg_email_conf"} 确认密码
-                    .col-sm-7
+                    %label.col-xs-offset-1.col-xs-2.control-label{:for => "reg_email_conf"} 确认密码
+                    .col-xs-7
                       .input-group
                         .input-group-addon
                           %img{:src => image_url("main/wy-glyphicon-lock.jpg")}
                         %input.form-control#reg_email_conf{:type => "password", :name => "reg_email_conf",:placeholder => "请确认密码"}
                   .form-group.formsubmit
-                    .col-sm-offset-3.col-sm-7
+                    .col-xs-offset-3.col-xs-7
                       %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 立即注册
           .panel-footer.register-panelfooter
             .row
-              .col-sm-offset-3.col-sm-7.tell-wk
+              .col-xs-offset-3.col-xs-7.tell-wk
                 已有账号，
                 %span
                   %a{:href => "/users/sign_in"} 立即登录
@@ -95,29 +95,34 @@
 
 
 
-.security-identity
-  .container.security-identity-container
-    %ul.row.list-unstyled
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 50元即可加入
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 100%本息担保
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 随时赎回投资
-      %li.col-xs-3
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 服务完全免费
+.security-tupow
+  .container
+    .bossy
+      %em
+      %span
+  .security-identity
+    .container.security-identity-container
+      %ul.row.list-unstyled
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 50元即可加入
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 100%本息担保
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 随时赎回投资
+        %li.col-xs-3
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 服务完全免费
 
 .footer
   .footnav-bj.footnav-findpasswordbj

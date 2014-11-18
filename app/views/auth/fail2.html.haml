@@ -16,36 +16,41 @@
           .row.findpassword-select
             .col-xs-9
               %strong
-                你妈妈的姓名是什么
+                你母亲的姓名是什么?
               %p
                 = hidden_field_tag :username, @username
                 = text_field_tag :answer, '',  class: "form-control", type: "text"
-            .col-xs-3
-              %button.btn.btn-primary{:href => "#", :role => "submit"} 找回密码
+            .col-xs-3.question
+              %button.btn.btn-primary{:href => "#", :role => "submit"} 下一步
 
-.security-identity
-  .container.security-identity-container
-    %ul.row.list-unstyled
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 50元即可加入
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 100%本息担保
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 随时赎回投资
-      %li.col-xs-3
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 服务完全免费
+.security-tupow
+  .container
+    .bossy
+      %em
+      %span
+  .security-identity
+    .container.security-identity-container
+      %ul.row.list-unstyled
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 50元即可加入
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 100%本息担保
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 随时赎回投资
+        %li.col-xs-3
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 服务完全免费
 
 .footer
   .footnav-bj.footnav-findpasswordbj
