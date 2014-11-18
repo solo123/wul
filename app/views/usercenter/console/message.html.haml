@@ -16,55 +16,56 @@
     %dt
       起止日期
     %dd
-      - {'all' => '全部',
-         'week' => '最近7天',
+      - condi[:importance] = queries[:importance]
+      - if !queries[:date_range]
+        %a.timeType.selected{:href => usercenter_console_message_path(condi) }
+          全部
+      - else
+        %a.tradeType{:href => usercenter_console_message_path(condi)}
+          全部
+      - {'week' => '最近7天',
                  'month' => '1个月内',
                  'month2' => '2个月内',
                  'month3' => '3个月内' }.each do |k, v|
 
         - condi[:date_range] = k
-        - condi[:filter] =queries[:filter]
         - if queries[:date_range] == k
-          %a.timeType.selected{:href => usercenter_console_history_path(condi)}
+          %a.timeType.selected{:href => usercenter_console_message_path(condi)}
             = v
         - else
-          %a.tradeType{:href => usercenter_console_history_path(condi)}
+          %a.tradeType{:href => usercenter_console_message_path(condi)}
             =v
 
   %dl.filter-items
     %dt
       重要性
     %dd
-      - {'all' => '全部',
-         'week' => '通知',
-                 'month' => '紧急',
-                 'month2' => '重要',
-                 'month3' => '3个月内' }.each do |k, v|
+      - conds[:date_range] = queries[:date_range]
+      - if !queries[:importance]
+        %a.timeType.selected{:href => usercenter_console_message_path(conds) }
+          全部
+      - else
+        %a.tradeType{:href => usercenter_console_message_path(conds)}
+          全部
+      - { '0' => '普通',
+                 '1' => '重要',
+                 '2' => '紧急'}.each do |k, v|
 
-        - condi[:date_range] = k
-        - condi[:filter] =queries[:filter]
-        - if queries[:date_range] == k
-          %a.timeType.selected{:href => usercenter_console_history_path(condi)}
+        - conds[:importance] = k
+        - if queries[:importance] == k
+          %a.timeType.selected{:href => usercenter_console_message_path(conds)}
             = v
         - else
-          %a.tradeType{:href => usercenter_console_history_path(condi)}
+          %a.tradeType{:href => usercenter_console_message_path(conds)}
             =v
   %dl.filter-items
     %dt
       操作
     %dd
-      - {'all' => '全选',
-         'week' => '删除' }.each do |k, v|
-
-        - condi[:date_range] = k
-        - condi[:filter] =queries[:filter]
-        - if queries[:date_range] == k
-          %a.timeType.selected{:href => usercenter_console_history_path(condi)}
-            = v
-        - else
-          %a.tradeType{:href => usercenter_console_history_path(condi)}
-            =v
-
+      %a.timeType#select_all{:href => "#"}
+        全选
+      %a.tradeType{:href => "#"}
+        删除
 .systemnews
   %table.table
     %thead
@@ -75,82 +76,26 @@
         %td{:style => "width:180px"} 重要性
         %td{:style => "width:100px"} 操作
     %tbody
+    - @messages.each do |m|
       %tr
         %td{:style => "width:250px"}
           .form-group
             .checkbox
               %label
-                %input{:type => "checkbox"}>/
-                充值成功
-        %td{:style => "width:200px"} 2014-11-11
+                %input.select_item{:type => "checkbox"}>/
+                = m.title
+        %td{:style => "width:200px"}
+          = m.created_at.strftime("%Y-%m-%d %H:%M:%S")
         %td{:style => "width:150px"}
-          %img{:src => image_url("user/systenbews-state.jpg")}/
-        %td{:style => "width:180px"} 普通
+          = m.read_status
+        %td{:style => "width:180px"}
+          普通
         %td{:style => "width:100px"}
-          %a{:href => "#"} 查看
-      %tr
-        %td
-          .form-group
-            .checkbox
-              %label
-                %input{:type => "checkbox"}>/
-                充值成功
-        %td 2014-11-11
-        %td
-          %img{:src => image_url("user/systenbews-state1.jpg")}/
-        %td 普通
-        %td
-          %a{:href => "#"} 查看
-      %tr
-        %td
-          .form-group
-            .checkbox
-              %label
-                %input{:type => "checkbox"}>/
-                提现成功
-        %td 2014-11-11
-        %td
-          %img{:src => image_url("user/systenbews-state1.jpg")}/
-        %td 普通
-        %td
-          %a{:href => "#"} 查看
-      %tr
-        %td
-          .form-group
-            .checkbox
-              %label
-                %input{:type => "checkbox"}>/
-                提现成功
-        %td 2014-11-11
-        %td
-          %img{:src => image_url("user/systenbews-state.jpg")}/
-        %td 普通
-        %td
-          %a{:href => "#"} 查看
-      %tr
-        %td
-          .form-group
-            .checkbox
-              %label
-                %input{:type => "checkbox"}>/
-                提现成功
-        %td 2014-11-11
-        %td
-          %img{:src => image_url("user/systenbews-state1.jpg")}/
-        %td 普通
-        %td
-          %a{:href => "#"} 查看
-  .plan-stats.systemnews-number
-    本页正显示共
-    %span.light-org 5
-    条信息
-  .invest-list-frame.systemnews-fenye
-    %ul.pagination
-      %li
-        %a{:href => "#"} 《上一页
-      %li
-        %a{:href => "#"} 1
-      %li
-        %a{:href => "#"} 2
-      %li
-        %a{:href => "#"} 下一页》
+          %a{:href => usercenter_console_message_path(:message_id => m.id, :pattern => 'detail')}
+            查看
+  .pager-center
+    .invest-pager-container
+      .invest_pagination
+        = will_paginate @messages, :container => false, :inner_window =>2, :outer_window => 4
+:javascript
+  $("#select_all").click(function (){$(".select_item").attr('checked','checked')});

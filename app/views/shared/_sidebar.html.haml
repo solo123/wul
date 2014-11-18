@@ -15,12 +15,7 @@
        '系统消息' => 'message',
        '交易记录' => 'history',
        '充值提现' =>  'charge',
-       '银行卡' => 'bankcard',
-       '资产统计' =>  'assets_analyzer',
-       '投资记录' => 'invest_history',
-       '投资赎回' => 'redemption',
-       '借款协议' => 'agreements',
-       '自动投资' => 'autoinvest'}.each do |k, v|
+       '银行卡' => 'bankcard'}.each do |k, v|
       - if params[:action] == v
         %li.active
           %a{:href => url_for(:controller => "console", :action => v)}
@@ -31,3 +26,20 @@
           %a{:href => url_for(:controller => "console", :action => v)}
             %span{:Class => "glyphicon " + "glyphicon-" + icondict[k] }
             = k
+    %hr
+    %ul.nav.nav-pills.nav-stacked.sidebar-nav
+      - { '资产统计' =>  'assets_analyzer',
+                '投资记录' => 'invest_history',
+                '投资赎回' => 'redemption',
+                '借款协议' => 'agreements',
+                '自动投资' => 'autoinvest'}.each do |k, v|
+        - if params[:action] == v
+          %li.active
+            %a{:href => url_for(:controller => "console", :action => v)}
+              %span{:Class => "glyphicon " + "glyphicon-" + icondict[k] }
+              = k
+        - else
+          %li
+            %a{:href => url_for(:controller => "console", :action => v)}
+              %span{:Class => "glyphicon " + "glyphicon-" + icondict[k] }
+              = k

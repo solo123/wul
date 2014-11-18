@@ -95,4 +95,4 @@
   .pager-center
     .invest-pager-container
       .invest_pagination
-        = will_paginate @transactions, :container => false
+        = will_paginate @transactions, :container => false, :inner_window =>2, :outer_window => 4
