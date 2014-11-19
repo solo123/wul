@@ -4,13 +4,13 @@ $(document).ready(function () {
     $("#inlineRadio1").change(function () {
         $("#phone-frame").show();
         $("#email-frame").hide();
-        $(".tip_holder").popover("hide");
+        $(".tip_holder").popover('destroy');
     });
 
     $("#inlineRadio2").change(function () {
         $("#phone-frame").hide();
         $("#email-frame").show()
-        $(".tip_holder").popover("hide");
+        $(".tip_holder").popover('destroy');
     });
 
     $("#reg_phone").keyup(function () {
