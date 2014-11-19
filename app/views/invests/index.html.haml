@@ -1,14 +1,14 @@
 .auxiliary-info
   .container
     .row
-      .col-md-8
+      .col-xs-8
         %h1.page-header 我要投资
         %p.leading.headerp 您随时可以赎回您的投资，查询或者购买赎回资产，请前往
-      .col-md-4
+      .col-xs-4
         .fun-area
           %a.btn.btn-default.go-back{:href => onsale_invests_path } 转让专区
           = render "shared/balance"
-#features.invests-select-area.scheme-white
+#features.invests-select-area
   .container
     .row
       .col-xs-6.col-sm-6
@@ -55,10 +55,13 @@
             %strong 1234567000
             元投资额
           %a.link-block{:href => product_list_path("month")}
-          
 
 
-.advantage-area.scheme-shell
+.security-tupow
+  .container
+    .bossy
+      %em
+      %span
   .security-identity
     .container.security-identity-container
       %ul.row.list-unstyled
@@ -70,17 +73,17 @@
         %li.col-xs-3.list-unstyled-borde
           %dl.text-center
             %dt
-              %img{:src =>image_url("foot/foot2.jpg")}/
+              %img{:src => image_url("foot/foot1.jpg")}/
             %dd 100%本息担保
         %li.col-xs-3.list-unstyled-borde
           %dl.text-center
             %dt
-              %img{:src =>image_url("foot/foot3.jpg")}/
+              %img{:src => image_url("foot/foot1.jpg")}/
             %dd 随时赎回投资
         %li.col-xs-3
           %dl.text-center
             %dt
-              %img{:src => image_url("foot/foot4.jpg")}/
+              %img{:src => image_url("foot/foot1.jpg")}/
             %dd 服务完全免费
 .invests-other-info
   .container

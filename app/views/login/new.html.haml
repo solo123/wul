@@ -1,10 +1,10 @@
 .sign-page
   .container
     .row
-      .col-md-7.col-sm-7
+      .col-xs-7.col-xs-7
         .login-media.sign-in-img
           %img{:src => image_url("main/wooul-sign-media.png")}
-      .col-md-5.col-sm-5
+      .col-xs-5.col-xs-5
         .panel.panel-default
           .panel-heading
             .panel-title
@@ -12,59 +12,64 @@
           .panel-body.sign-panelbody
             = form_for(resource, :as => resource_name, html: {class: "form-signin form-horizontal"}, :url => session_path(resource_name)) do |f|
               .form-group
-                %label.col-sm-offset-1.col-sm-2.control-label{:for => "inputEmail3"} 用户名：
-                .col-sm-7
+                %label.col-xs-3.control-label{:for => "inputEmail3"} 用户名：
+                .col-xs-7
                   .input-group
                     .input-group-addon
                       %img{:src => image_url("main/wy-glyphicon-user.jpg")}
                     = f.text_field :login, :autofocus => true, class: "form-control ipt-email", placeholder: "注册手机号码/邮箱"
               .form-group
-                %label.col-sm-offset-1.col-sm-2.control-label{:for => "inputPassword3"} 密码：
-                .col-sm-7
+                %label.col-xs-offset-1.col-xs-2.control-label{:for => "inputPassword3"} 密码：
+                .col-xs-7
                   .input-group
                     .input-group-addon
                       %img{:src => image_url("main/wy-glyphicon-lock.jpg") }
                     = f.password_field :password, class: "form-control", placeholder: "密码"
               .form-group
-                .col-sm-offset-3.col-sm-3
+                .col-xs-offset-3.col-xs-3
                   .checkbox
                     %label
                       %input{:type => "checkbox"}
                         记住我
-                .col-sm-offset-0.col-sm-4.forget-password
-                  %a{:href => username_path } 忘记登录密码？
+                .col-xs-offset-0.col-xs-4.forget-password
+                  %a{:href => new_password_path(resource_name) } 忘记登录密码？
               .form-group.formsubmit
-                .col-sm-offset-3.col-sm-7
+                .col-xs-offset-3.col-xs-7
                   %button.btn.btn-primary.btn-lg.btn-block{:type => "submit", :value => "登入"} 立即登录
           .panel-footer
             .row
-              .col-sm-offset-3.col-sm-7.tell-wk
+              .col-xs-offset-3.col-xs-7.tell-wk
                 您还不是沃客？
                 %span
                   %a{:href => new_user_registration_path} 免费注册
-.security-identity
-  .container.security-identity-container
-    %ul.row.list-unstyled
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 50元即可加入
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 100%本息担保
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 随时赎回投资
-      %li.col-xs-3
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 服务完全免费
+.security-tupow
+  .container
+    .bossy
+      %em
+      %span
+  .security-identity
+    .container.security-identity-container
+      %ul.row.list-unstyled
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 50元即可加入
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 100%本息担保
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 随时赎回投资
+        %li.col-xs-3
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 服务完全免费
 
 .footer
   .footnav-bj.footnav-findpasswordbj

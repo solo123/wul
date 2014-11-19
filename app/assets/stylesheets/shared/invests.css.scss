@@ -109,9 +109,7 @@
 
 
 
-.invests-other-info{
-  margin:50px 0;
-}
+
 
 .invests-other-info .info-area{
   min-height:500px;
@@ -203,9 +201,7 @@
   padding: 120px 0;
   font-size: 150%;
 }
-.invests-other-info .info-area .nav-tabs{
-  margin-bottom:30px;
-}
+
 .invests-other-info .info-area .nav-tabs>li.active>a {
   border-radius: 5px 5px 0 0;
   font-size: 18px;
@@ -215,7 +211,7 @@
   font-size: 18px;
 }
 .invests-other-info {
-  margin: 50px 0;
+  margin: 40px 0;
 }
 .invests-other-info .info-area {
 }
@@ -361,4 +357,14 @@ font-size:22px;
 
 .invest_url{
   display:inline-block;
+}
+
+/* 我是沃客／常見問題 */
+.tab-content{
+  background-color: #fff;
+  border-right: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  border-left: 1px solid #DDD;
+  padding: 30px 0 40px 20px;
+  margin-bottom: 50px;
 }
