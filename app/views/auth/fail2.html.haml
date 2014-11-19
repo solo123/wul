@@ -4,7 +4,7 @@
       .panel-heading
         .panel-title
           %h4 找回密码
-      .panel-body.find-password-lbody.find-password-select
+      .panel-body.find-password-lbody.find-password-select.findpassword-question
         = form_for(:verification, :url => invests_path, :html => { :method => :post}) do |f|
           .text-center.reg-steps
             %img{:src => image_url("main/find-password2.jpg")}
