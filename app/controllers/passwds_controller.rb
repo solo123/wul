@@ -71,10 +71,15 @@ class PasswdsController < Devise::PasswordsController
     username = params[:username]
     if email
       user = User.find_by email: email
+      if !user
+        @err_message = "用户不存在"
+        render "fail" and return
+      end
       verify = user.user_info.verification
       if verify && verify.email_code == params[:token]
         render "reset_pass" and return
       else
+        @err_message = "请求无效,请重新发送请求"
         render "fail" and return
       end
     else
@@ -111,16 +116,12 @@ class PasswdsController < Devise::PasswordsController
   end
 
   def verify_enable(user)
-    if user.email
+    if user.email != ""
       @email = user.email
     end
 
-    if user.mobile
+    if user.mobile != ""
       @mobile = user.mobile
-    end
-
-    if user.username
-      @username = user.username
     end
   end
 
