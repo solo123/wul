@@ -25,9 +25,10 @@ module ApplicationHelper
         "/invests" => "invest",
         "/usercenter" => "account",
         "/about" => "about",
-        "/fixed_deposgit ts" => "invest",
+        "/fixed_deposits" => "invest",
         "/month_deposits" => "invest",
         "/securecenter" => "account",
+        "/products" => "invest",
     }
 	  menu_key = 'home'
     dict.each do |k,v|

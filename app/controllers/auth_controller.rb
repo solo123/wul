@@ -57,6 +57,13 @@ class AuthController < Devise::SessionsController
 
   def useractivate
     if params[:useremail]
+      user = User.find_by email: params[:useremail]
+      if user
+        @message = "用户无效,激活失败"
+        render "fail" and return
+      end
+
+
       verification = Verification.where(:email => params[:useremail]).first
       if verification
         if params[:token] == verification.email_code
@@ -228,7 +235,9 @@ class AuthController < Devise::SessionsController
     verify.save!
     EmailWorker.perform_async(verify.email, verify.email_code, "reg")
     @message = "一封验证邮件已经发送到您注册的邮箱内，请查收并验证邮箱,验证后登录"
-    render "success"
+    @email_server = params[:reg_email]
+    @email_server[0, @email_server.index('@')+1]="mail."
+    render "success_email"
   end
 
 

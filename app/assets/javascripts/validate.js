@@ -79,6 +79,7 @@ $(document).ready(function () {
             }
         },
         errorPlacement: function (error, element) {
+            $(element).popover('destroy');
             $(element).popover({
                 content:$(error).html(),
                 trigger: "manual click",
@@ -182,10 +183,12 @@ $(document).ready(function () {
         },
 
         errorPlacement: function (error, element) {
+            $(element).popover('destroy');
             $(element).popover({
                 content:$(error).html(),
                 trigger: "manual click",
-                container: '#reg_panel'
+                container: '#reg_panel',
+                template: '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content error-msg"></div></div>'
             });
             $(element).popover('show');
 //            error.appendTo(element.parent().parent().next());

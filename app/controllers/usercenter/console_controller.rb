@@ -11,7 +11,7 @@ module Usercenter
 
 
     def message
-      pages = 10
+      pages = 8
       if params[:pattern] == "detail"
         @message = Message.find(params[:message_id])
         uinfo = current_user.user_info
@@ -24,8 +24,8 @@ module Usercenter
         render "message_detail" and return
       end
       @messages = current_user.user_info.messages
-      if params[:filter]
-        @messages =  @messages.where(:importance => params[:filter])
+      if params[:importance]
+        @messages =  @messages.where(:importance => params[:importance])
       end
       @messages= case params[:date_range]
                    when nil

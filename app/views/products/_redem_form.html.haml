@@ -35,7 +35,7 @@
             - if dep.onsale
               = dep.resell_price
             - else
-              - resell_price = dep.amount * (100 - dep.discount_rate) / 100
+              - resell_price = dep.resell_price
               = number_with_precision resell_price, precision: 1
         %td
           - if dep.product.premature_redemption == "yes"
