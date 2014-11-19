@@ -9,9 +9,8 @@ ul, ol {
     vertical-align: middle;
     text-align: center;
 }
-.sign-page .col-sm-7, .sign-page .col-md-7{padding-right: 0px;}
+.sign-page .col-xs-7, .sign-page .col-xs-7{padding-right: 0px;}
 .sign-page .sign-in-img{ text-align:right;display:block; margin-top:50px;}
-.sign-page .col-sm-5, .sign-page .col-md-5{padding-left: 0px;}
 .sign-page .panel-body{ padding-bottom:0px;background-color: #fafafa; margin-bottom: 0px;}
 .sign-page .sign-panelbody{ padding-top:80px;}
 .sign-page .panel-body .form-horizontal .control-label {
@@ -57,9 +56,15 @@ ul, ol {
     margin-left:280px;color:#555;
 }
 .sign-page .find-password-lbody .findpassword-select{
-    width:600px; height:80px; border:1px solid #e5e5e5; border-radius:6px; margin-left:255px; margin-top:20px; padding:15px 0 0 10px;
+    width:600px; min-height: 150px; border:1px solid #e5e5e5; border-radius:6px; margin-left:255px; margin-top:20px; padding:15px 0 0 10px;
 }
 .sign-page .find-password-lbody .findpassword-select strong{ font-size:16px;color:#333;}
 .sign-page .find-password-lbody .findpassword-select p{ margin-top:5px; color:#555;}
 .sign-page .find-password-lbody .findpassword-select .btn{padding: 8px 22px; margin-top:5px; font-size:16px;}
 .sign-page .find-password-select{ padding-bottom:70px;}
+.sign-page .find-password-lbody .findpassword-select .question{ margin-top: 17px;}
+
+.findpasswordone .findonename .input-group-addon{background-color: #fff;}
+.findpasswordone .findonename .form-control{height: 37px;}
+.findpasswordone .fingyanzhengma{ padding-left: 30px;}
+.findpasswordone .fingyanzhengma-x{padding-left: 5px;}

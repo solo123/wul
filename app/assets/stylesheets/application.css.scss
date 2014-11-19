@@ -15,8 +15,13 @@
  */
 
  
-body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {font-family: "微软雅黑", tahoma, Arial, Microsoft YaHei, SimSun;}
- 
+body {
+  font-family: Microsoft YaHei, tahoma, Arial, Microsoft YaHei, SimSun;
+  background: image-url("wooul-bg.gif");
+}
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: Microsoft YaHei, tahoma, Arial, Microsoft YaHei, SimSun;
+}
 
 $sidemenu_padding: 10px;
 
@@ -25,8 +30,14 @@ $sidemenu_padding: 10px;
 /* CSS Document */
 
 
-.auxiliary-info{ padding: 0; background:#428bca; }
-.auxiliary-info .page-header{ font-weight: normal; color: #fff; margin: 0 0 20px;padding-top:25px; }
+.auxiliary-info{ padding: 0; background:#428bca; min-width: 1170px; }
+.auxiliary-info .page-header{
+  font-weight: normal;
+  margin: 0 0 20px;
+  padding-top:25px;
+  background: none repeat scroll 0% 0% #428BCA;
+  color: #fff;
+}
 .auxiliary-info .leading{padding-bottom:25px;}
 .auxiliary-info p{ color: #E6E6E6; }
 .auxiliary-info .fun-area{ padding-top:40px; }
