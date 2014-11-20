@@ -31,22 +31,6 @@
               %button.btn.btn-warning#phonebutton{:href => "#", :role => "button", :disabled => true}
                 重发
                 %span#timer
-        .row.findpassword-select
-          .col-xs-9
-            %strong
-              通过电子邮箱
-            %p 如果您的注册邮箱还在正常使用，请选择此方式
-          .col-xs-3
-            = form_for(:user, :url => sendemail_path(), :html => { :method => :post}) do |f|
-              = hidden_field_tag :username, @username
-              %button.btn.btn-primary{:type => "submit"} 立即找回
-        .row.findpassword-select
-          .col-xs-9
-            %strong 通过安全保护问题
-            %p 如果您记得预留的安全保护问题，请选择此方式
-          .col-xs-3
-            %a.btn.btn-primary{:href => "#", :role => "button"} 立即找回
-
 .security-identity
   .container.security-identity-container
     %ul.row.list-unstyled

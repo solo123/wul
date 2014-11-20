@@ -47,14 +47,21 @@
                 = hidden_field_tag :username, @username
                 %button.btn.btn-primary{:type => "submit"} 立即找回
         .row.findpassword-select
-          .col-xs-9
-            %strong 通过安全保护问题
-            %p 如果您记得预留的安全保护问题，请选择此方式
-          .col-xs-3
-            = form_for(:user, :url => reset_pass_question_path, :html => { :method => :post}) do |f|
-              = hidden_field_tag :username, @username
-              %button.btn.btn-primary{:type => "submit"} 立即找回
-
+          - if @verify.nil?
+            .col-xs-9
+              %strong 通过安全保护问题
+              %p 您沒有设定安全问题, 无法使用安全问题找回密码
+            .col-xs-3
+              %button.btn.btn-default{:type => "button"} 选项无效
+          - else
+            .col-xs-9
+              %strong 过安全保护问题
+              %p
+                如果您记得预留的安全保护问题，请选择此方式
+            .col-xs-3
+              = form_for(:user, :url => reset_pass_question_path, :html => { :method => :post}) do |f|
+                = hidden_field_tag :username, @username
+                %button.btn.btn-primary{:type => "submit"} 立即找回
 .security-identity
   .container.security-identity-container
     %ul.row.list-unstyled
