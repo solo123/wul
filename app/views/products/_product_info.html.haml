@@ -28,7 +28,7 @@
           个月
     .working-day
       定存宝 每工作日
-      %span 10:30、14:30、20:00
+      %span 10:30, 14:30, 20:00
       更新产品
     .row.pubdate
       .col-xs-6
@@ -38,9 +38,11 @@
             = obj.join_date
       .col-xs-6
         %dl.dl-horizontal
-          %dt 剩余时间：
           - rest_time = obj.rest_time
-          %dd #{rest_time[:days]}天#{rest_time[:hours]}时#{rest_time[:minutes]}分
+          - if rest_time[:days] < 0
+          - else
+            %dt 剩余时间：
+            %dd #{rest_time[:days]}天#{rest_time[:hours]}时#{rest_time[:minutes]}分
   .panel-footer
     .row
       .col-xs-6
