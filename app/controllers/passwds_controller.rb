@@ -39,11 +39,8 @@ class PasswdsController < Devise::PasswordsController
     # Verification.create_with(emailstatus: "confirming", email_code: verify_code).find_or_create_by(email: params[:reg_email])
     # verify.passwd = params[:reg_email_pass]
     # verify.save!
-    EmailWorker.perform_async(verify.email, verify.email_code, "recover")
-    # @message = "一封验证邮件已经发送到您注册的邮箱内，请查收并验证邮箱,验证后登录"
-    # render "success"
-
-
+    # EmailWorker.perform_async(verify.email, verify.email_code, "recover")
+    perform(verify.email, verify.email_code, "recover")
     if user
       @email_server = @email = user.email
       @email_server[0, @email_server.index('@')+1]="mail."
@@ -51,6 +48,15 @@ class PasswdsController < Devise::PasswordsController
       render "reset_email_success" and return
     end
     render "verify_method"
+  end
+
+  def perform(addr, emailcode, email_type)
+    if email_type == "reg"
+      Reg.regist_confirm(addr, emailcode).deliver
+    elsif email_type == "recover"
+      Reg.reset_password(addr, emailcode).deliver
+    else
+    end
   end
 
 
