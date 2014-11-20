@@ -8,12 +8,12 @@
     - if @verify
       .form-horizontal
         .form-group
-          %label.col-sm-2.control-label 您的验证身份证号码是:
-          .col-sm-10
+          %label.col-xs-3.control-label 您的验证身份证号码是:
+          .col-sm-9
             = @verify.personalid
         .form-group
-          %label.col-sm-2.control-label 您的验证姓名是:
-          .col-sm-10
+          %label.col-xs-3.control-label 您的验证姓名是:
+          .col-xs-9
             = @verify.realname
     - else
       .form-horizontal

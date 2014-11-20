@@ -12,7 +12,7 @@
         .form-group
           %label.col-sm-2.control-label 当前手机号码是：
           .col-sm-10
-            %input#phone_number{:type => "text", :class => "form-control", :name => "phone_number", :value => current_user.user_info.mobile, :disabled=> true }
+            %input#phone_number{:type => "text", :class => "form-control", :name => "phone_number", :value => current_user.mobile, :disabled=> true }
         .form-group
           %label.col-sm-2.control-label 验证码
           .col-sm-10
