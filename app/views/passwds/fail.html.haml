@@ -7,21 +7,23 @@
             .panel-title
               %h4 找回密码
           .panel-body.find-password-lbody
-            .text-center.reg-steps
-              %img{:src => image_url("main/find-password3.jpg")}
-            .findpassword-succeed
-              %h2.text-center
-                %span.glyphicon.glyphicon-ok
-                出错了!
-                = @err_message
-              %p.text-center.mailboxyh
-              %ul
-                %li
-                  %img{:src => image_url("main/mailbox-succeed1.jpg")}/
-                %li
-                  %a.btn.btn-primary.btn-lg{:href => username_path, :role => "button"} 返回重设密码
-                %li
-                  %img{:src => image_url("main/mailbox-succeed4.jpg")}/
+            .container.mailbox-succeed
+              .text-center.reg-steps
+                %img{:src => image_url("main/find-password3.jpg")}
+              %div
+                %h2.text-center.mobile-succeed-size
+                  %span.glyphicon.glyphicon-ok
+                  出错了！
+                  = @message
+                %p.text-center.mailboxyh
+                %ul
+                  %li
+                    %img{:src => image_url("main/mailbox-succeed1.jpg")}/
+                  %li
+                    %a.btn.btn-primary.btn-lg{:href => new_user_registration_path} 现在注册
+                  %li
+                    %img{:src => image_url("main/mailbox-succeed2.jpg")}/
+                %p.mailboxmy 现在注册沃银网
 
 .security-identity
   .container.security-identity-container

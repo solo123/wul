@@ -18,7 +18,8 @@ class PasswdsController < Devise::PasswordsController
       user = User.find_by username: params[:username]
       if user
         @username = user.username
-        verify_enable(user)
+        verify = user.user_info.verification
+        verify_enable(user, verify)
         render "verify_method" and return
       else
         flash[:notice] = "用户名不存在"
@@ -46,7 +47,7 @@ class PasswdsController < Devise::PasswordsController
     if user
       @email_server = @email = user.email
       @email_server[0, @email_server.index('@')+1]="mail."
-      verify_enable(user)
+      @username = user.username
       render "reset_email_success" and return
     end
     render "verify_method"
@@ -115,13 +116,17 @@ class PasswdsController < Devise::PasswordsController
     # end
   end
 
-  def verify_enable(user)
+  def verify_enable(user, verify)
     if user.email != ""
       @email = user.email
     end
 
     if user.mobile != ""
       @mobile = user.mobile
+    end
+
+    if verify.safe_question_id != 0
+      @verify = verify
     end
   end
 
