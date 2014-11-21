@@ -39,7 +39,7 @@ class AuthController < Devise::SessionsController
   end
 
   def checkmobile
-    if User.exists?(:mobile => params[:reg_phone])
+    if User.exists?(:username => params[:reg_phone])
       render :json => "false" and return
     else
       render :json => "true" and return
@@ -48,7 +48,7 @@ class AuthController < Devise::SessionsController
 
 
   def checkemail
-    if User.exists?(:email => params[:reg_email])
+    if User.exists?(:username => params[:reg_email])
       render :json => "false" and return
     else
       render :json => "true" and return
@@ -91,14 +91,14 @@ class AuthController < Devise::SessionsController
   def get_code
     valid = Verification.where(:phone => params[:phone_num]).first
     if User.exists?(:mobile => params[:phone_num])
-      render :js => "alert('该手机号码已经被注册)" and return
+      render :js => "alert('该手机号码已经被注册')" and return
     end
     verify_code = rand(10 ** 6)
 
     # send_sms(params[:phone_num], verify_code)
     if valid
       if valid.phonestatus == "verified"
-        render :js => "alert('该手机号码已经被注册)" and return
+        render :js => "alert('该手机号码已经被注册')" and return
       else
         valid.verify_code = verify_code
         valid.save!

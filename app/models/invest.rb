@@ -18,7 +18,7 @@ class Invest < ActiveRecord::Base
     trans = Transaction.new
     trans.trans_type = "invest"
     trans.account_before = account.balance
-    trans.account_after =  account.balance - self.amount
+    trans.account_after = account.balance - self.amount
     trans.frozen_before = account.frozen_balance
     trans.operation_amount = self.amount
     trans.frozen_after = trans.frozen_before
@@ -40,11 +40,26 @@ class Invest < ActiveRecord::Base
   end
 
   def current_profit
-    profit?? calculate_profit : 0
+    profit? ? calculate_profit : 0
   end
 
   def calculate_profit
     (self.amount * self.annual_rate / 12 /100).round(2)
+  end
+
+  def redemable
+    if self.product.premature_redemption == "yes"
+
+      if self.product.stage == "融资中"
+        "presale"
+      elsif self.product.stage == "收益中"
+        "profit"
+      else
+        "over"
+      end
+    else
+      "cantsell"
+    end
   end
 
 
