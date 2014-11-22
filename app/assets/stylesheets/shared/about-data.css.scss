@@ -23,7 +23,7 @@
   color: #224e73;
   position: relative;
   padding-left: 60px;
-  padding-right: 95px;
+  padding-right: 65px;
   font-size:18px;
   color:#333;
 
@@ -65,7 +65,22 @@
 }
 
 .about-data .aboutm_box{
-  border:1px solid #e5e5e5; background-color:#fff; border-radius:4px 4px 0 0; padding-bottom:50px; margin-bottom:50px;
+  border:1px solid #e5e5e5;
+  background-color:#fff;
+  border-radius:4px 4px 0 0;
+  padding-bottom:50px;
+  margin-bottom:30px;
+}
+.about-data .aboutm_all {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.about-data .aboutm_team {
+  padding-bottom: 0;
+  border-radius: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #fbfbfb;
 }
 .about-data .about-content{padding-right: 0px;
   padding-left: 0px;}
@@ -76,3 +91,56 @@
 
 .about-data .aboutm_box .about-faq{ padding:0 30px; margin-top:30px; color:#333;}
 .about-data .aboutm_box .about-faq p{text-indent:2em; line-height:18px;}
+
+.aboutm_box .abtitle-sub {
+  position: relative;
+  height: 40px;
+  border-bottom: 1px solid #e0e0e0;
+  clear: both;
+  margin: 20px 40px 40px 40px;
+}
+.aboutm_box .abtitle-sub h2 {
+  font-size: 36px;
+  height: 30px;
+  line-height: 30px;
+  color: #333;
+  position: absolute;
+  z-index: 3;
+  padding: 5px 15px 5px 0px;
+  background-color: #fff;
+}
+.about-data .aboutm_partner{
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+.about-data .aboutm_partner ul{
+  padding: 30px 30px 0 40px;
+}
+.about-data .aboutm_partner li{ margin-bottom:30px;}
+.about-data .aboutm_partner ul a{
+  padding:0;
+  border:0px solid #e5e5e5;
+  border-radius:4px;
+}
+.about-data .aboutm-team-icon:hover{ border:1px solid #0099cc; border-radius:4px;}
+.aboutm-team-icon {
+  display: block;
+  width: 151px;
+  height: 65px;
+  background:image-url("mout/banka.png")
+}
+.aboutm-team-icon-baidu {
+  background-position: 0 0;
+}
+.aboutm-team-icon-icbc {
+  background-position: 557px 0;
+}
+.aboutm-team-icon-suning {
+  background-position: 354px 0;
+}
+.aboutm-team-icon-jd {
+  background-position: 151px 0;
+}
+.aboutm-team-icon-mycloud {
+  background-position:0 64px;
+}
