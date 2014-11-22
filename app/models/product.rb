@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
   # end
 
   def remain_repayment_period
-    months_between(self.profit_date, self.expiring_date)
+    months_between(self.profit_date, self.invest_end_date)
   end
 
 
@@ -29,6 +29,10 @@ class Product < ActiveRecord::Base
       when "已结束"
         "已结束"
     end
+  end
+
+  def invest_end_date
+    self.join_date + self.repayment_period.months
   end
 
 

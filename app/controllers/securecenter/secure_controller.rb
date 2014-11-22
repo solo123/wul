@@ -5,7 +5,7 @@ module Securecenter
     before_filter :authenticate_user!, :set_cache_buster
 
     def index
-
+      @verify = current_user.user_info.verification
     end
 
     def confirmphone
@@ -18,10 +18,16 @@ module Securecenter
         flash[:notice] = "原支付密码验证失败"
         redirect_to securecenter_secure_change_email_path and return
       end
+      if User.exists?(:email => params[:new_email])
+        flash[:notice] = "该邮箱已经被使用#{params[:new_email]}"
+        redirect_to securecenter_secure_change_email_path  and return
+      end
+
       current_user.email = params[:new_email]
       uinfo.verification.email = params[:new_email]
       flash[:notice] = "邮箱修改成功"
       current_user.save!
+      uinfo.verification.save!
       @current_email = current_user.email
       redirect_to securecenter_secure_change_email_path and return
     end
@@ -63,15 +69,15 @@ module Securecenter
       if verification.idstatus == "verified"
         @verify = verification
       else
-        if params[:id_number] == "370502198503126415"
-          verification.realname = params[:real_name]
-          verification.personalid = params[:id_number]
-          verification.idstatus = "verified"
-          verification.securyscore += 1
-          verification.save!
-        else
-          flash[:notice] = "验证失败"
-        end
+        # if params[:id_number] == "370502198503126415"
+        #   verification.realname = params[:real_name]
+        #   verification.personalid = params[:id_number]
+        #   verification.idstatus = "verified"
+        #   verification.securyscore += 1
+        #   verification.save!
+        # else
+        #   flash[:notice] = "验证失败"
+        # end
       end
 
     end
@@ -85,9 +91,10 @@ module Securecenter
         verification.securyscore += 1
         verification.save!
         @verify = verification
-        render "realname"
+        render "real_name"
       else
-        render "auth/fail"
+        flash[:notice] = "验证失败"
+        render "real_name"
       end
     end
 
@@ -137,8 +144,9 @@ module Securecenter
     end
 
     def change_email
-      @current_email = current_user.email
-
+      if current_user.email != ""
+        @current_email = current_user.email
+      end
     end
 
 
@@ -160,8 +168,8 @@ module Securecenter
     def checkphone
       phonenum = params[:phone_number]
       secure_num = params[:secure_number]
-      paypass = params[:paypass]
-      if UserInfo.exists?(:mobile => phonenum)
+      paypass = params[:pay_password]
+      if User.exists?(:mobile => phonenum)
         flash[:notice] = "该号码已经被使用#{phonenum}"
         redirect_to securecenter_secure_change_phone_path and return
       else
@@ -174,13 +182,14 @@ module Securecenter
             redirect_to securecenter_secure_change_phone_path and return
           end
 
-          uinfo.mobile = phonenum
-          uinfo.mobile_verify_date = Time.now
-          uinfo.payment_password = params[:pay_password]
-          uinfo.secury_score += 1
+          current_user.mobile = phonenum
+          # uinfo.mobile_verify_date = Time.now
+          if verify.phonestatus == "verified"
+            verify.securyscore += 1
+          end
           verify.phonestatus = "verified"
           verify.save!
-          uinfo.save!
+          current_user.save!
           flash[:notice] = "验证成功"
           redirect_to securecenter_secure_change_phone_path and return
         else

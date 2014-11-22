@@ -24,7 +24,7 @@
           .origin_value
             = dep.amount
         %td{:style=>"width:20%"}
-          - if dep.product.premature_redemption == "yes" && dep.stage == "normal"
+          - if dep.redemable == "profit" && dep.stage == "normal"
             = text_field_tag :discount_rt, dep.discount_rate, class: "discount_number"
             = hidden_field_tag :discount_rate, dep.discount_rate
           - else
@@ -32,13 +32,17 @@
 
         %td.vertical-center
           .discount_value
-            - if dep.onsale
-              = dep.resell_price
+            - if dep.stage == "normal"
+              = dep.amount
             - else
               - resell_price = dep.resell_price
               = number_with_precision resell_price, precision: 1
         %td
-          - if dep.product.premature_redemption == "yes"
+          - if dep.redemable == "profit"
             %input.btn.btn-primary{:type => type_dict[dep.stage] ,:value => value_dict[dep.stage]}
+          - elsif dep.redemable == "cantsell"
+            %input.btn.btn-default{:type => "button", :value => "不可转让", :disabled => "true"}
+          - elsif dep.redemable == "presale"
+            %input.btn.btn-default{:type => "button", :value => "正在融资", :disabled => "true"}
           - else
-            %input.btn.btn-default{:type => "button", :value => "无效", :disabled => "true"}
+            %input.btn.btn-default{:type => "button", :value => "已经结束", :disabled => "true"}

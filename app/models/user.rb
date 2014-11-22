@@ -44,10 +44,8 @@ class User < ActiveRecord::Base
 		conditions = warden_conditions.dup
     #self.username =conditions[:login]
 		if login = conditions.delete(:login)
-      logger.info(login)
-      where(conditions).where(["lower(mobile) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      where(conditions).where(["username = :value", { :value => login.downcase }]).first
     else
-      logger.info("111111111111111")
 			where(conditions).first
 		end
   end

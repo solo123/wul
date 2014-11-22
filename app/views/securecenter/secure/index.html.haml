@@ -22,24 +22,38 @@
             %td 启用密保问题即可修改
           %tr
             %td 实名认证
-            %td 绑定手机号码，账户资金变动实时通知
-            %td 已认证
+            %td 充值前，必须完成实名认证
+            %td
+              - if @verify.idstatus == "verified"
+                已认证
+              - else
+                %a{:href => securecenter_secure_real_name_path}
+                  认证
           %tr
             %td 绑定手机
-            %td 充值前，必须完成实名认证
-            %td 更换
+            %td 绑定手机号码，账户资金变动实时通知
+            %td
+              %a{:href => securecenter_secure_change_phone_path}
+                - if @verify.phonestatus == "confirming"
+                  绑定
+                - else
+                  修改
           %tr
             %td 支付密码
             %td 支付密码已启用，默认与初始登录密码相同，请及时修改
-            %td 启用密保问题即可修改
+            %td
+              %a{:href => securecenter_secure_confirm_path}
+                修改
           %tr
             %td 密保密码
             %td 轻松找回登录密码
-            %td 启用
-          %tr
-            %td 紧急联系人
-            %td 紧急联系人是在紧急情况下能够被联系到的与当事人相关的人
-            %td 启用
+            %td
+              %a{:href => securecenter_secure_change_secret_path}
+                - if @verify.safe_question_id == 0
+                  启用
+                - else
+                  修改
+
     #prshd.tab-pane
       %table.table.dqbxq-jrjl.table-striped.dqbxq-border
         %tbody

@@ -9,11 +9,12 @@
 .securecenter-form-area
   .form-horizontal
   = form_tag securecenter_secure_new_email_path do
-    .form-group
-      %label.col-sm-2.control-label 当前邮箱
-      .col-sm-10
-        %label.col-sm-2.control-label
-          = @current_email
+    - if !@current_email.nil?
+      .form-group
+        %label.col-sm-2.control-label 当前邮箱
+        .col-sm-10
+          %label.col-sm-2.control-label
+            = @current_email
     .form-group
       %label.col-sm-2.control-label 新邮箱
       .col-sm-10
