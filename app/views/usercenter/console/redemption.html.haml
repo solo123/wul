@@ -1,3 +1,196 @@
+.abtitle-sub
+  %h2 投资赎回
+.redemption.userredemption
+  %ul.nav.nav-tabs{:role => "tablist"}
+    %li.active{:role => "presentation"}
+      %a{"data-toggle" => "tab", :href => "#home", :role => "tab"}
+        定期宝
+        %span.badge 2
+    %li{:role => "presentation"}
+      %a{"data-toggle" => "tab", :href => "#profile", :role => "tab"}
+        月月盈
+        %span.badge 2
+  / Tab panes
+  .tab-content
+    #home.tab-pane.active{:role => "tabpanel"}
+      .systemnews.investTabs1
+        %table.table
+          %thead
+            %tr
+              %td{:style => "width:230px"} 名称
+              %td{:style => "width:100px"} 年化率
+              %td{:style => "width:180px"} 已持有期数
+              %td{:style => "width:180px"} 待收本金(￥)
+              %td{:style => "width:200px"} 折让率(%)
+              %td{:style => "width:120px"} 赎回金额
+              %td{:style => "width:100px"} 赎回
+          %tbody
+            %tr
+              %td
+                DQB20141101
+              %td 12.00%
+              %td
+                1
+              %td.light-org 1,000.00
+              %td.discount-rate
+                .input-group.addrate
+                  %input.form-control{:type => "text"}
+                    %span.input-group-btn
+                      %ul
+                        %li
+                          %a.addrate-add{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-plus
+                        %li
+                          %a.addrate-cut{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-minus
+              %td.light-org
+                1,000.00
+              %td.invest-btn
+                %a.btn.btn-primary.btn-block{:href => "#"} 赎回赎回
+            %tr
+              %td
+                DQB20141101
+              %td 12.00%
+              %td
+                1
+              %td.light-org 1,000.00
+              %td.discount-rate
+                .input-group.addrate
+                  %input.form-control{:type => "text"}
+                    %span.input-group-btn
+                      %ul
+                        %li
+                          %a.addrate-add{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-plus
+                        %li
+                          %a.addrate-cut{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-minus
+              %td.light-org
+                1,000.00
+              %td.invest-btn
+                %a.btn.btn-primary.btn-block{:href => "#"} 赎回回
+            %tr
+              %td
+                DQB20141101
+              %td 12.00%
+              %td
+                1
+              %td.light-org 1000,000.00
+              %td.discount-rate
+                .input-group.addrate
+                  %input.form-control{:type => "text"}
+                    %span.input-group-btn
+                      %ul
+                        %li
+                          %a.addrate-add{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-plus
+                        %li
+                          %a.addrate-cut{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-minus
+              %td.light-org
+                1,000.00
+              %td.invest-btn
+                %a.btn.btn-primary.btn-block{:href => "#"} 赎回
+        .invest-list-frame.systemnews-fenye
+          %ul.pagination
+            %li
+              %a{:href => "#"} 《上一页
+            %li
+              %a{:href => "#"} 1
+            %li
+              %a{:href => "#"} 2
+            %li
+              %a{:href => "#"} 下一页》
+    #profile.tab-pane{:role => "tabpanel"}
+      .systemnews.investTabs1
+        %table.table
+          %thead
+            %tr
+              %td{:style => "width:230px"} 名称
+              %td{:style => "width:150px"} 年化率
+              %td{:style => "width:180px"} 已持有期数
+              %td{:style => "width:180px"} 待收本金(￥)
+              %td{:style => "width:200px"} 折让率(%)
+              %td{:style => "width:120px"} 赎回金额
+              %td{:style => "width:100px"} 赎回
+          %tbody
+            %tr
+              %td
+                DQB20141101
+              %td 12.00%
+              %td
+                1
+              %td.light-org 1,000.00
+              %td.discount-rate
+                .input-group.addrate
+                  %input.form-control{:type => "text"}
+                    %span.input-group-btn
+                      %ul
+                        %li
+                          %a.addrate-add{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-plus
+                        %li
+                          %a.addrate-cut{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-minus
+              %td.light-org
+                1,000.00
+              %td
+                %a.btn.btn-primary{:href => "#"} 赎回
+            %tr
+              %td
+                DQB20141101
+              %td 12.00%
+              %td
+                1
+              %td.light-org 1,000.00
+              %td.discount-rate
+                .input-group.addrate
+                  %input.form-control{:type => "text"}
+                    %span.input-group-btn
+                      %ul
+                        %li
+                          %a.addrate-add{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-plus
+                        %li
+                          %a.addrate-cut{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-minus
+              %td.light-org
+                1,000.00
+              %td
+                %a.btn.btn-primary.btn-block{:href => "#"} 正在融资
+            %tr
+              %td
+                DQB20141101
+              %td 12.00%
+              %td
+                1
+              %td.light-org 1,000.00
+              %td.discount-rate
+                .input-group.addrate
+                  %input.form-control{:type => "text"}
+                    %span.input-group-btn
+                      %ul
+                        %li
+                          %a.addrate-add{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-plus
+                        %li
+                          %a.addrate-cut{:href => "#", :type => "button"}
+                            %span.glyphicon.glyphicon-minus
+              %td.light-org
+                1,000.00
+              %td
+                %a.btn.btn-primary{:href => "#"} 赎回中
+        .invest-list-frame.systemnews-fenye
+          %ul.pagination
+            %li
+              %a{:href => "#"} 《上一页
+            %li
+              %a{:href => "#"} 1
+            %li
+              %a{:href => "#"} 2
+            %li
+              %a{:href => "#"} 下一页》
+
 %h1.page-header 投资赎回
 - type_dict = {"onsale" => "button", "normal" => "submit"}
 - value_dict = {"onsale" => "赎回中", "normal" => "赎回"}

@@ -435,3 +435,224 @@ padding-top:18px;
   border: 0px solid #d2d2d2;
   border-radius: 0px; text-align:right; padding-right:10px;}
 .systemnews .systemnews-number{background-color: #f7fdff;margin-top: 50px;}
+
+/*  我的账户  */
+
+.statistics-header {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left:25px;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+
+}
+.statistics-header .item-row:first-child {
+  border: 0;
+}
+.statistics-header .item-row{
+  border-left: 1px solid #f0f0f0;
+  min-height: 126px;
+  padding-left:30px;
+  color:#333;
+}
+.statistics-header dl{margin-bottom: 0;}
+.statistics-header dl dt {
+  font-weight: normal;
+  color: #555;
+  margin-bottom: 4px;
+}
+.statistics-header dl dt .badge{
+  padding: 2px 6px;
+  background-color: #ccc;
+}
+.statistics-header dl dd {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+/*  交易记录  */
+.filter-items li:first-child{width:58px; float:left; margin-right:10px;}
+.filter-items li{width:86px; float:left;}
+.console-list-area .table>tbody>tr>td:first-child{
+  padding-left:30px;
+  padding-right:30px;
+}
+.console-list-area .table>tbody>tr>td{ text-align:left;padding: 12px 0px 12px 2px;}
+/*  充值提现  */
+.cashvalue{padding-bottom: 0px;}
+.cashvalue .dl-horizontal dd{ border-left:1px solid #ccc;}
+.cashvalue .recharge-entry1{ font-size:20px; font-weight:bold;}
+.cashvalue .recharge-entry1 dt{ width:110px;}
+.cashvalue .recharge-entry1 dd{ padding-left:30px;}
+.cashvalue .recharge-entry2{ font-size:14px; font-weight: normal;}
+.cashvalue .recharge-entry2 dt{ color:#555; font-weight:normal;}
+.cashvalue .recharge-entry2 dt .badge{
+  padding: 2px 6px;
+  background-color: #ccc;
+}
+.cashvalue .recharge-entry2 dd{ font-weight:bold;}
+.cashvalue .dl-horizontal dd:last-child{ padding-bottom:10px;}
+.cashvalue dl {
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+.cashvalue-btn{ padding-top:11px;}
+.cashvalue-btn .btn-primary{
+  background-color: #00a3d9;
+  border-color: #00a3d9;}
+.cashvalue-btn .btn-primary:hover{
+  background-color: #0099cc;
+  border-color: #0099cc;}
+.cashvalue-btn .btn-success{
+  background-color: #9fc830;
+  border-color: #9fc830;}
+.cashvalue-btn .btn-success:hover{
+  background-color: #9fc739;
+  border-color: #9fc739;}
+.cashvalue-btn .btn-lg{padding: 9px 16px;}
+
+/*  投资赎回  */
+.userredemption{ margin-top:30px; background-color: transparent;}
+.redemption .nav-tabs {border-bottom: 0px solid #ddd;}
+.redemption .investTabs1{ margin-top:0;border-radius:0 6px 6px 6px;}
+.investTabs1 .table>tbody>tr>td{ background-color:#fff;}
+.redemption .investTabs1 .table>tbody>tr>td {
+  text-align: left;
+  padding-top:20px;
+  padding-bottom:6px;
+}
+
+.redemption .investTabs1 .table>tbody>tr>td:last-child {
+  padding-top:12px;
+  padding-bottom:12px;
+}
+.redemption .investTabs1 .table>tbody>tr>td .btn{
+  padding: 6px 15px;
+}
+.redemption .investTabs1 .table>tbody>tr>td .btn-primary{
+  background-color: #00a3d9;
+  border-color: #00a3d9;
+}
+.redemption .nav-tabs>li.active>a, .redemption .nav-tabs>li.active>a:hover, .redemption .nav-tabs>li.active>a:focus{
+  padding:10px 22px;
+  font-size:16px;
+  font-weight:bold;
+  color:#333;
+  border-bottom:1px solid #e5e5e5;
+  border-radius: 6px 6px 0 0;
+}
+.redemption .nav-tabs>li.active>a .badge, .redemption .nav-tabs>li.active>a .badge:hover, .redemption .nav-tabs>li.active>a .badge:focus{
+  background-color: #ccc;
+  padding: 3px 7px  4px 7px;
+}
+.redemption .nav-tabs>li>a {
+  padding:10px 22px;
+  font-size:16px;
+  font-weight:bold;
+  color:#0099cc;
+  border-radius: 6px 6px 0 0;
+}
+.redemption .nav-tabs>li>a .badge{
+  background-color: #00a3d9;
+  padding: 3px 7px  4px 7px;
+}
+.redemption .investTabs1 .table>tbody>tr .discount-rate{padding-top:10px; line-height: 1.2;}
+.addrate{ padding-right:30px;}
+.addrate ul{-webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;}
+.addrate .form-control{ height:38px;}
+.addrate a:first-child{}
+.addrate a{ border-top:1px solid #ccc; border-bottom:1px solid #ccc; border-right:1px solid #ccc; padding:0 8px; }
+
+.addrate a span{ font-size:9px;color:#555;}
+.addrate .addrate-add{border-top-right-radius:5px;padding-bottom: 1px;}
+.addrate .addrate-cut{border-bottom-right-radius:5px;}
+.redemption .investTabs1 .table>tbody>tr .invest-btn{ padding-right: 10px; width: 80px;}
+
+/*  自动投资  */
+.bid-opt {
+  padding: 20px 0 0 30px;
+  overflow: hidden;
+  zoom: 1;
+  margin-left:20px;
+  position: relative;
+}
+.bid-opt .items {
+  height: 60px;
+}
+.bid-opt .items li.txt {
+  width:100px;
+  text-align: right;
+  padding-top: 10px;
+  padding-right:0;
+}
+.bid-opt .bid-txt li {
+  padding-top: 10px;
+}
+.bid-opt .items li {
+  position: relative;
+  float: left;
+  display: inline;
+  padding-left:0;
+}
+.bid-opt .items li .auto_status{
+  padding-top:10px;
+}
+.bid-opt .items li .auto_open{
+  padding: 8px 12px;
+  font-size:16px;
+  background-color: #00a3d9;
+  border-color: #00a3d9;
+}
+.bid-opt .items li .input-group .form-control{
+  height:40px;
+}
+.bid-opt .items li .input-group .input-group-addon{
+  background-color:#fff;
+}
+.bid-info {
+  overflow: hidden;
+  zoom: 1;
+  border-top: 1px solid #ebebeb;
+  padding: 20px 40px;
+  line-height: 2.0;
+}
+.bid-info h2{
+  font-size:16px;
+}
+.bid-info ul ul{ padding-left:2em;}
+
+/*  资产统计  */
+.actuary{padding-bottom: 0;}
+
+.actuary .statistics-header .item-row {
+  border-left:1px solid red;
+}
+.actuary .statistics-header .item-row:first-child {
+  border-left:0px solid red;
+}
+.actuary .statistics-header .item-row{
+  min-height: 90px;
+}
+.actuary .statistics-header dl dl dt {
+  width:60px;
+  text-align:left;
+}
+.actuary .statistics-header dl dl dd {
+  margin-left: 60px;
+  font-size:14px;
+}
+.actuary .statistics-header dl{
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+.actuary .statistics-header dl dd {
+  margin-bottom: 5px;
+}
+.actuary .statistics-header {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 15px;
+  margin-right: 0;
+}
+.actuary li:first-child{ padding-left:0;}
+.actuary li{ border:0px solid red; padding-top:25px; padding-left:0;}
