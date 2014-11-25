@@ -149,7 +149,7 @@
 }
 .lab-val-fixed_item-next1{padding: 0px 0px 10px 0px; margin-top:1px;
 }
-.lab-val .col-md-12, .lab-val .col-md-4, .lab-val .col-md-8 {
+.lab-val .col-xs-12, .lab-val .col-xs-4, .lab-val .col-xs-8 {
   padding-left:25px;
   padding-top:5px;
   min-height: 45px;
@@ -158,7 +158,7 @@
   float: left;
   border-bottom:1px solid #dbdfe0;
 }
-.lab-val .col-md-4 { border-right:1px solid #dbdfe0;
+.lab-val .col-xs-4 { border-right:1px solid #dbdfe0;
 }
 .lab-val .col-noborder { border-right:0px solid #dbdfe0;
 }
@@ -200,7 +200,7 @@
   border-bottom: 0px solid #ddd;
   border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;  height:45px; text-align:center; font-weight:normal;
 }
-.product-details-border>tbody>tr>td{height:45px;text-align:center;}
+.product-details-border>tbody>tr>td{height:45px;text-align:center; border-bottom: 1px solid #ddd;}
 .product-details-border>tbody>tr:nth-child(odd)>td{
   background-color: #f7fdff;
 }

@@ -23,12 +23,12 @@
           $(".simple_captcha_refresh_button>a").html("<span class=\"glyphicon glyphicon-refresh\"></span>");
         });
       .simple_captcha.helloooe.row
-        .simple_captcha_field.col-md-4
+        .simple_captcha_field.col-xs-4
           %input#captcha.form-control{:autocomplete => "off", :name => "captcha", :placeholder => "", :required => "required", :type => "text"}/
           %input#captcha_key{:name => "captcha_key", :type => "hidden", :value => "0f81007700a72814dac9e559e80f2f795a504091"}/
-        .simple_captcha_image.col-md-4
+        .simple_captcha_image.col-xs-4
           %img#simple_captcha-e71f1aabd07{:alt => "captcha", :src => "/simple_captcha?code=0f81007700a72814dac9e559e80f2f795a504091&time=1414726429"}/
-        .simple_captcha_refresh_button.col-md-2
+        .simple_captcha_refresh_button.col-xs-2
           %a{"data-remote" => "true", :href => "/simple_captcha?id=simple_captcha-e71f1aabd07"}
             %span.glyphicon.glyphicon-refresh
   .checkbox

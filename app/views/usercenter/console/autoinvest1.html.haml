@@ -1,0 +1,102 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "autoinvest.js"
+- status_dict = ["关闭中", "开启中"]
+- button_text = ["开启自动投资", "关闭自动投资"]
+- color_dict = ["red", "green"]
+- input_status = [false,true]
+- status = @delagator.status
+.acc1
+  自动投资
+.acc2
+  %a{:href => "#"}
+    %img{:src => image_url("account5.jpg")}
+.acc3
+  您还没有进入排行榜,请再接再厉
+.Auto-invest
+  = form_for(@delagator, html: {class: "form-signin", id:"auto_invest_form", method: "post"}, :url => usercenter_setup_auto_invest_path) do |f|
+    = f.hidden_field :status
+    %ul.zdtz
+      %li.zdtz1
+        %p
+          自动投资状态：
+        %span#invest-status{:style => "color:#{color_dict[status]}"}
+          = status_dict[status]
+        %button.btn.btn-default.zdtza#autoinvest{:type => "submit"}
+          = button_text[status]
+      %li
+        %form.zdtzb
+          .form-group
+            %label.bq
+              每次投资金额
+            .row
+              .col-xs-3
+                = f.text_field :each_invest_amount, :class => "form-control tzje", :disabled => input_status[status]
+                .error-area
+              .col-xs-5.bq1
+                %p.bq2
+                  元
+                %span
+                  该数值须为不小于200元且不大于20,000的整数
+            %br
+            %label.bq
+              最小投资金额
+            .row
+              .col-xs-3
+                = f.text_field :min_invest_amount, :class => "form-control tzje", :disabled => input_status[status]
+                .error-area
+              .col-xs-5.bq1
+                %p.bq2
+                  元
+                %span
+                  大于等于50元，小于等于每次投资金额的整数，设置为50可以增加您的资金利用率
+            %br
+            %label.bq
+              借款期限上限
+            .row
+              .col-xs-3
+                = f.text_field :max_invest_period, :class => "form-control tzje", :disabled => input_status[status]
+                .error-area
+              .col-xs-5.bq1
+                %p.bq2
+                  月
+                %span
+            %br
+              %label.bq
+                账户保留金额
+              .row
+                .col-xs-3
+                  = f.text_field :min_remain_balance, :class => "form-control tzje", :disabled => input_status[status]
+                  .error-area
+                .col-xs-5.bq1
+                  %p.bq2
+                    元
+                  %span
+                    您可填写一个不大于可用余额的金额，这部分金额不会加入自动投资
+.tool-i
+  %ul
+    %li.tool-i1
+      自动投资工具说明
+    %li
+      1、自动投资工具仅适用于月息通项目；
+    %li
+      2、在有利网充过值的用户可以开启自动投资；
+    %li
+      3、月息通项目进入投资状态十分钟后，才会启动自动投资；
+    %li
+      4、月息通项目投资进度超过95%之后，将停止自动投资；
+    %li
+      5、自动投资工具会根据用户设置的每次投资金额、最小投资金额，结合用户的账户可用余额向符合设置条件的
+    %li
+      月息通项目进行投资，具体规则如下：
+    %li
+      a、账户可用余额 < 最小投资金额，不执行自动投资；
+    %li
+      b、最小投资金额 <= 账户可用余额每次投资金额+50元，执行自动投资，投资金额为账户可用余额的整数部分；
+    %li
+      c、每次投资金额+50元 <= 账户可用余额，执行自动投资，投资金额为设定的每次投资金额。
+    %li
+      6、用户开启此工具，并完成条件设置后，自动投资功能将在五分钟内生效；
+    %li
+      7、单个月息通项目，单个用户至多只有一次自动投资的机会；
+    %li
+      8、投资序列按照用户上一笔成功的自动投资时间先后进行排序。

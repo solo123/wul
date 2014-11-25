@@ -1,54 +1,127 @@
-.console-header-info
-  %h1.page-header 投资记录
-.investment-records-area
-  %ul.nav.nav-tabs{:role=>"tablist"}
-    %li.active
-      %a{:href=>"#fixed", :role=>"tab", 'data-toggle'=>"tab"}
-        定存宝
-        %span.badge
-          = @fixed_deposits.size
-    %li
-      %a{:href=>"#month", :role=>"tab", 'data-toggle'=>"tab"}
+.abtitle-sub
+  %h2 投资记录
+.userredemption
+  %ul.nav.nav-tabs{:role => "tablist"}
+    %li.active{:role => "presentation"}
+      %a{"data-toggle" => "tab", :href => "#home", :role => "tab"}
+        定期宝
+        %span.badge 2
+    %li{:role => "presentation"}
+      %a{"data-toggle" => "tab", :href => "#profile", :role => "tab"}
         月月盈
-        %span.badge
-          = @month_deposits.size
-
-  %div.tab-content
-    %div.tab-pane.active{:id=>"fixed"}
-      .console-list-area
+        %span.badge 2
+  .tab-content
+    #home.tab-pane.active{:role => "tabpanel"}
+      .systemnews.investTabs1
         %table.table
-          %tr
-            %th 名称
-            %th 年化收益率
-            %th 金额（￥）
-            %th 投资期限
-            %th 担保
-          - @fixed_deposits.each do |f|
+          %thead
+            %tr
+              %td{:style => "width:200px"} 名称
+              %td{:style => "width:200px"} 年化收益
+              %td{:style => "width:200px"} 金额(￥)
+              %td{:style => "width:150px"} 购买笔数
+              %td{:style => "width:150px"} 担保
+          %tbody
             %tr
               %td
-                %a{:href => usercenter_console_invest_detail_path(:invest => f.id)}
-                  = "定存宝#{f.loan_number}"
-              %td  #{number_with_precision f.product.annual_rate, precision: 2}%
-              %td= f.amount
-              %td= "#{f.product.repayment_period}个月"
+                DQB20141101
+              %td 12.00%
+              %td.light-org 1,000.00
+              %td
+                1
               %td
                 银盛担保
-    %div.tab-pane{:id=>"month"}
-      .console-list-area
+            %tr
+              %td
+                DQB20141101
+              %td 12.00%
+              %td.light-org 1,000.00
+              %td
+                1
+              %td
+                银盛担保
+            %tr
+              %td
+                DQB20141101
+              %td 12.00%
+              %td.light-org 1,000.00
+              %td
+                1
+              %td
+                银盛担保
+        .invest-list-frame.systemnews-fenye
+          %ul.pagination
+            %li
+              %a{:href => "#"} 《上一页
+            %li
+              %a{:href => "#"} 1
+            %li
+              %a{:href => "#"} 2
+            %li
+              %a{:href => "#"} 下一页》
+    #profile.tab-pane{:role => "tabpanel"}
+      .systemnews.investTabs1
         %table.table
-          %tr
-            %th 名称
-            %th 年化收益率
-            %th 金额（￥）
-            %th 投资期限
-            %th 担保
-            - @month_deposits.each do |f|
-              %tr
-                %td
-                  %a{:href => usercenter_console_invest_detail_path(:invest => f.id)}
-                    = "月月盈#{f.loan_number}"
-                %td  #{number_with_precision f.product.annual_rate, precision: 2}%
-                %td= f.amount
-                %td= "#{f.product.repayment_period}个月"
-                %td
-                  银盛担保
+          %thead
+            %tr
+              %td{:style => "width:200px"} 名称
+              %td{:style => "width:100px"} 年化率
+              %td{:style => "width:180px"} 下次回款
+              %td{:style => "width:180px"} 金额(￥)
+              %td{:style => "width:180px"} 月收本息(￥)
+              %td{:style => "width:100px"} 状态
+              %td{:style => "width:180px"} 担保方
+          %tbody
+            %tr
+              %td
+                DQB20141101
+              %td 12.00%
+              %td
+                100.00
+              %td.light-org
+                1,000.00
+              %td
+                10.00
+              %td
+                全部
+              %td
+                银盛支付
+            %tr
+              %td
+                DQB20141101
+              %td 12.00%
+              %td
+                100.00
+              %td.light-org
+                1,000.00
+              %td
+                10.00
+              %td
+                全部
+              %td
+                银盛支付
+            %tr
+              %td
+                DQB20141101
+              %td 12.00%
+              %td
+                100.00
+              %td.light-org
+                1,000.00
+              %td
+                10.00
+              %td
+                全部
+              %td
+                银盛支付
+        .invest-list-frame.systemnews-fenye
+          %ul.pagination
+            %li
+              %a{:href => "#"} 《上一页
+            %li
+              %a{:href => "#"} 1
+            %li
+              %a{:href => "#"} 2
+            %li
+              %a{:href => "#"} 下一页》
+
