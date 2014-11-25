@@ -42,7 +42,7 @@ $(document).ready(function () {
             $("#getcode").addClass('getcode_disable')
 
             if ($("#timer").length) {
-                count = 20;
+                count = 60;
                 counter = setInterval(timer, 1000); //1000 will  run it every 1 second
             }
 
