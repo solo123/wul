@@ -1,4 +1,4 @@
-var count = 60;
+var count = 0;
 var counter;
 
 function timer() {
@@ -19,7 +19,7 @@ function timer() {
 function showRequest(formData, jqForm, options) {
     var queryString = $.param(formData);
     alert(queryString);
-   // return $('#searchForm').validate().form();
+    // return $('#searchForm').validate().form();
     //return true;
 }
 
@@ -27,7 +27,7 @@ $(document).ready(function () {
 
 
     var optionsphone = {
-        beforeSubmit: function() {
+        beforeSubmit: function () {
             return $('#reg_form_phone').validate().form()
         },
 
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
 
     var optionsmail = {
-        beforeSubmit: function() {
+        beforeSubmit: function () {
             return $('#reg_form_email').validate().form()
         },
 
@@ -55,52 +55,52 @@ $(document).ready(function () {
 //    $('#reg_form_email').ajaxForm(optionsmail);
 
     $('#reg_form_email').validate({
-        focusInvalid : true,
-        focusCleanup :true,
-        onkeyup : true,
-        rules : {
-            reg_email_pass : {
-                required : true,
-                minlength : 6
+        focusInvalid: true,
+        focusCleanup: true,
+        onkeyup: true,
+        rules: {
+            reg_email_pass: {
+                required: true,
+                minlength: 6
             },
-            reg_email_conf : {
-                required : true,
-                minlength : 6,
-                equalTo : "#reg_email_pass"
+            reg_email_conf: {
+                required: true,
+                minlength: 6,
+                equalTo: "#reg_email_pass"
             },
 
 
-            reg_email : {
-                required : true,
-                email : true,
-                remote : {
-                    url : "/checkemail",
-                    type : "post"
+            reg_email: {
+                required: true,
+                email: true,
+                remote: {
+                    url: "/checkemail",
+                    type: "post"
                 }
             }
 
         },
-        messages : {
-            reg_email_pass : {
-                required : "密码不能为空",
-                minlength : "密码至少为6位"
+        messages: {
+            reg_email_pass: {
+                required: "密码不能为空",
+                minlength: "密码至少为6位"
             },
-            reg_email_conf : {
-                required : "请确认密码",
-                minlength : "密码至少为6位",
-                equalTo : "两次输入密码不一致"
+            reg_email_conf: {
+                required: "请确认密码",
+                minlength: "密码至少为6位",
+                equalTo: "两次输入密码不一致"
             },
 
-            reg_email : {
-                required : "需要您的邮箱",
-                email : "需要有效邮箱",
-                remote : "该邮箱已被使用"
+            reg_email: {
+                required: "需要您的邮箱",
+                email: "需要有效邮箱",
+                remote: "该邮箱已被使用"
             }
         },
         errorPlacement: function (error, element) {
             $(element).popover('destroy');
             $(element).popover({
-                content:$(error).html(),
+                content: $(error).html(),
                 trigger: "manual click",
                 container: '#reg_panel',
                 template: '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content error-msg"></div></div>'
@@ -109,24 +109,24 @@ $(document).ready(function () {
 //            error.appendTo(element.parent().parent().next());
         },
 
-        success: function(label,element) {
+        success: function (label, element) {
             $(element).popover('destroy');
         },
 
-        submitHandler: function(form) {
+        submitHandler: function (form) {
 
             // do other things for a valid form
-            if ($('#reg_form_email').validate().form())
-            {
+            if ($('#reg_form_email').validate().form()) {
                 form.submit();
             }
-            else
-            {alert("no");}
+            else {
+                alert("no");
+            }
         },
 
-        errorClass : "alert alert-danger",
-        errorElement : "span"
-      });
+        errorClass: "alert alert-danger",
+        errorElement: "span"
+    });
 
     $("#reg_form_phone").validate({
         focusInvalid: true,
@@ -140,22 +140,22 @@ $(document).ready(function () {
                 remote: {
                     url: "/checkmobile",
                     type: "post",
-                    complete: function(data){
-                        if( data.responseText == "false" ) {
-                           disablecode();
+                    complete: function (data) {
+                        if (data.responseText == "false") {
+                            disablecode();
                         }
                         else {
                             enablecode();
                         }
                     }
-                 }
-                },
+                }
+            },
             reg_code: {
                 required: true
             },
-            reg_password:{
-              required:true,
-              minlength: 6
+            reg_password: {
+                required: true,
+                minlength: 6
             },
             reg_password_confirm: {
                 required: true,
@@ -175,36 +175,36 @@ $(document).ready(function () {
             reg_code: {
                 required: "验证码不能为空"
             },
-            reg_password:{
+            reg_password: {
                 required: "密码不能为空",
-                minlength:  "密码不能少于6位"
+                minlength: "密码不能少于6位"
             },
             reg_password_confirm: {
-                required:"密码不能为空",
-                minlength:"密码不能少于6位",
+                required: "密码不能为空",
+                minlength: "密码不能少于6位",
                 equalTo: "确认密码不一致"
             }
 
         },
 
-        success: function(label,element) {
+        success: function (label, element) {
             $(element).popover('destroy');
         },
-        submitHandler: function(form) {
+        submitHandler: function (form) {
 
             // do other things for a valid form
-            if ($('#reg_form_phone').validate().form())
-            {
+            if ($('#reg_form_phone').validate().form()) {
                 form.submit();
             }
-            else
-            {alert("no");}
+            else {
+                alert("no");
+            }
         },
 
         errorPlacement: function (error, element) {
             $(element).popover('destroy');
             $(element).popover({
-                content:$(error).html(),
+                content: $(error).html(),
                 trigger: "manual click",
                 container: '#reg_panel',
                 template: '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content error-msg"></div></div>'
@@ -224,33 +224,34 @@ function showResponse(responseText, statusText, xhr, $form) {
 }
 
 
-
-
-
-
-
 function regsuccess() {
 }
 function enablecode() {
-    $("#getcode").attr('disabled', false);
-    $("#getcode").removeClass('getcode_disable');
-    $("#getcode").addClass('getcode_enable');
-    $("#reg_phone").removeClass("alert-danger");
-    $('#reg_phone').popover('destroy');
+
+    if (count == 0) {
+
+        $("#getcode").attr('disabled', false);
+        $("#getcode").removeClass('getcode_disable');
+        $("#getcode").addClass('getcode_enable');
+        $("#reg_phone").removeClass("alert-danger");
+        $('#reg_phone').popover('destroy');
+    }
 }
 
 
 function disablecode() {
-    $("#getcode").attr('disabled',true);
-    $("#getcode").removeClass('getcode_enable');
-    $("#getcode").addClass('getcode_disable');
-   $("#reg_phone").addClass("alert-danger");
-    $('#reg_phone').popover({
-        content:"该手机号码已经被使用",
-        trigger: "manual click",
-        container: 'body'
-    });
-    $('#reg_phone').popover('show');
+    if (count == 0) {
+        $("#getcode").attr('disabled', true);
+        $("#getcode").removeClass('getcode_enable');
+        $("#getcode").addClass('getcode_disable');
+        $("#reg_phone").addClass("alert-danger");
+        $('#reg_phone').popover({
+            content: "该手机号码已经被使用",
+            trigger: "manual click",
+            container: 'body'
+        });
+        $('#reg_phone').popover('show');
+    }
 }
 function regfail() {
 }

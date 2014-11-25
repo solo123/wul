@@ -26,7 +26,7 @@ class AuthController < Devise::SessionsController
     #   puts response.body
     #   end
     message = "感谢您注册沃银网，您的验证码是#{code}【沃银金融】"
-    # SmsWorker.perform_async(mobile, message)
+     # SmsWorker.perform_async(mobile, message)
   end
 
   # def sendsms
