@@ -1,3 +1,21 @@
+var count = 60;
+var counter;
+
+function timer() {
+    count = count - 1;
+    if (count <= 0) {
+        clearInterval(counter);
+        $('#timer').html("");
+        $("#getcode").attr('disabled', false);
+        $("#getcode").removeClass('getcode_disable');
+        $("#getcode").addClass('getcode_enable');
+        return;
+    }
+
+    document.getElementById("timer").innerHTML = count;
+}
+
+
 function showRequest(formData, jqForm, options) {
     var queryString = $.param(formData);
     alert(queryString);
@@ -6,6 +24,7 @@ function showRequest(formData, jqForm, options) {
 }
 
 $(document).ready(function () {
+
 
     var optionsphone = {
         beforeSubmit: function() {
@@ -214,8 +233,8 @@ function regsuccess() {
 }
 function enablecode() {
     $("#getcode").attr('disabled', false);
-    $("#getcode").css('color', 'black');
-    $("#getcode").css('background', 'orange');
+    $("#getcode").removeClass('getcode_disable');
+    $("#getcode").addClass('getcode_enable');
     $("#reg_phone").removeClass("alert-danger");
     $('#reg_phone').popover('destroy');
 }
@@ -223,8 +242,8 @@ function enablecode() {
 
 function disablecode() {
     $("#getcode").attr('disabled',true);
-    $("#getcode").css('background','white');
-    $("#getcode").css('color','#999');
+    $("#getcode").removeClass('getcode_enable');
+    $("#getcode").addClass('getcode_disable');
    $("#reg_phone").addClass("alert-danger");
     $('#reg_phone').popover({
         content:"该手机号码已经被使用",

@@ -40,7 +40,9 @@
                           %img{:src => image_url("main/wy-glyphicon-code.jpg")}
                         %input.form-control.tip_holder{:type => "text",:name => "reg_code",:placeholder => "验证码"}
                     .col-xs-3.testgetcode
-                      %button.btn.btn-default.btn-block#getcode{:type => "button",:disabled => "true"} 获取验证码
+                      %button.btn.btn-default.btn-block.getcode_disable#getcode{:type => "button",:disabled => "true"}
+                        获取验证码
+                        %span#timer
                   .form-group
                     %label.col-xs-offset-1.col-xs-2.control-label{:for => "reg_password"} 设置密码
                     .col-xs-7

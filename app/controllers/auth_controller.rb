@@ -1,22 +1,32 @@
 # coding: utf-8
 class AuthController < Devise::SessionsController
   require 'net/https'
-  require 'json'
+  # require 'net/http'
+  # require 'json'
   require "uri"
-  require 'openssl'
+  # require 'openssl'
   layout "sign_layout"
 
   def send_sms(mobile, code)
-    url = URI.parse('https://sms-api.luosimao.com/v1/send.json')
-    url.user = "api"
-    url.password = "key-618b92cc656f8e532bb2c08a0d8d205a"
-    req = Net::HTTP::Post.new(url.path)
-    data = {'mobile' => mobile, 'cb' => 'callback', 'message' => "感谢您注册沃银网，您的验证码是#{code}【沃银金融】"}
-    req.form_data = data
-    req.basic_auth url.user, url.password
-    con = Net::HTTP.new(url.host, url.port)
-    con.use_ssl = true
-    res = con.start { |http| http.request(req) }
+
+    # uri = URI('https://sms-api.luosimao.com/v1/send.json')
+    #
+    # Net::HTTP.start(uri.host, uri.port,
+    #                 :use_ssl => uri.scheme == 'https',
+    #                 :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
+    #
+    #   request = Net::HTTP::Post.new uri.path
+    #   data = {'mobile' => mobile, 'cb' => 'callback', 'message' => "感谢您注册沃银网，您的验证码是#{code}【沃银金融】"}
+    #   request.form_data = data
+    #   request.basic_auth 'api', 'd5e425886c61049dc6d652f3e2a74b21'
+    #
+    #   response = http.request request # Net::HTTPResponse object
+    #
+    #   puts response
+    #   puts response.body
+    #   end
+    message = "感谢您注册沃银网，您的验证码是#{code}【沃银金融】"
+    # SmsWorker.perform_async(mobile, message)
   end
 
   # def sendsms
@@ -102,14 +112,16 @@ class AuthController < Devise::SessionsController
       else
         valid.verify_code = verify_code
         valid.save!
-        render :js => "alert('该号码的验证码是：#{verify_code}')" and return
+        send_sms(params[:phone_num], verify_code)
+        render :js => "" and return
       end
     else
       valid = Verification.new
       valid.phone = params[:phone_num]
       valid.verify_code = verify_code
       valid.save!
-      render :js => "alert('该号码的验证码是：#{verify_code}')" and return
+      send_sms(params[:phone_num], verify_code)
+      render :js => "" and return
     end
   end
 
@@ -161,9 +173,6 @@ class AuthController < Devise::SessionsController
     +"</pReq>"
 
 
-
-
-
     url ="http://p2p.ips.net.cn/CreditWeb/CreateNewIpsAcct.aspx"
     # url ="http://127.0.0.1:8080/accounting/account/test_inter"
     ips_md5="GPhKt7sh4dxQQZZkINGFtefRKNPyAj8S00cgAwtRyy0ufD7alNC28xCBKpa6IU7u54zzWSAv4PqUDKMgpOnM7fucO1wuwMi4RgPAnietmqYIhHXZ3TqTGKNzkxA55qYH"
@@ -173,7 +182,6 @@ class AuthController < Devise::SessionsController
     $strxml.gsub!(/[\s]{2,}/, "")
     $strxml.gsub!('\\', '')
     sec = encrypt($strxml, vec, des_key)
-
 
 
     # res = decrypt(sec, vec, des_key)

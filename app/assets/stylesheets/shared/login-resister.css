@@ -27,13 +27,22 @@ ul, ol {
 .sign-page .register-panelbody .register-radio .radio-inline{ margin-top:10px; margin-bottom: 30px;}
 .sign-page .form-signin .testincode{padding-right: 0px}
 .sign-page .form-signin .testgetcode{padding-right: 0px}
-.sign-page .form-signin .testgetcode .btn-default{background-color: #ccc; color:#fff;}
-.sign-page .form-signin .testgetcode .btn{padding:9px 12px;}
+.sign-page .form-signin .testgetcode .btn-default{color:#fff;}
+.sign-page .form-signin .testgetcode .btn{padding:9px 12px;font-size:11px}
 .sign-page .register-panelfooter{padding-bottom: 50px;}
 .sign-page .Mailbox-panelfooter{padding-bottom: 100px;}
 .sign-page .panel-footer .tell-wk{ padding-left: 30px;}
 .sign-page .form-horizontal .formsubmit{
     margin-bottom: 0px;
+}
+
+.sign-page .form-horizontal .getcode_enable{
+    background-color: orange;
+    color: black
+}
+.sign-page .form-horizontal .getcode_disable{
+    background-color: #ccc;
+    color: #999
 }
 
 .sign-page .mailbox-succeed{ border:1px solid #ddd; margin-bottom:50px;}
