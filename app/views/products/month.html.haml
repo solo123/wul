@@ -31,7 +31,9 @@
         %tbody
           - @collection.each do |obj|
             = render 'fixed_deposits/list_col_browser', obj: obj
-
+      .invest-pager-container
+        .invest_pagination
+          = will_paginate @collection, :container => false
 
 
 

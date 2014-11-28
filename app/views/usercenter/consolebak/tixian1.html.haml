@@ -1,0 +1,41 @@
+.abtitle-sub
+  %h2 账户提现
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => "#", :role => "button"} 返回
+.abuser-box.withdraw-post
+  %dl.dl-horizontal
+    %dt 持卡人
+    %dd 雷有民
+    %dt 提现至银行卡
+    %dd
+      %img{:src => "images/about/bank-cmbc.jpg"}
+        **4050
+    %dt 申请提现金额
+    %dd.light-org
+      ￥
+      %span 3,000.00
+    %dt 手续费
+    %dd.light-org
+      ￥
+      %span 0.00
+      %span.caption 审核通过后手续费会返至红包中，下次投资时可用
+    %dt 实际到账金额
+    %dd.light-org
+      ￥
+      %span 3,000.00
+      %span.caption 预计2014-11-03之内到账（双休日和法定节假日顺延）
+    %dt 实际到账金额
+    %dd.light-org
+      ￥
+      %span 3,000.00
+    %dt.forget-paydt 支付密码
+    %dd
+      %form.form-inline{:role => "form"}
+        .form-group
+          %label.sr-only{:for => "exampleInputEmail2"} Email address
+          %input#exampleInputEmail2.form-control.input-lg{:placeholder => "请输入您在沃银网的支付密码", :type => "email"}
+        %span.forget-pay
+          %a{:href => "#"} 忘记支付密码？
+    %dt
+    %dd
+      %button.btn.btn-primary.btn-lg.btn-skyblue{:type => "button"} 申请提现

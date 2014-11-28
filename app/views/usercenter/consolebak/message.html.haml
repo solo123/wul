@@ -1,0 +1,101 @@
+.abtitle-sub
+  %h2 系统消息
+.filter-box.trade-filter
+  - queries = params.except(*request.path_parameters.keys)
+  - condi = {}
+  - conds = {}
+  - dict = {'all' => '全部',
+             'charge' => '充值',
+             'pull' => '提现',
+             'invest' => '投资产品',
+             'profit' => '收回利息',
+             'buy' => '购买债权',
+             'sell' => '转让债权',
+             'principal' => '收回本金'}
+  %dl.filter-items
+    %dt
+      起止日期
+    %dd
+      - condi[:importance] = queries[:importance]
+      - if !queries[:date_range]
+        %a.timeType.selected{:href => usercenter_console_message_path(condi) }
+          全部
+      - else
+        %a.tradeType{:href => usercenter_console_message_path(condi)}
+          全部
+      - {'week' => '最近7天',
+                 'month' => '1个月内',
+                 'month2' => '2个月内',
+                 'month3' => '3个月内' }.each do |k, v|
+
+        - condi[:date_range] = k
+        - if queries[:date_range] == k
+          %a.timeType.selected{:href => usercenter_console_message_path(condi)}
+            = v
+        - else
+          %a.tradeType{:href => usercenter_console_message_path(condi)}
+            =v
+
+  %dl.filter-items
+    %dt
+      重要性
+    %dd
+      - conds[:date_range] = queries[:date_range]
+      - if !queries[:importance]
+        %a.timeType.selected{:href => usercenter_console_message_path(conds) }
+          全部
+      - else
+        %a.tradeType{:href => usercenter_console_message_path(conds)}
+          全部
+      - { '0' => '普通',
+                 '1' => '重要',
+                 '2' => '紧急'}.each do |k, v|
+
+        - conds[:importance] = k
+        - if queries[:importance] == k
+          %a.timeType.selected{:href => usercenter_console_message_path(conds)}
+            = v
+        - else
+          %a.tradeType{:href => usercenter_console_message_path(conds)}
+            =v
+  %dl.filter-items
+    %dt
+      操作
+    %dd
+      %a.timeType#select_all{:href => "#"}
+        全选
+      %a.tradeType{:href => "#"}
+        删除
+.systemnews
+  %table.table
+    %thead
+      %tr
+        %td{:style => "width:250px"} 主题
+        %td{:style => "width:200px"} 时间
+        %td{:style => "width:150px"} 状态
+        %td{:style => "width:180px"} 重要性
+        %td{:style => "width:100px"} 操作
+    %tbody
+    - @messages.each do |m|
+      %tr
+        %td{:style => "width:250px"}
+          .form-group
+            .checkbox
+              %label
+                %input.select_item{:type => "checkbox"}>/
+                = m.title
+        %td{:style => "width:200px"}
+          = m.created_at.strftime("%Y-%m-%d %H:%M:%S")
+        %td{:style => "width:150px"}
+          = m.read_status
+        %td{:style => "width:180px"}
+          普通
+        %td{:style => "width:100px"}
+          %a{:href => usercenter_console_message_path(:message_id => m.id, :pattern => 'detail')}
+            查看
+  .pager-center
+    .invest-pager-container
+      .invest_pagination
+        = will_paginate @messages, :container => false, :inner_window =>2, :outer_window => 4
+:javascript
+  $("#select_all").click(function (){$(".select_item").attr('checked','checked')});

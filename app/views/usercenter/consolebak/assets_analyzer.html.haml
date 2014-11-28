@@ -1,0 +1,334 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "analyzer.js"
+.console-header-info
+  %h1.page-header 资产统计
+- @fixed_analyzer = @analyzer.product("fixed")
+- @month_analyzer = @analyzer.product("month")
+.actuary
+  %ul
+    %a{:href => "#"}
+      %li#column1.col-xs-3.act-border
+        %ul
+          %li.actli-ye1
+            账户余额
+            %span.badge.act-badge ?
+          %li.actli-ye2
+            ￥
+            %span
+              = current_user.user_info.account.balance
+          %li.actli-ye3
+            可用余额 ￥
+            %span
+              = current_user.user_info.account.balance
+            %span.badge.act-badge ?
+    %a{:href => "#"}
+      %li#column2.col-xs-3.act-border
+        %ul
+          %li.actli1-ye1
+            账户总资产
+            %span.badge.act-badge ?
+          %li.actli1-ye2
+            ￥
+            %span
+              = @analyzer.total_invest_amount + current_user.user_info.account.balance
+    %a{:href => "#"}
+      %li#column3.col-xs-3.act-border
+        %ul
+          %li.actli1-ye1
+            累计净收益
+            %span.badge.act-badge ?
+          %li.actli1-ye2
+            ￥
+            %span + 0.00
+    %a{:href => "#"}
+      %li#column4.col-xs-3.act-border.actlast-li
+        %ul
+          %li.actli1-ye1
+            加权收益率
+            %span.badge.act-badge ?
+          %li.actli1-ye2
+            %span> 0.00
+            \%
+#column1-area.actuary1
+  .title-items
+    %h3 账号余额
+  %table.table.table-bordered
+    %thead
+      %tr.light-bj
+        %th
+        %th 定存宝(￥)
+        %th 月息通(￥)
+        %th 小计(￥)
+    %tbody
+      %tr
+        %th 总充值金额
+        %th.act-colspan.light-green{:colspan => "2"}
+          +
+          = number_with_precision @analyzer.total_charge_amount, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          = number_with_precision @analyzer.total_charge_amount, precision: 2, delimiter: ','
+      %tr
+        %th 回收本金
+        %th.light-green
+          +
+          =  number_with_precision @fixed_analyzer.total_principal, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @month_analyzer.total_principal, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @fixed_analyzer.total_principal + @month_analyzer.total_principal, precision: 2, delimiter: ','
+      %tr
+        %th 回收利息
+        %th.light-green
+          +
+          =  number_with_precision @fixed_analyzer.total_profit, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @month_analyzer.total_profit, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @month_analyzer.total_profit + @fixed_analyzer.total_profit, precision: 2, delimiter: ','
+      %tr
+        %th 复投收益
+        %th.light-org - 0.00
+        %th --
+        %th - 0.00
+      %tr
+        %th 回收罚息
+        %th --
+        %th.light-green +0.00
+        %th +0.00
+      %tr
+        %th 赎回投资
+        %th.light-green
+          +
+          =  number_with_precision @fixed_analyzer.resell_amount, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @month_analyzer.resell_amount, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          = number_with_precision @fixed_analyzer.resell_amount + @month_analyzer.resell_amount, precision: 2, delimiter: ','
+      %tr
+        %th 获得垫付资金
+        %th --
+        %th.light-green + 0.00
+        %th + 0.00
+      %tr
+        %th 已投资金额
+        %th.light-org
+          \-
+          = number_with_precision @fixed_analyzer.total_invest_amount, precision: 2, delimiter: ','
+        %th.light-org
+          \-
+          =  number_with_precision @month_analyzer.total_invest_amount, precision: 2, delimiter: ','
+        %th.light-org
+          \-
+          =  number_with_precision @month_analyzer.total_invest_amount + @fixed_analyzer.total_invest_amount, precision: 2, delimiter: ','
+      %tr
+        %th 买入债权
+        %th.light-org
+          -
+          = number_with_precision @fixed_analyzer.buyin_amount, precision: 2, delimiter: ','
+        %th.light-org
+          -
+          = number_with_precision @month_analyzer.buyin_amount, precision: 2, delimiter: ','
+        %th.light-org
+          -
+          = number_with_precision @fixed_analyzer.buyin_amount + @month_analyzer.buyin_amount, precision: 2, delimiter: ','
+      %tr
+        %th 完成提现金额
+        %th.act-colspan.light-org{:colspan => "2"} - 0.00
+        %th - 0.00
+      %tr
+        %th 手续费
+        %th.act-colspan.light-org{:colspan => "2"} - 17.00
+        %th - 17.00
+      %tr.light-bj
+        %th{:colspan => "3"} 账户余额
+        %th
+          = number_with_precision current_user.user_info.account.balance, precision: 2, delimiter: ','
+      %tr
+        %th 投资中冻结金额
+        %th --
+        %th.light-org - 0.00
+        %th - 0.00
+      %tr
+        %th 预约中冻结金额
+        %th.light-org - 0.00
+        %th --
+        %th - 0.00
+      %tr
+        %th 提现中冻结金额
+        %th.act-colspan.light-org{:colspan => "2"} - 0.00
+        %th - 0.00
+      %tr.light-bj
+        %th{:colspan => "3"} 可用余额
+        %th
+          = number_with_precision current_user.user_info.account.balance, precision: 2, delimiter: ','
+#column2-area.actuary1{:style => "display:none"}
+  .title-items
+    %h3 账户总资产
+  %table.table.table-bordered
+    %thead
+      %tr.light-bj
+        %th
+        %th 定存宝(￥)
+        %th 月息通(￥)
+        %th 小计(￥)
+    %tbody
+      %tr
+        %th 待收本金
+        %th.light-green
+          +
+          = number_with_precision @fixed_analyzer.current_principal, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          = number_with_precision @month_analyzer.current_principal, precision: 2, delimiter: ','
+        %th
+          +
+          = number_with_precision @fixed_analyzer.current_principal + @month_analyzer.current_principal, precision: 2, delimiter: ','
+      %tr
+        %th 待收利息
+        %th.light-green
+          +
+          = number_with_precision @fixed_analyzer.current_profit, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          = number_with_precision @month_analyzer.current_profit, precision: 2, delimiter: ','
+        %th
+          +
+          = number_with_precision @fixed_analyzer.current_profit + @month_analyzer.current_profit, precision: 2, delimiter: ','
+      %tr
+        %th 复投收益
+        %th.light-green + 0.00
+        %th --
+        %th + 0.00
+      %tr
+        %th 投资中冻结金额
+        %th --
+        %th.light-green +0.00
+        %th +0.00
+      %tr
+        %th 预约中冻结金额
+        %th.light-green +0.00
+        %th.light-green --
+        %th +0.00
+      %tr
+        %th 提现中冻结金额
+        %th.act-colspan.light-green{:colspan => "2"} + 0.00
+        %th + 0.00
+      %tr
+        %th 可用余额
+        %th.act-colspan.light-green{:colspan => "2"}
+          +
+          = current_user.user_info.account.balance
+        %th
+          +
+          = current_user.user_info.account.balance
+      %tr.light-bj
+        %th{:colspan => "3"} 可用余额
+        %th
+          = current_user.user_info.account.balance
+#column3-area.actuary1{:style => "display:none"}
+  .title-items
+    %h3 净收益
+  %table.table.table-bordered
+    %thead
+      %tr.light-bj
+        %th
+        %th 定存宝(￥)
+        %th 月息通(￥)
+        %th 小计(￥)
+    %tbody
+      %tr
+        %th 回收利息
+        %th.light-green
+          +
+          =  number_with_precision @fixed_analyzer.total_profit, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @month_analyzer.total_profit, precision: 2, delimiter: ','
+        %th.light-green
+          +
+          =  number_with_precision @month_analyzer.total_profit + @fixed_analyzer.total_profit, precision: 2, delimiter: ','
+      %tr
+        %th 回收罚息
+        %th.light-green --
+        %th.light-green +0.00
+        %th +0.00
+      %tr
+        %th 活动收益
+        %th.act-colspan.light-green{:colspan => "2"} + 0.00
+        %th + 0.00
+      %tr
+        %th 赎回投资已获利息
+        %th.light-green + 0.00
+        %th + 0.00
+        %th + 0.00
+      %tr
+        %th 购买债权已获折让金额
+        %th + 0.00
+        %th.light-green +0.00
+        %th +0.00
+      %tr
+        %th 出售债权折让金额
+        %th.light-org - 0.00
+        %th.light-org - 0.00
+        %th - 0.00
+      %tr
+        %th 购买债权支付利息
+        %th.light-org - 0.00
+        %th.light-org - 0.00
+        %th - 0.00
+      %tr
+        %th 赎回手续费支出
+        %th.light-org - 0.00
+        %th.light-org - 0.00
+        %th - 0.00
+      %tr.light-bj
+        %th{:colspan => "3"} 累计净收益
+        %th - 0.00
+#column4-area.actuary1{:style => "display:none"}
+  .title-items
+    %h3 加权收益率
+  %table.table.table-bordered.jqsyl
+    %thead
+      %tr.light-bj
+        %th 收益率对比CPI
+        %th 投资分布比例(按金额)
+    %tbody
+      %tr
+        %th
+          %div
+            沃银网的收益率是银行活期存款利率的
+            %span.jqsyl-ll> 1.8
+            倍，CPI的
+            %span.jqsyl-ll 1.7
+            倍
+          .jqsyl-l2
+            %ul.jqsyl-llb
+              %li.size1of3{:style => "vertical-align:bottom"}
+                %p 6%
+                .jqsyl-bl1#bar1{:style => "height:40px"}
+              %li.size1of3
+                %p 8%
+                .jqsyl-bl1#bar2
+              %li.size1of3
+                %p 13%
+                .jqsyl-bl1#bar3
+          %div
+            %ul.jqsyl-llb
+              %li.size1of3
+                %p 银行活期存款利率
+              %li.size1of3
+                %p
+                  CPI
+                  %span.badge.act-badge ?
+              %li.size1of3
+                %p 您的收益率
+        %th
+          %div 银行活期存款利率是沃银网的收益率的16%
+          %span.inlinesparkline#piechart{:values => "45,55"}<

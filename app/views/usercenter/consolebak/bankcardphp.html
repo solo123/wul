@@ -1,0 +1,152 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>开户</title>
+</head>
+
+<body>
+<form action="createNewIpsAcct.ac.php" method="post" target="_blank">
+    <table border="1" cellspacing="0" cellpadding="3"
+           style="background-color: #F0F0FF; text-align: left; vertical-align: middle; width: 784px;"
+           align="center">
+        <tr style="background-color: #8070FF; color: #FFFF00">
+            <td colspan="2" align="Center"><b>开户</b></td>
+        </tr>
+        <tr>
+            <td style="width: 50%">平台账号</td>
+            <td style="width: 50%"><input type="text" name="pMerCode"
+                                          value="808801" id="pMerCode" /><br/>由IPS颁发的商户号</td>
+        </tr>
+        <tr>
+            <td>商户开户流水号</td>
+            <td><input type="text" name="pMerBillNo"
+                       value="801112234" id="pMerBillNo" /><br/>商户系统唯一不重复</td>
+        </tr>
+        <tr>
+            <td>证件类型</td>
+            <td><input type="text" name="pIdentType" value="1"
+                       id="pIdentType" /><br/>1#身份证，默认：1</td>
+        </tr>
+        <tr>
+            <td>证件号码</td>
+            <td><input type="text" name="pIdentNo"
+                       value="410621198406155011" id="pIdentNo" /></td>
+        </tr>
+        <tr>
+            <td>姓名</td>
+            <td><input type="text" name="pRealName" value="环迅"
+                       id="pRealName" /></td>
+        </tr>
+        <tr>
+            <td>手机号</td>
+            <td><input type="text" name="pMobileNo" value="18621748780"
+                       id="pMobileNo" /></td>
+        </tr>
+        <tr>
+            <td>注册邮件</td>
+            <td><input type="text" name="pEmail" value="lzheng@ips.com.cn"
+                       id="pEmail" /></td>
+        </tr>
+        <tr>
+            <td>提交日期</td>
+            <td><input type="text" name="pSmDate" value="20141109"
+                       id="pSmDate" /><br/>时间格式“yyyyMMdd”, 商户提交日期。</td>
+        </tr>
+        <tr>
+            <td>结果成功返回的商户URL</td>
+            <td><input type="text" name="pWebUrl"
+                       value="www.wooul.com" id="pWebUrl" style="width:100%;"/></td>
+        </tr>
+        <tr>
+            <td>S2S返回地址</td>
+            <td><input type="text" name="pS2SUrl"
+                       value="www.wooul.com" id="pS2SUrl" style="width:100%;"/></td>
+        </tr>
+        <tr>
+            <td>备注1</td>
+            <td><input type="text" name="pMemo1" value="备注1" id="pMemo1" /></td>
+        </tr>
+        <tr>
+            <td>备注2</td>
+            <td><input type="text" name="pMemo2" value="备注2" id="pMemo2" /></td>
+        </tr>
+        <tr>
+            <td>备注3</td>
+            <td><input type="text" name="pMemo3" value="备注3" id="pMemo3" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center" ><input type="submit" name="submit" value="提 post 交" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">手动修改报文信息
+                <textarea rows="6" cols="100%" id="txtXml"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="button" id="btnPost" value="手动改报文提交" onclick="submitXml();"/>
+            </td>
+        </tr>
+    </table>
+</form>
+<script type="text/javascript" language="javascript">
+    var pMerCode = document.getElementById("pMerCode").value;
+
+    function formTxtXml(){
+        var pMerBillNo = document.getElementById("pMerBillNo").value;
+        var pIdentType = document.getElementById("pIdentType").value;
+        var pIdentNo = document.getElementById("pIdentNo").value;
+        var pRealName = document.getElementById("pRealName").value;
+        var pMobileNo = document.getElementById("pMobileNo").value;
+        var pEmail = document.getElementById("pEmail").value;
+        var pSmDate = document.getElementById("pSmDate").value;
+        var pWebUrl = document.getElementById("pWebUrl").value;
+        var pS2SUrl = document.getElementById("pS2SUrl").value;
+        var pMemo1 = document.getElementById("pMemo1").value;
+        var pMemo2 = document.getElementById("pMemo2").value;
+        var pMemo3 = document.getElementById("pMemo3").value;
+
+        var txtXml="&lt;?xml version=\"1.0\" encoding=\"utf-8\"?>"+
+                "<pReq>" +
+                "<pMerBillNo>" + pMerBillNo + "</pMerBillNo>" +
+                "<pIdentType>" + pIdentType + "</pIdentType>" +
+                "<pIdentNo>" + pIdentNo + "</pIdentNo>" +
+                "<pRealName>" + pRealName + "</pRealName>" +
+                "<pMobileNo>" + pMobileNo + "</pMobileNo>" +
+                "<pEmail>" + pEmail + "</pEmail>" +
+                "<pSmDate>" + pSmDate + "</pSmDate>" +
+                "<pWebUrl>" + pWebUrl + "</pWebUrl>" +
+                "<pS2SUrl>" + pS2SUrl + "</pS2SUrl>" +
+                "<pMemo1>" + pMemo1 + "</pMemo1>" +
+                "<pMemo2>" + pMemo2 + "</pMemo2>" +
+                "<pMemo3>" + pMemo3 + "</pMemo3>" +
+                "</pReq>";
+        txtXml = txtXml.replace("&lt;","<");
+        document.getElementById("txtXml").value=txtXml;
+    }
+    setTimeout("formTxtXml()",10);//定时器,隔10毫秒执行formTxtXml()函数
+
+
+    function post(URL, PARAMS) {
+        var temp = document.createElement("form");
+        temp.action = URL;
+        temp.method = "post";
+        temp.style.display = "none";
+        for (var x in PARAMS) {
+            var opt = document.createElement("textarea");
+            opt.name = x;
+            opt.value = PARAMS[x];
+            // alert(opt.name)
+            temp.appendChild(opt);
+        }
+        document.body.appendChild(temp);
+        temp.submit();
+        return temp;
+    }
+
+    function submitXml(){
+        post('createNewIpsAcct.ac.php', {pMerCode:pMerCode,txtXml:document.getElementById("txtXml").value});
+    };
+</script>
+</body>
+</html>

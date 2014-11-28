@@ -1,0 +1,41 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "redemption.js"
+  = javascript_include_tag "productpager.js"
+.console-header-info
+  %h1.page-header 投资赎回
+- type_dict = {"onsale" => "button", "normal" => "submit"}
+- value_dict = {"onsale" => "赎回中", "normal" => "赎回"}
+- input_dict = {"onsale" => true, "normal" => false}
+- if !params[:page]
+  - active_page = {"fixed" =>"active", "month" => ""}
+- else
+  - active_page = {"fixed" => params[:page] == "fixed" ? "active":"", "month" =>  params[:page] == "month" ? "active":""}
+.detail_container
+  .col-md-12
+    %ul.nav.nav-tabs{:role=>"tablist"}
+      %li{:class => active_page["fixed"]}
+        %a{:href=>"#fixed", :role=>"tab", 'data-toggle'=>"tab"}
+          定存宝
+          %span.badge
+            = @fixed_deposits.size
+      %li{:class => active_page["month"]}
+        %a{:href=>"#month", :role=>"tab", 'data-toggle'=>"tab"}
+          月月盈
+          %span.badge
+            = @month_deposits.size
+
+    %div.tab-content
+      %div.tab-pane{:id => "fixed", :num => @fixed_deposits.size, :class => active_page["fixed"]}
+        .console-list-area
+          = render "products/redem_form", invests:@fixed_deposits, product_type: "fixed"
+          .text-center
+            -if @fixed_deposits.size > 8
+              %ul.pagination
+                #fixed_pager
+      %div.tab-pane{:id=>"month", :num => @month_deposits.size, :class => active_page["month"]}
+        .console-list-area
+          = render "products/redem_form", invests:@month_deposits, product_type: "month"
+          .text-center
+            -if @month_deposits.size > 8
+              %ul.pagination
+                #month_pager

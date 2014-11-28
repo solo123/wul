@@ -1,9 +1,6 @@
 var count = 10;
 var counter;
 
-
-
-
 $(document).ready(function () {
     show_flash_message();
     if ($("#timer").length) {
