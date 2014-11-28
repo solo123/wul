@@ -3,16 +3,21 @@
   %ul.nav.nav-pills.nav-stacked.sidebar-nav
     %li
       %a{:href => securecenter_secure_real_name_path}
+        %span.glyphicon.glyphicon-user
         账户实名认证
     %li
       %a{:href => securecenter_secure_confirm_path}
-        账户交易认证
+        %span.glyphicon.glyphicon-asterisk
+        支付密码修改
     %li
       %a{:href => securecenter_secure_change_phone_path}
-        绑定手机
+        %span.glyphicon.glyphicon-phone
+        绑定手机号码
     %li
       %a{:href => securecenter_secure_change_email_path}
+        %span.glyphicon.glyphicon-envelope
         更换注册邮箱
     %li
       %a{:href => securecenter_secure_change_secret_path  }
+        %span.glyphicon.glyphicon-list-alt
         启用密保问题

@@ -1,0 +1,25 @@
+.console-header-info
+  .fun-area.pull-right
+    %a.btn.btn-default{:href => securecenter_path }返回
+  %h1.page-header 交易验证
+
+.transaction-verification
+  .row
+    .col-md-7
+      .intro
+        %p
+          账户资金提现、赎回时，为确保安全，需进行验证
+        %p
+          支付密码
+          %span{:style => "color:green"}
+            已启用
+          账户资金提现、赎回时，需验证支付密码，此项不可撤销。
+        %p
+          短信验证   未启用  启用此功能后，账户资金提现、赎回时，验证支付密码后还需验证手机短信动态码。双重验证可有效提升账户资金安全。
+    .col-md-5
+      - if @phone_confirm
+        %a.btn.btn-success.btn-lg.btn-block{:href => securecenter_secure_secure_active_path} 已启用，需要关闭？
+      - else
+        %a.btn.btn-info.btn-lg.btn-block{:href => securecenter_secure_secure_active_path} 未启用，需要启用？
+
+          

@@ -1,0 +1,34 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "console.js"
+.console-header-info
+  .fun-area.pull-right
+    %a.btn.btn-default{:href => securecenter_path }返回
+  %h1.page-header 更换手机绑定
+= form_tag securecenter_secure_checkphone_path do
+  .form-horizontal
+    .form-group
+      = label :number, '手机号码', class: "col-sm-2 control-label "
+      .col-sm-10
+        = text_field_tag :phone_number, '',  class: "form-control"
+    .form-group
+      = label :securenumber, '验证码', class: "col-sm-2 control-label "
+      .col-sm-10
+        .input-group
+          .input-group-btn
+            .button.btn.btn-success.confirmphone{} 获取验证码
+          = text_field_tag :secure_number, '',  class: "form-control"
+          .input-group-btn
+            .button.btn.btn-default#jsontest{} 测试后台
+    .form-group
+      = label :paypass, '支付密码', class: "col-sm-2 control-label "
+      .col-sm-10
+        = text_field_tag :pay_password, '',  class: "form-control"
+    - if flash[:notice]
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          .alert.alert-danger
+            %button.close{ :data => { :dismiss => "alert" } }
+            = flash[:notice]
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = submit_tag '绑定', :class => "btn btn-default"

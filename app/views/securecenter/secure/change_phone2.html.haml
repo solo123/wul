@@ -1,0 +1,31 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "console.js"
+.abtitle-sub
+  %h2 更换绑定手机
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => securecenter_path } 返回
+
+.abuser-box.safecenterphone
+  .bid-opt.safecenter
+    %form.forms_span
+      %ul.items.row
+        %li.txt.col-xs-2 手机号码：
+        %li.col-xs-9
+          .input-group.col-xs-6
+            %input#exampleInputEmail2.form-control{:placeholder => "请输入您需要绑定的手机号码", :type => "text"}/
+      %ul.items.row
+        %li.txt.col-xs-2 验证码：
+        %li.col-xs-9
+          .input-group.col-xs-6
+            .col-xs-7.safephone-codeinput
+              %input#exampleInputEmail2.form-control{:placeholder => "请输入验证码", :type => "password"}/
+            .col-xs-5.safephone-codegain
+              %a.btn.btn-default.btn-block.confirmphone{:href => "#", :role => "button"} 获取验证码
+          %span.col-xs-6{:style => "display:none;"}
+            验证码出错，请重新获取。
+      %ul.items.row
+        %li.txt.col-xs-2
+        %li.col-xs-9
+          .input-group.col-xs-6
+            %button.btn.btn-primary.btn-lg.btn-block{:type => "button"}
+              绑定

@@ -12,10 +12,10 @@
 
     .securecenter-page-area
       .container
-        .row
-          .col-md-3
+        .row.safewrapper
+          .col-xs-3
             =render "shared/secure_sidebar"
-          .col-md-9
+          .col-xs-9.usermain
             .securecenter-main-area
               = yield
     = cms_snippet_content('footer')

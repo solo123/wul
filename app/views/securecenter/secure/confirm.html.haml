@@ -1,25 +1,44 @@
-.console-header-info
-  .fun-area.pull-right
-    %a.btn.btn-default{:href => securecenter_path }返回
-  %h1.page-header 交易验证
-
-.transaction-verification
-  .row
-    .col-md-7
-      .intro
-        %p
-          账户资金提现、赎回时，为确保安全，需进行验证
-        %p
-          支付密码
-          %span{:style => "color:green"}
-            已启用
-          账户资金提现、赎回时，需验证支付密码，此项不可撤销。
-        %p
-          短信验证   未启用  启用此功能后，账户资金提现、赎回时，验证支付密码后还需验证手机短信动态码。双重验证可有效提升账户资金安全。
-    .col-md-5
-      - if @phone_confirm
-        %a.btn.btn-success.btn-lg.btn-block{:href => securecenter_secure_secure_active_path} 已启用，需要关闭？
-      - else
-        %a.btn.btn-info.btn-lg.btn-block{:href => securecenter_secure_secure_active_path} 未启用，需要启用？
-
-          
+.abtitle-sub
+  %h2 支付密码
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => securecenter_path } 返回
+.abuser-box.safecenterpaypsw
+  .bid-opt.safecenter
+    %form.forms_span
+      %ul.items.row.safepaytext
+        %li.txt.col-xs-2
+        %li.col-xs-8
+          %p
+            支付密码
+            %span.paypsw-open
+              %span.glyphicon.glyphicon-ok
+              已启用
+          %p 账户资金提现、赎回时，需验证支付密码，此项不可撤销。
+          %p 初始支付密码和用户登录密码相同, 请尽快修改以策安全。
+      %ul.items.row
+        %li.txt.col-xs-2 原支付密码：
+        %li.col-xs-9
+          .input-group.col-xs-6
+            %input#exampleInputEmail2.form-control{:placeholder => "请输入您在沃银网的支付密码", :type => "password"}
+          %span.col-xs-6{:style => "display:none;"}
+            原密码不正确，请重新输入密码。
+      %ul.items.row
+        %li.txt.col-xs-2 新支付密码：
+        %li.col-xs-9
+          .input-group.col-xs-6
+            %input#exampleInputEmail2.form-control{:placeholder => "请重新设置您的支付密码", :type => "password"}
+          %span.col-xs-6{:style => "display:none;"}
+            支付密码在6~20之间。
+      %ul.items.row
+        %li.txt.col-xs-2 确认新密码：
+        %li.col-xs-9
+          .input-group.col-xs-6
+            %input#exampleInputEmail2.form-control{:placeholder => "请确认您重新设置的支付密码", :type => "password"}
+          %span.col-xs-6{:style => "display:none;"}
+            两次输入的密码不一致，请重新输入密码。
+      %ul.items.row
+        %li.txt.col-xs-2
+        %li.col-xs-9
+          .input-group.col-xs-6
+            %button.btn.btn-primary.btn-lg.btn-block{:type => "button"}
+              修改
