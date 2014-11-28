@@ -25,7 +25,7 @@ module Usercenter
       end
       @messages = current_user.user_info.messages.order('created_at DESC')
       if params[:importance]
-        @messages =  @messages.where(:importance => params[:importance])
+        @messages = @messages.where(:importance => params[:importance])
       end
       @messages= case params[:date_range]
                    when nil
@@ -55,7 +55,9 @@ module Usercenter
       pages = 10
       @transactions = current_user.user_info.transactions.order('created_at DESC')
       if params[:filter]
-        @transactions = @transactions.where(:trans_type => params[:filter])
+        if params[:filter] != "all"
+          @transactions = @transactions.where(:trans_type => params[:filter])
+        end
       end
       @transactions = case params[:date_range]
                         when nil
@@ -157,14 +159,14 @@ module Usercenter
     def resell
       invest = Invest.friendly.find(params[:invest_id])
 
-      invest.discount_rate  = params[:discount_rate].to_f
+      invest.discount_rate = params[:discount_rate].to_f
       invest.stage = "onsale"
       invest.save!
       op = AccountOperation.new(:op_name => "invest", :op_action => "onsale", :operator => "system", :uinfo_id => current_user.user_info.id,
                                 :op_asset_id => invest.asset_id, :op_amount => invest.discount_rate, :op_resource_id => invest.id)
       op.execute_transaction
-       # invest.resell(rate)
-      redirect_to usercenter_console_redemption_path(:page=> params[:page])
+      # invest.resell(rate)
+      redirect_to usercenter_console_redemption_path(:page => params[:page])
     end
 
     def invest_history

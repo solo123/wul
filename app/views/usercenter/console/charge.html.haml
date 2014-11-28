@@ -5,32 +5,40 @@
     %li
       %dl.dl-horizontal.recharge-entry1
         %dt 账户余额
-        %dd.light-org ￥1,000.00
+        %dd.light-org
+          ￥
+          = current_user.user_info.account.balance
     %li
       %dl.dl-horizontal.recharge-entry1.recharge-entry2
         %dt
-          账户余额
+          可用余额
           %span.badge ?
-        %dd ￥1,000.00
+        %dd
+          ￥
+          = current_user.user_info.account.balance
   %ul.col-xs-5.cashvalue-btn
     %li.col-xs-5.col-xs-offset-1
-      %a.btn.btn-primary.btn-lg.btn-block{:href => "#"} 充值
+      %a.btn.btn-primary.btn-lg.btn-block{:href => usercenter_console_charge_bank_path} 充值
     %li.col-xs-5
       %a.btn.btn-success.btn-lg.btn-block{:href => "#"} 提现
-
 .filter-box.trade-filter
   - queries = params.except(*request.path_parameters.keys)
   - condi = {}
   - conds = {}
-  - dict = {'all' => '全部',
-             'charge' => '充值',
-             'pull' => '提现',}
+  - dict = { 'charge' => '充值',
+             'pull' => '提现'}
   %dl.filter-items
     %dt
       起止日期
     %dd
-      - {'all' => '全部',
-         'week' => '最近7天',
+      - condi[:filter] =queries[:filter]
+      - if !queries[:date_range]
+        %a.timeType.selected{:href => usercenter_console_charge_path(condi)}
+          全部
+      - else
+        %a.tradeType{:href => usercenter_console_charge_path(condi)}
+          全部
+      - {'week' => '最近7天',
                  'month' => '1个月内',
                  'month2' => '2个月内',
                  'month3' => '3个月内' }.each do |k, v|
@@ -44,10 +52,19 @@
           %a.tradeType{:href => usercenter_console_charge_path(condi)}
             =v
 
+
   %dl.filter-items
     %dt
       交易类型
     %dd
+      - conds[:date_range] = queries[:date_range]
+      - if !queries[:filter]
+        %a.timeType.selected{:href => usercenter_console_charge_path(conds)}
+          全部
+      - else
+        - conds[:filter] = nil
+        %a.tradeType{:href => usercenter_console_charge_path(conds)}
+          全部
       - dict.each do |k, v|
         - conds[:date_range] = queries[:date_range]
         - conds[:filter] = k
@@ -58,83 +75,33 @@
           %a.tradeType{:href => usercenter_console_charge_path(conds)}
             =v
 
+
 .systemnews.console-list-area
   %table.table
     %thead
       %tr
-        %td{:style => "width:170px"} 时间
+        %td{:style => "width:180px"} 时间
         %td{:style => "width:150px"} 交易类型
         %td{:style => "width:180px"} 对方
         %td{:style => "width:180px"} 金额(￥)明细
         %td{:style => "width:180px"} 操作前余额(￥)
         %td{:style => "width:120px"} 可用余额(￥)
     %tbody
-      %tr
-        %td
-          2014-11-11 15:25
-        %td 提现
-        %td
-          定期宝账户
-        %td.light-org 50.00
-        %td
-          1,050.00
-        %td
-          1,000.00
-      %tr
-        %td
-          2014-11-11
-          15:25
-        %td 充值
-        %td
-          定期宝账户
-        %td.light-org 50.00
-        %td
-          1,050.00
-        %td
-          1,000.00
-      %tr
-        %td
-          2014-11-11
-          15:25
-        %td 提现
-        %td
-          定期宝账户
-        %td.light-org 50.00
-        %td
-          1,050.00
-        %td
-          1,000.00
-      %tr
-        %td
-          2014-11-11
-          15:25
-        %td 提现
-        %td
-          定期宝账户
-        %td.light-org 50.00
-        %td
-          1,050.00
-        %td
-          1,000.00
-      %tr
-        %td
-          2014-11-11
-          15:25
-        %td 提现
-        %td
-          定期宝账户
-        %td.light-org 50.00
-        %td
-          1,050.00
-        %td
-          1,000.00
-  .invest-list-frame.systemnews-fenye
-    %ul.pagination
-      %li
-        %a{:href => "#"} 《上一页
-      %li
-        %a{:href => "#"} 1
-      %li
-        %a{:href => "#"} 2
-      %li
-        %a{:href => "#"} 下一页》
+      - @transactions.each do |t|
+        %tr
+          %td
+            =t.created_at.strftime("%Y.%m.%d %H:%M")
+          %td
+            =dict[t.trans_type]
+          %td
+            银联
+          %td
+            =t.operation_amount
+          %td
+            =t.account_before
+          %td
+            =t.account_after
+  .pager-center
+    .invest-pager-container
+      .invest_pagination
+        = will_paginate @transactions, :container => false

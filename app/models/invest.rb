@@ -35,8 +35,15 @@ class Invest < ActiveRecord::Base
     end
   end
 
+  # def profit?
+  #   Time.now >= self.product.profit_date + self.product.each_repayment_period.days
+  # end
+
   def profit?
-    Time.now >= self.product.profit_date + self.product.each_repayment_period.days
+    false
+    # p = self.product
+    # end_date = p.join_date + (p.each_repayment_period * p.repayment_period).days
+    # (end_date < Date.today) && ( p.last_profit_date + p.each_repayment_period.days <= end_date)
   end
 
   def current_profit
@@ -44,7 +51,7 @@ class Invest < ActiveRecord::Base
   end
 
   def calculate_profit
-    (self.amount * self.annual_rate / 12 /100).round(2)
+    (self.amount * self.annual_rate * self.each_repayment_period / 365 /100).round(2)
   end
 
   def redemable

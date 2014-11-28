@@ -4,8 +4,7 @@
   - queries = params.except(*request.path_parameters.keys)
   - condi = {}
   - conds = {}
-  - dict = {'all' => '全部',
-             'charge' => '充值',
+  - dict = { 'charge' => '充值',
              'pull' => '提现',
              'invest' => '投资产品',
              'profit' => '收回利息',
@@ -16,8 +15,14 @@
     %dt
       起止日期
     %dd
-      - {'all' => '全部',
-         'week' => '最近7天',
+      - condi[:filter] =queries[:filter]
+      - if !queries[:date_range]
+        %a.timeType.selected{:href => usercenter_console_history_path(condi)}
+          全部
+      - else
+        %a.tradeType{:href => usercenter_console_history_path(condi)}
+          全部
+      - {'week' => '最近7天',
                  'month' => '1个月内',
                  'month2' => '2个月内',
                  'month3' => '3个月内' }.each do |k, v|
@@ -35,6 +40,14 @@
     %dt
       交易类型
     %dd
+      - conds[:date_range] = queries[:date_range]
+      - if !queries[:filter]
+        %a.timeType.selected{:href => usercenter_console_history_path(conds)}
+          全部
+      - else
+        - conds[:filter] = nil
+        %a.tradeType{:href => usercenter_console_history_path(conds)}
+          全部
       - dict.each do |k, v|
         - conds[:date_range] = queries[:date_range]
         - conds[:filter] = k
@@ -50,36 +63,29 @@
   %table.table
     %thead
       %tr
-        %td{:style => "width:170px"} 时间
+        %td{:style => "width:200px"} 时间
         %td{:style => "width:150px"} 交易类型
         %td{:style => "width:180px"} 交易金额(￥)
         %td{:style => "width:180px"} 交易前金额(￥)
         %td{:style => "width:180px"} 交易后金额(￥)
         %td{:style => "width:120px"} 交易编号
     %tbody
-
-      %tr
       - @transactions.each do |t|
-        %td
-          =t.created_at.strftime("%Y-%m-%d %H:%M:%S")
-        %td
-          =dict[t.trans_type]
-        %td
-          =t.operation_amount
-        %td
-          =t.account_before
-        %td
-          =t.account_after
-        %td
-          =t.deposit_number
+        %tr
+          %td
+            =t.created_at.strftime("%Y.%m.%d %H:%M")
+          %td
+            =dict[t.trans_type]
+          %td
+            =t.operation_amount
+          %td
+            =t.account_before
+          %td
+            =t.account_after
+          %td
+            =t.deposit_number
 
-  .invest-list-frame.systemnews-fenye
-    %ul.pagination
-      %li
-        %a{:href => "#"} 《上一页
-      %li
-        %a{:href => "#"} 1
-      %li
-        %a{:href => "#"} 2
-      %li
-        %a{:href => "#"} 下一页》
+  .pager-center
+    .invest-pager-container
+      .invest_pagination
+        = will_paginate @transactions, :container => false, :inner_window =>2, :outer_window => 4

@@ -1,3 +1,9 @@
+- content_for :javascript_includes do
+  = javascript_include_tag "productpager.js"
+- if !params[:page]
+  - active_page = {"fixed" =>"active", "month" => ""}
+- else
+  - active_page = {"fixed" => params[:page] == "fixed" ? "active":"", "month" =>  params[:page] == "month" ? "active":""}
 .abtitle-sub
   %h2 投资记录
 .userredemption
@@ -5,11 +11,13 @@
     %li.active{:role => "presentation"}
       %a{"data-toggle" => "tab", :href => "#home", :role => "tab"}
         定期宝
-        %span.badge 2
+        %span.badge
+          = @fixed_deposits.size
     %li{:role => "presentation"}
       %a{"data-toggle" => "tab", :href => "#profile", :role => "tab"}
         月月盈
-        %span.badge 2
+        %span.badge
+          = @month_deposits.size
   .tab-content
     #home.tab-pane.active{:role => "tabpanel"}
       .systemnews.investTabs1
@@ -22,43 +30,20 @@
               %td{:style => "width:150px"} 购买笔数
               %td{:style => "width:150px"} 担保
           %tbody
-            %tr
-              %td
-                DQB20141101
-              %td 12.00%
-              %td.light-org 1,000.00
-              %td
-                1
-              %td
-                银盛担保
-            %tr
-              %td
-                DQB20141101
-              %td 12.00%
-              %td.light-org 1,000.00
-              %td
-                1
-              %td
-                银盛担保
-            %tr
-              %td
-                DQB20141101
-              %td 12.00%
-              %td.light-org 1,000.00
-              %td
-                1
-              %td
-                银盛担保
-        .invest-list-frame.systemnews-fenye
-          %ul.pagination
-            %li
-              %a{:href => "#"} 《上一页
-            %li
-              %a{:href => "#"} 1
-            %li
-              %a{:href => "#"} 2
-            %li
-              %a{:href => "#"} 下一页》
+            - @fixed_deposits.each do |f|
+              %tr.fixed_item
+                %td
+                  %a{:href => usercenter_console_invest_detail_path(:invest => f.invest_number)}
+                    = "定存宝#{f.loan_number}"
+                %td  #{number_with_precision f.product.annual_rate, precision: 2}%
+                %td= f.amount
+                %td= "#{f.product.repayment_period}个月"
+                %td
+                  银盛担保
+        .text-center
+          - if @fixed_deposits.size > 10
+            %ul.pagination
+              #fixed_pager
     #profile.tab-pane{:role => "tabpanel"}
       .systemnews.investTabs1
         %table.table
@@ -66,62 +51,25 @@
             %tr
               %td{:style => "width:200px"} 名称
               %td{:style => "width:100px"} 年化率
-              %td{:style => "width:180px"} 下次回款
               %td{:style => "width:180px"} 金额(￥)
               %td{:style => "width:180px"} 月收本息(￥)
               %td{:style => "width:100px"} 状态
               %td{:style => "width:180px"} 担保方
           %tbody
-            %tr
-              %td
-                DQB20141101
-              %td 12.00%
-              %td
-                100.00
-              %td.light-org
-                1,000.00
-              %td
-                10.00
-              %td
-                全部
-              %td
-                银盛支付
-            %tr
-              %td
-                DQB20141101
-              %td 12.00%
-              %td
-                100.00
-              %td.light-org
-                1,000.00
-              %td
-                10.00
-              %td
-                全部
-              %td
-                银盛支付
-            %tr
-              %td
-                DQB20141101
-              %td 12.00%
-              %td
-                100.00
-              %td.light-org
-                1,000.00
-              %td
-                10.00
-              %td
-                全部
-              %td
-                银盛支付
-        .invest-list-frame.systemnews-fenye
-          %ul.pagination
-            %li
-              %a{:href => "#"} 《上一页
-            %li
-              %a{:href => "#"} 1
-            %li
-              %a{:href => "#"} 2
-            %li
-              %a{:href => "#"} 下一页》
+            - @month_deposits.each do |f|
+              %tr.month_item
+                %td
+                  %a{:href => usercenter_console_invest_detail_path(:invest => f.invest_number)}
+                    = "月月盈#{f.loan_number}"
+                %td  #{number_with_precision f.product.annual_rate, precision: 2}%
+                %td= f.amount
+                %td= 1000
+                %td
+                  = f.product.stage
+                %td
+                  = f.product.guarantee
+        .text-center
+          -if @month_deposits.size > 10
+            %ul.pagination
+              #month_pager
 
