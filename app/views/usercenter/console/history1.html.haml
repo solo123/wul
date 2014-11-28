@@ -1,5 +1,9 @@
-.abtitle-sub
-  %h2 交易记录
+.console-header-info
+  .fun-area.pull-right
+    %span.text-muted
+      您还没有进入排行榜，请再接再厉
+    %a{:href => "#"} 查看投资榜
+  %h1.page-header 交易记录
 .filter-box.trade-filter
   - queries = params.except(*request.path_parameters.keys)
   - condi = {}
@@ -44,42 +48,38 @@
         - else
           %a.tradeType{:href => usercenter_console_history_path(conds)}
             =v
-
-
-.systemnews.console-list-area
+.console-list-area.trade-table
   %table.table
-    %thead
-      %tr
-        %td{:style => "width:170px"} 时间
-        %td{:style => "width:150px"} 交易类型
-        %td{:style => "width:180px"} 交易金额(￥)
-        %td{:style => "width:180px"} 交易前金额(￥)
-        %td{:style => "width:180px"} 交易后金额(￥)
-        %td{:style => "width:120px"} 交易编号
     %tbody
-
       %tr
-      - @transactions.each do |t|
-        %td
-          =t.created_at.strftime("%Y-%m-%d %H:%M:%S")
-        %td
-          =dict[t.trans_type]
-        %td
-          =t.operation_amount
-        %td
-          =t.account_before
-        %td
-          =t.account_after
-        %td
-          =t.deposit_number
+        %th
+          交易类型
+        %th
+          交易金额
+        %th
+          交易前账户余额
+        %th
+          交易后账户余额
+        %th
+          交易编号
+        %th
+          交易日期
 
-  .invest-list-frame.systemnews-fenye
-    %ul.pagination
-      %li
-        %a{:href => "#"} 《上一页
-      %li
-        %a{:href => "#"} 1
-      %li
-        %a{:href => "#"} 2
-      %li
-        %a{:href => "#"} 下一页》
+      - @transactions.each do |t|
+        %tr
+          %td
+            =dict[t.trans_type]
+          %td
+            =t.operation_amount
+          %td
+            =t.account_before
+          %td
+            =t.account_after
+          %td
+            =t.deposit_number
+          %td
+            =t.created_at.strftime("%Y-%m-%d %H:%M:%S")
+  .digg_pagination
+    .page_info
+      = page_entries_info @transactions
+    = will_paginate @transactions, :container => false
