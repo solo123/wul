@@ -355,10 +355,10 @@
 .cash-value2 li:first-child{
 }
 .actuary{
-  margin-top: 2%;
+  margin-top: 35px;
   margin-left: 2px;
   padding: 10px 5px 120px 5px;
-  background-color: #f0f4f7;
+  background-color: #fff;
   border: 1px solid #d2d2d2;
   border-radius: 4px;
   box-shadow: none;
@@ -378,7 +378,7 @@
   border-right:1px solid #d0d5d9;
 }
 .selectedarea{
-  background-color:#ffffff;
+  background-color:#f7fdff;
   color:#1fb5da;
 }
 
@@ -459,13 +459,14 @@
   color: #18b160;
 }
 .actuary1>.table-bordered>tbody>tr>th.light-org {
-  color: #fc9b5e;
+  color: #ff6600;
 }
 .actuary1>.table-bordered>tbody>tr.light-bj {
   background-color:#f0f4f7;
 }
 .actuary1>.table-bordered>thead>tr.light-bj {
-  background-color:#f0f4f7;
+  background-color:#f7fdff;
+  border-bottom: 1px solid #DDD;
 }
 .actuary1>.jqsyl>thead>tr>th {
   width:50%;
@@ -490,9 +491,9 @@
 
 .actuary1>.table-bordered>tbody>tr>th, .actuary1>.table-bordered>thead>tr>th{
   border: 0px solid #ddd;
-  border-top: 1px solid #e7ecee;
+  border-top: 0px solid #e7ecee;
   color:#666;
-  font-size:12px;
+  font-size:14px;
   padding-top:10px;
   height:43px;
   text-align:center;

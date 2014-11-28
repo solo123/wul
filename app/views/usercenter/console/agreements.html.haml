@@ -1,69 +1,136 @@
-.console-header-info
-  %h1.page-header 借款协议
-%div
+.abtitle-sub
+  %h2 借款协议
+.userredemption
   %ul.nav.nav-tabs{:role => "tablist"}
-    %li.active
-      %a{"data-toggle" => "tab", :href => "#home", :role => "tab"} 定存宝
-    %li
-      %a{"data-toggle" => "tab", :href => "#profile", :role => "tab"} 月月盈
-  .tab-content.tab-cnt
-    #home.tab-pane.active
-      .console-list-area
+    %li.active{:role => "presentation"}
+      %a{"data-toggle" => "tab", :href => "#home", :role => "tab"}
+        定期宝
+        %span.badge 2
+    %li{:role => "presentation"}
+      %a{"data-toggle" => "tab", :href => "#profile", :role => "tab"}
+        月月盈
+        %span.badge 2
+  .tab-content
+    #home.tab-pane.active{:role => "tabpanel"}
+      .systemnews.investTabs1
         %table.table
           %thead
             %tr
-              %th 名称
-              %th 借款人
-              %th 金额（￥）
-              %th 购买次数
-              %th 担保
-              %th 项目协议
+              %td{:style => "width:200px"} 名称
+              %td{:style => "width:200px"} 借款人
+              %td{:style => "width:200px"} 金额(￥)
+              %td{:style => "width:150px"} 购买笔数
+              %td{:style => "width:150px"} 担保
+              %td{:style => "width:150px"} 项目协议
           %tbody
-            - @fixed_deposits.each do |f|
-              %tr
-                %td
-                  ="定存宝#{f.loan_number}"
-                %td
-                  #{number_with_precision f.annual_rate, precision: 2}%
-                %td
-                  = f.amount
-                %td
-                  = "#{f.repayment_period}个月"
-                %td
-                  银盛担保
-                %td
-                  %a{:href => agreement_path({:id => f.id}), :target=>'blank'}
-                    协议内容
-        .digg_pagination
-          .page_info
-            = page_entries_info @fixed_deposits
-          = will_paginate @fixed_deposits, :container => false
-    #profile.tab-pane
-      .console-list-area
+            %tr
+              %td
+                DQB20141101
+              %td
+                李铭
+              %td.light-org
+                1,000.00
+              %td
+                1
+              %td
+                银盛担保
+              %td
+                %a{:href => "#"} 借款协议
+            %tr
+              %td
+                DQB20141101
+              %td
+                李铭
+              %td.light-org
+                1,000.00
+              %td
+                1
+              %td
+                银盛担保
+              %td
+                %a{:href => "#"} 借款协议
+            %tr
+              %td
+                DQB20141101
+              %td
+                李铭
+              %td.light-org
+                1,000.00
+              %td
+                1
+              %td
+                银盛担保
+              %td
+                %a{:href => "#"} 借款协议
+        .invest-list-frame.systemnews-fenye
+          %ul.pagination
+            %li
+              %a{:href => "#"} 《上一页
+            %li
+              %a{:href => "#"} 1
+            %li
+              %a{:href => "#"} 2
+            %li
+              %a{:href => "#"} 下一页》
+    #profile.tab-pane{:role => "tabpanel"}
+      .systemnews.investTabs1
         %table.table
           %thead
             %tr
-              %th 名称
-              %th 年化收益率
-              %th 金额（￥）
-              %th 购买次数
-              %th 担保
+              %td{:style => "width:180px"} 借款时间
+              %td{:style => "width:200px"} 协议编号
+              %td{:style => "width:150px"} 借款人
+              %td{:style => "width:250px"} 身份证号
+              %td{:style => "width:180px"} 借款金额(￥)
+              %td{:style => "width:180px"} 担保方
           %tbody
-            - @month_deposits.each do |f|
-              %tr
-                %td
-                  ="月月盈#{f.loan_number}"
-                %td
-                  #{number_with_precision f.annual_rate, precision: 2}%
-                %td
-                  = f.amount
-                %td
-                  = "#{f.repayment_period}个月"
-                %td
-                  银盛担保
-                %td
-                  协议内容
-        .digg_pagination
-          .page_info
-            = page_entries_info @month_deposits
-          = will_paginate @month_deposits, :container => false
+            %tr
+              %td
+                2014-11-25 06:00:54
+              %td
+                20141125001
+              %td
+                李铭
+              %td
+                450822199005085523
+              %td.light-org
+                1,000.00
+              %td
+                银盛支付
+            %tr
+              %td
+                2014-11-25 06:00:54
+              %td
+                20141125001
+              %td
+                李铭
+              %td
+                450822199005085523
+              %td.light-org
+                1,000.00
+              %td
+                银盛支付
+            %tr
+              %td
+                2014-11-25 06:00:54
+              %td
+                20141125001
+              %td
+                李铭
+              %td
+                450822199005085523
+              %td.light-org
+                1,000.00
+              %td
+                银盛支付
+        .invest-list-frame.systemnews-fenye
+          %ul.pagination
+            %li
+              %a{:href => "#"} 《上一页
+            %li
+              %a{:href => "#"} 1
+            %li
+              %a{:href => "#"} 2
+            %li
+              %a{:href => "#"} 下一页》
+

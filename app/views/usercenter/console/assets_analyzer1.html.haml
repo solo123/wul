@@ -1,7 +1,7 @@
 - content_for :javascript_includes do
   = javascript_include_tag "analyzer.js"
-.abtitle-sub
-  %h2 资产统计
+.console-header-info
+  %h1.page-header 资产统计
 - @fixed_analyzer = @analyzer.product("fixed")
 - @month_analyzer = @analyzer.product("month")
 .actuary
@@ -56,8 +56,8 @@
     %thead
       %tr.light-bj
         %th
-        %th 定期宝(￥)
-        %th 月月盈(￥)
+        %th 定存宝(￥)
+        %th 月息通(￥)
         %th 小计(￥)
     %tbody
       %tr
@@ -146,6 +146,28 @@
         %th 手续费
         %th.act-colspan.light-org{:colspan => "2"} - 17.00
         %th - 17.00
+      %tr.light-bj
+        %th{:colspan => "3"} 账户余额
+        %th
+          = number_with_precision current_user.user_info.account.balance, precision: 2, delimiter: ','
+      %tr
+        %th 投资中冻结金额
+        %th --
+        %th.light-org - 0.00
+        %th - 0.00
+      %tr
+        %th 预约中冻结金额
+        %th.light-org - 0.00
+        %th --
+        %th - 0.00
+      %tr
+        %th 提现中冻结金额
+        %th.act-colspan.light-org{:colspan => "2"} - 0.00
+        %th - 0.00
+      %tr.light-bj
+        %th{:colspan => "3"} 可用余额
+        %th
+          = number_with_precision current_user.user_info.account.balance, precision: 2, delimiter: ','
 #column2-area.actuary1{:style => "display:none"}
   .title-items
     %h3 账户总资产
@@ -153,8 +175,8 @@
     %thead
       %tr.light-bj
         %th
-        %th 定期宝(￥)
-        %th 月月盈(￥)
+        %th 定存宝(￥)
+        %th 月息通(￥)
         %th 小计(￥)
     %tbody
       %tr
@@ -206,7 +228,7 @@
         %th
           +
           = current_user.user_info.account.balance
-      %tr
+      %tr.light-bj
         %th{:colspan => "3"} 可用余额
         %th
           = current_user.user_info.account.balance
@@ -217,8 +239,8 @@
     %thead
       %tr.light-bj
         %th
-        %th 定期宝(￥)
-        %th 月月盈(￥)
+        %th 定存宝(￥)
+        %th 月息通(￥)
         %th 小计(￥)
     %tbody
       %tr
@@ -266,7 +288,7 @@
         %th.light-org - 0.00
         %th.light-org - 0.00
         %th - 0.00
-      %tr
+      %tr.light-bj
         %th{:colspan => "3"} 累计净收益
         %th - 0.00
 #column4-area.actuary1{:style => "display:none"}

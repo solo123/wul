@@ -1,54 +1,36 @@
-.console-header-info
-  .fun-area.pull-right
-    %span.text-muted
-      您还没有进入排行榜，请再接再厉
-    %a{:href => "#"} 查看投资榜
-  %h1.page-header 我的账户
-.statistics-header.row
-  .col-md-3.item-row
-    %dl
-      %dt
-        账户余额
-        %span.badge
-      %dd
-        = @deposit.balance
-      %dt
-        可用余额￥
-      %dd
-        = @deposit.balance - @deposit.frozen_balance
-        %span.badge
-  .col-md-3.item-row
-    %dl
-      %dt
-        账户总资产
-        %span.badge
-          ?
-      %dd
-        ￥
-        = @analyzer.total_invest_amount + @deposit.balance
-  .col-md-3.item-row
-    %dl
-      %dt
-        账户余额
-        %span.badge ?
-      %dd
-        ￥0.00
-      %dt
-        可用余额
-      %dd
-        ￥
-        = @deposit.balance - @deposit.frozen_balance
-        %span.badge ?
-  .col-md-3.item-row
-    %dl
-      %dt
-        账户总资产
-        %span.badge ?
-      %dd
-        ￥
-        = @analyzer.total_invest_amount + @deposit.balance
-.console-content.jumbotron
-  %p 初来乍到，您还没有任何记录，快去完成新手任务，领取超多奖励!
-  %a.btn.btn-primary.btn-lg{:href => "#"} 立即查看
+.abtitle-sub
+  %h2 我的账户
+.filter-box
+  %ul.row.statistics-header
+    %li.col-xs-3.item-row
+      %dl
+        %dt 账户余额
+        %dd.light-org
+          ￥
+          = @deposit.balance
+        %dt 可用余额
+        %dd
+          ￥
+          = @deposit.balance - @deposit.frozen_balance
+    %li.col-xs-3.item-row
+      %dl
+        %dt
+          账户总资产
+          %span.badge ?
+        %dd
+          ￥
+          = @deposit.total_estate
+    %li.col-xs-3.item-row
+      %dl
+        %dt 账户余额
+        %dd.light-org ￥1,000.00
+        %dt 可用余额
+        %dd ￥100.00
+    %li.col-xs-3.item-row
+      %dl
+        %dt
+          账户总资产
+          %span.badge ?
+        %dd ￥2,234.00
 
 
