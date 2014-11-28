@@ -23,7 +23,7 @@ module Usercenter
         end
         render "message_detail" and return
       end
-      @messages = current_user.user_info.messages
+      @messages = current_user.user_info.messages.order('created_at DESC')
       if params[:importance]
         @messages =  @messages.where(:importance => params[:importance])
       end
@@ -53,7 +53,7 @@ module Usercenter
 
     def history
       pages = 10
-      @transactions = current_user.user_info.transactions
+      @transactions = current_user.user_info.transactions.order('created_at DESC')
       if params[:filter]
         @transactions = @transactions.where(:trans_type => params[:filter])
       end

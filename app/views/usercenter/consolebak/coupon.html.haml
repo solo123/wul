@@ -1,0 +1,20 @@
+%h1.page-header 红包列表
+
+%table
+  %tr
+    %th Userid
+    %th Amount
+    %th Title
+    %th Description
+    %th
+    %th
+    %th
+
+  - @coupons.each do |coupon|
+    %tr
+      %td= coupon.user_id
+      %td= coupon.amount
+      %td= coupon.title
+      %td= coupon.desc
+
+%br

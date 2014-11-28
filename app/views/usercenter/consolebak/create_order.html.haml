@@ -1,0 +1,19 @@
+.container
+  .invest_banner
+    .invest_title
+      新增预约
+  .order_product
+    1.确认预约产品
+    .order_product_head
+      .head_item.col1 预约投资产品
+      .head_item.col2 年化收益率
+      .head_item.col3 投资期限
+      .head_item.col4 担保机构
+    .order_product_body
+      = render "orders/order_detail", obj:@product
+  .order_value
+    2.确认预约金额
+    = render "orders/order_amount", obj:@product
+    我同意沃银金融投资协议
+    %br
+    加入预约的金额将暂时冻结, 直到投资完成或者取消预约

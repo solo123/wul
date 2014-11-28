@@ -8,24 +8,12 @@ class AuthController < Devise::SessionsController
   layout "sign_layout"
 
   def send_sms(mobile, code)
-
-    # uri = URI('https://sms-api.luosimao.com/v1/send.json')
-    #
-    # Net::HTTP.start(uri.host, uri.port,
-    #                 :use_ssl => uri.scheme == 'https',
-    #                 :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
-    #
-    #   request = Net::HTTP::Post.new uri.path
-    #   data = {'mobile' => mobile, 'cb' => 'callback', 'message' => "感谢您注册沃银网，您的验证码是#{code}【沃银金融】"}
-    #   request.form_data = data
-    #   request.basic_auth 'api', 'd5e425886c61049dc6d652f3e2a74b21'
-    #
-    #   response = http.request request # Net::HTTPResponse object
-    #
-    #   puts response
-    #   puts response.body
-    #   end
     message = "感谢您注册沃银网，您的验证码是#{code}【沃银金融】"
+    SmsWorker.perform_async(mobile, message)
+  end
+
+  def send_reset_sms(mobile, code)
+    message = "您在沃银网申请了绑定手机修改，您的验证码是#{code}【沃银金融】"
     SmsWorker.perform_async(mobile, message)
   end
 
@@ -129,14 +117,12 @@ class AuthController < Devise::SessionsController
   def confirm_code
     valid = current_user.user_info.verification
     verify_code = rand(10 ** 6)
-    # send_sms(params[:phone_num], verify_code)
-
     valid.phone = params[:phone_num]
     valid.phonetime = Time.now
-    #valid.verify_code = "222222"
     valid.verify_code = verify_code
     valid.save!
-    render :js => "alert('验证码是#{verify_code}')" and return
+    send_reset_sms(params[:phone_num], verify_code)
+    render :js => "" and return
   end
 
 

@@ -1,0 +1,33 @@
+.abtitle-sub
+  %h2 银行卡管理
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => "#", :role => "button"} 返回
+.abuser-box.bankcard-post
+  .row
+    .col-xs-6.bankcardone
+      .model-box.panel.panel-default
+        .head.panel-heading
+          %h3.panel-title
+            %img{:src => "images/about/bank-cmbc.jpg"}/
+            %span.text-right
+              %span.glyphicon.glyphicon-ok
+              已绑定
+        .panel-body
+          %dl.dl-horizontal
+            %dt 尾号
+            %dd 2409
+            %dt 户名
+            %dd 雷有民
+            %dt 开户行
+            %dd
+              招商银行深圳东滨支付
+              %span
+                %a.light-skyblue{:href => "#"} 修改
+    .col-xs-6.bankcardtwo
+      .model-box.panel.panel-default
+        .head.panel-heading
+          %h3.panel-title
+        .panel-body
+          %a.btn.btn-default.withdraw-addbank{:href => "#", :type => "button"}
+            %span.glyphicon.glyphicon-plus-sign
+            添加银行卡

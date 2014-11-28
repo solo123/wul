@@ -1,7 +1,7 @@
 class ProductsController < ResourcesController
   def index
     pages=10
-    @collection = Product.where(:display => "show", :product_type => params[:product_type]).paginate(:page => params[:page], :per_page => pages)
+    @collection = Product.where(:display => "show", :product_type => params[:product_type]).order('created_at DESC').paginate(:page => params[:page], :per_page => pages)
     render "products/"+params[:product_type]
     #if current_user
     #@invests = current_user.user_info.invests
@@ -17,7 +17,7 @@ class ProductsController < ResourcesController
 
   def fixed_deposits
     pages=10
-    @fixed_deposits = Product.where(:display => "show", :product_type => "fixed").paginate(:page => params[:page], :per_page => pages)
+    @fixed_deposits = Product.where(:display => "show", :product_type => "fixed").order('created_at DESC').paginate(:page => params[:page], :per_page => pages)
   end
 
   def over_limit?(amount, invests, limit, product_id)

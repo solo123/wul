@@ -1,0 +1,98 @@
+.console-header-info
+  .fun-area.pull-right
+    %span.text-muted
+      您还没有进入排行榜，请再接再厉
+    %a{:href => "#"} 查看投资榜
+  %h1.page-header 交易记录
+.filter-box.trade-filter
+  - queries = params.except(*request.path_parameters.keys)
+  - condi = {}
+  - conds = {}
+  - dict = {  'charge' => '充值',
+             'pull' => '提现',
+             'invest' => '投资产品',
+             'profit' => '收回利息',
+             'buy' => '购买债权',
+             'sell' => '转让债权',
+             'principal' => '收回本金'}
+  %dl.filter-items
+    %dt
+      起止日期
+    %dd
+      - condi[:filter] =queries[:filter]
+      - if !queries[:date_range]
+        %a.timeType.selected{:href => usercenter_console_history_path(condi)}
+          全部
+      - else
+        %a.tradeType{:href => usercenter_console_history_path(condi)}
+          全部
+      - {'week' => '最近7天',
+                 'month' => '1个月内',
+                 'month2' => '2个月内',
+                 'month3' => '3个月内' }.each do |k, v|
+
+        - condi[:date_range] = k
+        - condi[:filter] =queries[:filter]
+        - if queries[:date_range] == k
+          %a.timeType.selected{:href => usercenter_console_history_path(condi)}
+            = v
+        - else
+          %a.tradeType{:href => usercenter_console_history_path(condi)}
+            =v
+
+  %dl.filter-items
+    %dt
+      交易类型
+    %dd
+      - conds[:date_range] = queries[:date_range]
+      - if !queries[:filter]
+        %a.timeType.selected{:href => usercenter_console_history_path(conds)}
+          全部
+      - else
+        - conds[:filter] = nil
+        %a.tradeType{:href => usercenter_console_history_path(conds)}
+          全部
+      - dict.each do |k, v|
+        - conds[:date_range] = queries[:date_range]
+        - conds[:filter] = k
+        - if queries[:filter] == k
+          %a.tradeType.selected{:href => usercenter_console_history_path(conds)}
+            = v
+        - else
+          %a.tradeType{:href => usercenter_console_history_path(conds)}
+            =v
+.console-list-area.trade-table
+  %table.table
+    %tbody
+      %tr
+        %th
+          交易类型
+        %th
+          交易金额
+        %th
+          交易前账户余额
+        %th
+          交易后账户余额
+        %th
+          交易编号
+        %th
+          交易日期
+
+      - @transactions.each do |t|
+        %tr
+          %td
+            =dict[t.trans_type]
+          %td
+            =t.operation_amount
+          %td
+            =t.account_before
+          %td
+            =t.account_after
+          %td
+            =t.deposit_number
+          %td
+            =t.created_at.strftime("%Y-%m-%d %H:%M:%S")
+  .pager-center
+    .invest-pager-container
+      .invest_pagination
+        = will_paginate @transactions, :container => false, :inner_window =>2, :outer_window => 4

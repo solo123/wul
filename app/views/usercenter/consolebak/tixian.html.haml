@@ -1,0 +1,41 @@
+.abtitle-sub
+  %h2 账户提现
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => "#", :role => "button"} 返回
+.abuser-box.withdraw-post
+  %dl.dl-horizontal
+    %dt 持卡人
+    %dd 雷有民
+    %dt.forget-paydt 提现至银行卡
+    %dd
+      .withdraw-bank
+        %a.btn.btn-default{:href => "#", :type => "button"}
+          %img{:src => "images/about/bank-cmbc.jpg"}
+            **4050
+        %a.btn.btn-default.withdraw-addbank{:href => "#", :type => "button"}
+          %span.glyphicon.glyphicon-plus-sign
+          %span.withdraw-addbanktext 添加银行卡
+    %dt 可用余额
+    %dd
+      ￥
+      %span 4,888.00
+    %dt 可免费提现额度
+    %dd
+      ￥
+      %span 4,888.00
+    %dt.forget-paydt 提现金额
+    %dd
+      .input-group
+        %input#product_value.form-control.input-lg{:autocomplete => "off", :name => "product_value", :type => "text", :value => ""}
+          %span.input-group-addon 元
+    %dt 手续费
+    %dd
+      ￥
+      %span 0.00
+    %dt 实际到账金额
+    %dd
+      ￥
+      %span 3,000.00
+    %dt
+    %dd
+      %button.btn.btn-primary.btn-lg.btn-skyblue{:type => "button"} 下一步
