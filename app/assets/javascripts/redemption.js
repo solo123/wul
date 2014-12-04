@@ -10,7 +10,7 @@ $(document).ready(function () {
     });
 
     $(".discount_number").change(function () {
-        origin_value = $(this).parent().parent().prev().children(0).html();
+        origin_value = $(this).parent().parent().prev().html();
         o_value = parseFloat(origin_value);
         d_rate = parseFloat($(this).val());
         $(this).parent().next().val($(this).val());

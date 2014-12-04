@@ -2,47 +2,53 @@
 - value_dict = {"onsale" => "赎回中", "normal" => "赎回"}
 - input_dict = {"onsale" => true, "normal" => false}
 %table.table
-  %tr
-    %th 名称
-    %th 年化收益率
-    %th 已持有期数
-    %th 待收本金
-    %th 折让率
-    %th 赎回金额
-    %th 赎回
-  - invests.each do |dep|
-    = form_tag usercenter_console_resell_path(:page => product_type) do
-      %tr{:class => "#{product_type}_item"}
-        = hidden_field_tag :invest_id, dep.invest_number
-        %td.vertical-center
-          = dep.loan_number
-        %td.vertical-center
-          #{number_with_precision dep.annual_rate, precision: 2}%
-        %td.vertical-center
-          = "1"
-        %td.vertical-center
-          .origin_value
+  %thead
+    %tr
+      %td{:style => "width:200px;text-align:center"}
+        名称
+      %td{:style => "width:100px"} 年化率
+      %td{:style => "width:180px"} 待收本金(￥)
+      %td{:style => "width:150px"} 折让率(%)
+      %td{:style => "width:120px"} 赎回金额
+      %td{:style => "width:100px"} 赎回
+  %tbody
+    - invests.each do |dep|
+      = form_tag usercenter_console_resell_path(:page => product_type) do
+        %tr{:class => "#{product_type}_item"}
+          = hidden_field_tag :invest_id, dep.invest_number
+          %td
+            .text-center
+              = dep.loan_number
+          %td
+            #{number_with_precision dep.annual_rate, precision: 2}%
+          %td.light-org
             = dep.amount
-        %td{:style=>"width:20%"}
-          - if dep.redemable == "profit" && dep.stage == "normal"
-            = text_field_tag :discount_rt, dep.discount_rate, class: "discount_number"
-            = hidden_field_tag :discount_rate, dep.discount_rate
-          - else
-            %input.number_range#discount_rate{:type => "text", :value=>dep.discount_rate, :name=>"discount_rate",:class=>"col-xs-8 form-control",:disabled=> true }
-
-        %td.vertical-center
-          .discount_value
-            - if dep.stage == "normal"
-              = dep.amount
+          %td.discount-rate{:style=>"width:18%"}
+            - if dep.redemable == "profit" && dep.stage == "normal"
+              = text_field_tag :discount_rt, dep.discount_rate, class: "discount_number"
+              = hidden_field_tag :discount_rate, dep.discount_rate
             - else
-              - resell_price = dep.resell_price
-              = number_with_precision resell_price, precision: 1
-        %td
-          - if dep.redemable == "profit"
-            %input.btn.btn-primary{:type => type_dict[dep.stage] ,:value => value_dict[dep.stage]}
-          - elsif dep.redemable == "cantsell"
-            %input.btn.btn-default{:type => "button", :value => "不可转让", :disabled => "true"}
-          - elsif dep.redemable == "presale"
-            %input.btn.btn-default{:type => "button", :value => "正在融资", :disabled => "true"}
-          - else
-            %input.btn.btn-default{:type => "button", :value => "已经结束", :disabled => "true"}
+              %input.number_range#discount_rate{:type => "text", :value=>dep.discount_rate, :name=>"discount_rate",:class=>"col-xs-8 form-control",:disabled=> true }
+
+          %td.light-org
+            .discount_value
+              - if dep.stage == "normal"
+                = dep.amount
+              - else
+                - resell_price = dep.resell_price
+                = dep.resell_value
+
+          %td.invest-btn
+            - if dep.redemable == "profit"
+              %input.btn.btn-primary{:type => type_dict[dep.stage] ,:value => value_dict[dep.stage]}
+            - elsif dep.redemable == "cantsell"
+              %input.btn.btn-default{:type => "button", :value => "不可转让", :disabled => "true"}
+            - elsif dep.redemable == "presale"
+              %input.btn.btn-default{:type => "button", :value => "正在融资", :disabled => "true"}
+            - else
+              %input.btn.btn-default{:type => "button", :value => "已经结束", :disabled => "true"}
+
+
+
+
+

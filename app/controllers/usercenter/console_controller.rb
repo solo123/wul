@@ -124,6 +124,7 @@ module Usercenter
 
     def invest_detail
       @invest = Invest.friendly.find(params[:invest])
+      @product = @invest.product
       @profits = @invest.invest_profits
     end
 
@@ -143,6 +144,11 @@ module Usercenter
       end
       @delagator.save!
       redirect_to usercenter_console_autoinvest_path
+    end
+
+
+    def withdraw
+
     end
 
 

@@ -1,13 +1,15 @@
-.console-header-info
-  %h4.page-header
-    %a{:href => usercenter_console_invest_history_path(:page => @invest.invest_type)}
+.abtitle-sub
+  %h2 查看投资
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => usercenter_console_invest_history_path(:page => @invest.invest_type)}
       返回
 .title-items
-  %h3 定期宝详情
+  %h3 投资详情
 .model-box.loan-tum
   .head
     %h2
-      定期宝 DQB12322
+      = @product.product_name
+      = @product.deposit_number
     .r
       锁定期
   .loan-parame-post
@@ -16,18 +18,20 @@
         %span.tit
           投资额
         %span
-          ￥1,000.00
+          ￥
+          = @invest.amount
       %li
         %span.tit
           年化收益率
         %span.light-org
-          7.00%
+          = @product.annual_rate
+          \%
     %ul.items.userloanbjco
       %li
         %span.tit
           收益处理方式
         %span
-          收益返还
+          = @product.repayment_method_name
       %li
         %span.tit 查看合同
         %span
@@ -38,12 +42,12 @@
         %span.tit
           购买日期
         %span
-          2014.09.12
+          = @invest.created_at.strftime("%Y-%m-%d")
       %li
         %span.tit
           计息日期
         %span
-          2014.09.12
+          = @product.join_date
     %ul.items.userloanbjco
       %li.row
         %span.tit.col-xs-4
@@ -51,17 +55,18 @@
             收益支付进度
         %span.col-xs-5.tet
           .col-xs-9
+            - progress = @product.current_profit_period / @product.repayment_period.round(2) *100
             .progress.progress-striped.active
-              .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "45", :role => "progressbar", :style => "width: 45%"}
+              .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "45", :role => "progressbar", :style => "width: #{progress}%"}
                 %span.sr-only 45% Complete
           .col-xs-3
             %a{:href => "#"}
-            1/15
+            = @product.current_profit_period
+            \/
+            = @product.repayment_period
 .title-items
   %h3
-    持有
-    %span.light-org 1
-    期
+    收益状况
 .model-box.loan-tum
   .loan-parame-post
     %ul.items.userloanbjco
@@ -77,9 +82,7 @@
           ￥11.66
 .title-items
   %h3
-    持有
-    %span.light-org 1
-    个项目
+    本金状况
 .model-box.loan-tum
   .loan-parame-post.plan-post
     %ul.items.userloanbjco
@@ -91,7 +94,8 @@
         %span.tit 电子回单
     %ul.items
       %li
-        %span.tit DAJ1410059
+        %span.tit
+          = @product.deposit_number
         %span.tit 10000
         %span.tit
           %img{:src => image_url("main/yisheng-icons.jpg")}  银盛支付

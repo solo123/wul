@@ -70,6 +70,15 @@ class Invest < ActiveRecord::Base
   end
 
 
+  def resell_value
+    if self.resell_price
+       self.resell_price.round(1)
+    else
+      "计算中"
+    end
+  end
+
+
   def current_operation
     case self.current_stage
       when "normal"

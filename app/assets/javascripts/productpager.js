@@ -2,21 +2,21 @@ $(document).ready(function () {
 
 
     $(function () {
-        item_page = 8;
+        item_page = 10;
         fix_num = $("#fixed").attr('num');
         $("#fixed_pager").pagination({
             items: fix_num,
-            itemsOnPage: 8,
+            itemsOnPage: 10,
             cssStyle: 'light-theme',
             nextText: '下一页',
             prevText: '上一页',
             onInit: function () {
                 $(".fixed_item").hide();
-                $(".fixed_item:lt(8)").show();
+                $(".fixed_item:lt(10)").show();
             },
             onPageClick: function (number, event) {
-                start = (number - 1) * 8;
-                end = number * 8;
+                start = (number - 1) * 10;
+                end = number * 10;
                 $(".fixed_item").hide();
                 $(".fixed_item").slice(start, end).show();
 

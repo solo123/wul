@@ -63,9 +63,10 @@ class Product < ActiveRecord::Base
     dict[self.product_type]
   end
 
+
   def repayment_method_name
     dict = {"profit" => "收益返还",
-            "profit_principal" => "本息返还"}
+            "profit_principal" => "等额本息"}
     dict[self.repayment_method]
   end
 

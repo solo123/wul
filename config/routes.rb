@@ -98,6 +98,8 @@ Wooul::Application.routes.draw do
     get '/console/redemption'
     get '/console/agreements'
     get '/console/autoinvest'
+    get '/console/withdraw'
+    get '/console/add_card'
     get '/console/invest_detail'
     post '/console/setup_autoinvest', as: :setup_auto_invest
     get '/console/charge_bank'

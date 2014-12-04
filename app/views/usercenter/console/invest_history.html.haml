@@ -9,17 +9,17 @@
 .userredemption
   %ul.nav.nav-tabs{:role => "tablist"}
     %li.active{:role => "presentation"}
-      %a{"data-toggle" => "tab", :href => "#home", :role => "tab"}
+      %a{"data-toggle" => "tab", :href => "#fixed", :role => "tab"}
         定期宝
         %span.badge
           = @fixed_deposits.size
     %li{:role => "presentation"}
-      %a{"data-toggle" => "tab", :href => "#profile", :role => "tab"}
+      %a{"data-toggle" => "tab", :href => "#month", :role => "tab"}
         月月盈
         %span.badge
           = @month_deposits.size
   .tab-content
-    #home.tab-pane.active{:role => "tabpanel"}
+    #fixed.tab-pane{:role => "tabpanel", :num => @fixed_deposits.size, :class => active_page["fixed"]}
       .systemnews.investTabs1
         %table.table
           %thead
@@ -44,7 +44,7 @@
           - if @fixed_deposits.size > 10
             %ul.pagination
               #fixed_pager
-    #profile.tab-pane{:role => "tabpanel"}
+    #month.tab-pane{:role => "tabpanel", :num => @month_deposits.size, :class => active_page["month"]}
       .systemnews.investTabs1
         %table.table
           %thead

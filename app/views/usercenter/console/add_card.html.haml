@@ -1,0 +1,27 @@
+.abtitle-sub
+  %h2 添加银行卡
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => usercenter_console_bankcard_path, :role => "button"} 返回
+.abuser-box.withdraw-post
+  %dl.dl-horizontal
+    %dt 持卡人
+    %dd 雷有民
+    %dt 所属银行
+    %dd
+      **4050
+    %dt
+      银行卡号
+    %dd
+      %form.form-inline{:role => "form"}
+        .form-group
+          %label.sr-only{:for => "exampleInputEmail2"}
+          %input#exampleInputEmail2.form-control.input-lg{:placeholder => "请输入您的银行卡号", :type => "email"}
+    %dt.forget-paydt 支付密码
+    %dd
+      %form.form-inline{:role => "form"}
+        .form-group
+          %label.sr-only{:for => "exampleInputEmail2"} Email address
+          %input#exampleInputEmail2.form-control.input-lg{:placeholder => "请输入您的沃银网支付密码", :type => "email"}
+    %dt
+    %dd
+      %button.btn.btn-primary.btn-lg.btn-skyblue{:type => "button"} 申请提现
