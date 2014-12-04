@@ -45,40 +45,7 @@ ul, ol {
 .sign-page .mailbox-succeed .mobile-succeed-size{margin-bottom:50px;}
 
 /* find-password */
-.abtitle-sub {
-    position: relative;
-    height: 47px;
-    border-bottom: 1px solid #e0e0e0;
-    clear: both;
-}
-.abtitle-sub .button-back .toback {
-    left: 0;
-    right: auto;
-}
-.abtitle-sub .abtitle-return {
-    position: absolute;
-    right: 480px;
-    top: 25px;
-    z-index: 5;
-    float: left;
-    line-height: 40px;
-    background: #e8ecef;
-    text-align: center;
-    color: #475058;
-    padding-top: 1px;
-    width: 150px;
-    height:50px;
-    background-color: #fff;
-}
-.abtitle-sub .toback {
-    width: 120px;
-    height: 40px;
-    padding: 7px 25px;
-    color: #fff;
-    background-color: #00a3d9;
-    border-color: #00a3d9;
-    font-size:18px;
-}
+
 .sign-page .find-password-lbody .reg-steps{ margin-top:30px; margin-bottom:60px;}
 .sign-page .find-password-lbody{ background-color:#fff; padding-top:20px; padding-bottom:150px;}
 .sign-page .find-password-lbody .backsign { padding-top:12px; padding-left:0px;}

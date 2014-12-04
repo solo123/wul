@@ -4,17 +4,23 @@
       .panel-heading
         .panel-title
           %h4 找回密码
-      .panel-body.find-password-lbody
+      .panel-body.find-password-lbody.find-password-select
         .text-center.reg-steps
-          %img{:src => image_url("main/find-password4.jpg")}
-        .findpassword-succeed
-          %h2.text-center
-            %span.glyphicon.glyphicon-ok
-            恭喜您，您的密码修改成功
-          %p.text-center.mailboxyh 您现在可以通过新密码登录沃银平台进行理财之旅了！
-          .abtitle-sub
-            .abtitle-return
-              %a.btn.btn-default.toback{:href => "#", :role => "button"} 立即登录
+          %img{:src => image_url("main/find-password2.jpg")}
+        .findpassword-user
+          您正在为账户
+          %span.light-org igo***@yahoo.com
+          重置登录密码，请选择找回方式：
+        .row.findpas-selectthree
+          %p
+            %strong 通过手机验证码
+          .col-xs-3
+            %input#exampleInputEmail2.form-control{:placeholder => "输入收到的验证码", :type => "text"}
+          .col-xs-9
+            %a.btn.btn-warning{:href => "#", :role => "button"} 重发(60秒)
+          .col-xs-3.fingpwssubmit
+            %button.btn.btn-success.btn-block{:type => "submit"}
+              验证
 -#- content_for :javascript_includes do
 -#  = javascript_include_tag "password.js"
 -##verify_code{:style => "display:none;"}
@@ -48,29 +54,34 @@
 -#              %button.btn.btn-warning#phonebutton{:href => "#", :role => "button", :disabled => true}
 -#                重发
 -#                %span#timer
-.security-identity
-  .container.security-identity-container
-    %ul.row.list-unstyled
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 50元即可加入
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 100%本息担保
-      %li.col-xs-3.list-unstyled-borde
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 随时赎回投资
-      %li.col-xs-3
-        %dl.text-center
-          %dt
-            %img{:src => image_url("foot/foot1.jpg")}/
-          %dd 服务完全免费
+.security-tupow
+  .container
+    .bossy
+      %em
+      %span
+  .security-identity
+    .container.security-identity-container
+      %ul.row.list-unstyled
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot1.jpg")}/
+            %dd 50元即可加入
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot2.jpg")}/
+            %dd 100%本息担保
+        %li.col-xs-3.list-unstyled-borde
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot3.jpg")}/
+            %dd 随时赎回投资
+        %li.col-xs-3
+          %dl.text-center
+            %dt
+              %img{:src => image_url("foot/foot4.jpg")}/
+            %dd 服务完全免费
 
 .footer
   .footnav-bj.footnav-findpasswordbj
