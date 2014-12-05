@@ -111,7 +111,7 @@ end
 
 desc "CMS installing"
 task :cms do
-  queue %[cd #{deploy_to}/current &&  rake comfortable_mexican_sofa:fixtures:import FROM=wooul-bu20141113 TO=wul]
+  queue %[cd #{deploy_to}/current &&  rake comfortable_mexican_sofa:fixtures:import FROM=wooul-bu20141205 TO=wul]
 end
 
 
