@@ -64,7 +64,10 @@
             = invests.size
     .tab-content
       #detail.tab-pane.active
-        = render 'month_deposits/product_info', invs: invests
+        - if obj.person_info
+          = render 'month_deposits/person_info', info: obj.person_info
+        - else
+          = render 'month_deposits/product_info', invs: invests
       #prshd.tab-pane
         .product-details-jrjl
         - if invests.size > 0

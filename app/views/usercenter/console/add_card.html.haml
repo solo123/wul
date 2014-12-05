@@ -3,25 +3,40 @@
   .abtitle-return
     %a.btn.btn-default.toback{:href => usercenter_console_bankcard_path, :role => "button"} 返回
 .abuser-box.withdraw-post
-  %dl.dl-horizontal
-    %dt 持卡人
-    %dd 雷有民
-    %dt 所属银行
-    %dd
-      **4050
-    %dt
-      银行卡号
-    %dd
-      %form.form-inline{:role => "form"}
+  - banks =  @bankcard.bank_list
+  = form_tag usercenter_console_addcard_path do
+    %dl.dl-horizontal
+      %dt 持卡人
+      %dd
+        - if @realname
+          = @realname
+          = hidden_field_tag :real_name, @realname,  class: "form-control"
+        - else
+          = link_to "验证身份",  securecenter_secure_real_name_path
+      %dt 所属银行
+      %dd
+        = select_tag(:bank_name, options_for_select(banks), :class => "form-control bank_list")
+      %dt
+        银行卡号
+      %dd
         .form-group
           %label.sr-only{:for => "exampleInputEmail2"}
-          %input#exampleInputEmail2.form-control.input-lg{:placeholder => "请输入您的银行卡号", :type => "email"}
-    %dt.forget-paydt 支付密码
-    %dd
-      %form.form-inline{:role => "form"}
+          = text_field_tag(:card_no, '', :class => "form-control input-lg bank_list", :placeholder => "请输入您的银行卡号")
+      %dt.forget-paydt 支付密码
+      %dd
         .form-group
           %label.sr-only{:for => "exampleInputEmail2"} Email address
-          %input#exampleInputEmail2.form-control.input-lg{:placeholder => "请输入您的沃银网支付密码", :type => "email"}
-    %dt
-    %dd
-      %button.btn.btn-primary.btn-lg.btn-skyblue{:type => "button"} 申请提现
+          = text_field_tag(:pay_pass, '', :class => "form-control input-lg bank_list", :placeholder => "请输入您的沃银网支付密码", :type => "password")
+        - if flash[:notice]
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              .alert.alert-danger
+                %button.close{ :data => { :dismiss => "alert" } }
+                  X
+                = flash[:notice]
+      %dt
+      %dd
+        - if @realname
+          %button.btn.btn-primary.btn-lg.btn-skyblue{:type => "submit"} 添加
+        - else
+          %button.btn.btn-default.btn-lg{:type => "button"} 添加

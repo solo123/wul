@@ -3,39 +3,67 @@
   .abtitle-return
     %a.btn.btn-default.toback{:href => usercenter_console_charge_path, :role => "button"} 返回
 .abuser-box.withdraw-post
-  %dl.dl-horizontal
-    %dt 持卡人
-    %dd 雷有民
-    %dt 提现至银行卡
-    %dd
-      %img{:src => "images/about/bank-cmbc.jpg"}
-        **4050
-    %dt 申请提现金额
-    %dd.light-org
-      ￥
-      %span 3,000.00
-    %dt 手续费
-    %dd.light-org
-      ￥
-      %span 0.00
-      %span.caption 审核通过后手续费会返至红包中，下次投资时可用
-    %dt 实际到账金额
-    %dd.light-org
-      ￥
-      %span 3,000.00
-      %span.caption 预计2014-11-03之内到账（双休日和法定节假日顺延）
-    %dt 实际到账金额
-    %dd.light-org
-      ￥
-      %span 3,000.00
-    %dt.forget-paydt 支付密码
-    %dd
-      %form.form-inline{:role => "form"}
+  = form_tag usercenter_console_with_draw_path do
+    %dl.dl-horizontal
+      %dt 提现至银行卡
+      %dd
+        = select_tag(:card_id, options_for_select(@cards), :class => "form-control bank_list")
+      %dt 申请提现金额
+      %dd.light-org
+        = text_field_tag(:withdraw_value, '', :class => "form-control input-lg bank_list")
+
+      %dt 手续费
+      %dd.light-org
+        ￥
+        %span 0.00
+      %dt 实际到账金额
+      %dd.light-org
+        ￥
+        %span#withdraw_amount
+          0
+        %span.caption 预计#{Date.today + 1.days}之内到账（双休日和法定节假日顺延）
+      %dt.forget-paydt 支付密码
+      %dd
         .form-group
           %label.sr-only{:for => "exampleInputEmail2"} Email address
-          %input#exampleInputEmail2.form-control.input-lg{:placeholder => "请输入您在沃银网的支付密码", :type => "email"}
-        %span.forget-pay
-          %a{:href => "#"} 忘记支付密码？
-    %dt
-    %dd
-      %button.btn.btn-primary.btn-lg.btn-skyblue{:type => "button"} 申请提现
+          = text_field_tag(:pay_pass, '', :class => "form-control input-lg bank_list", :type => "password")
+      - if flash[:notice]
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            .alert.alert-danger
+              %button.close{ :data => { :dismiss => "alert" } }
+                X
+              = flash[:notice]
+      %dt
+      %dd
+        %button.btn.btn-primary.btn-lg.btn-skyblue{:type => "submit"} 申请提现
+.systemnews.console-list-area
+  %table.table
+    %thead
+      %tr
+        %td{:style => "width:200px"} 提现卡号
+        %td{:style => "width:150px"} 银行名称
+        %td{:style => "width:180px"} 到帐日期
+        %td{:style => "width:180px"} 申请金额
+        %td{:style => "width:180px"} 手续费用
+        %td{:style => "width:120px"} 申请时间
+    %tbody
+      -@reqs.each do |t|
+        %tr
+          %td
+            = t.bank_card_no
+          %td
+            = t.bank_name
+          %td
+            = t.due_date.strftime("%Y.%m.%d")
+          %td
+            = t.amount
+          %td
+            0.00
+          %td
+            =(t.due_date - 1.days).strftime("%Y.%m.%d")
+
+:javascript
+  $("#withdraw_value").change(function(){
+  $("#withdraw_amount").html($(this).val());
+  });

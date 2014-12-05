@@ -1,0 +1,125 @@
+.row
+  .col-xs-6
+    .lab-val
+      .row.item
+        .col-md-12
+          %strong 个人信息
+        .col-md-4.boder-color 用户ID
+        .col-md-8.boder-color
+          = info.id
+        .col-md-4 性别
+        .col-md-8
+          = info.gender
+        .col-md-4.boder-color 年龄
+        .col-md-8.boder-color
+          = info.age
+        .col-md-4 学历
+        .col-md-8
+          = info.education
+        .col-md-4.boder-color 是否结婚
+        .col-md-8.boder-color
+          = info.marrige
+        .col-md-4 子女状况
+        .col-md-8
+          = info.children
+        .col-md-4.boder-color 户籍城市
+        .col-md-8.boder-color
+          = info.city
+        .col-md-12
+          %strong 个人资产及征信信息
+        .col-md-4.boder-color 月收入水平
+        .col-md-8.boder-color
+          = info.income
+        .col-md-4 房产
+        .col-md-8
+          = info.real_estate
+        .col-md-4.boder-color 车产
+        .col-md-8.boder-color
+          = info.car
+        .col-md-4 其他信用贷款
+        .col-md-8
+          = info.other_debit
+        .col-md-4.boder-color 未销户信用卡
+        .col-md-8.boder-color
+          = info.other_debit
+        .col-md-4 信用卡额度使用率
+        .col-md-8 无信用卡
+        .col-md-12
+          %strong 工作信息
+        .col-md-4.boder-color 工作城市
+        .col-md-8.boder-color
+          = info.work_city
+        .col-md-4 现公司工作时间
+        .col-md-8
+          = info.work_start_date
+
+        .col-md-4.boder-color 公司行业
+        .col-md-8.boder-color
+          = info.industry
+        .col-md-4 公司性质
+        .col-md-8
+          = info.company_type
+        .col-md-4.boder-color 岗位
+        .col-md-8.boder-color
+          = info.position
+  .col-xs-6
+    .lab-val
+      .row.item
+        .col-md-12
+          %strong 担保机构
+        .col-md-4.boder-color 身份证
+        .col-md-4.boder-color 于2014.09.11
+        .col-md-4.boder-color.col-noborder 认证通过
+        .col-md-4 信用报告
+        .col-md-4 于2014.09.11
+        .col-md-4.col-noborder 认证通过
+        .col-md-4.boder-color 工作证明
+        .col-md-4.boder-color 于2014.09.11
+        .col-md-4.boder-color.col-noborder 认证通过
+        .col-md-4 收入证明
+        .col-md-4 于2014.09.11
+        .col-md-4.col-noborder 认证通过
+      .col-md-12.wyrecord
+        %strong 沃银网借款记录
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th 共计借入
+            %th 待还金额
+            %th 逾期金额
+            %th 严重逾期
+        %tbody
+          %tr
+            %td
+              ￥
+              = info.total_history_amount
+            %td
+              ￥
+              = info.due_amount
+            %td
+              ￥
+              = info.over_time_amount
+            %td
+              ￥
+              = info.danger_amount
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th.text-center 共计借入
+            %th.text-center 待还金额
+            %th.text-center 逾期金额
+            %th.text-center 严重逾期
+        %tbody
+          %tr
+            %td.text-center
+              = info.total_history_times
+              笔
+            %td.text-center
+              = info.due_times
+              笔
+            %td.text-center
+              = info.over_time_amount
+              笔
+            %td.text-center
+              = info.danger_amount
+              次

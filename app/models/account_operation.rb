@@ -23,12 +23,9 @@ class AccountOperation < ActiveRecord::Base
     self.operation_id = self.op_id_head + d.to_s
     data = {:op_name => self.op_name, :op_amount => self.op_amount, :op_action => self.op_action, :operator => self.operator,
             :user_id => self.user_id, :operation_id => self.operation_id, :op_obj => self.op_obj, :op_resource_name => self.op_resource_name,
-            :op_obj => self.op_obj, :op_resource_name => self.op_resource_name, :api_key => "secret", :uinfo_id => self.uinfo_id, :op_asset_id =>
-            self.op_asset_id
+            :api_key => "secret", :uinfo_id => self.uinfo_id, :op_asset_id => self.op_asset_id
     }
-    # data = self.as_json
     self.save!
-    # self.perform($trans_url, data, self.id)
     AccountWorker.perform_async($trans_url, data, self.id)
   end
 

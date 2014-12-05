@@ -74,7 +74,7 @@ class Invest < ActiveRecord::Base
     if self.resell_price
        self.resell_price.round(1)
     else
-      "计算中"
+      "审核中"
     end
   end
 

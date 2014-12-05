@@ -26,10 +26,10 @@ class Transaction < ActiveRecord::Base
         message.content = "您于#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}，在沃银网投资产品#{self.deposit_number},投资金额为#{self.operation_amount}元的操作成功."
       when "sell"
         message.title = "转让债权"
-        message.title = "您于#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}，在沃银网转让产品#{self.deposit_number}的债权,债权金额为#{self.operation_amount}元, 已经成功完成."
+        message.content = "您于#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}，在沃银网转让产品#{self.deposit_number}的债权,债权金额为#{self.operation_amount}元, 已经成功完成."
       when "buy"
         message.title = "买入债权"
-        message.title = "您于#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}，在沃银网买入产品#{self.deposit_number}的债权,债权金额为#{self.operation_amount}元, 已经成功完成."
+        message.content = "您于#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}，在沃银网买入产品#{self.deposit_number}的债权,债权金额为#{self.operation_amount}元, 已经成功完成."
       else
     end
     message.user_info_id = self.user_info_id

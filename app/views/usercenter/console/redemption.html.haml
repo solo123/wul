@@ -3,9 +3,9 @@
   = javascript_include_tag "productpager.js"
 .abtitle-sub
   %h2 投资赎回
-- type_dict = {"onsale" => "button", "normal" => "submit"}
-- value_dict = {"onsale" => "赎回中", "normal" => "赎回"}
-- input_dict = {"onsale" => true, "normal" => false}
+- type_dict = {"onsale" => "button", "normal" => "submit", "confirming" => "button"}
+- value_dict = {"onsale" => "赎回中", "normal" => "赎回", "confirming" => "审核中"}
+- input_dict = {"onsale" => true, "normal" => false, "confirming" => false}
 - if !params[:page]
   - active_page = {"fixed" =>"active", "month" => ""}
 - else

@@ -39,7 +39,7 @@ class InvestsController < ApplicationController
 
   def onsale
     pages=10
-    @invests = Invest.where(:onsale => true).paginate(:page => params[:page], :per_page => pages)
+    @invests = Invest.where(:onsale => true).order('created_at DESC').paginate(:page => params[:page], :per_page => pages)
   end
 
   # GET /invests/1

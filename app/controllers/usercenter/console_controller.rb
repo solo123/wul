@@ -148,9 +148,67 @@ module Usercenter
 
 
     def withdraw
-
+      @cards = []
+      bankcards = current_user.user_info.bankcards
+      bankcards.each_with_index { |item, index|
+        @cards << [item.cardid + "  " + item.bankname, index]
+      }
+      @reqs = current_user.user_info.withdraw_requests
     end
 
+    def with_draw
+      uinfo =current_user.user_info
+      verify = uinfo.verification
+      bankcard = uinfo.bankcards[params[:card_id].to_i]
+      logger.info(bankcard.bankname)
+
+      if params[:withdraw_value] == ""
+        flash[:notice] = "提现金额不能为空"
+        redirect_to usercenter_console_withdraw_path and return
+      end
+
+      if uinfo.payment_password != params[:pay_pass]
+        flash[:notice] = "支付密码验证失败"
+        redirect_to usercenter_console_withdraw_path and return
+      end
+
+      req = WithdrawRequest.new(:user_info_id => uinfo.id, :bank_name => bankcard.bankname, :bank_card_no => bankcard.cardid,
+                                :real_name => bankcard.real_name, :amount => params[:withdraw_value].to_i, :bankcard_id => bankcard.id,
+                                :due_date => Date.today + 1.days)
+      req.save!
+      flash[:notice] = "提现申请成功"
+      redirect_to usercenter_console_withdraw_path and return
+    end
+
+    def add_card
+      verification = current_user.user_info.verification
+      @bankcard = Bankcard.new
+      if verification.idstatus == "verified"
+        @realname = verification.realname
+      end
+    end
+
+
+    def addcard
+      uinfo =current_user.user_info
+      verify = uinfo.verification
+
+      if params[:card_no] == ""
+        flash[:notice] = "银行卡号不能为空"
+        redirect_to usercenter_console_add_card_path and return
+      end
+
+      if uinfo.payment_password != params[:pay_pass]
+        flash[:notice] = "支付密码验证失败"
+        redirect_to usercenter_console_add_card_path and return
+      end
+
+      card = Bankcard.new(:real_name => params[:real_name], :user_info_id => uinfo.id, :cardid => params[:card_no])
+      bankname = card.bank_list[params[:bank_name].to_i - 1 ][0]
+      card.bankname = bankname
+      card.save!
+      redirect_to usercenter_console_bankcard_path and return
+    end
 
     def confirm_status
       if current_user.user_info.verification.phone_confirm_status
@@ -166,11 +224,12 @@ module Usercenter
       invest = Invest.friendly.find(params[:invest_id])
 
       invest.discount_rate = params[:discount_rate].to_f
-      invest.stage = "onsale"
+      invest.stage = "confirming"
+
       invest.save!
-      op = AccountOperation.new(:op_name => "invest", :op_action => "onsale", :operator => "system", :uinfo_id => current_user.user_info.id,
-                                :op_asset_id => invest.asset_id, :op_amount => invest.discount_rate, :op_resource_id => invest.id)
-      op.execute_transaction
+      # op = AccountOperation.new(:op_name => "invest", :op_action => "onsale", :operator => "system", :uinfo_id => current_user.user_info.id,
+      #                           :op_asset_id => invest.asset_id, :op_amount => invest.discount_rate, :op_resource_id => invest.id)
+      # op.execute_transaction
       # invest.resell(rate)
       redirect_to usercenter_console_redemption_path(:page => params[:page])
     end
@@ -213,7 +272,7 @@ module Usercenter
     end
 
     def bankcard
-      @bankcards = current_user.bankcards
+      @bankcards = current_user.user_info.bankcards
     end
 
     def coupon
