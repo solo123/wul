@@ -1,26 +1,23 @@
--icondict = {"安全状况总览" => 'th',
-"账户实名认证" => 'user',
-"支付密码修改" => 'lock',
-"绑定手机" => 'phone',
-"更换注册邮箱" => 'envelope',
-"启用密保问题" => 'question-sign'}
 %aside.sidebar
   = render "shared/secure_level"
   %ul.nav.nav-pills.nav-stacked.sidebar-nav
-    - {"安全状况总览" => 'index',
-    '账户实名认证' => 'real_name',
-           '支付密码修改' => 'confirm',
-           '绑定手机' => 'change_phone',
-           '更换注册邮箱' =>  'change_email',
-           '启用密保问题' => 'change_secret'}.each do |k, v|
-      - if params[:action] == v
-        %li.active
-          %a{:href => url_for(:controller => "secure", :action => v)}
-            %span{:Class => "glyphicon " + "glyphicon-" + icondict[k] }
-            = k
-      - else
-        %li
-          %a{:href => url_for(:controller => "secure", :action => v)}
-            %span{:Class => "glyphicon " + "glyphicon-" + icondict[k] }
-            = k
-
+    %li
+      %a{:href => securecenter_secure_real_name_path}
+        %span.glyphicon.glyphicon-user
+        账户实名认证
+    %li
+      %a{:href => securecenter_secure_confirm_path}
+        %span.glyphicon.glyphicon-asterisk
+        支付密码修改
+    %li
+      %a{:href => securecenter_secure_change_phone_path}
+        %span.glyphicon.glyphicon-phone
+        绑定手机号码
+    %li
+      %a{:href => securecenter_secure_change_email_path}
+        %span.glyphicon.glyphicon-envelope
+        更换注册邮箱
+    %li
+      %a{:href => securecenter_secure_change_secret_path  }
+        %span.glyphicon.glyphicon-list-alt
+        启用密保问题

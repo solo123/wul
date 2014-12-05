@@ -78,7 +78,6 @@
 .about-data .aboutm_team {
   padding-bottom: 0;
   border-radius: 0;
-  margin-top: 20px;
   margin-bottom: 20px;
   background-color: #fbfbfb;
 }
@@ -110,6 +109,7 @@
   background-color: #fff;
 }
 .about-data .aboutm_partner{
+  margin-top:20px;
   padding-bottom: 30px;
   margin-bottom: 30px;
 }
@@ -129,18 +129,34 @@
   height: 65px;
   background:image-url("mout/banka.png")
 }
-.aboutm-team-icon-baidu {
+.aboutm-team-icon-yisdanbao {
   background-position: 0 0;
 }
 .aboutm-team-icon-icbc {
   background-position: 557px 0;
 }
-.aboutm-team-icon-suning {
+.aboutm-team-icon-shangraopos {
   background-position: 354px 0;
 }
-.aboutm-team-icon-jd {
+.aboutm-team-icon-mycloud {
   background-position: 151px 0;
 }
-.aboutm-team-icon-mycloud {
-  background-position:0 64px;
+
+.aboutpartners .media{ margin-bottom:30px;}
+.aboutpartners .media .media-left{ float:left; padding-right:10px;}
+.aboutpartners .media .media-body .media-heading{ padding-bottom:5px;}
+.contact-map{ margin-left:45px; margin-top:20px;}
+.contact-map img{ width:750px; height:470px;}
+/* 收费标准 */
+.about-wyw .tool table {
+  width: 750px;
+  border-collapse: collapse;
+  border: 1px solid #e7ecee;
+}
+.about-wyw .tool table td {
+  border: 1px solid #d0d3d8;
+  text-align: center;
+  min-width: 50px;
+  height:45px;
+  padding:6px 10px;
 }

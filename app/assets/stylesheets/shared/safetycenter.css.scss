@@ -1,0 +1,124 @@
+/* CSS Document */
+.safewrapper {
+  background-color: #FAFAFA;
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
+}
+/*  更改注册邮箱  */
+.safecentermail {
+  min-height: 350px;
+}
+.safecenter .items li .input-group .form-control {
+  height: 40px;
+  border-radius: 6px;
+}
+.safecenter .items .safecenter-mailtext {
+  padding-top: 25px;
+}
+.safecenter .items li .btn-lg {
+  padding: 8px 16px;
+  background-color: #00a3d9;
+  border-color: #00a3d9;
+}
+.safecenter .items li .safemail-again {
+  padding-top: 10px;
+}
+/*  支付密码  */
+.safecenterpaypsw {
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+.safecenterpaypsw .bid-opt .safepaytext {
+  height: 90px;
+  padding-left: 15px;
+}
+.safecenterpaypsw .bid-opt .safepaytext li p {
+  margin: 0 0 5px;
+}
+.safecenterpaypsw .bid-opt .safepaytext li .paypsw-open {
+  padding-left: 10px;
+  color: #9fc830;
+}
+.safecenterpaypsw .bid-opt .safepaypsw-ok {
+  color: #333;
+  font-size: 16px;
+}
+.safecenterpaypsw .bid-opt .safepaypsw-ok span {
+  color: #9fc830;
+  font-size: 45px;
+}
+/*  更换绑定手机  */
+.safecenterphone {
+  padding-top: 20px;
+  min-height: 350px;
+}
+.safecenterphone .safecenter .items li .input-group .safephone-codeinput {
+  padding-left: 0;
+  padding-right: 0;
+}
+.safecenterphone .safecenter .items li .input-group .safephone-codegain {
+  padding-right: 0;
+}
+.safecenterphone .safecenter .items li .input-group .safephone-codegain .btn {
+  padding: 9px 12px;
+  color: #fff;
+  background-color: #ccc;
+}
+/*  账户安全/隐私安全  */
+.abuser-box{
+  border: 1px solid #D3D8DC;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.safeprivaty {
+  padding-top: 20px;
+  padding-left: 36px;
+}
+.privacysafe .nav>li>a {
+  padding: 8px 25px;
+  color: #0099cc;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+.privacysafe .nav-tabs {
+  border-bottom: 0;
+}
+.privacysafe .privatytable {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 0 6px 6px 6px;
+  padding-right: 2px;
+}
+.privacysafe .privatytwo{
+  border-top-left-radius:6px;
+}
+.privacysafe .table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
+  background-color: #f7fdff;
+}
+.privacysafe .table>tbody>tr>td {
+  text-align: left;
+  padding: 15px;
+  border-top: 0;
+  color: #555;
+  border-top-left-radius:6px;
+  border-top-right-radius:6px;
+}
+.privacysafe .table>tbody>tr>td:first-child {
+  padding-left: 30px;
+}
+.privacysafe .nav-tabs>li.active>a, .privacysafe .nav-tabs>li.active>a:hover, .privacysafe .nav-tabs>li.active>a:focus {
+  padding: 8px 25px;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  border-radius:6px 6px 0 0;
+}
+.privacysafe .table>tbody>tr .privaty-operate{ color:#0099cc;}
+.privacysafe .table>tbody>tr>td span{ color:#9fc830;}
+.privacysafe .table>tbody>tr>td span a{ color:#0099cc;}

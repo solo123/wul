@@ -1,4 +1,33 @@
-- content_for :javascript_includes do
+.abtitle-sub
+  %h2 更改邮箱
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => securecenter_path } 返回
+.abuser-box.safecentermail
+  .bid-opt.safecenter
+    %form.forms_span
+      %ul.items.row
+        %li.txt.col-xs-2
+        %li.col-xs-8.safecenter-mailtext
+          绑定邮箱有利于我们及时通知您在沃银网的交易情况以及最新动态。
+      %ul.items.row
+        %li.txt.col-xs-2 新邮箱：
+        %li.col-xs-9
+          .input-group.col-xs-5
+            %input#exampleInputEmail2.form-control{:placeholder => "请输入您的电子邮件地址", :type => "email"}
+          %span.col-xs-6{:style => "display:none;"}
+            该邮箱已被注册，请从新输入新的邮箱
+      %ul.items.row
+        %li.txt.col-xs-2 支付密码：
+        %li.col-xs-9
+          .input-group.col-xs-5
+            %input#exampleInputEmail2.form-control{:placeholder => "请输入您在沃银网的支付密码", :type => "password"}
+          %span.col-xs-6{:style => "display:none;"} 输入的密码不正确，请从新再次输入。
+      %ul.items.row
+        %li.txt.col-xs-2
+        %li.col-xs-9
+          .input-group.col-xs-5
+            %button.btn.btn-primary.btn-lg.btn-block{:type => "button"}
+              下一步- content_for :javascript_includes do
   = javascript_include_tag "console.js"
 .console-header-info
   .fun-area.pull-right

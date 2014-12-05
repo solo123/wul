@@ -1,0 +1,20 @@
+.abtitle-sub
+  %h2 更改邮箱
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => securecenter_path } 返回
+.abuser-box.safecentermail
+  .bid-opt.safecenter
+    %form.forms_span
+      %ul.items.row
+        %li.txt.col-xs-2
+        %li.col-xs-9.safecenter-mailtext
+          我们给您的邮箱发送了一封验证邮件，请按照邮箱里的提示在24小时内修改你的密码。
+      %ul.items.row
+        %li.txt.col-xs-2
+        %li.col-xs-9
+          .input-group.col-xs-4
+            %button.btn.btn-primary.btn-lg.btn-block{:type => "button"}
+              前往邮箱查看
+          %span.col-xs-6.safemail-again
+            没有收到？
+            %a{:href => "#"} 再次发送

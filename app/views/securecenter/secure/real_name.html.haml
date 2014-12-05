@@ -1,36 +1,27 @@
-.console-header-info
-  .fun-area.pull-right
-    %a.btn.btn-default{:href => securecenter_path }返回
-  %h1.page-header 实名认证
-
-= form_tag securecenter_secure_set_real_name_path do
-  .securecenter-form-area  
-    - if @verify
-      .form-horizontal
-        .form-group
-          %label.col-xs-3.control-label 您的验证身份证号码是:
-          .col-sm-9
-            = @verify.personalid
-        .form-group
-          %label.col-xs-3.control-label 您的验证姓名是:
-          .col-xs-9
-            = @verify.realname
-    - else
-      .form-horizontal
-        .form-group
-          = label :id_number, '身份证号码', class: "col-sm-2 control-label "
-          .col-sm-10
-            = text_field_tag :id_number, '',  class: "form-control"
-        .form-group
-          = label :real_name, '真实姓名', class: "col-sm-2 control-label "
-          .col-sm-10
-            = text_field_tag :real_name, '',  class: "form-control"
-        - if flash[:notice]
-          .form-group
-            .col-sm-offset-2.col-sm-10
-              .alert.alert-danger
-                %button.close{ :data => { :dismiss => "alert" } }x
-                = flash[:notice]
-        .form-group
-          .col-sm-offset-2.col-sm-10
-            = submit_tag '验证', :class => "btn btn-default"
+.abtitle-sub
+  %h2 实名认证
+  .abtitle-return
+    %a.btn.btn-default.toback{:href => securecenter_path } 返回
+.abuser-box.safecenterpaypsw
+  .bid-opt.safecenter
+    %form.forms_span
+      %ul.items.row
+        %li.txt.col-xs-2 身份证号码：
+        %li.col-xs-9
+          .input-group.col-xs-6
+            %input#exampleInputEmail2.form-control{:placeholder => "请输入您的身份证号码", :type => "text"}
+          %span.col-xs-6{:style => "display:none;"}
+            身份证号码为11位有效数字
+      %ul.items.row
+        %li.txt.col-xs-2 真实姓名：
+        %li.col-xs-9
+          .input-group.col-xs-6
+            %input#exampleInputEmail2.form-control{:placeholder => "请输入您的真实姓名", :type => "text"}
+          %span.col-xs-6{:style => "display:none;"}
+            支付密码在6~20之间。
+      %ul.items.row
+        %li.txt.col-xs-2
+        %li.col-xs-9
+          .input-group.col-xs-6
+            %button.btn.btn-primary.btn-lg.btn-block{:type => "button"}
+              验证
