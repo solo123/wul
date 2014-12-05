@@ -1,0 +1,109 @@
+ {{ cms:asset:about-wooul:css:html_tag }}
+<div class="about-data">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-3 ">
+          <div class="static_nav">
+            <div class="reg_btn">
+              <a href="/users/sign_up" type="button" class="btn btn-primary btn-lg btn-block">立即注册</a>
+            </div>
+            <ul class="collapse navbar-collapse about-scrollspy" id="aboutuser">
+              <li>
+                <a href="/about/company">
+                  <span class="glyphicon glyphicon-play"></span>
+                  关于我们
+                </a>
+                <ul id="ll">
+                  <li>
+                    <a href="/about/company">
+                      <span class=" glyphicon glyphicon-circle"></span>
+                       沃银简介
+                     </a>
+                  </li>
+                  <li>
+                    <a href="#aboutone">
+                      <span class=" glyphicon glyphicon-circle"></span>
+                      团队介绍
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#aboutthree">
+                      <span class=" glyphicon glyphicon-circle"></span>
+                      合作伙伴
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/about/contact">
+                      <span class=" glyphicon glyphicon-circle"></span>
+                      联系我们
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="/about/press">
+                  <span class="glyphicon glyphicon-play"></span>
+                  官方公告
+                </a>
+              </li>
+              <li>
+                <a href="/about/mediae">
+                  <span class="glyphicon glyphicon-play"></span>
+                  媒体资讯
+                </a>
+              </li>
+              <li>
+                <a href="/about/Job">
+                  <span class="glyphicon glyphicon-play"></span>
+                  招贤纳士
+                </a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+        <div class="col-xs-9 about-content">
+          {{cms:page:content}}  
+        </div>
+      </div>  
+    </div>
+</div>
+  <div class="security-tupow">
+    <div class="container">
+      <div class="bossy">
+        <em></em> 
+        <span></span>
+      </div>
+    </div>
+    <div class="security-identity">
+      <div class="container security-identity-container">
+        <ul class="row list-unstyled">
+          <li class="col-xs-3 list-unstyled-borde">
+            <dl class="text-center">
+              <dt>{{ cms:file:foot1.jpg:image }}</dt>
+              <dd>50元即可加入</dd>
+            </dl>
+          </li>
+          <li class="col-xs-3 list-unstyled-borde">
+            <dl class="text-center">
+              <dt>{{ cms:file:foot2.jpg:image }}</dt>
+              <dd>100%本息担保</dd>
+            </dl>          
+          </li>
+          <li class="col-xs-3 list-unstyled-borde">
+            <dl class="text-center">
+              <dt>{{ cms:file:foot3.jpg:image }}</dt>
+              <dd>随时赎回投资</dd>
+            </dl>          
+          </li>
+          <li class="col-xs-3">
+            <dl class="text-center">
+              <dt>{{ cms:file:foot4.jpg:image }}</dt>
+              <dd>服务完全免费</dd>
+            </dl>         
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{{ cms:snippet:footer }}

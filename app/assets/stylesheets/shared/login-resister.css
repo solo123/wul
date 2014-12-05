@@ -1,9 +1,6 @@
 ul, ol {
     padding-left: 0;
 }
-.sign-page {
-    margin:5% 0 5% 0;
-}
 .login-media {
     display: table-cell;
     vertical-align: middle;
@@ -47,7 +44,7 @@ ul, ol {
 
 .sign-page .mailbox-succeed{ border:1px solid #ddd; margin-bottom:50px;}
 .sign-page .mailbox-succeed li{ float:left;}
-.sign-page .mailbox-succeed .btn{padding: 6px 32px;}
+.sign-page .mailbox-succeed .btn{padding: 6px 25px;}
 .sign-page .mailbox-succeed .mailbox-btn-size{padding: 6px 12px;}
 .sign-page .mailbox-succeed .btn-primary {color: #fff;background-color: #1fb4da;border-color: #1fb4da;}
 .sign-page .mailbox-succeed .mailboxmy{ text-align:center; margin-bottom:200px; padding-top:50px;}
@@ -57,6 +54,7 @@ ul, ol {
 .sign-page .mailbox-succeed .mobile-succeed-size{margin-bottom:50px;}
 
 /* find-password */
+
 .sign-page .find-password-lbody .reg-steps{ margin-top:30px; margin-bottom:60px;}
 .sign-page .find-password-lbody{ background-color:#fff; padding-top:20px; padding-bottom:150px;}
 .sign-page .find-password-lbody .backsign { padding-top:12px; padding-left:0px;}

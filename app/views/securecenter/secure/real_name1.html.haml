@@ -1,0 +1,36 @@
+.console-header-info
+  .fun-area.pull-right
+    %a.btn.btn-default{:href => securecenter_path }返回
+  %h1.page-header 实名认证
+
+= form_tag securecenter_secure_set_real_name_path do
+  .securecenter-form-area  
+    - if @verify
+      .form-horizontal
+        .form-group
+          %label.col-sm-2.control-label 您的验证身份证号码是:
+          .col-sm-10
+            = @verify.personalid
+        .form-group
+          %label.col-sm-2.control-label 您的验证姓名是:
+          .col-sm-10
+            = @verify.realname
+    - else
+      .form-horizontal
+        .form-group
+          = label :id_number, '身份证号码', class: "col-sm-2 control-label "
+          .col-sm-10
+            = text_field_tag :id_number, '',  class: "form-control"
+        .form-group
+          = label :real_name, '真实姓名', class: "col-sm-2 control-label "
+          .col-sm-10
+            = text_field_tag :real_name, '',  class: "form-control"
+        - if flash[:notice]
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              .alert.alert-danger
+                %button.close{ :data => { :dismiss => "alert" } }x
+                = flash[:notice]
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = submit_tag '验证', :class => "btn btn-default"

@@ -52,7 +52,7 @@ aside.sidebar {
 }
 .sidebar .accout_ye strong{
 
-  font-size:16px;
+  font-size:18px;
 }
 .sidebar .accout_ye a{
   padding-left: 10px;
@@ -371,7 +371,7 @@ padding-top:18px;
 .usermain .withdraw-post .dl-horizontal .withdraw-bank .withdraw-addbank .withdraw-addbanktext{color: #333;}
 
 /*  bankcard-post  */
-.usermain .bankcard-post{ padding-top:30px; padding-bottom:30px;border: 0px solid #d3d8dc;}
+.usermain .bankcard-post{ padding-top:30px; padding-bottom:30px;border: 0px solid #d3d8dc; background-color: transparent;}
 .usermain .bankcard-post .bankcardone{ padding-left:50px; padding-right:20px;}
 .usermain .bankcard-post .bankcardone .panel-heading{min-height: 53px;}
 .usermain .bankcard-post .bankcardone .model-box{ border-radius:6px;}
@@ -401,7 +401,7 @@ padding-top:18px;
 /*  newdetails  */
 .usermain .newdetails-post{padding:30px 0px 30px 30px;}
 
-  /*  accounttop  */
+  /*  账户充值  */
 .usermain .accounttop-post{ padding-top:30px; padding-bottom:30px;}
 .usermain .accounttop-post .accoun-selebank .btn-primary{color: #555;
   background-color: #fff;
@@ -412,10 +412,15 @@ padding-top:18px;
 .accountnow p{ padding-top:12px;}
 .usermain .accounttop-post .accoun-selebank .btn-primary:hover{
   border-color: #0099cc;}
+.paymoney{ padding-right: 5px;}
 .usermain .accounttop-post .accoun-selebank li{ padding-right:5px;}
 .usermain .accounttop-post .accoun-selebank .btn-lg{ font-size:14px; padding-top:12px;}
 .usermain .accounttop-post .dl-horizontal dt{ width:100px; font-weight:normal; margin-bottom:30px; padding-top:12px;}
 .usermain .accounttop-post .dl-horizontal dd{margin-left: 120px;}
+.usermain .accounttop-post .dl-horizontal dd li .input-group-addon{
+  padding: 6px 5px;
+  background-color: #fff;
+}
 .usermain .accounttop-post .submit-top .accoun-selebank .btn-primary{color: #fff;
   background-color: #00a3d9;
   border-color: #00a3d9;

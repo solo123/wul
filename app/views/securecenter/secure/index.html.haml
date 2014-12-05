@@ -1,20 +1,23 @@
-.console-header-info
-  %h1.page-header 安全中心
-.securecenter-home-area
-  .security-level
-    %h3 您的账户安全等级：
-    .progress
-      .progress-bar{:role => "progressbar", "aria-valuenow" => "60", "aria-valuemin" => "0", "aria-valuemax" => "100", :style => "width:60%" }
-.security-overview
+.abtitle-sub
+  %h2 安全中心
+.abuser-box.safeprivaty
+  %p 您的账户安全等级：
+  %ul.row
+    %li.col-xs-8
+      .progress.progress-striped.active
+        .progress-bar.progress-bar-success.progress-bar-striped{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", :role => "progressbar", :style => "width: 40%"}
+          %span.sr-only 40% Complete (success)
+    %li.col-xs-1
+      %a{:href => "#"} [提升]
+.privacysafe
   %ul.nav.nav-tabs{:role => "tablist"}
-    %li.active
-      %a.tab-item{"data-toggle" => "tab", :href => "#detail", :role => "tab"} 保护账户安全
-    %li
-      %a.tab-item{"data-toggle" => "tab", :href => "#prshd", :role => "tab"}
-        保护隐私安全
+    %li.active{:role => "presentation"}
+      %a{"data-toggle" => "tab", :href => "#home", :role => "tab"} 账户安全
+    %li{:role => "presentation"}
+      %a{"data-toggle" => "tab", :href => "#me", :role => "tab"} 隐私安全
   .tab-content
-    #detail.tab-pane.active
-      %table.table.table-striped.dqbxq-border
+    #home.tab-pane.active.privatytable{:role => "tabpanel"}
+      %table.table.table-striped
         %tbody
           %tr
             %td 登录密码
@@ -22,62 +25,54 @@
             %td 启用密保问题即可修改
           %tr
             %td 实名认证
-            %td 充值前，必须完成实名认证
-            %td
-              - if @verify.idstatus == "verified"
-                已认证
-              - else
-                %a{:href => securecenter_secure_real_name_path}
-                  认证
+            %td 充值前，必须完成实名
+            %td.privaty-operate 认证
           %tr
             %td 绑定手机
             %td 绑定手机号码，账户资金变动实时通知
-            %td
-              %a{:href => securecenter_secure_change_phone_path}
-                - if @verify.phonestatus == "confirming"
-                  绑定
-                - else
-                  修改
+            %td.privaty-operate
+              %span.glyphicon.glyphicon-ok
+              %a{:href => "#"} 修改
           %tr
             %td 支付密码
             %td 支付密码已启用，默认与初始登录密码相同，请及时修改
-            %td
-              %a{:href => securecenter_secure_confirm_path}
-                修改
+            %td.privaty-operate
+              %span.glyphicon.glyphicon-ok
+              %a{:href => "#"} 修改
           %tr
             %td 密保密码
             %td 轻松找回登录密码
-            %td
-              %a{:href => securecenter_secure_change_secret_path}
-                - if @verify.safe_question_id == 0
-                  启用
-                - else
-                  修改
-
-    #prshd.tab-pane
-      %table.table.dqbxq-jrjl.table-striped.dqbxq-border
+            %td 启用
+    #me.tab-pane.privatytable.privatytwo{:role => "tabpanel"}
+      %table.table.table-striped
         %tbody
           %tr
+            %td 身份信息
             %td
-              身份信息
+              沃银网将按照
+              %span
+                %a{:href => "#"} 《沃银网投资咨询与管理服务协议》
+              的相关规定来保护您的身份信息安全
             %td
-              沃银网将按照《沃银网投资咨询与管理服务协议》的相关规定来保护您的身份信息安全
-            %td
+              %span.glyphicon.glyphicon-ok
               保护中
           %tr
+            %td 银行卡信息
             %td
-              银行卡信息
+              沃银网将按照
+              %span
+                %a{:href => "#"} 《沃银网投资咨询与管理服务协议》
+              的相关规定来保护您的身份信息安全
             %td
-              沃银网将按照《沃银网投资咨询与管理服务协议》的相关规定来保护您的身份信息安全
-            %td
+              %span.glyphicon.glyphicon-ok
               保护中
           %tr
+            %td 手机号码
             %td
-              手机号码
+              沃银网将按照
+              %span
+                %a{:href => "#"} 《沃银网投资咨询与管理服务协议》
+              的相关规定来保护您的身份信息安全
             %td
-              沃银网将按照《沃银网投资咨询与管理服务协议》的相关规定来保护您的身份信息安全
-            %td
+              %span.glyphicon.glyphicon-ok
               保护中
-
-
-
