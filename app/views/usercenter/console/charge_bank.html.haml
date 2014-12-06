@@ -1,50 +1,64 @@
 .abtitle-sub
   %h2 账户充值
   .abtitle-return
-    %a.btn.btn-default.toback{:href => "#", :role => "button"} 返回
+    %a.btn.btn-default.toback{:href => usercenter_console_charge_path} 返回
 .abuser-box.accounttop-post
-  %dl.dl-horizontal.accoun-selebanks
-    %dt 充值金额
-    %dd
-      %ul.row.accountnow
-        %li.col-xs-3.paymoney
-          .input-group
-            %input#product_value.form-control.input-lg{:autocomplete => "off", :placeholder => "500", :name => "product_value", :type => "text", :value => ""}
-              %span.input-group-addon 元
-        %li.col-xs-6
-          %p 当前可用余额48.28元，充值后余额5,048.28
-    %dt 充值方式
-    %dd
-      %ul.row.accoun-selebank
-        %li.col-xs-3
-          %a.btn.btn-primary.btn-lg.btn-block{:href => "#", :type => "button"} 网上银行充值
-        %li.col-xs-3
-          %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
-            %img{:src => image_url("mout/bank-cmbc1.jpg") }
-    %dt 选择银行
-    %dd
-      %ul.row.accoun-selebank
-        %li.col-xs-3
-          %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
-            %img{:src =>  image_url("mout/bank-cmbc2.jpg")}
-        %li.col-xs-3
-          %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
-            %img{:src => image_url("mout/bank-cmbc3.jpg") }
-        %li.col-xs-3
-          %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
-            %img{:src => image_url("mout/bank-cmbc4.jpg")}
-      %ul.row.accoun-selebank
-        %li.col-xs-3
-          %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
-            %img{:src => image_url("mout/bank-cmbc5.jpg")}
-        %li.col-xs-3
-          %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
-            %img{:src => image_url("mout/bank-cmbc6.jpg")}
-        %li.col-xs-3
-          %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
-            %img{:src => image_url("mout/bank-cmbc7.jpg")}
-    %dt
-    %dd.submit-top
-      %ul.row.accoun-selebank
-        %li.col-xs-3
-          %a.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 充值
+  = form_tag usercenter_console_charge_mock_path do
+    %dl.dl-horizontal.accoun-selebanks
+      %dt 充值金额
+      %dd
+        %ul.row.accountnow
+          %li.col-xs-3.paymoney
+            .input-group
+              %input#charge_value.form-control.input-lg{:autocomplete => "off", :name => "charge_value", :type => "text", :value => ""}
+                %span.input-group-addon 元
+          %li.col-xs-6
+            %p
+              当前可用余额
+              %span#current_value
+                = current_user.user_info.account.balance
+              元，充值后余额
+              %span#charged_value
+                = current_user.user_info.account.balance
+              元
+      %dt 充值方式
+      %dd
+        %ul.row.accoun-selebank
+          %li.col-xs-3
+            %a.btn.btn-primary.btn-lg.btn-block{:href => "#", :type => "button"} 网上银行充值
+          %li.col-xs-3
+            %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
+              %img{:src => image_url("mout/bank-cmbc1.jpg") }
+      %dt 选择银行
+      %dd
+        %ul.row.accoun-selebank
+          %li.col-xs-3
+            %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
+              %img{:src =>  image_url("mout/bank-cmbc2.jpg")}
+          %li.col-xs-3
+            %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
+              %img{:src => image_url("mout/bank-cmbc3.jpg") }
+          %li.col-xs-3
+            %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
+              %img{:src => image_url("mout/bank-cmbc4.jpg")}
+        %ul.row.accoun-selebank
+          %li.col-xs-3
+            %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
+              %img{:src => image_url("mout/bank-cmbc5.jpg")}
+          %li.col-xs-3
+            %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
+              %img{:src => image_url("mout/bank-cmbc6.jpg")}
+          %li.col-xs-3
+            %a.btn.btn-primary.btn-block{:href => "#", :type => "button"}
+              %img{:src => image_url("mout/bank-cmbc7.jpg")}
+      %dt
+      %dd.submit-top
+        %ul.row.accoun-selebank
+          %li.col-xs-3
+            %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} 充值
+:javascript
+  $("#charge_value").keyup(function(){
+   current_value = parseFloat($("#current_value").html());
+   target_value = parseFloat($(this).val()) + current_value;
+  $("#charged_value").html(target_value);
+  });

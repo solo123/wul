@@ -64,6 +64,6 @@
             =(t.due_date - 1.days).strftime("%Y.%m.%d")
 
 :javascript
-  $("#withdraw_value").change(function(){
+  $("#withdraw_value").keyup(function(){
   $("#withdraw_amount").html($(this).val());
   });
