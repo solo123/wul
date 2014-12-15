@@ -4,6 +4,68 @@ a:hover{text-decoration: none;}
   width: 1170px !important;
 
 }
+.home-area-header{ padding-top:30px;}
+.home-area-header .home-about-intror{ padding-left:0;}
+.home-area-header .home-about-intro h3{
+  font-size:28px;
+  font-weight:normal;
+  margin-top:0;
+  margin-bottom:20px;
+}
+.home-area-header .home-stat {
+  border: 1px solid #ccc;
+  padding:5px 0 10px 20px;
+  border-radius:6px;
+}
+.home-area-header .home-stat dl{
+  margin-top:0;
+  -webkit-margin-after: 0;
+  margin-bottom:10px;
+}
+.home-area-header .home-stat dt{
+  font-weight:600;
+  font-size: 28px;
+  color: #ff6600;
+}
+.home-area-header .home-stat p a{
+  padding-top:20px;
+  padding-left:5px;
+  color:#555;
+}
+.home-safe-tips{ padding-bottom:50px;}
+.home-safe-tips .home-safe-icon {
+  display: block;
+  width:120px;
+  height:90px;
+  background: image_url("main/subject.png");
+}
+.home-safe-tips .home-safe-icon-safe{ background-position:0 0;}
+.home-safe-tips .home-safe-icon-earnings{ background-position:400px 0;}
+.home-safe-tips .home-safe-icon-novice{ background-position:270px 0;}
+.home-safe-tips .home-safe-icon-redemption{ background-position:120px 0;}
+.home-safe-tips span{ margin-left:35px;}
+.home-safe-tips h4{ font-size:20px; padding-top:20px; padding-bottom:10px;}
+.home-safe-tips p{ padding-right:21px;}
+.home-safe-tips .news-box{ padding-left:0;}
+.home-safe-tips .news-box .panel-heading{padding: 15px 15px;}
+.home-safe-tips .news-box .panel-heading .panel-title{ font-size:18px;}
+.home-news{ padding-top:0;}
+.home-news li{
+  padding-left:15px;
+  background: image_url("main/home-icon2.jpg") no-repeat;
+  height:25px;
+}
+.home-news li a{
+  color:#555;
+}
+.home-safe-tips .news-box .panel-heading h3 span{
+  margin-left:90px;
+  font-size:14px;
+
+}
+.home-safe-tips .news-box .panel-heading h3 span a{
+  color:#0099cc;
+}
 .home-area-header{
 	margin:80px 0 30px 0;
 }
